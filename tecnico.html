@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Técnico - Intercopias Cobán</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+        body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; }
+        .glass-nav { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { blue: '#003366', gray: '#8E9EAB', darkGray: '#6A7582' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-gray-800 antialiased selection:bg-brand-blue selection:text-white pt-16">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="flex justify-between items-center h-16">
+            
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
+                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
+                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
+                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
+                        Frente a Plaza Magdalena
+                    </span>
+                </div>
+            </a>
+
+            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
+                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
+                    <span class="text-brand-blue font-bold">Impresiones</span> | 
+                    <span class="text-brand-blue font-bold">Empastados</span> | 
+                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
+                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
+                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
+                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
+                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
+            </div>
+
+            <div class="md:hidden flex items-center z-20">
+                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
+        <div class="px-4 py-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
+            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
+        </div>
+    </div>
+</nav>
+
+    <header class="bg-[#0a111a] py-14 border-b-4 border-brand-blue relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-blue/20"></div>
+        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+            <p class="text-brand-gray font-bold text-xs md:text-sm tracking-widest uppercase mb-3"><i class="fa-solid fa-screwdriver-wrench mr-2 text-white"></i> Mantenimiento y Soluciones Rápidas</p>
+            <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight leading-tight">
+                Servicio Técnico <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#ff0050]">Honesto y Directo</span>
+            </h1>
+        </div>
+    </header>
+
+    <section class="py-10 bg-white">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <p class="text-lg text-gray-700 font-medium leading-relaxed">
+                No te prometemos magia ni usamos términos complicados. En Intercopias nos enfocamos en lo que realmente necesitas: <strong class="text-brand-blue">mantenimientos preventivos, limpiezas, formateos y reemplazo de piezas dañadas</strong> para que tu equipo vuelva a trabajar rápido.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-10 items-center">
+                
+                <div class="lg:w-1/2 w-full">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg border-4 border-white group">
+                        <img src="Tecnico1.jpg" alt="Mantenimiento de Laptops y PC" class="w-full h-auto object-cover aspect-video group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/800x450/003366/FFFFFF?text=Servicio+de+Laptops'">
+                        <div class="absolute bottom-0 left-0 bg-brand-blue/90 text-white px-4 py-2 rounded-tr-xl font-black text-sm uppercase tracking-wide">
+                            Laptops y Computadoras
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-4">Soporte para Laptops y PC</h2>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Si tu laptop está lenta, calienta demasiado o necesita programas nuevos, nosotros nos encargamos con un servicio práctico y sin vueltas.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-laptop-medical text-brand-blue mt-1"></i>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">Limpiezas y Formateos</strong>
+                                <span class="text-xs text-gray-600">Limpieza física interna para evitar sobrecalentamientos y formateo completo para devolverle la velocidad a tu sistema.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-microsoft text-brand-blue mt-1"></i>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">Instalación de Programas (Especialidad Office)</strong>
+                                <span class="text-xs text-gray-600">Instalamos las herramientas que necesitas para trabajar, destacando Microsoft Office.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-hand-holding-dollar text-brand-blue mt-1"></i>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">Nos ajustamos a tu presupuesto</strong>
+                                <span class="text-xs text-gray-600">¿Necesitas software? Te ofrecemos la opción de adquirir licencias 100% originales o buscamos instalaciones alternativas seguras que se acomoden a tu bolsillo.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row-reverse gap-10 items-center">
+                
+                <div class="lg:w-1/2 w-full">
+                    <div class="relative rounded-2xl overflow-hidden shadow-lg border-4 border-white group">
+                        <img src="Tecnico2.jpg" alt="Mantenimiento de Impresoras" class="w-full h-auto object-cover aspect-video group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/800x450/003366/FFFFFF?text=Servicio+de+Impresoras'">
+                        <div class="absolute bottom-0 right-0 bg-brand-blue/90 text-white px-4 py-2 rounded-tl-xl font-black text-sm uppercase tracking-wide">
+                            Impresoras
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-4">Mantenimiento de Impresoras</h2>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Conocemos el dolor de cabeza que es tener un equipo de trabajo detenido. Nuestro enfoque es reparar fallas comunes de manera directa.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-droplet text-brand-blue mt-1"></i>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">Purgados y Limpieza de Tinta</strong>
+                                <span class="text-xs text-gray-600">Solucionamos impresiones rayadas o colores faltantes mediante limpiezas profundas y purgado del sistema.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-file-circle-exclamation text-brand-blue mt-1"></i>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">Atascos y Obstrucciones de Papel</strong>
+                                <span class="text-xs text-gray-600">Retiramos objetos extraños y solucionamos problemas de arrastre de papel sin dañar los rodillos.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-microchip text-brand-blue mt-1"></i>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">Soluciones de Raíz (Cambio de Piezas)</strong>
+                                <span class="text-xs text-gray-600">No te hacemos perder el tiempo con reparaciones dudosas de microelectrónica. Si una placa está dañada, realizamos el cambio físico por una pieza funcional.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-14 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tight mb-6">¿Tu equipo necesita ayuda?</h2>
+            
+            <div class="bg-[#f0fdf4] border-2 border-[#25D366] rounded-2xl p-6 sm:p-8 shadow-sm transform transition-transform hover:scale-[1.02]">
+                <h3 class="text-lg font-black text-[#166534] uppercase mb-2">Pide tu cotización por WhatsApp</h3>
+                <p class="text-sm text-[#166534]/80 font-medium mb-5">
+                    Envíanos un mensaje indicando la marca de tu equipo y el problema que presenta. Te daremos una respuesta sincera sobre lo que podemos hacer.
+                </p>
+                <div class="bg-white py-3 px-6 rounded-xl border border-[#25D366]/30 inline-block w-full max-w-xs mx-auto shadow-inner">
+                    <div class="flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-3xl text-[#25D366]"></i>
+                        <span class="text-3xl font-black text-gray-900 select-all tracking-widest">3668 0414</span>
+                    </div>
+                </div>
+                <p class="text-xs text-[#166534] font-bold uppercase tracking-wider mt-4">
+                    <i class="fa-solid fa-location-dot mr-1"></i> Tráelo frente a Plaza Magdalena
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 bg-white border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="index.html" class="flex items-center gap-4 bg-gray-50 p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue shrink-0 border border-gray-100 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-house text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-black text-gray-900 uppercase text-sm mb-1 group-hover:text-brand-blue transition-colors">Regresar al Inicio</h4>
+                        <p class="text-[11px] sm:text-xs text-gray-600 leading-snug">Vuelve a la página principal de Intercopias Cobán.</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-brand-blue"></i>
+                </a>
+
+                <a href="index.html#contacto" class="flex items-center gap-4 bg-gray-50 p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue shrink-0 border border-gray-100 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-map-location-dot text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-black text-gray-900 uppercase text-sm mb-1 group-hover:text-brand-blue transition-colors">Ver Ubicación</h4>
+                        <p class="text-[11px] sm:text-xs text-gray-600 leading-snug">Mira nuestro horario y cómo llegar al Centro de Servicios.</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-brand-blue"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#003366] text-white py-6 border-t-4 border-[#6A7582] text-center">
+        <p class="text-[10px] text-white/60">© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+    </footer>
+
+    <script>
+        const btnMenu = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        if (btnMenu && menu) {
+            btnMenu.addEventListener('click', () => menu.classList.toggle('hidden'));
+        }
+    </script>
+</body>
+
+</html>

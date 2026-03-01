@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos de Empastado - Intercopias Cobán</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+        body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; }
+        .glass-nav { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { blue: '#003366', gray: '#8E9EAB', darkGray: '#6A7582' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-gray-800 antialiased selection:bg-brand-blue selection:text-white pt-16">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="flex justify-between items-center h-16">
+            
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
+                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
+                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
+                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
+                        Frente a Plaza Magdalena
+                    </span>
+                </div>
+            </a>
+
+            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
+                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
+                    <span class="text-brand-blue font-bold">Impresiones</span> | 
+                    <span class="text-brand-blue font-bold">Empastados</span> | 
+                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
+                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
+                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
+                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
+                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
+            </div>
+
+            <div class="md:hidden flex items-center z-20">
+                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
+        <div class="px-4 py-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
+            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
+        </div>
+    </div>
+</nav>
+
+    <header class="bg-[#0a111a] py-14 border-b-4 border-brand-blue relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-blue/20"></div>
+        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+            <span class="bg-[#ff0050] text-white px-4 py-1.5 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase mb-4 inline-block shadow-lg border border-white/20 animate-pulse">
+                ⭐ 3ra Edición Abierta ⭐
+            </span>
+            <p class="text-brand-gray font-bold text-xs md:text-sm tracking-widest uppercase mb-3"><i class="fa-solid fa-rocket mr-2 text-white"></i> De Ciber a Centro de Servicios</p>
+            <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight leading-tight">
+                Empastar puede convertirse en <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#ff0050]">tu servicio más rentable</span>
+            </h1>
+        </div>
+    </header>
+
+    <section class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-4">Es momento de evolucionar</h2>
+            <div class="w-16 h-1 bg-brand-blue mx-auto rounded-full mb-6"></div>
+            <p class="text-base md:text-lg text-gray-600 font-medium leading-relaxed mb-8">
+                Tras el rotundo éxito de nuestras ediciones anteriores, aspiro a que dejes de ser "solo un ciber" y transformes tu negocio en un punto de referencia de excelencia. Con este método validado, aprenderás a convertir la inversión de insumos que ya tienes en un retorno <strong>x4</strong> mediante el arte del empastado profesional.
+            </p>
+            <div class="bg-gray-50 border-l-4 border-brand-blue p-6 rounded-r-xl shadow-inner italic text-gray-700 text-lg font-semibold">
+                "No se trata solo de unir hojas; se trata de entregar un producto que respira profesionalismo y multiplica tus ganancias".
+            </div>
+        </div>
+    </section>
+
+<section class="py-8 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6">
+                <h3 class="text-lg md:text-xl font-black text-gray-900 uppercase tracking-tight mb-1">¿A quién puedes servir?</h3>
+                <p class="text-xs text-gray-500">Los límites los pones tú. Tus clientes potenciales son:</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                
+                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-brand-blue/30 transition-colors">
+                    <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue shrink-0">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="font-bold text-gray-900 text-xs uppercase mb-0.5">Universitarios</h4>
+                        <p class="text-[11px] text-gray-600 leading-tight">Tesis y trabajos con alta calidad.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-brand-blue/30 transition-colors">
+                    <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue shrink-0">
+                        <i class="fa-solid fa-user-graduate text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="font-bold text-gray-900 text-xs uppercase mb-0.5">Graduandos</h4>
+                        <p class="text-[11px] text-gray-600 leading-tight">Proyectos de nivel medio impecables.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-brand-blue/30 transition-colors">
+                    <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue shrink-0">
+                        <i class="fa-solid fa-building text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="font-bold text-gray-900 text-xs uppercase mb-0.5">Empresas</h4>
+                        <p class="text-[11px] text-gray-600 leading-tight">Informes y presentaciones corporativas.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4 hover:border-brand-blue/30 transition-colors">
+                    <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue shrink-0">
+                        <i class="fa-solid fa-lightbulb text-lg"></i>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="font-bold text-gray-900 text-xs uppercase mb-0.5">Emprendedores</h4>
+                        <p class="text-[11px] text-gray-600 leading-tight">Profesionalización de documentos.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-10 items-center">
+                
+                <div class="lg:w-1/2 w-full">
+                    <div class="bg-brand-blue/5 p-2 rounded-2xl border border-brand-blue/10">
+                        <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg bg-black">
+                            <iframe src="https://drive.google.com/file/d/1ZcGuP4rXrYSwiN026vM25nYfSJSiCmbB/preview" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-center text-gray-500 mt-2 font-medium uppercase tracking-wider"><i class="fa-solid fa-video text-[#ff0050] mr-1"></i> Adelanto: Módulo de Ventas y Negocios</p>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-4">La técnica es solo la mitad del éxito</h2>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                        Saber empastar te da un oficio, pero saber vender ese servicio te da un negocio rentable. En este módulo profundizamos en la estrategia comercial que permite multiplicar tus ingresos.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded bg-blue-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></div>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">De Operador a Dueño</strong>
+                                <span class="text-xs text-gray-600">Dejas de ver tu local como un "ciber" y lo gestionas como un Centro de Servicios.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded bg-blue-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></div>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">Identificación de Clientes</strong>
+                                <span class="text-xs text-gray-600">Analizamos cómo llegar a los nichos más rentables en tu zona.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded bg-blue-100 text-brand-blue flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-check text-xs"></i></div>
+                            <div>
+                                <strong class="text-gray-900 text-sm block">Propuesta de Valor</strong>
+                                <span class="text-xs text-gray-600">Te enseño a vender excelencia sin competir por precio.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-[#ff0050] font-black text-xs uppercase tracking-widest mb-2 block">Experiencia Comprobada</span>
+                <h2 class="text-2xl md:text-3xl font-black text-gray-900 uppercase tracking-tight">El éxito deja huellas</h2>
+                <p class="text-sm text-gray-500 mt-2 max-w-2xl mx-auto">Así se viven nuestras sesiones. Únete a los emprendedores que ya están transformando sus negocios con nuestro método.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                
+                <div class="lg:w-1/3 w-full shrink-0">
+                    <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-black">
+                            <iframe src="https://drive.google.com/file/d/1517zYtf9n0c4SwqoQXB1IINtG-FS3j75/preview" class="absolute top-0 left-0 w-full h-full border-0" allow="autoplay"></iframe>
+                        </div>
+                        <div class="mt-4 text-center pb-2">
+                            <p class="text-xs font-bold text-gray-900 uppercase tracking-wide">Participante en acción</p>
+                            <p class="text-[10px] text-gray-500 mt-1">Materiales listos aplicando la técnica desde casa.</p>
+                            <div class="flex justify-center gap-1 mt-2 text-yellow-400 text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-2/3 w-full">
+                    <div class="columns-2 sm:columns-3 gap-4 space-y-4">
+                        <img src="Sesiones 1.jpeg" alt="Sesión Intercopias 1" class="w-full rounded-xl shadow-sm border border-gray-200 hover:opacity-90 transition-opacity" onerror="this.style.display='none'">
+                        <img src="Sesiones 2.jpeg" alt="Sesión Intercopias 2" class="w-full rounded-xl shadow-sm border border-gray-200 hover:opacity-90 transition-opacity" onerror="this.style.display='none'">
+                        <img src="Sesiones 3.jpeg" alt="Sesión Intercopias 3" class="w-full rounded-xl shadow-sm border border-gray-200 hover:opacity-90 transition-opacity" onerror="this.style.display='none'">
+                        <img src="Sesiones 4.jpeg" alt="Sesión Intercopias 4" class="w-full rounded-xl shadow-sm border border-gray-200 hover:opacity-90 transition-opacity" onerror="this.style.display='none'">
+                        <img src="Sesiones 5.jpeg" alt="Sesión Intercopias 5" class="w-full rounded-xl shadow-sm border border-gray-200 hover:opacity-90 transition-opacity" onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-[#003366] relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">Elige tu Modalidad</h2>
+                <p class="text-white/80 mt-2 text-sm">Invierte en el conocimiento que transformará tu negocio.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl p-8 shadow-xl border-t-8 border-gray-300 flex flex-col">
+                    <h3 class="text-xl font-black text-gray-900 uppercase text-center mb-2">Sesiones Grabadas</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-black text-brand-blue">Q250</span><span class="text-gray-500 font-bold">.00</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-center text-sm text-gray-700"><i class="fa-solid fa-play text-gray-400 mr-3 w-4 text-center"></i> Aprende a tu propio ritmo.</li>
+                        <li class="flex items-center text-sm text-gray-700"><i class="fa-solid fa-infinity text-gray-400 mr-3 w-4 text-center"></i> Acceso ilimitado a las lecciones.</li>
+                        <li class="flex items-center text-sm text-gray-700"><i class="fa-brands fa-whatsapp text-gray-400 mr-3 w-4 text-center"></i> Soporte de dudas vía WhatsApp.</li>
+                    </ul>
+                    <a href="#inscripcion" class="block w-full py-3 px-4 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold text-center rounded-lg transition-colors uppercase text-sm tracking-wide">Quiero esta modalidad</a>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-2xl border-t-8 border-[#ff0050] flex flex-col transform md:-translate-y-4 relative">
+                    <div class="absolute top-0 right-0 bg-[#ff0050] text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Recomendada</div>
+                    <h3 class="text-xl font-black text-gray-900 uppercase text-center mb-2">Sesión en Vivo (3ra Ed.)</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-black text-brand-blue">Q325</span><span class="text-gray-500 font-bold">.00</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 flex-1">
+                        <li class="flex items-center text-sm text-gray-700"><i class="fa-solid fa-satellite-dish text-[#ff0050] mr-3 w-4 text-center"></i> Interacción directa y en tiempo real.</li>
+                        <li class="flex items-center text-sm text-gray-700"><i class="fa-solid fa-clipboard-question text-[#ff0050] mr-3 w-4 text-center"></i> Resolución de dudas al instante.</li>
+                        <li class="flex items-center text-sm text-gray-700"><i class="fa-solid fa-network-wired text-[#ff0050] mr-3 w-4 text-center"></i> Creación de red de contactos.</li>
+                    </ul>
+                    <a href="#inscripcion" class="block w-full py-3 px-4 bg-brand-blue hover:bg-brand-darkGray text-white font-bold text-center rounded-lg transition-colors uppercase text-sm tracking-wide shadow-md">Asegurar mi lugar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inscripcion" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12">
+                
+                <div class="lg:w-5/12">
+                    <h2 class="text-xl font-black text-gray-900 uppercase tracking-tight mb-6">📅 Fechas: Tercera Edición</h2>
+                    <p class="text-sm text-gray-600 mb-6">El éxito de tu negocio no puede esperar. Marca tu calendario para este mes de <strong class="text-brand-blue">MARZO</strong> (Cupo limitado):</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex items-center gap-4 hover:border-brand-blue/30 transition-colors">
+                            <div class="bg-blue-50 text-brand-blue font-black text-xl rounded-lg w-14 h-14 flex items-center justify-center shrink-0">25</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Miércoles</h4>
+                                <p class="text-xs text-gray-500">Dominio de técnica y pasta blanda.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex items-center gap-4 hover:border-brand-blue/30 transition-colors">
+                            <div class="bg-blue-50 text-brand-blue font-black text-xl rounded-lg w-14 h-14 flex items-center justify-center shrink-0">28</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Sábado</h4>
+                                <p class="text-xs text-gray-500">Intensiva de materiales y proveedores.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-[#ff0050]/20 shadow-sm flex items-center gap-4 hover:border-[#ff0050]/50 transition-colors">
+                            <div class="bg-[#ff0050] text-white font-black text-xl rounded-lg w-14 h-14 flex items-center justify-center shrink-0">29</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Domingo</h4>
+                                <p class="text-xs text-gray-600">Estrategia: Ventas y rentabilidad x4.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-7/12">
+                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8">
+                        <h2 class="text-xl font-black text-gray-900 uppercase tracking-tight mb-6 text-center">¿Cómo inscribirte?</h2>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-center hover:shadow-md transition-shadow">
+                                <img src="Bi.jpg" alt="Banco Industrial" class="h-6 mx-auto mb-3 opacity-80" onerror="this.style.display='none'">
+                                <p class="font-black text-gray-900 text-lg select-all tracking-wider mb-1">7171607406</p>
+                                <p class="text-[11px] text-gray-500 font-bold uppercase">Monetaria • Dayan Macz</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-center hover:shadow-md transition-shadow">
+                                <img src="Banrural.jpg" alt="Banrural" class="h-6 mx-auto mb-3 opacity-80" onerror="this.style.display='none'">
+                                <p class="font-black text-gray-900 text-lg select-all tracking-wider mb-1">4536070133</p>
+                                <p class="text-[11px] text-gray-500 font-bold uppercase">Ahorro • Dalia Reina</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#f0fdf4] border-2 border-[#25D366] rounded-xl p-6 text-center shadow-sm transform transition-transform hover:scale-[1.02]">
+                            <h3 class="text-lg font-black text-[#166534] uppercase mb-2">Envía tu comprobante</h3>
+                            <p class="text-xs text-[#166534]/80 font-medium mb-4">
+                                Realiza tu transferencia para la 3ra Edición, toma captura de la boleta y envíala a nuestro WhatsApp para darte acceso al grupo:
+                            </p>
+                            <div class="bg-white py-2 px-4 rounded-lg border border-[#25D366]/30 inline-block w-full max-w-xs mx-auto shadow-inner">
+                                <div class="flex items-center justify-center gap-3">
+                                    <i class="fa-brands fa-whatsapp text-2xl text-[#25D366]"></i>
+                                    <span class="text-2xl font-black text-gray-900 select-all tracking-widest">3668 0414</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="index.html" class="flex items-center gap-4 bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-house text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-black text-gray-900 uppercase text-sm mb-1 group-hover:text-brand-blue transition-colors">Regresar al Inicio</h4>
+                        <p class="text-[11px] sm:text-xs text-gray-600 leading-snug">Vuelve a la página principal de Intercopias Cobán.</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-brand-blue"></i>
+                </a>
+
+                <a href="cotizador.html" class="flex items-center gap-4 bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-calculator text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-black text-gray-900 uppercase text-sm mb-1 group-hover:text-brand-blue transition-colors">Cotizador de Combos</h4>
+                        <p class="text-[11px] sm:text-xs text-gray-600 leading-snug">Calcula al instante el precio de impresiones y empastados.</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-brand-blue"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#003366] text-white py-6 border-t-4 border-[#6A7582] text-center">
+        <p class="text-[10px] text-white/60">© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+    </footer>
+
+    <script>
+        // Script del Menú Hamburguesa en Móvil
+        const btnMenu = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        if (btnMenu && menu) {
+            btnMenu.addEventListener('click', () => menu.classList.toggle('hidden'));
+        }
+
+        // Script para mostrar el texto dinámico al hacer scroll en PC
+        const dynamicText = document.getElementById('nav-dynamic-text');
+        if (dynamicText) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    dynamicText.classList.remove('opacity-0');
+                    dynamicText.classList.add('opacity-100');
+                } else {
+                    dynamicText.classList.remove('opacity-100');
+                    dynamicText.classList.add('opacity-0');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

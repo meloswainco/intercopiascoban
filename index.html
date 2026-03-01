@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intercopias Cobán - Tu proyecto listo, impecable y a tiempo</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .text-fade {
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        /* Navbar Blur Support */
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Clean Text Shadow for Hero Image Legibility without boxes */
+        .hero-text-shadow {
+            text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.9), 0px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Bounce Animation for Scroll Indicator */
+        @keyframes custom-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        .animate-custom-bounce {
+            animation: custom-bounce 2s infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8E9EAB;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #003366;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#003366',
+                            gray: '#8E9EAB',
+                            darkGray: '#6A7582'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-gray-800 antialiased selection:bg-brand-blue selection:text-white pb-0">
+
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="flex justify-between items-center h-16">
+            
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
+                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
+                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
+                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
+                        Frente a Plaza Magdalena
+                    </span>
+                </div>
+            </a>
+
+            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
+                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
+                    <span class="text-brand-blue font-bold">Impresiones</span> | 
+                    <span class="text-brand-blue font-bold">Empastados</span> | 
+                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
+                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
+                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
+                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
+                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
+            </div>
+
+            <div class="md:hidden flex items-center z-20">
+                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
+        <div class="px-4 py-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
+            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
+        </div>
+    </div>
+</nav>
+
+    <section id="inicio" class="relative w-full h-[55vh] min-h-[450px] max-h-[500px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-[#0a111a]">
+            <img src="hero.jpg" onerror="this.src='https://lh3.googleusercontent.com/sitesv/APaQ0STXqv3KNu5_tO3Xl-m50LsfM41Ju8iRNEKVw9E1K2fxrRRMh05abPg9CJPWiQKZVEfSnX_uKnk2zGtC5-gZRAngzD3DGuh9FNQHiqmzH5vpVuj1GlzkFsZbGo_nUmQa77qncch_rmbVRbBCld_J_Ci2z9GD_6p2qm7MWyi1KH5GyH4NczVoMmhQJYdKvZTiU75jRzk-RAqv6EbK5QzMivsN2Oor3S8TSVqqiEE=w1280'" alt="Fondo Panorámico Intercopias" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-black/40 bg-gradient-to-b from-black/60 to-transparent z-10"></div>
+        </div>
+
+        <div class="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col items-center pt-8">
+            <h1 class="text-white text-3xl sm:text-4xl md:text-5xl font-black mb-3 uppercase leading-[1.1] tracking-tight hero-text-shadow animate-fade-up" style="opacity: 0;">
+                Tu proyecto listo,<br class="hidden sm:block"> impecable y a tiempo
+            </h1>
+            <div class="text-white hero-text-shadow text-base sm:text-xl md:text-2xl font-semibold min-h-[40px] mb-8 animate-fade-up delay-100" style="opacity: 0;">
+                <span id="animated-subtitle" class="text-fade opacity-100 block tracking-wide">Calcula tu presupuesto en segundos</span>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center animate-custom-bounce">
+            <span class="text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1 hero-text-shadow">Nuestros Servicios</span>
+            <a href="#servicios" class="text-white hover:text-brand-gray transition-colors">
+                <i class="fa-solid fa-chevron-down text-lg sm:text-xl drop-shadow-md"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-black text-gray-900 mb-8 text-center uppercase tracking-tight">Nuestros Servicios</h2>
+
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-5">
+            <a href="cotizador.html"
+                class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-brand-blue/30 transition-colors group flex flex-col items-center text-center shadow-sm hover:shadow">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-calculator text-lg sm:text-xl"></i>
+                </div>
+                <h3 class="text-[16px] sm:text-sm font-bold text-gray-900 mb-1 sm:mb-2 leading-tight group-hover:text-brand-blue transition-colors">
+                    Cotiza tu combo de graduación</h3>
+                <p class="text-[10px] sm:text-[11px] text-gray-500 leading-snug">Calcula tu presupuesto en segundos.</p>
+            </a>
+
+            <a href="normas.html" class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-brand-blue/30 transition-colors group flex flex-col items-center text-center shadow-sm hover:shadow">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-book-bookmark text-lg sm:text-xl"></i>
+                </div>
+                <h3 class="text-[16px] sm:text-sm font-bold text-gray-900 mb-1 sm:mb-2 leading-tight group-hover:text-brand-blue transition-colors">
+                    Estilo y forma para tus trabajos</h3>
+                <p class="text-[10px] sm:text-[11px] text-gray-500 leading-snug">APA, Gordillo, lo que necesites.</p>
+            </a>
+
+            <a href="cursos.html"
+                class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-brand-blue/30 transition-colors group flex flex-col items-center text-center shadow-sm hover:shadow">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-graduation-cap text-lg sm:text-xl"></i>
+                </div>
+                <h3 class="text-[16px] sm:text-sm font-bold text-gray-900 mb-1 sm:mb-2 leading-tight group-hover:text-brand-blue transition-colors">
+                    Cursos de Empastado</h3>
+                <p class="text-[10px] sm:text-[11px] text-gray-500 leading-snug">Aprende y expande tus servicios.</p>
+            </a>
+
+            <a href="tecnico.html" class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-brand-blue/30 transition-colors group flex flex-col items-center text-center shadow-sm hover:shadow">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-screwdriver-wrench text-lg sm:text-xl"></i>
+                </div>
+                <h3 class="text-[16px] sm:text-sm font-bold text-gray-900 mb-1 sm:mb-2 leading-tight group-hover:text-brand-blue transition-colors">
+                    Servicio Técnico</h3>
+                <p class="text-[10px] sm:text-[11px] text-gray-500 leading-snug">Reparación de impresoras y PC.</p>
+            </a>
+
+            <a href="#contacto" class="col-span-2 lg:col-span-1 bg-brand-blue/5 rounded-xl p-4 sm:p-5 border border-brand-blue/10 hover:bg-brand-blue/10 transition-colors group flex flex-col items-center text-center shadow-sm">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-map-location-dot text-lg sm:text-xl"></i>
+                </div>
+                <h3 class="text-[16px] sm:text-sm font-bold text-brand-blue mb-1 sm:mb-2 leading-tight">Ubicación y Contacto</h3>
+                <p class="text-[10px] sm:text-[11px] text-gray-600 font-medium leading-snug">Frente a Plaza Magdalena.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="py-10 bg-white border-t border-gray-100 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h3 class="text-lg md:text-xl font-black text-gray-900 uppercase tracking-tight mb-1">Más Soluciones en Intercopias</h3>
+                <p class="text-xs text-gray-500">Todo lo que necesitas para tu oficina o estudio en un solo lugar.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                
+                <button onclick="openModal('modal-encuadernado')" class="bg-gray-50 p-3 rounded-xl border border-gray-200 hover:border-brand-blue/50 hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
+                    <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden shadow-sm border border-gray-100">
+                        <img src="ruleta1.jpg" alt="Encuadernados" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Encuadernados'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-[11px] sm:text-xs uppercase">Encuadernados</h4>
+                </button>
+
+                <button onclick="openModal('modal-discos')" class="bg-gray-50 p-3 rounded-xl border border-gray-200 hover:border-brand-blue/50 hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
+                    <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden shadow-sm border border-gray-100">
+                        <img src="ruleta2.jpg" alt="Discos y Escaneos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Discos'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-[11px] sm:text-xs uppercase">Discos y Escaneos</h4>
+                </button>
+
+                <button onclick="openModal('modal-papeles')" class="bg-gray-50 p-3 rounded-xl border border-gray-200 hover:border-brand-blue/50 hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
+                    <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden shadow-sm border border-gray-100">
+                        <img src="ruleta3.jpg" alt="Papeles Finos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Papeles'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-[11px] sm:text-xs uppercase">Papeles Finos</h4>
+                </button>
+
+                <button onclick="openModal('modal-tramites')" class="bg-gray-50 p-3 rounded-xl border border-gray-200 hover:border-brand-blue/50 hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
+                    <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden shadow-sm border border-gray-100">
+                        <img src="ruleta4.jpg" alt="Trámites Web" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Trámites'">
+                    </div>
+                    <h4 class="font-bold text-gray-900 text-[11px] sm:text-xs uppercase">Trámites Web</h4>
+                </button>
+
+            </div>
+    </section>
+
+    <div id="modal-encuadernado" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative">
+            <button onclick="closeModal('modal-encuadernado')" class="absolute top-3 right-3 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="bg-brand-blue/5 p-5 text-center border-b border-gray-100">
+                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue mx-auto shadow-sm text-2xl mb-2"><i class="fa-solid fa-book-open"></i></div>
+                <h3 class="font-black text-gray-900 uppercase tracking-tight">Encuadernados</h3>
+            </div>
+            <div class="p-6">
+                <ul class="space-y-3 text-sm text-gray-600">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Espiral Plástico y Metálico:</strong> Para manuales, folletos y trabajos escolares.</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span>Apertura de 360° para mayor comodidad de lectura.</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span>Acabado resistente con cubiertas plásticas protectoras.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-discos" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative">
+            <button onclick="closeModal('modal-discos')" class="absolute top-3 right-3 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="bg-brand-blue/5 p-5 text-center border-b border-gray-100">
+                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue mx-auto shadow-sm text-2xl mb-2"><i class="fa-solid fa-compact-disc"></i></div>
+                <h3 class="font-black text-gray-900 uppercase tracking-tight">Grabación y Digitalización</h3>
+            </div>
+            <div class="p-6">
+                <ul class="space-y-3 text-sm text-gray-600">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Tesis en CD/DVD:</strong> Informes de graduación entregados en sobre blanco con ventana.</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Escaneos:</strong> Digitalizamos dictámenes y documentos para integrarlos a tu PDF.</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span>Grabación de música, videos y respaldo de datos.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-papeles" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative">
+            <button onclick="closeModal('modal-papeles')" class="absolute top-3 right-3 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="bg-brand-blue/5 p-5 text-center border-b border-gray-100">
+                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue mx-auto shadow-sm text-2xl mb-2"><i class="fa-solid fa-image"></i></div>
+                <h3 class="font-black text-gray-900 uppercase tracking-tight">Papeles Finos y Foto</h3>
+            </div>
+            <div class="p-6">
+                <ul class="space-y-3 text-sm text-gray-600">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Diplomas e Invitaciones:</strong> Impresión elegante sobre papel Lino.</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Fotografía:</strong> Impresión nítida y de alta definición en papel fotográfico.</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Stickers:</strong> Papel adhesivo personalizado con cortes precisos.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-tramites" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative">
+            <button onclick="closeModal('modal-tramites')" class="absolute top-3 right-3 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="bg-brand-blue/5 p-5 text-center border-b border-gray-100">
+                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue mx-auto shadow-sm text-2xl mb-2"><i class="fa-solid fa-file-signature"></i></div>
+                <h3 class="font-black text-gray-900 uppercase tracking-tight">Trámites y Gestiones</h3>
+            </div>
+            <div class="p-6">
+                <ul class="space-y-3 text-sm text-gray-600">
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Antecedentes:</strong> Penales y Policiacos al instante.</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Gestiones SAT:</strong> RTU, impresión de boletas y calcomanías.</span></li>
+                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Citas:</strong> Pasaporte y trámites en línea en general.</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <section class="bg-brand-blue py-8 px-4 text-center border-y-4 border-gray-200">
+        <h2 class="text-lg md:text-2xl font-black text-white leading-tight uppercase tracking-widest hero-text-shadow">
+            Tú pones el conocimiento, <span class="text-brand-gray">nosotros el formato</span>
+        </h2>
+    </section>
+
+    <section id="historia" class="py-8 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+                <div class="md:w-5/12 text-center md:text-left">
+                    <h2 class="text-lg md:text-xl font-extrabold text-gray-900 leading-tight uppercase tracking-wide">
+                        La excelencia <br><span class="text-brand-blue">como estándar.</span>
+                    </h2>
+                    <div class="w-10 h-1 bg-brand-blue mt-3 mx-auto md:mx-0 rounded-full"></div>
+                </div>
+
+                <div class="md:w-7/12 text-xs md:text-[13px] text-gray-600 leading-relaxed font-medium space-y-3">
+                    <p>
+                        <strong class="text-gray-900 border-b border-brand-blue/30 inline-block mb-1">Soy Dayan.</strong> 
+                        En Intercopias Cobán nuestra regla es simple: facilitarte la vida. Desde 2017, transformamos el concepto de "ciber" tradicional en un Centro de Servicios de alto valor para empastados, encuadernados y soluciones a medida.
+                    </p>
+                    <div class="bg-white border-l-2 border-[#ff0050] p-3 rounded-r-lg shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-3 group">
+                        <i class="fa-brands fa-tiktok text-2xl text-[#ff0050] self-start sm:self-auto group-hover:scale-110 transition-transform"></i>
+                        <div>
+                            <p class="italic text-gray-700 leading-snug mb-1 text-[11px]">"Compartimos nuestro conocimiento con miles de emprendedores; creemos en la capacitación constante".</p>
+                            <a href="https://www.tiktok.com/@DayanMelvin" target="_blank" class="inline-block text-[#ff0050] font-bold text-[10px] hover:text-black transition-colors uppercase tracking-wider">
+                                Sígueme en @DayanMelvin →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-2 uppercase">¿Dónde estamos?</h2>
+            <p class="text-gray-600 mb-8 font-medium">Te esperamos frente a Plaza Magdalena, Cobán.</p>
+            
+            <div class="flex justify-center mb-10 overflow-hidden rounded-xl shadow-lg border border-gray-100 max-w-[325px] sm:max-w-full mx-auto">
+                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dayanmelvin/video/7595248061568322828" data-video-id="7595248061568322828" style="max-width: 605px;min-width: 325px; margin: 0 auto;" > 
+                    <section> 
+                        <a target="_blank" title="@dayanmelvin" href="https://www.tiktok.com/@dayanmelvin?refer=embed">@dayanmelvin</a> ¿Dónde está Intercopias Cobán? 
+                    </section> 
+                </blockquote>
+            </div>
+            <div class="mt-6 max-w-sm mx-auto bg-gray-50 border-2 border-[#25D366]/20 rounded-xl p-5 shadow-sm transform transition-transform hover:scale-105">
+                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2">Escríbenos a WhatsApp</p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center shadow-md animate-bounce">
+                        <i class="fa-brands fa-whatsapp text-xl text-white"></i>
+                    </div>
+                    <span class="text-3xl font-black text-gray-900 tracking-tight select-all">3668 0414</span>
+                </div>
+                <p class="text-[10px] text-gray-500 mt-3 font-medium">Guárdanos para cotizaciones y resolver tus dudas al instante.</p>
+            </div>
+    </section>
+
+    <footer class="bg-[#003366] text-white pt-8 pb-4 border-t-4 border-[#6A7582]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-6">
+                <div>
+                    <h4 class="font-bold text-sm mb-3 uppercase tracking-wider text-[#8E9EAB] border-b border-white/10 pb-2">Contacto</h4>
+                    <ul class="space-y-2 text-xs text-white/90">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot mt-0.5 w-3 text-center text-brand-gray"></i>
+                            <span>Frente a Plaza Magdalena, Cobán</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone w-3 text-center text-brand-gray"></i>
+                            <a href="tel:50236680414" class="hover:text-white transition-colors">(502) 36680414</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope w-3 text-center text-brand-gray"></i>
+                            <a href="mailto:inco.coban@gmail.com" class="hover:text-white transition-colors">inco.coban@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col justify-start">
+                    <h4 class="font-bold text-sm mb-3 uppercase tracking-wider text-[#8E9EAB] border-b border-white/10 pb-2">Comunidad</h4>
+                    <a href="https://www.tiktok.com/@DayanMelvin" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-white/5 hover:bg-[#ff0050] p-2.5 rounded-lg transition-colors border border-white/10 w-full max-w-sm">
+                        <div class="w-8 h-8 bg-white/10 group-hover:bg-white text-white group-hover:text-[#ff0050] rounded-md flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-tiktok text-lg"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white text-sm leading-none">@DayanMelvin</p>
+                            <p class="text-[10px] text-white/60 mt-0.5">TikTok - Emprendedores</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm mb-3 uppercase tracking-wider text-[#8E9EAB] border-b border-white/10 pb-2">Horarios</h4>
+                    <ul class="space-y-1 text-xs">
+                        <li class="flex justify-between text-white/90 border-b border-white/5 pb-1">
+                            <span>Lun - Vie</span>
+                            <span class="font-bold">08:00 - 20:30</span>
+                        </li>
+                        <li class="flex justify-between text-white/90 border-b border-white/5 py-1">
+                            <span>Sábado</span>
+                            <span class="font-bold">08:00 - 18:00</span>
+                        </li>
+                        <li class="flex justify-between text-white/90 pt-1">
+                            <span>Domingo</span>
+                            <span class="font-bold">15:00 - 21:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-3 text-center text-[10px] text-white/40">
+                <p>© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script async src="https://www.tiktok.com/embed.js"></script>
+
+    <script>
+        const navText = document.getElementById('nav-dynamic-text');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navText.classList.remove('opacity-0');
+                navText.classList.add('opacity-100');
+            } else {
+                navText.classList.add('opacity-0');
+                navText.classList.remove('opacity-100');
+            }
+        });
+
+        const frases = [
+            "Calcula tu presupuesto en segundos",
+            "Aplicamos la normativa de tu universidad",
+            "Inscríbete al taller de empastados"
+        ];
+        let indiceActual = 0;
+        const elementoTexto = document.getElementById('animated-subtitle');
+        if (elementoTexto) {
+            setInterval(() => {
+                elementoTexto.classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => {
+                    indiceActual = (indiceActual + 1) % frases.length;
+                    elementoTexto.innerText = frases[indiceActual];
+                    elementoTexto.classList.replace('opacity-0', 'opacity-100');
+                }, 400);
+            }, 3000);
+        }
+
+        const btnMenu = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btnMenu.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                menu.classList.add('hidden');
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 64;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        // Funciones para abrir y cerrar los Modals de Servicios Secundarios
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            // Pequeño timeout para que se active la transición de opacidad/escala
+            setTimeout(() => {
+                modal.children[0].classList.remove('scale-95');
+                modal.children[0].classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.children[0].classList.remove('scale-100');
+            modal.children[0].classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+    </script>
+
+</body>
+
+</html>

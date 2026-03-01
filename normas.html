@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normas, Estilo y Forma - Intercopias Cobán</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+        body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; }
+        .glass-nav { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { blue: '#003366', gray: '#8E9EAB', darkGray: '#6A7582' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-gray-800 antialiased selection:bg-brand-blue selection:text-white pt-16">
+
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="flex justify-between items-center h-16">
+            
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
+                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
+                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
+                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
+                        Frente a Plaza Magdalena
+                    </span>
+                </div>
+            </a>
+
+            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
+                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
+                    <span class="text-brand-blue font-bold">Impresiones</span> | 
+                    <span class="text-brand-blue font-bold">Empastados</span> | 
+                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
+                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
+                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
+                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
+                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
+            </div>
+
+            <div class="md:hidden flex items-center z-20">
+                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
+        <div class="px-4 py-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
+            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
+        </div>
+    </div>
+</nav>
+
+    <header class="bg-[#0a111a] py-10 border-b-4 border-brand-blue relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-blue/20"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-2">Normas, Estilo y Forma</h1>
+            <p class="text-brand-gray font-bold text-xs md:text-sm tracking-widest uppercase"><i class="fa-solid fa-graduation-cap mr-2 text-white"></i> Estándares Académicos en Cobán</p>
+        </div>
+    </header>
+
+    <section class="py-10 bg-white">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <p class="text-lg md:text-xl text-gray-700 font-medium leading-relaxed">
+                Sabemos que en la universidad, <strong class="text-brand-blue">"Normas APA"</strong> puede significar muchas cosas y que cada docente tiene su propio criterio. Nosotros nos adaptamos al tuyo.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight">¿Cómo trabajamos tu documento?</h2>
+                <div class="w-16 h-1 bg-brand-blue mt-3 mx-auto rounded-full"></div>
+                <p class="text-sm text-gray-500 mt-4">Para garantizar la excelencia, clasificamos tu requerimiento en 3 niveles:</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-brand-blue mb-4 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-globe text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">APA Pura (Vigente)</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Aplicación estricta del manual internacional. Ideal para trabajos de investigación avanzada o cuando el docente exige el estándar global sin modificaciones.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-brand-blue mb-4 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-building-columns text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">Normativa USAC / Gordillo</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">El estándar más común en la región. Manejamos la combinación estética y técnica que exigen los manuales de la Universidad de San Carlos y sus derivaciones locales.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-brand-blue mb-4 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-file-signature text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">Lineamientos Internos</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">Si tu carrera tiene un manual propio o una guía específica de la facultad (mezclas de formatos), nosotros nos ajustamos milimétricamente a ella.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-10 items-stretch">
+                
+                <div class="lg:w-1/2 flex flex-col justify-center">
+                    <h2 class="text-xl font-black text-gray-900 uppercase tracking-tight mb-6">Lo que necesitamos de ti</h2>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-blue mt-1"></i>
+                            <span class="text-sm font-medium text-gray-700">Tu <strong class="text-gray-900">Universidad y Carrera</strong>.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-blue mt-1"></i>
+                            <span class="text-sm font-medium text-gray-700">El <strong class="text-gray-900">tipo de trabajo</strong> (Tarea, Tesis, Informe de Práctica).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-brand-blue mt-1"></i>
+                            <span class="text-sm font-medium text-gray-700">El <strong class="text-gray-900">Manual o Guía</strong> (si tu docente te entregó uno específico).</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 bg-brand-blue/5 border-l-4 border-brand-blue p-4 rounded-r-lg">
+                        <h4 class="font-bold text-brand-blue text-xs uppercase tracking-wider mb-1"><i class="fa-solid fa-file-pdf mr-1"></i> Integración de Documentos</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Si tu documento necesita incluir dictámenes o cartas firmadas, podemos escanearlos e integrarlos en el orden correcto dentro de tu PDF final.</p>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <div class="bg-[#f0fdf4] border-2 border-[#25D366] rounded-2xl p-6 sm:p-8 text-center shadow-sm h-full flex flex-col justify-center transform transition-transform hover:scale-[1.02]">
+                        <h3 class="text-xl font-black text-[#166534] uppercase mb-3">¡Ordena tu revisión ahora!</h3>
+                        <p class="text-sm text-[#166534]/80 font-medium mb-6">
+                            No te arriesgues a que te rechacen el trabajo por un margen o una cita mal puesta. Envía tu documento Word para una evaluación técnica al WhatsApp:
+                        </p>
+                        
+                        <div class="bg-white py-3 px-6 rounded-xl border border-[#25D366]/30 inline-block w-full max-w-xs mx-auto mb-4 shadow-inner">
+                            <div class="flex items-center justify-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-3xl text-[#25D366]"></i>
+                                <span class="text-3xl font-black text-gray-900 select-all tracking-widest">3668 0414</span>
+                            </div>
+                        </div>
+                        
+                        <p class="text-xs text-[#166534] font-bold uppercase tracking-wider mt-2">
+                            <i class="fa-solid fa-location-dot mr-1"></i> Frente a Plaza Magdalena, Cobán.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="cotizador.html" class="flex items-center gap-4 bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-calculator text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-black text-gray-900 uppercase text-sm mb-1 group-hover:text-brand-blue transition-colors">¿Ya tienes tu documento?</h4>
+                        <p class="text-[11px] sm:text-xs text-gray-600 leading-snug">Cotiza cuánto sale tu combo de graduación al instante.</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-brand-blue"></i>
+                </a>
+
+                <a href="index.html#contacto" class="flex items-center gap-4 bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue shrink-0 group-hover:bg-brand-blue group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-map-location-dot text-2xl"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-black text-gray-900 uppercase text-sm mb-1 group-hover:text-brand-blue transition-colors">¿Dónde está Intercopias?</h4>
+                        <p class="text-[11px] sm:text-xs text-gray-600 leading-snug">Mira nuestra ubicación y visítanos frente a Plaza Magdalena.</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-brand-blue"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#003366] text-white py-6 border-t-4 border-[#6A7582] text-center">
+        <p class="text-[10px] text-white/60">© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+    </footer>
+
+    <script>
+        // Script del Menú Hamburguesa
+        const btnMenu = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        if (btnMenu && menu) {
+            btnMenu.addEventListener('click', () => menu.classList.toggle('hidden'));
+        }
+
+        // Script para mostrar el texto dinámico al hacer scroll
+        const dynamicText = document.getElementById('nav-dynamic-text');
+        if (dynamicText) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    dynamicText.classList.remove('opacity-0');
+                    dynamicText.classList.add('opacity-100');
+                } else {
+                    dynamicText.classList.remove('opacity-100');
+                    dynamicText.classList.add('opacity-0');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
