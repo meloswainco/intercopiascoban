@@ -350,54 +350,98 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         function calculate() {
-            const pages = parseInt(document.getElementById('pages').value) || 0;
-            const copies = parseInt(document.getElementById('copies').value) || 1;
-            const discQty = parseInt(document.getElementById('discQty').value) || 0;
-            const double = document.getElementById('doubleSided').checked;
-            const bind = document.getElementById('addBinding').checked;
-            let sh = double ? Math.ceil(pages / 2) : pages;
-            let pF = 0, cF = 0, bF = 0, dF = discQty * CONFIG.PRECIO_DISCO, pS = 0, cS = 0, bS = 0, rawT = 0;
+    const pages = parseInt(document.getElementById('pages').value) || 0;
+    const copies = parseInt(document.getElementById('copies').value) || 1;
+    const discQty = parseInt(document.getElementById('discQty').value) || 0;
+    const double = document.getElementById('doubleSided').checked;
+    const bind = document.getElementById('addBinding').checked;
 
-            if (origin === 'digital') {
-                if (quality === 'optima') {
-                    let tI = pages * copies;
-                    let u = tI < 45 ? CONFIG.ESC_1 : (tI <= 99 ? CONFIG.ESC_2 : (tI <= 249 ? CONFIG.ESC_3 : CONFIG.ESC_4));
-                    pF = tI * u; let rU = tI < 100 ? CONFIG.DIGITAL_REF_BAJA : CONFIG.DIGITAL_REF_ALTA;
-                    rawT += tI * rU; pS = (tI * rU) - pF;
-                } else {
-                    let u = pages < 45 ? CONFIG.ESC_1 : (pages <= 99 ? CONFIG.ESC_2 : (pages <= 249 ? CONFIG.ESC_3 : CONFIG.ESC_4));
-                    pF = pages < 45 ? CONFIG.MINIMO_IMPRESION : pages * u;
-                    let rU = pages < 100 ? CONFIG.DIGITAL_REF_BAJA : CONFIG.DIGITAL_REF_ALTA;
-                    rawT += pages < 45 ? CONFIG.MINIMO_IMPRESION : pages * rU;
-                    if (pages >= 45) pS = (pages * rU) - pF;
-                    if (copies > 1) {
-                        let cT = pages * (copies - 1); cF = cT * CONFIG.COPIA_REAL;
-                        rawT += cT * CONFIG.COPIA_REF; cS = (cT * CONFIG.COPIA_REF) - cF;
-                    }
-                }
-            } else {
-                let cT = pages * copies; cF = cT * CONFIG.COPIA_REAL;
-                rawT += cT * CONFIG.COPIA_REF; cS = (cT * CONFIG.COPIA_REF) - cF;
+    let sh = double ? Math.ceil(pages / 2) : pages;
+
+    let pF = 0, cF = 0, bF = 0;
+    let dF = discQty * CONFIG.PRECIO_DISCO;
+    let pS = 0, cS = 0, bS = 0;
+    let rawT = 0;
+
+    if (origin === 'digital') {
+
+        if (quality === 'optima') {
+            let tI = pages * copies;
+            let u = tI < 45 ? CONFIG.ESC_1 : (tI <= 99 ? CONFIG.ESC_2 : (tI <= 249 ? CONFIG.ESC_3 : CONFIG.ESC_4));
+
+            pF = tI * u;
+
+            let rU = tI < 100 ? CONFIG.DIGITAL_REF_BAJA : CONFIG.DIGITAL_REF_ALTA;
+            rawT += tI * rU;
+            pS = (tI * rU) - pF;
+
+        } else {
+            let u = pages < 45 ? CONFIG.ESC_1 : (pages <= 99 ? CONFIG.ESC_2 : (pages <= 249 ? CONFIG.ESC_3 : CONFIG.ESC_4));
+
+            pF = pages < 45 ? CONFIG.MINIMO_IMPRESION : pages * u;
+
+            let rU = pages < 100 ? CONFIG.DIGITAL_REF_BAJA : CONFIG.DIGITAL_REF_ALTA;
+            rawT += pages < 45 ? CONFIG.MINIMO_IMPRESION : pages * rU;
+
+            if (pages >= 45) pS = (pages * rU) - pF;
+
+            if (copies > 1) {
+                let cT = pages * (copies - 1);
+                cF = cT * CONFIG.COPIA_REAL;
+
+                rawT += cT * CONFIG.COPIA_REF;
+                cS = (cT * CONFIG.COPIA_REF) - cF;
             }
+        }
 
-            if (bind) {
-                let sur = sh > 350 ? 20 : (sh > 275 ? 15 : (sh > 200 ? 10 : (sh > 125 ? 5 : 0)));
-                let rB = (CONFIG.EMPASTADO_BASE + sur) * copies;
-                rawT += rB; bS = CONFIG.DESCUENTO_EMPASTADO * copies; bF = rB - bS;
-            }
-            rawT += dF; let total = pF + cF + bF + dF;
+    } else {
 
-            let html = `<tr class="subtotal-header"><td colspan="2">TOTAL SIN DESCUENTOS: <span class="old-price" style="color:Black; opacity:1; margin-left:10px">Q ${rawT.toFixed(2)}</span></td></tr>`;
-            if (pF > 0) html += `<tr><td>Impresión Digital</td><td class="val"><span class="old-price">Q ${(pF + pS).toFixed(2)}</span>Q ${pF.toFixed(2)}</td></tr>`;
-            if (cF > 0) html += `<tr><td>Servicio de Copiado</td><td class="val"><span class="old-price">Q ${(cF + cS).toFixed(2)}</span>Q ${cF.toFixed(2)}</td></tr>`;
-            if (bind) html += `<tr><td>Empastado (${sh} hojas)</td><td class="val"><span class="old-price">Q ${(bF + bS).toFixed(2)}</span>Q ${bF.toFixed(2)}</td></tr>`;
-            if (dF > 0) html += `<tr><td>Discos</td><td class="val">Q ${dF.toFixed(2)}</td></tr>`;
-            if (pS > 0.1) html += `<tr class="discount-row"><td>(-) Ahorro por Volumen</td><td class="val">- Q ${pS.toFixed(2)}</td></tr>`;
-            if (cS > 0.1) html += `<tr class="discount-row"><td>(-) Beneficio en Copias</td><td class="val">- Q ${cS.toFixed(2)}</td></tr>`;
-            if (bS > 0.1) html += `<tr class="discount-row"><td>(-) Premio Trabajo Completo</td><td class="val">- Q ${bS.toFixed(2)}</td></tr>`;
+        // 🔥 SOLO SE COBRAN COPIAS ADICIONALES (el original no se cobra)
+        let copiasReales = copies > 1 ? (copies - 1) : 0;
+        let cT = pages * copiasReales;
 
-            document.getElementById('summaryBody').innerHTML = html;
-            document.getElementById('totalPrice').innerText = "Q " + total.toFixed(2);
+        if (mode === 'combo') {
+            const PRECIO_COMBO_REAL = 0.40;
+            const PRECIO_COMBO_REF = 0.50;
+
+            cF = cT * PRECIO_COMBO_REAL;
+            rawT += cT * PRECIO_COMBO_REF;
+            cS = (cT * PRECIO_COMBO_REF) - cF;
+
+        } else {
+            cF = cT * CONFIG.COPIA_REAL;
+            rawT += cT * CONFIG.COPIA_REF;
+            cS = (cT * CONFIG.COPIA_REF) - cF;
+        }
+    }
+
+    // ✅ EMPASTADO SÍ USA TODOS LOS EJEMPLARES
+    if (bind) {
+        let sur = sh > 350 ? 20 : (sh > 275 ? 15 : (sh > 200 ? 10 : (sh > 125 ? 5 : 0)));
+        let rB = (CONFIG.EMPASTADO_BASE + sur) * copies;
+
+        rawT += rB;
+
+        bS = CONFIG.DESCUENTO_EMPASTADO * copies;
+        bF = rB - bS;
+    }
+
+    rawT += dF;
+
+    let total = pF + cF + bF + dF;
+
+    let html = `<tr class="subtotal-header"><td colspan="2">TOTAL SIN DESCUENTOS: <span class="old-price" style="color:Black; opacity:1; margin-left:10px">Q ${rawT.toFixed(2)}</span></td></tr>`;
+
+    if (pF > 0) html += `<tr><td>Impresión Digital</td><td class="val"><span class="old-price">Q ${(pF + pS).toFixed(2)}</span>Q ${pF.toFixed(2)}</td></tr>`;
+    if (cF > 0) html += `<tr><td>Servicio de Copiado</td><td class="val"><span class="old-price">Q ${(cF + cS).toFixed(2)}</span>Q ${cF.toFixed(2)}</td></tr>`;
+    if (bind) html += `<tr><td>Empastado (${sh} hojas)</td><td class="val"><span class="old-price">Q ${(bF + bS).toFixed(2)}</span>Q ${bF.toFixed(2)}</td></tr>`;
+    if (dF > 0) html += `<tr><td>Discos</td><td class="val">Q ${dF.toFixed(2)}</td></tr>`;
+    if (pS > 0.1) html += `<tr class="discount-row"><td>(-) Ahorro por Volumen</td><td class="val">- Q ${pS.toFixed(2)}</td></tr>`;
+    if (cS > 0.1) html += `<tr class="discount-row"><td>(-) Beneficio en Copias</td><td class="val">- Q ${cS.toFixed(2)}</td></tr>`;
+    if (bS > 0.1) html += `<tr class="discount-row"><td>(-) Premio Trabajo Completo</td><td class="val">- Q ${bS.toFixed(2)}</td></tr>`;
+
+    document.getElementById('summaryBody').innerHTML = html;
+    document.getElementById('totalPrice').innerText = "Q " + total.toFixed(2);
         }
 
         function resetQuote() {
