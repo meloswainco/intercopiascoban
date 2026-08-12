@@ -376,7 +376,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             pS = (tI * rU) - pF;
 
         } else {
-            let u = pages < 45 ? CONFIG.ESC_1 : (pages <= 99 ? CONFIG.ESC_2 : (pages <= 249 ? CONFIG.ESC_3 : CONFIG.ESC_4));
+            let u = pages < 45 ? CONFIG.ESC_1 : (pages <= 99 ? CONFIG.ESC_2 : (pages <= 200 ? CONFIG.ESC_3 : (pages <= 100000 ? CONFIG.ESC_4)));
 
             pF = pages < 45 ? CONFIG.MINIMO_IMPRESION : pages * u;
 
