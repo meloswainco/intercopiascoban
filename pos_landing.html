@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/x-icon" href="icoinco.ico">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MKTSQDQZ');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Programa Fundadores - Intercopias Cobán</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+        body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; }
+        .glass-nav { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        
+        /* Estilos para la línea de tiempo */
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #003366; /* brand-blue */
+            border: 4px solid #eff6ff;
+            position: absolute;
+            left: -9px;
+            top: 4px;
+        }
+        .timeline-line {
+            border-left: 2px solid #e2e8f0;
+            padding-left: 24px;
+            position: relative;
+            padding-bottom: 24px;
+        }
+        .timeline-line:last-child {
+            border-left: 2px solid transparent;
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { blue: '#003366', gray: '#8E9EAB', darkGray: '#6A7582' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="text-gray-800 antialiased selection:bg-brand-blue selection:text-white pt-16">
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="flex justify-between items-center h-16">
+            
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
+                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
+                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
+                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
+                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
+                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
+                        Frente a Plaza Magdalena
+                    </span>
+                </div>
+            </a>
+
+            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
+                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
+                    <span class="text-brand-blue font-bold">Impresiones</span> | 
+                    <span class="text-brand-blue font-bold">Empastados</span> | 
+                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
+                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
+                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
+                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
+                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
+            </div>
+
+            <div class="md:hidden flex items-center z-20">
+                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
+        <div class="px-4 py-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
+            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
+            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
+        </div>
+    </div>
+</nav>
+
+    <!-- HERO SECTION POS -->
+    <header class="bg-[#0a111a] py-16 md:py-24 border-b-4 border-brand-blue relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-blue/20"></div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <span class="inline-block bg-white/10 text-white border border-white/20 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 backdrop-blur-sm">
+                Fase de Desarrollo - Programa Fundadores
+            </span>
+            
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6 leading-tight">
+                El POS diseñado para la <br class="hidden md:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-brand-gray">velocidad del mostrador</span>
+            </h1>
+            
+            <p class="text-base md:text-lg text-gray-300 mb-10 max-w-2xl mx-auto font-medium">
+                Olvídate de los menús tediosos. Un sistema de Punto de Venta optimizado para centros de servicio, cibers y librerías, donde cada segundo cuenta. <strong class="text-white">Cero mensualidades.</strong>
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://forms.gle/gGmhfo58n6abrdmY8" target="_blank" class="bg-brand-blue hover:bg-brand-darkGray text-white font-black text-sm uppercase tracking-wide py-4 px-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 w-full sm:w-auto flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-rocket"></i> Quiero ser Fundador
+                </a>
+            </div>
+            
+            <p class="mt-6 text-xs text-red-400 font-bold tracking-widest uppercase flex items-center justify-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Ventana de recepción cierra el 21 de Septiembre
+            </p>
+        </div>
+    </header>
+
+    <!-- CARACTERÍSTICAS Y MOCKUPS -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-3xl font-black text-gray-900 uppercase tracking-tight">Creado en la trinchera, no en un escritorio</h2>
+                <div class="w-16 h-1 bg-brand-blue mt-3 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto font-medium leading-relaxed">
+                    La mayoría de los sistemas son lentos y están llenos de funciones que nunca usas. Este POS nació de la necesidad real de atender fila tras fila sin perder el control.
+                </p>
+            </div>
+
+            <!-- Interfaz Principal -->
+            <div class="mb-12 bg-gray-50 rounded-2xl p-6 md:p-10 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex flex-col lg:flex-row items-center gap-10">
+                    <div class="lg:w-1/2">
+                        <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-brand-blue mb-4">
+                            <i class="fa-solid fa-bolt text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-gray-900 uppercase tracking-tight mb-4">Zona de Ráfaga: Servicios a un clic</h3>
+                        <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                            Los servicios de alta rotación (copias, impresiones, escaneos) no necesitan búsqueda. Un clic y a la cuenta. Cero fricción.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-blue mt-0.5"></i>
+                                <span class="text-sm font-medium text-gray-700">Botones grandes organizados por categoría.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brand-blue mt-0.5"></i>
+                                <span class="text-sm font-medium text-gray-700">Buscador inteligente con autocompletado para productos de librería.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="lg:w-1/2 rounded-xl overflow-hidden shadow-lg border border-gray-200/60 bg-white">
+                        <img src="image_ed0d57.png" alt="Interfaz POS Intercopias" class="w-full h-auto object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=Mockup+POS+Principal'">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Módulo de Cobro y Tickets -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Cobro rápido -->
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-brand-blue mb-4">
+                            <i class="fa-solid fa-keyboard text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-gray-900 uppercase tracking-tight mb-3">Cobra en segundos (F12)</h3>
+                        <p class="text-sm text-gray-600 mb-6 leading-relaxed">Panel lateral siempre visible con atajos de teclado. No sueltes las manos para facturar.</p>
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-md border border-gray-200/60 mt-auto bg-white">
+                        <img src="image_ed0a31.png" alt="Panel de cobro POS" class="w-full h-auto object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Panel+de+Cobro'">
+                    </div>
+                </div>
+
+                <!-- Tickets -->
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-brand-blue mb-4">
+                            <i class="fa-solid fa-receipt text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-gray-900 uppercase tracking-tight mb-3">Tickets Profesionales</h3>
+                        <p class="text-sm text-gray-600 mb-6 leading-relaxed">Comprobantes de control interno listos para impresoras térmicas, dando una imagen premium a tu negocio.</p>
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-md border border-gray-200/60 mt-auto bg-white flex justify-center p-4">
+                        <img src="image_ed09d2.png" alt="Ticket POS" class="w-full h-auto object-cover" onerror="this.src='https://via.placeholder.com/200x400?text=Ticket'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP / LÍNEA DE TIEMPO -->
+    <section class="py-16 md:py-24 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight">Hoja de Ruta del Lanzamiento</h2>
+                <div class="w-16 h-1 bg-brand-blue mt-3 mx-auto rounded-full mb-4"></div>
+                <p class="text-sm text-gray-600 font-medium">Fechas clave para el Programa de Fundadores.</p>
+            </div>
+
+            <div class="pl-4 md:pl-0 md:max-w-lg mx-auto">
+                <div class="timeline-line">
+                    <div class="timeline-dot" style="background-color: #ef4444; border-color: #fee2e2;"></div>
+                    <h4 class="text-base font-black text-gray-900 uppercase tracking-tight">21 de Septiembre 2026</h4>
+                    <p class="text-brand-blue font-bold text-sm mt-1 uppercase tracking-wider">Cierre de recepción de anticipos</p>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">Último día para asegurar el precio exclusivo de $47 USD. Después de esta fecha, la oferta desaparece.</p>
+                </div>
+                <div class="timeline-line">
+                    <div class="timeline-dot" style="background-color: #f59e0b; border-color: #fef3c7;"></div>
+                    <h4 class="text-base font-black text-gray-900 uppercase tracking-tight">1 de Octubre 2026</h4>
+                    <p class="text-yellow-600 font-bold text-sm mt-1 uppercase tracking-wider">Entrega y Acceso Anticipado</p>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">Los Fundadores reciben su acceso al sistema y comenzamos la asesoría personalizada para implementarlo en sus negocios.</p>
+                </div>
+                <div class="timeline-line">
+                    <div class="timeline-dot" style="background-color: #10b981; border-color: #d1fae5;"></div>
+                    <h4 class="text-base font-black text-gray-900 uppercase tracking-tight">20 de Noviembre 2026</h4>
+                    <p class="text-green-600 font-bold text-sm mt-1 uppercase tracking-wider">Lanzamiento Público Oficial</p>
+                    <p class="text-xs text-gray-600 mt-2 leading-relaxed">El POS sale a la venta para el público general a su precio final regular (+ $100 USD).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-[#0a111a] rounded-2xl p-8 md:p-12 text-center shadow-2xl relative overflow-hidden border-t-4 border-brand-blue">
+                <div class="absolute inset-0 bg-brand-blue/10"></div>
+                <div class="relative z-10">
+                    <h2 class="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-4">Asegura tu lugar antes del 21 de Sept.</h2>
+                    <p class="text-sm md:text-base text-gray-300 mb-8 max-w-xl mx-auto font-medium leading-relaxed">
+                        Llena tu solicitud para unirte al Programa de Fundadores. Asegura el precio único de $47 USD / 375 GTQ (más del 50% de descuento) y obtén voz directa en el desarrollo.
+                    </p>
+                    
+                    <a href="https://forms.gle/gGmhfo58n6abrdmY8" target="_blank" class="inline-block bg-brand-blue hover:bg-brand-darkGray text-white font-black text-sm uppercase tracking-wide py-4 px-10 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                        Llenar formulario de solicitud
+                    </a>
+                    
+                    <p class="mt-5 text-xs text-gray-400 font-semibold uppercase tracking-widest"><i class="fa-solid fa-lock mr-1"></i> Cupos limitados para garantizar asesoría de calidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER ORIGINAL DE LA PLANTILLA -->
+    <footer class="bg-[#003366] text-white py-6 border-t-4 border-[#6A7582] text-center mt-auto">
+        <p class="text-[10px] text-white/60 font-medium">© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+    </footer>
+
+    <script>
+        // Script del Menú Hamburguesa
+        const btnMenu = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        if (btnMenu && menu) {
+            btnMenu.addEventListener('click', () => menu.classList.toggle('hidden'));
+        }
+
+        // Script para mostrar el texto dinámico al hacer scroll
+        const dynamicText = document.getElementById('nav-dynamic-text');
+        if (dynamicText) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    dynamicText.classList.remove('opacity-0');
+                    dynamicText.classList.add('opacity-100');
+                } else {
+                    dynamicText.classList.remove('opacity-100');
+                    dynamicText.classList.add('opacity-0');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
