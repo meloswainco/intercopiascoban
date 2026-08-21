@@ -606,7 +606,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
     </script>
+<!-- POP-UP LATERAL POS -->
+    <div id="pos-corner-popup" class="fixed bottom-6 right-6 z-[100] max-w-sm w-[90%] bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-l-8 border-[#003366] transform translate-y-[150%] transition-transform duration-700 ease-out flex flex-col hidden">
+        <button id="btn-close-popup" class="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition-colors">
+            <i class="fa-solid fa-times text-lg"></i>
+        </button>
+        <div class="p-6">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#003366]">
+                    <i class="fa-solid fa-cash-register text-lg"></i>
+                </div>
+                <h4 class="font-black text-gray-800 uppercase tracking-tight text-lg leading-tight">¿Buscas el<br><span class="text-[#003366]">Sistema POS?</span></h4>
+            </div>
+            <p class="text-sm text-gray-600 mb-5 font-medium leading-relaxed">Conoce el sistema diseñado para la velocidad del mostrador. Sin mensualidades.</p>
+            
+            <!-- Asegúrate de que el href apunte al nombre exacto de tu landing del POS -->
+            <a href="pos_landing_21.html" class="block w-full bg-[#003366] hover:bg-[#6A7582] text-white text-center font-black text-xs uppercase tracking-widest py-3 rounded-lg shadow-md transition-colors">
+                Clic aquí para ver detalles
+            </a>
+        </div>
+    </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('pos-corner-popup');
+            const btnClose = document.getElementById('btn-close-popup');
+
+            // Revisa en el navegador si el usuario ya cerró este pop-up antes
+            if (!localStorage.getItem('inco_pos_popup_closed')) {
+                // Quitar el hidden para prepararlo
+                popup.classList.remove('hidden');
+                
+                // Retrasar la entrada 2.5 segundos para no asustar al visitante al cargar la página
+                setTimeout(() => {
+                    popup.classList.remove('translate-y-[150%]');
+                    popup.classList.add('translate-y-0');
+                }, 2500);
+            }
+
+            // Lógica para cerrar y guardar la preferencia
+            btnClose.addEventListener('click', () => {
+                popup.classList.remove('translate-y-0');
+                popup.classList.add('translate-y-[150%]'); // Animación de salida hacia abajo
+                
+                // Guardar en localStorage para que no vuelva a aparecer
+                localStorage.setItem('inco_pos_popup_closed', 'true');
+                
+                // Ocultar completamente del DOM después de que termine la animación
+                setTimeout(() => popup.classList.add('hidden'), 700);
+            });
+        });
+    </script>
+    
+    
 </body>
 
 
