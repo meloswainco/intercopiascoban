@@ -1,341 +1,505 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="iken.ico">
-    <title>POS Sandbox - Simulador Interactivo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .tab-active { border-bottom: 4px solid #1e40af; color: #1e40af; background: #eff6ff; }
-        .btn-fast:active { transform: scale(0.95); transition: 0.1s; }
-        .modal-overlay { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(5px); }
-        .suggestion-item:hover { background-color: #f3f4f6; cursor: pointer; }
-        .qty-editable:hover { color: #2563eb; text-decoration: underline; cursor: pointer; background: #eff6ff; padding: 2px 5px; border-radius: 4px; }
-        .suggestion-active { background-color: #dbeafe !important; border-left: 4px solid #2563eb; }
 
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POS Sandbox - Simulador Interactivo Multiticket</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#203243",
+                        "secondary-fixed-dim": "#c3c0ff",
+                        "on-primary-fixed": "#001c37",
+                        "secondary-fixed": "#e2dfff",
+                        "surface": "#f7f9ff",
+                        "surface-container-high": "#d8eaff",
+                        "inverse-on-surface": "#e8f2ff",
+                        "tertiary": "#1a0b00",
+                        "outline": "#74777e",
+                        "surface-container-low": "#edf4ff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#43474d",
+                        "inverse-primary": "#b0c8eb",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#321ed2",
+                        "on-secondary-container": "#fffbff",
+                        "primary-container": "#0a2540",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#381d00",
+                        "surface-dim": "#c9dcf2",
+                        "on-primary-container": "#768dad",
+                        "surface-soft": "#F6F9FC",
+                        "background": "#f7f9ff",
+                        "outline-variant": "#c4c6ce",
+                        "tertiary-fixed": "#ffdcbe",
+                        "surface-tint": "#49607e",
+                        "secondary-container": "#645cff",
+                        "primary-fixed": "#d2e4ff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#ae835a",
+                        "on-surface": "#091d2d",
+                        "navy-action": "#006AFF",
+                        "primary": "#000f22",
+                        "on-tertiary-fixed": "#2d1600",
+                        "on-background": "#091d2d",
+                        "on-tertiary-fixed-variant": "#613f1c",
+                        "surface-container": "#e3efff",
+                        "surface-variant": "#d1e4fb",
+                        "on-secondary-fixed": "#0f0069",
+                        "secondary": "#4a3ee6",
+                        "tertiary-fixed-dim": "#eebd90",
+                        "slate-deep": "#0A2540",
+                        "on-primary-fixed-variant": "#314865",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#b0c8eb",
+                        "border-muted": "#E6EBF1",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f7f9ff",
+                        "surface-container-highest": "#d1e4fb"
+                    },
+                    "fontFamily": {
+                        "sans": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active { border-bottom: 2px solid theme('colors.primary'); color: theme('colors.primary'); font-weight: 600; }
+        .btn-fast:active { transform: scale(0.98); transition: 0.1s; }
+        .suggestion-item:hover { background-color: theme('colors.surface-container'); cursor: pointer; }
+        
+        /* Estilos de impresión */
         @media print {
             @page { margin: 0; size: 70mm auto; } 
-            html, body { margin: 0 !important; padding: 0 !important; background: white; display: block !important; }
-            header, nav, section, .modal-overlay, .no-print, .hidden-print { display: none !important; }
-            .print-area { display: none; width: 68mm; position: absolute; top: 1px; left: 1px; font-family: 'Courier New', monospace; color: black; padding: 2mm; font-size: 11px; }
+            html, body { margin: 0 !important; padding: 0 !important; background: white; display: block !important; zoom: 1 !important; }
+            header, nav, section, .no-print, .hidden-print { display: none !important; }
+            .print-area { display: block !important; width: 68mm; position: absolute; top: 1px; left: 1px; font-family: 'JetBrains Mono', monospace; color: black; padding: 2mm; font-size: 11px; }
             body.printing-sales #ticket-print-area { display: block !important; }
-            body.printing-tech #tech-print-area { display: block !important; }
-            body.printing-report #report-print-area { display: block !important; }
             .print-logo { text-align: center; margin-bottom: 5px; }
             .print-header { text-align: center; margin-bottom: 8px; border-bottom: 1px dashed black; padding-bottom: 5px; }
             .print-info { font-size: 10px; margin-bottom: 5px; }
             .print-item { display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 3px; }
             .item-name { width: 70%; }
-            .item-price { width: 30%; text-align: right; }
-            .print-total { font-size: 16px; font-weight: bold; text-align: right; border-top: 1px dashed black; margin-top: 8px; padding-top: 5px; }
-            .print-footer { text-align: center; font-size: 9px; margin-top: 15px; }
-            .legal-disclaimer { font-size: 8px; text-align: justify; margin-top: 10px; font-style: italic; }
-            .tech-label { font-size: 10px; font-weight: bold; text-transform: uppercase; margin-top: 8px; display: block;}
-            .tech-val { font-size: 11px; margin-bottom: 2px; display: block; padding-left: 5px;}
-            .report-row { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 2px 0; }
-            .report-title { font-weight: bold; margin-top: 10px; border-bottom: 1px solid black; }
+            .print-total { font-size: 14px; font-weight: bold; text-align: right; border-top: 1px dashed black; margin-top: 8px; padding-top: 5px; }
         }
-        #ticket-print-area, #tech-print-area, #report-print-area { display: none; }
+        #ticket-print-area { display: none; }
+        
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-slate-100 h-screen overflow-hidden selection:bg-blue-200" style="zoom: 0.85;">
-
-    <!-- MODAL INICIAL SANDBOX -->
-    <div id="modal-sandbox-setup" class="modal-overlay fixed inset-0 z-[200] flex items-center justify-center">
-        <div class="bg-white rounded-[2.5rem] p-8 w-96 shadow-3xl text-center border-t-8 border-blue-600">
-            <div class="bg-blue-50 text-blue-900 font-black p-2 rounded-xl mb-4 text-[10px] uppercase tracking-widest">Simulador Web POS</div>
-            <h3 class="font-black text-slate-800 text-lg mb-2">¿Cómo se llama tu negocio?</h3>
-            <p class="text-xs text-slate-400 mb-6">Escribe el nombre para personalizar el simulador en vivo.</p>
-            <input type="text" id="sandbox-biz-name" placeholder="EJ. PAPELERÍA CENTRAL" class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold uppercase text-center mb-6 outline-none focus:border-blue-600 text-sm">
-            <button onclick="initSandboxName()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-lg uppercase text-xs tracking-wider transition-all">Probar Simulador</button>
-        </div>
-    </div>
-
-    <header class="bg-white shadow-sm p-3 flex justify-between items-center z-10 border-b border-gray-100">
-        <div class="flex items-center gap-3">
-            <div class="bg-blue-900 text-white p-2 rounded-lg font-black tracking-tighter italic shadow-lg text-sm">SANDBOX V6</div>
-            <div>
-                <h1 id="pos-main-title" class="text-lg font-bold text-gray-800 tracking-tighter uppercase">Mi Negocio <span class="text-blue-600">POS</span></h1>
-                <div id="status-indicator" class="text-[10px] font-bold text-green-600 flex items-center gap-1"><i class="fas fa-circle text-[8px]"></i> MODO DEMO</div>
-            </div>
-        </div>
-        
-        <div class="flex-1 mx-8 relative">
-            <input type="text" id="main-search" onkeyup="searchGlobal(event)" autocomplete="off" placeholder="🔍 BUSCAR (ESC LIMPIAR)" class="w-full p-2 border-2 rounded-xl bg-gray-50 focus:ring-4 focus:ring-blue-200 focus:border-blue-600 outline-none transition-all font-bold uppercase text-sm">
-            <div id="global-suggestions" class="absolute left-0 right-0 bg-white shadow-2xl rounded-b-xl border border-t-0 z-50 max-h-96 overflow-y-auto hidden"></div>
-        </div>
-        
-        <div class="text-right mr-2 hidden-print">
-            <p id="pos-admin-name" class="font-black text-blue-900 uppercase leading-none text-xs">Visitante</p>
-            <p class="text-[8px] font-black text-gray-400 uppercase tracking-widest">Demo</p>
-        </div>
-    </header>
-
-    <nav class="bg-white border-b flex justify-between items-center shadow-md pr-4 relative z-0">
-        <div class="flex">
-            <button onclick="switchTab('ventas')" id="tab-ventas" class="px-12 py-3 font-black text-xs tracking-widest tab-active uppercase transition-colors border-r">Ventas</button>
-            <button onclick="switchTab('tecnico')" id="tab-tecnico" class="px-12 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r">Técnico</button>
-        </div>
-
-        <div class="flex gap-2 items-center">
-            <button onclick="generateZReport()" class="bg-slate-800 text-white px-3 py-1.5 rounded-md font-bold text-[10px] shadow-sm hover:bg-black transition-colors flex items-center gap-2 uppercase tracking-wider">
-                <i class="fas fa-chart-line"></i> Corte Z
-            </button>
-        </div>
-    </nav>
-
-    <main class="flex-1 flex overflow-hidden">
-        <section id="content-ventas" class="flex-1 flex">
-            <div class="flex-1 p-6 overflow-y-auto">
-                <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3 italic">Zona de Ráfaga</h3>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-                    <div class="flex h-28 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
-                        <button onmousedown="startTimer('Imp. B/N', 'IMPRESION B/N')" onmouseup="endTimer('Imp. B/N', 'IMPRESION B/N')" class="btn-fast w-1/2 bg-slate-800 text-white flex flex-col items-center justify-center border-r border-slate-600">
-                            <i class="fas fa-file-invoice text-3xl mb-1 text-slate-400"></i>
-                            <span class="text-[10px] font-bold uppercase">Imp. Negro</span>
-                        </button>
-                        <button onmousedown="startTimer('Imp. Color', 'IMPRESION COLOR')" onmouseup="endTimer('Imp. Color', 'IMPRESION COLOR')" class="btn-fast w-1/2 bg-white flex flex-col items-center justify-center">
-                            <i class="fas fa-eye text-3xl mb-1 text-blue-500"></i>
-                            <span class="text-[10px] font-bold text-slate-500 uppercase">Imp. Color</span>
-                        </button>
-                    </div>
-                    <div class="flex h-28 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
-                        <button onmousedown="startTimer('Copia B/N', 'COPIA B/N')" onmouseup="endTimer('Copia B/N', 'COPIA B/N')" class="btn-fast w-1/2 bg-slate-900 text-white flex flex-col items-center justify-center border-r border-slate-700">
-                            <i class="fas fa-copy text-3xl mb-1 text-slate-400"></i>
-                            <span class="text-[10px] font-bold uppercase">Copia Negro</span>
-                        </button>
-                        <button onmousedown="startTimer('Copia Color', 'COPIA COLOR')" onmouseup="endTimer('Copia Color', 'COPIA COLOR')" class="btn-fast w-1/2 bg-white flex flex-col items-center justify-center">
-                            <i class="fas fa-palette text-3xl mb-1 text-red-500"></i>
-                            <span class="text-[10px] font-bold text-slate-500 uppercase">Copia Color</span>
-                        </button>
-                    </div>
-                    <div class="flex h-28 rounded-2xl overflow-hidden shadow-lg border-2 border-white">
-                        <button onclick="addCart('Empastado Pasta Blanda', 35.00, 1, 'EMPASTADO')" class="btn-fast w-1/2 bg-white hover:bg-amber-50 flex flex-col items-center justify-center border-r">
-                            <span class="text-lg font-black text-amber-900 uppercase leading-none">Empastado</span>
-                            <span class="text-[10px] font-bold text-amber-600">Q35</span>
-                        </button>
-                        <button onclick="addCart('Encuadernado Espiral', 35.00, 1, 'ESPIRAL')" class="btn-fast w-1/2 bg-blue-800 hover:bg-blue-900 text-white flex flex-col items-center justify-center">
-                            <span class="text-lg font-black uppercase leading-none">Espiral</span>
-                            <span class="text-[10px] font-bold text-blue-300">Q35</span>
-                        </button>
-                    </div>
-                </div>
-
-                <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Servicios Frecuentes</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-6">
-                    <button onclick="addCart('Escaneo', 3.50, 1, 'ESCANEO')" class="btn-fast h-20 bg-white rounded-xl shadow-md border-b-4 border-blue-500 font-bold text-gray-700 text-xs uppercase flex flex-col items-center justify-center">
-                        <span>Escaneo</span>
-                        <span class="text-blue-500 text-[10px]">Q3.50</span>
+<body class="bg-surface h-screen overflow-hidden text-on-surface" style="zoom: 0.9;">
+<header class="bg-surface-container-lowest border-b border-border-muted px-6 py-4 flex justify-between items-center z-10 sticky top-0">
+<div class="flex items-center gap-4">
+<div class="bg-primary-container text-on-primary rounded font-medium px-2.5 py-1 text-xs">V6</div>
+<div>
+<h1 class="text-lg font-semibold text-primary" id="pos-main-title">Mi Negocio POS</h1>
+<div class="text-xs text-on-surface-variant flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Modo Demo</div>
+</div>
+</div>
+<div class="flex-1 max-w-2xl mx-8 relative">
+<div class="relative">
+<i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-outline"></i>
+<input autocomplete="off" class="w-full pl-10 pr-4 py-2 border border-border-muted rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all text-sm" id="main-search" onkeyup="searchGlobal(event)" placeholder="Buscar productos (ESC para limpiar)" type="text"/>
+</div>
+<div class="absolute left-0 right-0 bg-surface-container-lowest shadow-lg rounded-b-lg border border-border-muted border-t-0 z-50 max-h-80 overflow-y-auto hidden mt-1" id="global-suggestions"></div>
+</div>
+<div class="flex items-center gap-4 text-sm text-on-surface-variant">
+<div class="font-mono text-sm" id="clock">12:00 PM</div>
+</div>
+</header>
+<nav class="bg-surface-container-lowest border-b border-border-muted px-6 flex items-center relative z-0">
+<div class="flex gap-6">
+<button class="py-3 px-1 text-sm tab-active transition-colors">Punto de Venta</button>
+<button class="py-3 px-1 text-sm text-on-surface-variant hover:text-on-surface transition-colors">Catálogo</button>
+<button class="py-3 px-1 text-sm text-on-surface-variant hover:text-on-surface transition-colors">Historial</button>
+</div>
+</nav>
+<main class="flex-1 flex overflow-hidden h-[calc(100vh-121px)]">
+<section class="flex-1 flex flex-col lg:flex-row" id="content-ventas">
+<div class="flex-1 p-8 overflow-y-auto flex flex-col">
+<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4">Acceso Rápido</h3>
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
+<!-- Impresiones -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl p-4 flex flex-col gap-3 hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-2 text-sm font-medium text-primary">
+<i class="fas fa-print"></i> Impresión
+                        </div>
+<div class="grid grid-cols-2 gap-2">
+<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Imp. B/N', 0.50, 1, 'IMPRESION')">
+<span class="text-sm font-medium text-on-surface">Blanco y Negro</span>
+<span class="text-xs font-mono text-on-surface-variant">Q0.50</span>
+</button>
+<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Imp. Color', 2.00, 1, 'IMPRESION')">
+<span class="text-sm font-medium text-on-surface">Color</span>
+<span class="text-xs font-mono text-on-surface-variant">Q2.00</span>
+</button>
+</div>
+</div>
+<!-- Copias -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl p-4 flex flex-col gap-3 hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-2 text-sm font-medium text-primary">
+<i class="fas fa-copy"></i> Copias
+                        </div>
+<div class="grid grid-cols-2 gap-2">
+<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Copia B/N', 0.25, 1, 'COPIA')">
+<span class="text-sm font-medium text-on-surface">Blanco y Negro</span>
+<span class="text-xs font-mono text-on-surface-variant">Q0.25</span>
+</button>
+<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Copia Color', 1.50, 1, 'COPIA')">
+<span class="text-sm font-medium text-on-surface">Color</span>
+<span class="text-xs font-mono text-on-surface-variant">Q1.50</span>
+</button>
+</div>
+</div>
+<!-- Encuadernación -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl p-4 flex flex-col gap-3 hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-2 text-sm font-medium text-primary">
+<i class="fas fa-book"></i> Encuadernación
+                        </div>
+<div class="grid grid-cols-2 gap-2">
+<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Empastado Pasta Blanda', 35.00, 1, 'EMPASTADO')">
+<span class="text-sm font-medium text-on-surface">Empastado</span>
+<span class="text-xs font-mono text-on-surface-variant">Q35.00</span>
+</button>
+<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Encuadernado Espiral', 35.00, 1, 'ESPIRAL')">
+<span class="text-sm font-medium text-on-surface">Espiral</span>
+<span class="text-xs font-mono text-on-surface-variant">Q35.00</span>
+</button>
+</div>
+</div>
+</div>
+<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4">Servicios Generales</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
+<button class="btn-fast p-4 bg-surface-container-lowest border border-border-muted rounded-xl hover:shadow-sm hover:border-primary-fixed-dim transition-all flex flex-col items-start justify-center gap-2 text-left" onclick="addCart('Escaneo', 3.50, 1, 'ESCANEO')">
+<i class="fas fa-scanner text-on-surface-variant"></i>
+<div>
+<div class="text-sm font-medium text-on-surface">Escaneo</div>
+<div class="text-xs font-mono text-on-surface-variant">Q3.50</div>
+</div>
+</button>
+<button class="btn-fast p-4 bg-surface-container-lowest border border-border-muted rounded-xl hover:shadow-sm hover:border-primary-fixed-dim transition-all flex flex-col items-start justify-center gap-2 text-left" onclick="addCart('Tiempo Ciber', 5.00, 1, 'CIBER')">
+<i class="fas fa-desktop text-on-surface-variant"></i>
+<div>
+<div class="text-sm font-medium text-on-surface">Internet</div>
+<div class="text-xs font-mono text-on-surface-variant">Q5.00 / hr</div>
+</div>
+</button>
+</div>
+<!-- PANEL DE TICKETS APARCADOS -->
+<div class="mt-auto pt-8 border-t border-border-muted">
+<div class="flex items-center gap-2 mb-4">
+<i class="fas fa-pause-circle text-on-surface-variant"></i>
+<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Órdenes en Espera</h3>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide" id="parked-tickets-container">
+<!-- Generado por JS -->
+</div>
+</div>
+</div>
+<!-- SIDEBAR DE COBRO -->
+<aside class="w-96 bg-surface-container-lowest border-l border-border-muted flex flex-col z-20 shrink-0">
+<div class="p-6 border-b border-border-muted flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h2 class="text-lg font-semibold text-primary">Orden Actual</h2>
+<span class="text-xs font-medium bg-surface-container px-2.5 py-1 rounded-md text-on-surface" id="active-ticket-label">Ticket #1</span>
+</div>
+<div class="flex flex-col gap-3">
+<label class="text-xs font-medium text-on-surface-variant">Datos del Cliente</label>
+<div class="flex gap-2">
+<input class="w-2/3 px-3 py-2 text-sm border border-border-muted rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" id="bill-cliente" onblur="saveClientData()" placeholder="Nombre" type="text"/>
+<input class="w-1/3 px-3 py-2 text-sm border border-border-muted rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" id="bill-nit" onblur="saveClientData()" placeholder="NIT" type="text"/>
+</div>
+</div>
+</div>
+<div class="px-6 py-3 border-b border-border-muted bg-surface flex justify-between items-center text-sm">
+<span class="font-medium text-on-surface-variant">Artículos</span>
+<div class="flex gap-3">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" onclick="parkCurrentTicket()"><i class="fas fa-pause text-xs"></i> Suspender</button>
+<button class="text-on-surface-variant hover:text-error transition-colors" onclick="clearCart()">Vaciar</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-3 bg-surface" id="cart-items"></div>
+<div class="p-6 border-t border-border-muted bg-surface-container-lowest flex flex-col gap-4">
+<div class="flex justify-between items-baseline">
+<span class="text-sm font-medium text-on-surface-variant">Total</span>
+<span class="text-3xl font-bold font-mono text-primary tracking-tight" id="total-price">Q0.00</span>
+</div>
+<button class="w-full bg-primary hover:bg-slate-deep text-on-primary py-3.5 rounded-lg text-base font-medium shadow-sm active:scale-95 transition-all flex justify-center items-center gap-2" onclick="processVenta()">
+                        Cobrar Orden
                     </button>
-                    <button onclick="openManualInput('full', 'NORMAS APA')" class="btn-fast h-20 bg-white rounded-xl shadow-md border-b-4 border-teal-500 font-bold text-gray-700 text-xs uppercase flex flex-col items-center justify-center hover:bg-teal-50 transition-colors">
-                        <span>Normas APA</span>
-                        <i class="fas fa-book text-teal-400 mt-1 text-lg"></i>
-                    </button>
-                    <button onmousedown="startTimer('Lev. Texto', 'LEV.TEXTO')" onmouseup="endTimer('Lev. Texto', 'LEV.TEXTO')" class="btn-fast h-20 bg-white rounded-xl shadow-md border-b-4 border-blue-500 font-bold text-gray-700 text-xs uppercase flex flex-col items-center justify-center">
-                        <span>Lev. Texto</span>
-                        <span class="text-[9px] text-blue-400 italic">(Mantener)</span>
-                    </button>
-                    <button onclick="openManualInput('price_only', 'TIEMPO CIBER')" class="btn-fast h-20 bg-white rounded-xl shadow-md border-b-4 border-indigo-500 font-bold text-gray-700 text-xs uppercase flex flex-col items-center justify-center hover:bg-indigo-50 transition-colors">
-                        <span>Ciber</span>
-                        <i class="fas fa-desktop text-indigo-400 mt-1 text-lg"></i>
-                    </button>
-                    <button onclick="openManualInput('full', 'OTROS')" class="btn-fast h-20 bg-slate-700 rounded-xl shadow-md border-b-4 border-slate-900 font-black text-white flex flex-col items-center justify-center">
-                        <i class="fas fa-plus mb-1"></i>
-                        <span class="text-[10px] uppercase">Otro</span>
-                    </button>
-                </div>
-            </div>
+</div>
+</aside>
+</section>
+</main>
+<!-- ÁREA DE IMPRESIÓN -->
+<div class="print-area" id="ticket-print-area">
+<div class="print-logo"><h2 style="font-size:14px; margin:0; font-weight:bold;">TICKET DE VENTA</h2></div>
+<div class="print-header">
+<p id="print-date" style="font-size:10px; margin:4px 0;">--/--/--</p>
+<div class="print-info" style="text-align:left; margin-top:5px; border-top:1px dotted black; padding-top:2px;">
+<span id="print-client-name">CF</span><br/>
+<span id="print-client-nit">NIT: CF</span>
+</div>
+</div>
+<div id="print-items-container"></div>
+<div class="print-total" id="print-total-display">TOTAL: Q 0.00</div>
+</div>
+<script>
+        // SISTEMA DE TICKETS (1 Activo, Múltiples Aparcados)
+        let tickets = [{ id: 1, name: 'Ticket #1', items: [], status: 'active', client: '', nit: '' }];
+        let currentTicketId = 1;
+        let nextTicketId = 2;
 
-            <aside class="w-96 bg-white border-l flex flex-col shadow-2xl z-20">
-                <div class="p-4 bg-slate-100 border-b space-y-2">
-                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Datos Facturación</p>
-                    <div class="flex gap-2">
-                        <input type="text" id="bill-cliente" placeholder="NOMBRE (CF)" class="w-2/3 p-2 text-xs border rounded-lg uppercase font-bold outline-none focus:border-blue-500">
-                        <input type="text" id="bill-nit" placeholder="NIT (CF)" class="w-1/3 p-2 text-xs border rounded-lg uppercase font-bold outline-none focus:border-blue-500">
-                    </div>
-                </div>
-                <div class="px-6 py-2 border-b bg-white flex justify-between items-center">
-                    <h2 class="font-black text-sm text-slate-800 uppercase">Orden</h2>
-                    <button onclick="clearCart()" class="text-red-500 text-[10px] font-black uppercase hover:underline">Vaciar</button>
-                </div>
-                <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-2 bg-slate-50/30"></div>
-                <div class="p-6 border-t bg-white space-y-3 shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
-                    <button onclick="applyDiscount()" class="w-full py-2 bg-red-100 text-red-600 rounded-lg text-xs font-black uppercase hover:bg-red-200 italic transition-all"><i class="fas fa-tag mr-2"></i> Descuento</button>
-                    <div class="flex justify-between items-end"><span class="text-slate-400 font-black text-[10px] uppercase tracking-widest leading-none">Total</span><span id="total-price" class="text-5xl font-black text-blue-900 tracking-tighter uppercase leading-none">Q 0.00</span></div>
-                    <div class="mb-2">
-                        <select id="payment-method" class="w-full p-2 bg-slate-100 border border-slate-300 rounded-lg text-xs font-bold uppercase text-slate-700 outline-none">
-                            <option value="EFECTIVO" selected>💵 Efectivo</option>
-                            <option value="TRANSFERENCIA">📱 Transferencia / QR</option>
-                            <option value="TARJETA">💳 Tarjeta</option>
-                        </select>
-                    </div>
-                    <button onclick="processVenta()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-5 rounded-3xl text-xl font-black shadow-xl active:scale-95 transition-all">COBRAR</button>
-                </div>
-            </aside>
-        </section>
-
-        <section id="content-tecnico" class="hidden flex-1 p-6 overflow-y-auto bg-slate-200 flex justify-center">
-            <div class="bg-white w-[900px] shadow-2xl p-8 relative border-t-[12px] border-blue-900 h-fit flex flex-col gap-6 rounded-b-xl">
-                <div class="flex justify-between items-center border-b pb-4"><h2 class="text-3xl font-black text-slate-800 uppercase tracking-tighter">Ingreso Equipo</h2><div class="bg-slate-100 px-4 py-2 rounded-lg text-xs font-bold text-slate-500 uppercase">Garantía 30 Días</div></div>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="space-y-3"><label class="block text-[10px] font-black text-blue-900 uppercase tracking-widest">Cliente</label><input type="text" id="st-cliente" placeholder="NOMBRE" class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold uppercase outline-none focus:border-blue-500"><input type="text" id="st-telefono" placeholder="TELÉFONO" class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-blue-700 outline-none focus:border-blue-500"></div>
-                    <div class="space-y-3"><label class="block text-[10px] font-black text-blue-900 uppercase tracking-widest">Equipo</label><select id="st-tipo" onchange="updateTechReco()" class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold text-slate-700 outline-none uppercase"><option value="IMPRESORA">Impresora</option><option value="COMPUTADORA">PC / Laptop</option><option value="OTRO">Otro</option></select><input type="text" id="st-modelo" placeholder="MODELO" class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold uppercase outline-none focus:border-blue-500"></div>
-                </div>
-                <div class="space-y-2"><label class="block text-[10px] font-black text-blue-900 uppercase tracking-widest">Falla</label><textarea id="st-falla" placeholder="DESCRIPCIÓN" class="w-full p-3 border-2 rounded-xl h-20 bg-slate-50 outline-none text-sm font-medium resize-none uppercase focus:border-blue-500"></textarea></div>
-                <div class="flex justify-between items-center pt-4 border-t"><div class="w-1/3"><label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Anticipo</label><div class="flex items-center"><span class="text-xl font-black text-slate-400 mr-2">Q</span><input type="number" id="st-anticipo" value="0" class="w-full bg-transparent text-3xl font-black text-blue-900 outline-none"></div></div><button onclick="processTechOrder()" class="bg-slate-900 hover:bg-black text-white px-8 py-4 rounded-2xl font-black uppercase shadow-xl tracking-widest transition-all active:scale-95"><i class="fas fa-print mr-2"></i> INGRESAR</button></div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ÁREAS DE IMPRESIÓN -->
-    <div id="ticket-print-area" class="print-area">
-        <div class="print-logo"><h2 style="font-size:14px; margin:0; font-weight:bold;" id="print-biz-title">TICKET DE VENTA</h2></div>
-        <div class="print-header">
-            <p style="font-size:10px; margin:4px 0;" id="print-date">--/--/--</p>
-            <div class="print-info" style="text-align:left; margin-top:5px; border-top:1px dotted black; padding-top:2px;">
-                <span id="print-client-name">CF</span><br>
-                <span id="print-client-nit">NIT: CF</span>
-            </div>
-        </div>
-        <div id="print-items-container"></div>
-        <div class="print-total" id="print-total-display">TOTAL: Q 0.00</div>
-        <div class="print-footer"><p>¡Simulación Completada!</p></div>
-    </div>
-
-    <!-- MODALES AUXILIARES -->
-    <div id="modal-cantidad" class="modal-overlay fixed inset-0 z-[110] hidden flex items-center justify-center"><div class="bg-white rounded-[3rem] p-10 w-80 shadow-3xl text-center"><h3 class="font-black text-slate-400 text-[10px] mb-6 tracking-widest">CANTIDAD</h3><input type="number" id="input-qty" onkeyup="checkEnter(event, 'qty')" class="w-full text-center text-6xl font-black text-blue-900 mb-8 outline-none bg-slate-50 rounded-2xl p-4" value="1"><button onclick="confirmQty()" class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-lg hover:bg-blue-700">CARGAR</button></div></div>
-    <div id="modal-manual" class="modal-overlay fixed inset-0 z-[120] hidden flex items-center justify-center"><div class="bg-white rounded-[2.5rem] p-8 w-96 shadow-3xl"><h3 id="manual-title" class="font-black text-center mb-6 uppercase text-slate-800">Manual</h3><div id="manual-name-container" class="mb-4"><input type="text" id="manual-desc-input" class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold uppercase outline-none focus:border-blue-500" placeholder="DESCRIPCIÓN"></div><div class="mb-6"><input type="number" id="manual-price-input" onkeyup="checkEnter(event, 'manual')" class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-2xl text-blue-900 outline-none focus:border-blue-500" placeholder="0.00"></div><button onclick="confirmManualInput()" class="w-full bg-blue-900 text-white font-black py-4 rounded-2xl shadow-lg uppercase tracking-widest hover:bg-blue-800">AGREGAR</button></div></div>
-
-    <script>
         let CATALOGO = [
-            { nombre: "Cuaderno Espiral 100 Hojas", precio: 15.00, categoria: "LIBRERIA" },
-            { nombre: "Cuaderno Cosido Universitario", precio: 18.50, categoria: "LIBRERIA" },
-            { nombre: "Lapicero BIC Negro", precio: 2.00, categoria: "LIBRERIA" },
-            { nombre: "Lapicero BIC Azul", precio: 2.00, categoria: "LIBRERIA" },
-            { nombre: "Lapicero BIC Rojo", precio: 2.00, categoria: "LIBRERIA" },
-            { nombre: "Borrador de Queso Factis", precio: 3.00, categoria: "LIBRERIA" },
-            { nombre: "Sacapuntas Metálico", precio: 5.00, categoria: "LIBRERIA" },
-            { nombre: "Caja de Crayones 12 Colores", precio: 25.00, categoria: "LIBRERIA" },
-            { nombre: "Caja de Marcadores 10 Colores", precio: 30.00, categoria: "LIBRERIA" },
-            { nombre: "Marcador Permanente Sharpie Negro", precio: 10.00, categoria: "LIBRERIA" },
-            { nombre: "Marcador Pizarra Azul", precio: 8.00, categoria: "LIBRERIA" },
-            { nombre: "Resaltador Amarillo Fluorescente", precio: 6.00, categoria: "LIBRERIA" },
-            { nombre: "Corrector Líquido tipo Lápiz", precio: 12.00, categoria: "LIBRERIA" },
-            { nombre: "Goma en Barra 40g", precio: 15.00, categoria: "LIBRERIA" },
-            { nombre: "Goma Líquida 120ml", precio: 10.00, categoria: "LIBRERIA" },
-            { nombre: "Tijeras Escolares Punta Roma", precio: 8.50, categoria: "LIBRERIA" },
-            { nombre: "Regla Plástica 30cm", precio: 4.00, categoria: "LIBRERIA" },
-            { nombre: "Carpeta Plástica con Gancho", precio: 7.00, categoria: "PAPELERIA" },
-            { nombre: "Sobre Manila Tamaño Carta", precio: 1.50, categoria: "PAPELERIA" },
-            { nombre: "Resma Papel Bond Carta 80g", precio: 45.00, categoria: "PAPELERIA" }
+            { nombre: "Cuaderno Espiral", precio: 15.00 },
+            { nombre: "Lapicero BIC", precio: 2.00 },
+            { nombre: "Resma Papel", precio: 45.00 }
         ];
-        let cart = [];
-        let pressTimer;
-        let currentItem = null;
-        let currentCategory = null;
-        let editingIndex = null;
-        let currentFocus = -1;
 
         window.addEventListener('load', () => {
-            const savedName = localStorage.getItem('SANDBOX_BIZ_NAME');
-            if (!savedName) {
-                document.getElementById('modal-sandbox-setup').classList.remove('hidden');
-            } else {
-                applySandboxName(savedName);
-                document.getElementById('modal-sandbox-setup').classList.add('hidden');
-            }
-            document.getElementById('main-search').focus();
+            updateTicketUI();
+            renderCart();
+            
+            // Reloj simple
+            setInterval(() => {
+                const now = new Date();
+                document.getElementById('clock').innerText = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            }, 1000);
         });
 
-        function initSandboxName() {
-            const input = document.getElementById('sandbox-biz-name').value.trim();
-            const bizName = input ? input.toUpperCase() : "MI NEGOCIO";
-            localStorage.setItem('SANDBOX_BIZ_NAME', bizName);
-            applySandboxName(bizName);
-            document.getElementById('modal-sandbox-setup').classList.add('hidden');
-        }
-
-        function applySandboxName(name) {
-            document.getElementById('pos-main-title').innerHTML = `${name} <span class="text-blue-600">POS</span>`;
-            document.getElementById('pos-admin-name').innerText = name;
-            document.getElementById('print-biz-title').innerText = name;
-        }
-
-        function searchGlobal(e) {
-            const list = document.getElementById('global-suggestions');
-            const q = document.getElementById('main-search').value.toLowerCase();
-            if (q.length < 2) { list.classList.add('hidden'); return; }
-            const res = CATALOGO.filter(i => i.nombre.toLowerCase().includes(q));
-            if (res.length > 0) {
-                list.innerHTML = res.map(i => `<div onclick="addCart('${i.nombre}', ${i.precio}); resetSearch();" class="suggestion-item p-4 border-b flex justify-between items-center uppercase hover:bg-slate-100 cursor-pointer"><span class="font-bold text-slate-700 text-xs">${i.nombre}</span><span class="text-blue-600 font-black">Q${i.precio.toFixed(2)}</span></div>`).join('');
-                list.classList.remove('hidden');
-            } else { list.classList.add('hidden'); }
-        }
-
-        function resetSearch() { document.getElementById('main-search').value = ''; document.getElementById('global-suggestions').classList.add('hidden'); }
+        // ==========================================
+        // LÓGICA DE MULTITICKETS
+        // ==========================================
         
-        function startTimer(n, cat) { currentItem = n; currentCategory = cat; pressTimer = setTimeout(() => { pressTimer = null; showModalQty(); }, 800); }
-        function endTimer(n, cat) { if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; addCart(n, 0, 1, cat); } }
+        function getCurrentTicket() {
+            return tickets.find(t => t.id === currentTicketId);
+        }
 
-        function addCart(n, p, c = 1, cat, forceNew = false) {
-            let categoriaFinal = cat || 'VARIOS';
-            let precioFinal = p || 5.00;
-            let i = forceNew ? null : cart.find(x => x.nombre === n && x.categoria === categoriaFinal);
-            if (i) { i.cant += c; } 
-            else { cart.push({ nombre: n, precioUnit: precioFinal, cant: c, categoria: categoriaFinal }); }
+        function saveClientData() {
+            let t = getCurrentTicket();
+            if (t) {
+                t.client = document.getElementById('bill-cliente').value;
+                t.nit = document.getElementById('bill-nit').value;
+                updateTicketUI();
+            }
+        }
+
+        function createNewTicket() {
+            const newId = nextTicketId++;
+            tickets.push({ id: newId, name: `Ticket #${newId}`, items: [], status: 'active', client: '', nit: '' });
+            currentTicketId = newId;
+            
+            document.getElementById('bill-cliente').value = '';
+            document.getElementById('bill-nit').value = '';
+            document.getElementById('active-ticket-label').innerText = `Ticket #${newId}`;
+            
+            updateTicketUI();
             renderCart();
         }
 
+        function parkCurrentTicket() {
+            let t = getCurrentTicket();
+            if (!t) return;
+            if (t.items.length === 0) {
+                alert("No hay artículos en la orden para suspender.");
+                return;
+            }
+            
+            saveClientData();
+            t.status = 'parked';
+
+            createNewTicket(); 
+        }
+
+        function unparkTicket(id) {
+            let current = getCurrentTicket();
+            
+            if (current && current.items.length > 0) {
+                saveClientData();
+                current.status = 'parked';
+            } else if (current && current.items.length === 0) {
+                tickets = tickets.filter(tk => tk.id !== current.id);
+            }
+
+            let tToUnpark = tickets.find(tk => tk.id === id);
+            if (tToUnpark) {
+                tToUnpark.status = 'active';
+                currentTicketId = id;
+                
+                document.getElementById('bill-cliente').value = tToUnpark.client;
+                document.getElementById('bill-nit').value = tToUnpark.nit;
+                document.getElementById('active-ticket-label').innerText = tToUnpark.name;
+                
+                updateTicketUI();
+                renderCart();
+            }
+        }
+
+        // ==========================================
+        // RENDERIZADO DE INTERFAZ (UI)
+        // ==========================================
+
+        function updateTicketUI() {
+            const parkedContainer = document.getElementById('parked-tickets-container');
+            const parkedTickets = tickets.filter(t => t.status === 'parked');
+            
+            if (parkedTickets.length === 0) {
+                parkedContainer.innerHTML = `<p class="text-sm text-on-surface-variant py-2">No hay órdenes en espera.</p>`;
+            } else {
+                parkedContainer.innerHTML = parkedTickets.map(t => {
+                    let total = t.items.reduce((sum, i) => sum + (i.precioUnit * i.cant), 0);
+                    return `
+                    <div class="min-w-[240px] bg-surface-container-lowest border border-border-muted rounded-xl p-4 flex flex-col gap-3 hover:border-primary-fixed-dim transition-colors">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="font-medium text-sm text-on-surface block">${t.name}</span>
+                                <span class="text-xs text-on-surface-variant truncate w-32 block">${t.client || 'Consumidor Final'}</span>
+                            </div>
+                            <span class="text-xs text-on-surface-variant bg-surface px-2 py-0.5 rounded border border-border-muted">${t.items.length} items</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="font-mono font-medium text-base text-primary">Q${total.toFixed(2)}</span>
+                            <button onclick="unparkTicket(${t.id})" class="text-sm font-medium text-primary hover:text-slate-deep transition-colors">Retomar</button>
+                        </div>
+                    </div>`;
+                }).join('');
+            }
+        }
+
+        // ==========================================
+        // LÓGICA DE CARRITO (Adaptada al ticket actual)
+        // ==========================================
+
+        function addCart(n, p, c = 1, cat, forceNew = false) {
+            let t = getCurrentTicket();
+            if(!t) return;
+            
+            let i = forceNew ? null : t.items.find(x => x.nombre === n);
+            if (i) { 
+                i.cant += c; 
+            } else { 
+                t.items.push({ nombre: n, precioUnit: p, cant: c }); 
+            }
+            renderCart();
+            updateTicketUI();
+        }
+
         function renderCart() {
-            const c = document.getElementById('cart-items'); c.innerHTML = ''; let t = 0;
-            cart.forEach((i, x) => {
-                let s = i.precioUnit * i.cant; t += s;
-                c.innerHTML += `<div class="flex justify-between items-center bg-white p-3 rounded-lg border border-slate-100 shadow-sm mb-1"><div class="flex-1 uppercase"><p class="font-black text-[10px] text-slate-800 leading-none mb-1">${i.nombre}</p><p class="text-[9px] text-slate-400 font-bold tracking-widest">${i.cant} x Q${i.precioUnit.toFixed(2)}</p></div><div class="flex items-center gap-2"><span class="text-xs font-black text-blue-900">Q${s.toFixed(2)}</span><button onclick="removeItem(${x})" class="text-slate-300 hover:text-red-500"><i class="fas fa-times"></i></button></div></div>`;
+            let t = getCurrentTicket();
+            const c = document.getElementById('cart-items'); 
+            c.innerHTML = ''; 
+            let total = 0;
+            
+            if(!t || t.items.length === 0) {
+                c.innerHTML = `<div class="h-full flex flex-col items-center justify-center text-on-surface-variant space-y-3"><i class="fas fa-shopping-basket text-2xl text-border-muted"></i><p class="text-sm">Orden vacía</p></div>`;
+                document.getElementById('total-price').innerText = `Q0.00`;
+                return;
+            }
+
+            t.items.forEach((i, x) => {
+                let subtotal = i.precioUnit * i.cant; 
+                total += subtotal;
+                c.innerHTML += `
+                <div class="flex justify-between items-center py-2 border-b border-border-muted last:border-0">
+                    <div class="flex-1">
+                        <p class="font-medium text-sm text-on-surface">${i.nombre}</p>
+                        <p class="text-xs text-on-surface-variant font-mono">${i.cant} x Q${i.precioUnit.toFixed(2)}</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="text-sm font-medium font-mono text-on-surface">Q${subtotal.toFixed(2)}</span>
+                        <button onclick="removeItem(${x})" class="text-outline hover:text-error transition-colors"><i class="fas fa-trash-alt text-xs"></i></button>
+                    </div>
+                </div>`;
             });
-            document.getElementById('total-price').innerText = `Q ${t.toFixed(2)}`;
+            document.getElementById('total-price').innerText = `Q${total.toFixed(2)}`;
+        }
+
+        function removeItem(index) { 
+            let t = getCurrentTicket();
+            if(t) { t.items.splice(index, 1); renderCart(); }
+        }
+        
+        function clearCart() { 
+            let t = getCurrentTicket();
+            if(t) { t.items = []; renderCart(); }
         }
 
         function processVenta() {
-            if (cart.length === 0) return;
-            const clienteVal = document.getElementById('bill-cliente').value.toUpperCase().trim() || "CONSUMIDOR FINAL";
-            const nitVal = document.getElementById('bill-nit').value.toUpperCase().trim() || "CF";
-            const totalCobrado = cart.reduce((sum, item) => sum + (item.precioUnit * item.cant), 0);
-
-            document.body.classList.remove('printing-tech');
+            let t = getCurrentTicket();
+            if (!t || t.items.length === 0) return;
+            
+            saveClientData();
+            
+            // Simular Impresión
             document.body.classList.add('printing-sales');
-            document.getElementById('print-date').innerText = new Date().toLocaleString();
-            document.getElementById('print-client-name').innerText = clienteVal;
-            document.getElementById('print-client-nit').innerText = "NIT: " + nitVal;
-
+            const d = new Date();
+            document.getElementById('print-date').innerText = d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
+            document.getElementById('print-client-name').innerText = t.client || "CONSUMIDOR FINAL";
+            document.getElementById('print-client-nit').innerText = "NIT: " + (t.nit || "CF");
+            
+            let totalCobrado = 0;
             const container = document.getElementById('print-items-container');
             container.innerHTML = '';
-            cart.forEach(item => {
+            t.items.forEach(item => {
+                totalCobrado += item.precioUnit * item.cant;
                 container.innerHTML += `<div class="print-item"><span class="item-name">${item.cant} ${item.nombre}</span><span class="text-right">Q${(item.precioUnit * item.cant).toFixed(2)}</span></div>`;
             });
             document.getElementById('print-total-display').innerText = `TOTAL: Q ${totalCobrado.toFixed(2)}`;
+            
             window.print();
-            clearCart();
-        }
+            document.body.classList.remove('printing-sales');
 
-        function removeItem(i) { cart.splice(i, 1); renderCart(); }
-        function clearCart() { cart = []; renderCart(); document.getElementById('bill-cliente').value = ""; document.getElementById('bill-nit').value = ""; }
-        function switchTab(t) { 
-            document.getElementById('content-ventas').classList.toggle('hidden', t !== 'ventas'); 
-            document.getElementById('content-tecnico').classList.toggle('hidden', t !== 'tecnico'); 
-            document.getElementById('tab-ventas').className = t === 'ventas' ? 'px-12 py-3 font-black text-xs tracking-widest tab-active uppercase transition-colors border-r' : 'px-12 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r'; 
-            document.getElementById('tab-tecnico').className = t === 'tecnico' ? 'px-12 py-3 font-black text-xs tracking-widest tab-active uppercase transition-colors border-r' : 'px-12 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r'; 
+            // Eliminar ticket completado
+            tickets = tickets.filter(tk => tk.id !== currentTicketId);
+            
+            // Siempre creamos uno nuevo tras cobrar
+            createNewTicket();
         }
-        function closeAllModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden')); }
-        function showModalQty() { document.getElementById('modal-cantidad').classList.remove('hidden'); document.getElementById('input-qty').focus(); }
-        function confirmQty() { const qty = parseInt(document.getElementById('input-qty').value); if (qty > 0 && currentItem) addCart(currentItem, 5.00, qty, currentCategory, true); closeAllModals(); }
-        function openManualInput(m, d) { document.getElementById('modal-manual').classList.remove('hidden'); document.getElementById('manual-title').innerText = d || 'MANUAL'; document.getElementById('manual-price-input').focus(); }
-        function confirmManualInput() { const d = document.getElementById('manual-desc-input').value; const p = parseFloat(document.getElementById('manual-price-input').value); if (d && !isNaN(p)) { addCart(d, p, 1, 'MANUAL'); closeAllModals(); } }
-        function applyDiscount() { const d = parseFloat(prompt("Monto Descuento (Q):")); if (!isNaN(d) && d > 0) addCart("DESCUENTO", -d, 1, 'DESC'); }
-        function generateZReport() { alert("Reporte Z simulado localmente. Total en caja operando correctamente."); }
-        function processTechOrder() { alert("Orden de taller ingresada con éxito (Demo)."); }
-        function updateTechReco() {}
+        
+        // Buscador Global Básico
+        function searchGlobal(e) {
+            const list = document.getElementById('global-suggestions');
+            const q = e.target.value.toLowerCase();
+            
+            if (e.key === 'Escape') {
+                e.target.value = '';
+                list.classList.add('hidden');
+                return;
+            }
+            
+            if (q.length < 2) { list.classList.add('hidden'); return; }
+            const res = CATALOGO.filter(i => i.nombre.toLowerCase().includes(q));
+            
+            if (res.length > 0) {
+                list.innerHTML = res.map(i => `
+                    <div onclick="addCart('${i.nombre}', ${i.precio}); document.getElementById('main-search').value=''; document.getElementById('global-suggestions').classList.add('hidden');" class="suggestion-item p-3 border-b border-border-muted last:border-0 flex justify-between items-center transition-colors">
+                        <span class="text-sm font-medium text-on-surface">${i.nombre}</span>
+                        <span class="text-sm font-mono text-primary">Q${i.precio.toFixed(2)}</span>
+                    </div>`).join('');
+                list.classList.remove('hidden');
+            } else { 
+                list.innerHTML = `<div class="p-4 text-sm text-on-surface-variant text-center">No se encontraron productos</div>`;
+                list.classList.remove('hidden'); 
+            }
+        }
+        
+        // Cerrar sugerencias al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#main-search') && !e.target.closest('#global-suggestions')) {
+                document.getElementById('global-suggestions').classList.add('hidden');
+            }
+        });
     </script>
-</body>
-</html>
+</body></html>
