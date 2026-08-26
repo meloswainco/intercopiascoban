@@ -1,517 +1,543 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-
+<html class="light scroll-smooth" lang="es">
 <head>
-    <meta charset="UTF-8">
-
-    <link rel="icon" type="image/x-icon" href="icoinco.ico">
-    
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MKTSQDQZ');</script>
-<!-- End Google Tag Manager -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Intercopias Cobán - Tu proyecto listo, impecable y a tiempo</title>
+    <link rel="icon" type="image/x-icon" href="icoinco.ico">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MKTSQDQZ');</script>
+    <!-- End Google Tag Manager -->
 
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8fafc;
-        }
-
-        /* Animations */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-up {
-            animation: fadeUp 0.6s ease-out forwards;
-        }
-
-        .delay-100 {
-            animation-delay: 100ms;
-        }
-
-        .delay-200 {
-            animation-delay: 200ms;
-        }
-
-        .text-fade {
-            transition: opacity 0.4s ease-in-out;
-        }
-
-        /* Navbar Blur Support */
-        .glass-nav {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        /* Clean Text Shadow for Hero Image Legibility without boxes */
-        .hero-text-shadow {
-            text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.9), 0px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        /* Bounce Animation for Scroll Indicator */
-        @keyframes custom-bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(5px);
-            }
-        }
-
-        .animate-custom-bounce {
-            animation: custom-bounce 2s infinite;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #8E9EAB;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #003366;
-        }
+        /* Transiciones para el rotador de texto */
+        .text-fade { transition: opacity 0.4s ease-in-out; }
+        /* Scrollbar personalizado basado en tu diseño */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f3ff; }
+        ::-webkit-scrollbar-thumb { background: #002347; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0058bc; }
     </style>
 
-    <script>
+    <script id="tailwind-config">
         tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            blue: '#003366',
-                            gray: '#8E9EAB',
-                            darkGray: '#6A7582'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                    }
-                }
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                      "on-tertiary": "#ffffff",
+                      "inverse-primary": "#adc8f5",
+                      "on-error-container": "#93000a",
+                      "slate-gray": "#64748B",
+                      "surface-container": "#e9edff",
+                      "secondary-fixed": "#d8e2ff",
+                      "primary-container": "#002347",
+                      "secondary": "#0058bc",
+                      "on-surface": "#141b2b",
+                      "on-background": "#141b2b",
+                      "tertiary-fixed-dim": "#c3c7cb",
+                      "primary": "#000d21",
+                      "success-green": "#25D366",
+                      "on-primary-fixed-variant": "#2c486d",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-container": "#1e2326",
+                      "surface-bright": "#f9f9ff",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#d3daef",
+                      "surface-container-high": "#e1e8fd",
+                      "surface-variant": "#dce2f7",
+                      "on-surface-variant": "#43474e",
+                      "surface-container-highest": "#dce2f7",
+                      "outline": "#74777f",
+                      "inverse-surface": "#293040",
+                      "surface-tint": "#455f87",
+                      "outline-variant": "#c4c6cf",
+                      "secondary-container": "#0070eb",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "tertiary-fixed": "#dfe3e7",
+                      "on-tertiary-container": "#868a8e",
+                      "on-tertiary-fixed-variant": "#43474b",
+                      "critical-red": "#E63946",
+                      "tertiary": "#080d10",
+                      "on-primary-fixed": "#001c3a",
+                      "inverse-on-surface": "#edf0ff",
+                      "surface": "#f9f9ff",
+                      "primary-fixed": "#d4e3ff",
+                      "on-primary": "#ffffff",
+                      "background": "#f9f9ff",
+                      "on-tertiary-fixed": "#171c1f",
+                      "glass-white": "rgba(255, 255, 255, 0.8)",
+                      "on-primary-container": "#718bb5",
+                      "error-container": "#ffdad6",
+                      "on-secondary-container": "#fefcff",
+                      "on-secondary-fixed": "#001a41",
+                      "surface-container-low": "#f1f3ff",
+                      "primary-fixed-dim": "#adc8f5",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#004493"
+              },
+              fontFamily: {
+                      "display-xl": ["Montserrat"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "display-xl-mobile": ["Montserrat"],
+                      "headline-md": ["Montserrat"],
+                      "headline-lg": ["Montserrat"],
+                      "body-md": ["Inter"]
+              },
+              spacing: {
+                      "section-gap-lg": "96px",
+                      "margin-mobile": "20px",
+                      "stack-md": "16px",
+                      "container-max": "1280px",
+                      "margin-page": "32px",
+                      "section-gap-md": "64px",
+                      "stack-lg": "24px",
+                      "stack-sm": "8px",
+                      "grid-gutter": "24px"
+              }
             }
+          }
         }
     </script>
 </head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col pb-0">
 
-<body class="text-gray-800 antialiased selection:bg-brand-blue selection:text-white pb-0">
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
-<nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div class="flex justify-between items-center h-16">
-            
-            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
-                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
-                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
-                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
-                    <i class="fa-solid fa-layer-group text-sm"></i>
+    <!-- TopNavBar -->
+    <nav class="bg-white/90 dark:bg-primary/90 backdrop-blur-md font-body-md text-body-md shadow-sm transition-all duration-300 ease-in-out fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-page py-4 border-b border-white/20">
+        <div class="max-w-container-max mx-auto flex justify-between items-center w-full">
+            <a class="flex items-center gap-2" href="index.html">
+                <img src="logo.png" alt="Logo Intercopias" class="h-10 w-auto object-contain hidden" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
+                <div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white shrink-0 hidden">
+                    <span class="material-symbols-outlined">layers</span>
                 </div>
                 <div class="flex flex-col justify-center">
-                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
-                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
-                        Frente a Plaza Magdalena
-                    </span>
+                    <span class="font-display-xl text-headline-md font-black text-primary dark:text-inverse-primary tracking-tight leading-none uppercase">Intercopias</span>
+                    <span class="text-[10px] text-slate-gray font-bold uppercase tracking-wider mt-0.5 block">Frente a Plaza Magdalena</span>
                 </div>
             </a>
-
-            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
-                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
-                    <span class="text-brand-blue font-bold">Impresiones</span> | 
-                    <span class="text-brand-blue font-bold">Empastados</span> | 
-                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
-                </span>
+            
+            <div class="hidden lg:flex items-center gap-stack-lg">
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary-container transition-colors uppercase" href="index.html#servicios">Servicios</a>
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary-container transition-colors uppercase" href="cursos.html">Cursos</a>
+                <a class="text-secondary font-label-md text-label-md hover:text-secondary-container bg-secondary-fixed/50 px-3 py-1.5 rounded-lg border border-secondary-fixed transition-colors uppercase flex items-center gap-1" href="pos_landing.html"><span class="material-symbols-outlined text-[18px]">point_of_sale</span> POS</a>
+                <a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary-container transition-colors uppercase" href="index.html#contacto">Contacto</a>
             </div>
 
-            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
-                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
-                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
-                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
-                <!-- Enlace al POS agregado en el menú -->
-                <a href="pos_landing.html" class="text-xs font-bold text-brand-blue bg-blue-50 px-3 py-1.5 rounded hover:bg-brand-blue hover:text-white border border-brand-blue/20 transition-colors uppercase tracking-wide flex items-center gap-1"><i class="fa-solid fa-rocket"></i> POS</a>
-                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
-            </div>
-
-            <div class="md:hidden flex items-center z-20">
-                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
-                    <i class="fa-solid fa-bars text-xl"></i>
+            <div class="flex items-center gap-stack-md">
+                <a class="hidden sm:inline-flex bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors items-center gap-2" href="https://wa.me/50236680414">
+                    <i class="fa-brands fa-whatsapp text-[18px]"></i> Escríbenos
+                </a>
+                <button id="mobile-menu-button" aria-label="Menu" class="lg:hidden text-on-surface p-2 focus:outline-none">
+                    <span class="material-symbols-outlined">menu</span>
                 </button>
             </div>
         </div>
-    </div>
-    
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
-        <div class="px-4 py-3 space-y-1">
-            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
-            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
-            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
-            <!-- Enlace al POS agregado en el menú móvil -->
-            <a href="pos_landing.html" class="block px-3 py-2 text-sm font-bold text-brand-blue bg-blue-50 rounded hover:bg-brand-blue hover:text-white transition-colors"><i class="fa-solid fa-rocket mr-2"></i> Nuevo Sistema POS</a>
-            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
+    </nav>
+
+    <!-- Menú Móvil -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-surface-container-lowest border-t border-outline-variant/30 fixed w-full left-0 top-[76px] shadow-lg z-40">
+        <div class="px-4 py-3 space-y-2">
+            <a href="index.html" class="block px-3 py-2 text-sm font-label-md text-on-surface-variant rounded hover:bg-surface-container hover:text-secondary transition-colors uppercase">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-label-md text-on-surface-variant rounded hover:bg-surface-container hover:text-secondary transition-colors uppercase">Servicios</a>
+            <a href="cursos.html" class="block px-3 py-2 text-sm font-label-md text-on-surface-variant rounded hover:bg-surface-container hover:text-secondary transition-colors uppercase">Cursos</a>
+            <a href="pos_landing.html" class="block px-3 py-2 text-sm font-label-md text-secondary bg-secondary-fixed rounded hover:bg-secondary hover:text-on-secondary transition-colors uppercase flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">point_of_sale</span> Nuevo Sistema POS</a>
+            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-label-md text-on-primary bg-primary rounded hover:bg-secondary-container text-center mt-2 uppercase transition-colors">Contacto</a>
         </div>
     </div>
-</nav>
 
-    <!-- SECCIÓN HERO MODIFICADA: Dividida en 2 -->
-    <section id="inicio" class="relative w-full min-h-[600px] lg:h-[70vh] flex items-center justify-center overflow-hidden pt-16">
-        <!-- Fondo -->
-        <div class="absolute inset-0 z-0 bg-[#0a111a]">
-            <img src="hero.jpg" onerror="this.src='https://lh3.googleusercontent.com/sitesv/APaQ0STXqv3KNu5_tO3Xl-m50LsfM41Ju8iRNEKVw9E1K2fxrRRMh05abPg9CJPWiQKZVEfSnX_uKnk2zGtC5-gZRAngzD3DGuh9FNQHiqmzH5vpVuj1GlzkFsZbGo_nUmQa77qncch_rmbVRbBCld_J_Ci2z9GD_6p2qm7MWyi1KH5GyH4NczVoMmhQJYdKvZTiU75jRzk-RAqv6EbK5QzMivsN2Oor3S8TSVqqiEE=w1280'" alt="Fondo Panorámico Intercopias" class="w-full h-full object-cover object-center">
-            <div class="absolute inset-0 bg-black/40 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10"></div>
-        </div>
-
-        <!-- Contenedor Dividido -->
-        <div class="relative z-20 px-4 max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-10 py-12">
-            
-            <!-- Columna Izquierda: Mensaje Original -->
-            <div class="text-center lg:text-left flex flex-col items-center lg:items-start lg:w-[55%]">
-                <h1 class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 uppercase leading-[1.1] tracking-tight hero-text-shadow animate-fade-up" style="opacity: 0;">
-                    Tu proyecto listo,<br class="hidden sm:block"> impecable y a tiempo
-                </h1>
-                <div class="text-white hero-text-shadow text-base sm:text-xl md:text-2xl font-semibold min-h-[40px] mb-8 animate-fade-up delay-100" style="opacity: 0;">
-                    <span id="animated-subtitle" class="text-fade opacity-100 block tracking-wide">Calcula tu presupuesto en segundos</span>
-                </div>
-            </div>
-
-            <!-- Columna Derecha: Tarjeta POS -->
-            <div class="lg:w-[45%] w-full max-w-md mx-auto lg:mx-0 animate-fade-up delay-200" style="opacity: 0;">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 md:p-8 rounded-2xl shadow-2xl text-center md:text-left transform transition-transform hover:scale-[1.02]">
-                    <span class="inline-block bg-[#ff0050] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 shadow-sm">
-                        <i class="fa-solid fa-fire mr-1"></i> Nuevo Lanzamiento
-                    </span>
-                    <h2 class="text-white text-2xl md:text-3xl font-black uppercase tracking-tight mb-3 hero-text-shadow leading-tight">
-                        PROGRAMA DE PUNTO DE VENTA
-                    </h2>
-                    <p class="text-gray-200 text-sm md:text-base mb-6 font-medium leading-relaxed">
-                        Cero mensualidades. Únete al Programa de Fundadores y obtén más del 50% de descuento en nuestro nuevo sistema.
-                    </p>
-                    <a href="pos_landing.html" class="block w-full bg-white hover:bg-gray-100 text-brand-blue text-center font-black uppercase tracking-wide py-3.5 px-6 rounded-lg transition-colors shadow-lg">
-                        Ver detalles Software de Punto de venta <i class="fa-solid fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
+    <main class="flex-grow pt-[76px]">
+        
+        <!-- Hero Section -->
+        <section class="relative min-h-[80vh] flex items-center justify-center pt-section-gap-md pb-section-gap-md px-margin-mobile md:px-margin-page overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="bg-cover bg-center w-full h-full" style="background-image: url('hero.jpg'), url('https://lh3.googleusercontent.com/sitesv/APaQ0STXqv3KNu5_tO3Xl-m50LsfM41Ju8iRNEKVw9E1K2fxrRRMh05abPg9CJPWiQKZVEfSnX_uKnk2zGtC5-gZRAngzD3DGuh9FNQHiqmzH5vpVuj1GlzkFsZbGo_nUmQa77qncch_rmbVRbBCld_J_Ci2z9GD_6p2qm7MWyi1KH5GyH4NczVoMmhQJYdKvZTiU75jRzk-RAqv6EbK5QzMivsN2Oor3S8TSVqqiEE=w1280');"></div>
+                <div class="absolute inset-0 bg-primary/80 backdrop-blur-sm"></div>
             </div>
             
-        </div>
-
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center animate-custom-bounce hidden md:flex">
-            <span class="text-white/80 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-1 hero-text-shadow">Explorar</span>
-            <a href="#servicios" class="text-white hover:text-brand-gray transition-colors">
-                <i class="fa-solid fa-chevron-down text-lg sm:text-xl drop-shadow-md"></i>
-            </a>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-black text-gray-900 mb-8 text-center uppercase tracking-tight">Nuestros Servicios</h2>
-
-        <div class="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-5">
-            <a href="cotizador.html"
-                class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-brand-blue/30 transition-colors group flex flex-col items-center text-center shadow-sm hover:shadow">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-calculator text-lg sm:text-xl"></i>
-                </div>
-                <h3 class="text-[16px] sm:text-sm font-bold text-gray-900 mb-1 sm:mb-2 leading-tight group-hover:text-brand-blue transition-colors">
-                    Cotiza tu combo de graduación</h3>
-                <p class="text-[10px] sm:text-[11px] text-gray-500 leading-snug">Calcula tu presupuesto en segundos.</p>
-            </a>
-
-            <a href="normas.html" class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-brand-blue/30 transition-colors group flex flex-col items-center text-center shadow-sm hover:shadow">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-book-bookmark text-lg sm:text-xl"></i>
-                </div>
-                <h3 class="text-[16px] sm:text-sm font-bold text-gray-900 mb-1 sm:mb-2 leading-tight group-hover:text-brand-blue transition-colors">
-                    Estilo y forma para tus trabajos</h3>
-                <p class="text-[10px] sm:text-[11px] text-gray-500 leading-snug">APA, Gordillo, lo que necesites.</p>
-            </a>
-
-            <a href="cursos.html"
-                class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-brand-blue/30 transition-colors group flex flex-col items-center text-center shadow-sm hover:shadow">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-graduation-cap text-lg sm:text-xl"></i>
-                </div>
-                <h3 class="text-[16px] sm:text-sm font-bold text-gray-900 mb-1 sm:mb-2 leading-tight group-hover:text-brand-blue transition-colors">
-                    Cursos de Empastado</h3>
-                <p class="text-[10px] sm:text-[11px] text-gray-500 leading-snug">Aprende y expande tus servicios.</p>
-            </a>
-
-            <a href="tecnico.html" class="bg-gray-50 rounded-xl p-4 sm:p-5 border border-gray-100 hover:border-brand-blue/30 transition-colors group flex flex-col items-center text-center shadow-sm hover:shadow">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:bg-brand-blue group-hover:text-white transition-colors">
-                    <i class="fa-solid fa-screwdriver-wrench text-lg sm:text-xl"></i>
-                </div>
-                <h3 class="text-[16px] sm:text-sm font-bold text-gray-900 mb-1 sm:mb-2 leading-tight group-hover:text-brand-blue transition-colors">
-                    Servicio Técnico</h3>
-                <p class="text-[10px] sm:text-[11px] text-gray-500 leading-snug">Reparación de impresoras y PC.</p>
-            </a>
-
-            <a href="#contacto" class="col-span-2 lg:col-span-1 bg-brand-blue/5 rounded-xl p-4 sm:p-5 border border-brand-blue/10 hover:bg-brand-blue/10 transition-colors group flex flex-col items-center text-center shadow-sm">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-lg flex items-center justify-center mb-3 sm:mb-4 text-brand-blue shadow-sm group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-map-location-dot text-lg sm:text-xl"></i>
-                </div>
-                <h3 class="text-[16px] sm:text-sm font-bold text-brand-blue mb-1 sm:mb-2 leading-tight">Ubicación y Contacto</h3>
-                <p class="text-[10px] sm:text-[11px] text-gray-600 font-medium leading-snug">Frente a Plaza Magdalena.</p>
-            </a>
-        </div>
-    </div>
-</section>
-
-<section class="py-10 bg-white border-t border-gray-100 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h3 class="text-lg md:text-xl font-black text-gray-900 uppercase tracking-tight mb-1">Más Soluciones en Intercopias</h3>
-                <p class="text-xs text-gray-500">Todo lo que necesitas para tu oficina o estudio en un solo lugar.</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="relative z-10 w-full max-w-container-max mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
                 
-                <button onclick="openModal('modal-encuadernado')" class="bg-gray-50 p-3 rounded-xl border border-gray-200 hover:border-brand-blue/50 hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
-                    <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden shadow-sm border border-gray-100">
-                        <img src="ruleta1.jpg" alt="Encuadernados" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Encuadernados'">
+                <!-- Columna Izquierda -->
+                <div class="text-center lg:text-left flex flex-col items-center lg:items-start lg:w-[55%]">
+                    <span class="inline-block px-4 py-1 rounded-full bg-glass-white/10 text-inverse-primary border border-white/20 font-label-sm text-label-sm uppercase tracking-wider mb-stack-md backdrop-blur-md">
+                        Centro de Servicios Integrales
+                    </span>
+                    <h1 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-on-primary mb-stack-md uppercase leading-[1.1] tracking-tight text-shadow-xl">
+                        Tu proyecto listo,<br class="hidden md:block"> impecable y a tiempo
+                    </h1>
+                    <div class="font-body-lg text-body-lg text-primary-fixed-dim min-h-[40px] mb-stack-lg">
+                        <span id="animated-subtitle" class="text-fade opacity-100 block font-medium">Calcula tu presupuesto en segundos</span>
                     </div>
-                    <h4 class="font-bold text-gray-900 text-[11px] sm:text-xs uppercase">Encuadernados</h4>
-                </button>
-
-                <button onclick="openModal('modal-discos')" class="bg-gray-50 p-3 rounded-xl border border-gray-200 hover:border-brand-blue/50 hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
-                    <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden shadow-sm border border-gray-100">
-                        <img src="ruleta2.jpg" alt="Discos y Escaneos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Discos'">
+                    
+                    <div class="flex flex-col sm:flex-row gap-stack-md justify-center lg:justify-start w-full">
+                        <a class="inline-flex bg-white text-primary px-8 py-3 rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors items-center justify-center gap-2 shadow-lg" href="cotizador.html">
+                            <span class="material-symbols-outlined">calculate</span> Cotizar Graduación
+                        </a>
+                        <a class="inline-flex bg-transparent border border-white/30 text-on-primary px-8 py-3 rounded-lg font-label-md text-label-md hover:bg-white/10 transition-colors backdrop-blur-sm items-center justify-center gap-2" href="index.html#servicios">
+                            Ver Servicios <span class="material-symbols-outlined">arrow_downward</span>
+                        </a>
                     </div>
-                    <h4 class="font-bold text-gray-900 text-[11px] sm:text-xs uppercase">Discos y Escaneos</h4>
-                </button>
-
-                <button onclick="openModal('modal-papeles')" class="bg-gray-50 p-3 rounded-xl border border-gray-200 hover:border-brand-blue/50 hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
-                    <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden shadow-sm border border-gray-100">
-                        <img src="ruleta3.jpg" alt="Papeles Finos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Papeles'">
-                    </div>
-                    <h4 class="font-bold text-gray-900 text-[11px] sm:text-xs uppercase">Papeles Finos</h4>
-                </button>
-
-                <button onclick="openModal('modal-tramites')" class="bg-gray-50 p-3 rounded-xl border border-gray-200 hover:border-brand-blue/50 hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
-                    <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden shadow-sm border border-gray-100">
-                        <img src="ruleta4.jpg" alt="Trámites Web" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Trámites'">
-                    </div>
-                    <h4 class="font-bold text-gray-900 text-[11px] sm:text-xs uppercase">Trámites Web</h4>
-                </button>
-
-            </div>
-    </section>
-
-    <div id="modal-encuadernado" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative">
-            <button onclick="closeModal('modal-encuadernado')" class="absolute top-3 right-3 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="bg-brand-blue/5 p-5 text-center border-b border-gray-100">
-                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue mx-auto shadow-sm text-2xl mb-2"><i class="fa-solid fa-book-open"></i></div>
-                <h3 class="font-black text-gray-900 uppercase tracking-tight">Encuadernados</h3>
-            </div>
-            <div class="p-6">
-                <ul class="space-y-3 text-sm text-gray-600">
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Espiral Plástico y Metálico:</strong> Para manuales, folletos y trabajos escolares.</span></li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span>Apertura de 360° para mayor comodidad de lectura.</span></li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span>Acabado resistente con cubiertas plásticas protectoras.</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-discos" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative">
-            <button onclick="closeModal('modal-discos')" class="absolute top-3 right-3 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="bg-brand-blue/5 p-5 text-center border-b border-gray-100">
-                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue mx-auto shadow-sm text-2xl mb-2"><i class="fa-solid fa-compact-disc"></i></div>
-                <h3 class="font-black text-gray-900 uppercase tracking-tight">Grabación y Digitalización</h3>
-            </div>
-            <div class="p-6">
-                <ul class="space-y-3 text-sm text-gray-600">
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Tesis en CD/DVD:</strong> Informes de graduación entregados en sobre blanco con ventana.</span></li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Escaneos:</strong> Digitalizamos dictámenes y documentos para integrarlos a tu PDF.</span></li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span>Grabación de música, videos y respaldo de datos.</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-papeles" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative">
-            <button onclick="closeModal('modal-papeles')" class="absolute top-3 right-3 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="bg-brand-blue/5 p-5 text-center border-b border-gray-100">
-                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue mx-auto shadow-sm text-2xl mb-2"><i class="fa-solid fa-image"></i></div>
-                <h3 class="font-black text-gray-900 uppercase tracking-tight">Papeles Finos y Foto</h3>
-            </div>
-            <div class="p-6">
-                <ul class="space-y-3 text-sm text-gray-600">
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Diplomas e Invitaciones:</strong> Impresión elegante sobre papel Lino.</span></li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Fotografía:</strong> Impresión nítida y de alta definición en papel fotográfico.</span></li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Stickers:</strong> Papel adhesivo personalizado con cortes precisos.</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-tramites" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-opacity">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative">
-            <button onclick="closeModal('modal-tramites')" class="absolute top-3 right-3 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-red-100 hover:text-red-600 transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="bg-brand-blue/5 p-5 text-center border-b border-gray-100">
-                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-brand-blue mx-auto shadow-sm text-2xl mb-2"><i class="fa-solid fa-file-signature"></i></div>
-                <h3 class="font-black text-gray-900 uppercase tracking-tight">Trámites y Gestiones</h3>
-            </div>
-            <div class="p-6">
-                <ul class="space-y-3 text-sm text-gray-600">
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Antecedentes:</strong> Penales y Policiacos al instante.</span></li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Gestiones SAT:</strong> RTU, impresión de boletas y calcomanías.</span></li>
-                    <li class="flex gap-2"><i class="fa-solid fa-check text-brand-blue mt-0.5"></i> <span><strong>Citas:</strong> Pasaporte y trámites en línea en general.</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <section class="bg-brand-blue py-8 px-4 text-center border-y-4 border-gray-200">
-        <h2 class="text-lg md:text-2xl font-black text-white leading-tight uppercase tracking-widest hero-text-shadow">
-            Tú pones el conocimiento, <span class="text-brand-gray">nosotros el formato</span>
-        </h2>
-    </section>
-
-    <section id="historia" class="py-8 bg-gray-50 border-b border-gray-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row gap-6 items-center">
-                <div class="md:w-5/12 text-center md:text-left">
-                    <h2 class="text-lg md:text-xl font-extrabold text-gray-900 leading-tight uppercase tracking-wide">
-                        La excelencia <br><span class="text-brand-blue">como estándar.</span>
-                    </h2>
-                    <div class="w-10 h-1 bg-brand-blue mt-3 mx-auto md:mx-0 rounded-full"></div>
                 </div>
 
-                <div class="md:w-7/12 text-xs md:text-[13px] text-gray-600 leading-relaxed font-medium space-y-3">
-                    <p>
-                        <strong class="text-gray-900 border-b border-brand-blue/30 inline-block mb-1">Soy Dayan.</strong> 
-                        En Intercopias Cobán nuestra regla es simple: facilitarte la vida. Desde 2017, transformamos el concepto de "ciber" tradicional en un Centro de Servicios de alto valor para empastados, encuadernados y soluciones a medida.
-                    </p>
-                    <div class="bg-white border-l-2 border-[#ff0050] p-3 rounded-r-lg shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-3 group">
-                        <i class="fa-brands fa-tiktok text-2xl text-[#ff0050] self-start sm:self-auto group-hover:scale-110 transition-transform"></i>
-                        <div>
-                            <p class="italic text-gray-700 leading-snug mb-1 text-[11px]">"Compartimos nuestro conocimiento con miles de emprendedores; creemos en la capacitación constante".</p>
-                            <a href="https://www.tiktok.com/@DayanMelvin" target="_blank" class="inline-block text-[#ff0050] font-bold text-[10px] hover:text-black transition-colors uppercase tracking-wider">
-                                Sígueme en @DayanMelvin →
+                <!-- Columna Derecha (POS Promo) -->
+                <div class="lg:w-[40%] w-full max-w-md mx-auto lg:mx-0">
+                    <div class="bg-glass-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-2xl shadow-2xl text-center lg:text-left transform transition-transform hover:-translate-y-2 duration-300">
+                        <span class="inline-block bg-critical-red text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 shadow-sm flex items-center w-max mx-auto lg:mx-0">
+                            <span class="material-symbols-outlined text-[14px] mr-1">local_fire_department</span> Nuevo Lanzamiento
+                        </span>
+                        <h2 class="text-on-primary text-headline-md font-headline-md uppercase tracking-tight mb-3 leading-tight">
+                            PROGRAMA DE PUNTO DE VENTA
+                        </h2>
+                        <p class="text-surface-variant font-body-md text-body-md mb-6 leading-relaxed">
+                            Cero mensualidades. Únete al Programa de Fundadores y obtén más del 50% de descuento en nuestro nuevo sistema.
+                        </p>
+                        <a href="pos_landing.html" class="inline-flex w-full bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-fixed transition-colors font-label-md text-label-md py-3.5 px-6 rounded-lg shadow-lg items-center justify-center gap-2 uppercase tracking-wide">
+                            Ver detalles del POS <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Banner Tú pones el conocimiento -->
+        <section class="bg-secondary py-6 px-margin-mobile md:px-margin-page text-on-secondary text-center border-y border-secondary-fixed/20">
+            <h2 class="font-headline-md text-headline-md leading-tight uppercase tracking-widest text-shadow">
+                Tú pones el conocimiento, <span class="text-secondary-fixed-dim">nosotros el formato</span>
+            </h2>
+        </section>
+
+        <!-- Ecosistema de Soluciones (Bento Grid) -->
+        <section id="servicios" class="py-section-gap-lg px-margin-mobile md:px-margin-page bg-surface">
+            <div class="max-w-container-max mx-auto">
+                <div class="text-center mb-section-gap-md">
+                    <h2 class="font-headline-lg text-headline-lg text-primary mb-stack-sm uppercase">Nuestros Servicios</h2>
+                    <p class="font-body-md text-body-md text-slate-gray max-w-2xl mx-auto">Un enfoque integral para impulsar tu educación y tu negocio.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-grid-gutter">
+                    
+                    <!-- Pillar 1: Trabajos Universitarios -->
+                    <div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/30 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                            <span class="material-symbols-outlined text-[120px] text-primary">menu_book</span>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-stack-md">
+                                <span class="material-symbols-outlined text-secondary">school</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-stack-sm">Impresión de Tesis y Formato</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant mb-stack-lg max-w-lg">
+                                Especialistas en encuadernación, combos de graduación y estilos de formato (Normas APA, Gordillo). Acabados de lujo, rapidez y precisión para que entregues lo mejor.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <a class="inline-flex bg-secondary text-on-secondary px-6 py-2.5 rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors items-center justify-center gap-2 shadow-sm" href="cotizador.html">
+                                    <span class="material-symbols-outlined text-[18px]">calculate</span> Cotizador Online
+                                </a>
+                                <a class="inline-flex border border-outline-variant text-on-surface-variant px-6 py-2.5 rounded-lg font-label-md text-label-md hover:bg-surface-container hover:text-primary transition-colors items-center justify-center gap-2" href="normas.html">
+                                    <span class="material-symbols-outlined text-[18px]">format_align_left</span> Estilo y Forma
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2: Academia -->
+                    <div class="md:col-span-4 bg-primary text-on-primary rounded-xl p-8 shadow-lg hover:-translate-y-1 transition-transform duration-300 relative overflow-hidden flex flex-col">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container z-0"></div>
+                        <div class="relative z-10 h-full flex flex-col">
+                            <div class="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center mb-stack-md border border-white/20">
+                                <span class="material-symbols-outlined text-inverse-primary">history_edu</span>
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-on-primary mb-stack-sm">Cursos de Empastado</h3>
+                            <p class="font-body-md text-body-md text-primary-fixed-dim mb-stack-lg flex-grow">
+                                Aprende las técnicas de empastado y expande tus propios servicios. Capacitación constante para emprendedores.
+                            </p>
+                            <a class="inline-flex items-center text-inverse-primary font-label-md text-label-md hover:text-white transition-colors mt-auto" href="cursos.html">
+                                Ver Cursos <span class="material-symbols-outlined ml-1 text-[18px]">arrow_right_alt</span>
                             </a>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3: Tech/PC -->
+                    <div class="md:col-span-6 bg-surface-container-low rounded-xl p-8 border border-outline-variant/30 flex flex-col items-start gap-stack-md hover:shadow-md transition-shadow">
+                        <div class="w-12 h-12 rounded-lg bg-white border border-outline-variant/50 flex items-center justify-center shadow-sm">
+                            <span class="material-symbols-outlined text-primary">build</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-stack-sm">Servicio Técnico</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">
+                                Diagnóstico, reparación y mantenimiento preventivo para impresoras y computadoras. Tu equipo en las mejores manos.
+                            </p>
+                        </div>
+                        <a class="inline-flex items-center text-secondary font-label-md text-label-md hover:text-primary transition-colors mt-auto" href="tecnico.html">
+                            Solicitar Revisión <span class="material-symbols-outlined ml-1 text-[18px]">arrow_right_alt</span>
+                        </a>
+                    </div>
+
+                    <!-- Pillar 4: POS Banner -->
+                    <div class="md:col-span-6 bg-surface-container-low rounded-xl p-8 border border-outline-variant/30 flex flex-col md:flex-row items-center gap-stack-lg hover:shadow-md transition-shadow">
+                        <div class="flex-1 text-center md:text-left">
+                            <span class="inline-block px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm uppercase tracking-wider mb-stack-sm">
+                                Para tu negocio
+                            </span>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-stack-sm">Sistema POS</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">
+                                Software de facturación e inventario potente y sin mensualidades.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0 mt-4 md:mt-0">
+                            <a class="inline-flex bg-secondary text-on-secondary px-6 py-3 rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors items-center justify-center gap-2" href="pos_landing.html">
+                                <span class="material-symbols-outlined text-[18px]">rocket_launch</span> Descubrir POS
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Más Soluciones (Modals Area) -->
+        <section class="py-12 bg-surface-bright border-t border-outline-variant/20 overflow-hidden">
+            <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-page">
+                <div class="text-center mb-8">
+                    <h3 class="text-headline-md font-headline-md text-primary uppercase tracking-tight mb-2">Más Soluciones en Intercopias</h3>
+                    <p class="text-body-md text-slate-gray">Todo lo que necesitas para tu oficina o estudio en un solo lugar.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button onclick="openModal('modal-encuadernado')" class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 hover:border-secondary hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden border border-outline-variant/20">
+                            <img src="ruleta1.jpg" alt="Encuadernados" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Encuadernados'">
+                        </div>
+                        <h4 class="font-label-md text-on-surface text-xs md:text-sm uppercase">Encuadernados</h4>
+                    </button>
+
+                    <button onclick="openModal('modal-discos')" class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 hover:border-secondary hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden border border-outline-variant/20">
+                            <img src="ruleta2.jpg" alt="Discos y Escaneos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Discos'">
+                        </div>
+                        <h4 class="font-label-md text-on-surface text-xs md:text-sm uppercase">Discos y Escaneos</h4>
+                    </button>
+
+                    <button onclick="openModal('modal-papeles')" class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 hover:border-secondary hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden border border-outline-variant/20">
+                            <img src="ruleta3.jpg" alt="Papeles Finos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Papeles'">
+                        </div>
+                        <h4 class="font-label-md text-on-surface text-xs md:text-sm uppercase">Papeles Finos</h4>
+                    </button>
+
+                    <button onclick="openModal('modal-tramites')" class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/30 hover:border-secondary hover:shadow-md transition-all text-center group flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square mb-3 rounded-lg overflow-hidden border border-outline-variant/20">
+                            <img src="ruleta4.jpg" alt="Trámites Web" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/003366/FFFFFF?text=Trámites'">
+                        </div>
+                        <h4 class="font-label-md text-on-surface text-xs md:text-sm uppercase">Trámites Web</h4>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modals de Soluciones -->
+        <!-- Encuadernados -->
+        <div id="modal-encuadernado" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-primary/60 backdrop-blur-sm transition-opacity">
+            <div class="bg-surface-container-lowest rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative border border-outline-variant/30">
+                <button onclick="closeModal('modal-encuadernado')" class="absolute top-3 right-3 w-8 h-8 bg-surface-container rounded-full flex items-center justify-center text-on-surface hover:bg-error-container hover:text-error transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+                <div class="bg-secondary-fixed/30 p-5 text-center border-b border-outline-variant/20">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-secondary mx-auto shadow-sm mb-2"><span class="material-symbols-outlined text-3xl">auto_stories</span></div>
+                    <h3 class="font-headline-md text-primary uppercase tracking-tight text-lg">Encuadernados</h3>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-3 text-body-md text-on-surface-variant">
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Espiral Plástico y Metálico:</strong> Para manuales, folletos y trabajos escolares.</span></li>
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span>Apertura de 360° para mayor comodidad de lectura.</span></li>
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span>Acabado resistente con cubiertas plásticas protectoras.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Discos -->
+        <div id="modal-discos" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-primary/60 backdrop-blur-sm transition-opacity">
+            <div class="bg-surface-container-lowest rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative border border-outline-variant/30">
+                <button onclick="closeModal('modal-discos')" class="absolute top-3 right-3 w-8 h-8 bg-surface-container rounded-full flex items-center justify-center text-on-surface hover:bg-error-container hover:text-error transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+                <div class="bg-secondary-fixed/30 p-5 text-center border-b border-outline-variant/20">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-secondary mx-auto shadow-sm mb-2"><span class="material-symbols-outlined text-3xl">album</span></div>
+                    <h3 class="font-headline-md text-primary uppercase tracking-tight text-lg">Grabación y Digitalización</h3>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-3 text-body-md text-on-surface-variant">
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Tesis en CD/DVD:</strong> Informes de graduación entregados en sobre blanco con ventana.</span></li>
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Escaneos:</strong> Digitalizamos dictámenes y documentos para integrarlos a tu PDF.</span></li>
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span>Grabación de música, videos y respaldo de datos.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Papeles -->
+        <div id="modal-papeles" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-primary/60 backdrop-blur-sm transition-opacity">
+            <div class="bg-surface-container-lowest rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative border border-outline-variant/30">
+                <button onclick="closeModal('modal-papeles')" class="absolute top-3 right-3 w-8 h-8 bg-surface-container rounded-full flex items-center justify-center text-on-surface hover:bg-error-container hover:text-error transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+                <div class="bg-secondary-fixed/30 p-5 text-center border-b border-outline-variant/20">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-secondary mx-auto shadow-sm mb-2"><span class="material-symbols-outlined text-3xl">image</span></div>
+                    <h3 class="font-headline-md text-primary uppercase tracking-tight text-lg">Papeles Finos y Foto</h3>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-3 text-body-md text-on-surface-variant">
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Diplomas e Invitaciones:</strong> Impresión elegante sobre papel Lino.</span></li>
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Fotografía:</strong> Impresión nítida y de alta definición en papel fotográfico.</span></li>
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Stickers:</strong> Papel adhesivo personalizado con cortes precisos.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trámites -->
+        <div id="modal-tramites" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-primary/60 backdrop-blur-sm transition-opacity">
+            <div class="bg-surface-container-lowest rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 relative border border-outline-variant/30">
+                <button onclick="closeModal('modal-tramites')" class="absolute top-3 right-3 w-8 h-8 bg-surface-container rounded-full flex items-center justify-center text-on-surface hover:bg-error-container hover:text-error transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+                <div class="bg-secondary-fixed/30 p-5 text-center border-b border-outline-variant/20">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-secondary mx-auto shadow-sm mb-2"><span class="material-symbols-outlined text-3xl">history_edu</span></div>
+                    <h3 class="font-headline-md text-primary uppercase tracking-tight text-lg">Trámites y Gestiones</h3>
+                </div>
+                <div class="p-6">
+                    <ul class="space-y-3 text-body-md text-on-surface-variant">
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Antecedentes:</strong> Penales y Policiacos al instante.</span></li>
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Gestiones SAT:</strong> RTU, impresión de boletas y calcomanías.</span></li>
+                        <li class="flex gap-2"><span class="material-symbols-outlined text-success-green text-[20px] mt-0.5">check_circle</span> <span><strong>Citas:</strong> Pasaporte y trámites en línea en general.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historia (Soy Dayan) -->
+        <section id="nosotros" class="py-section-gap-md bg-surface-container-lowest border-y border-outline-variant/20">
+            <div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-page">
+                <div class="flex flex-col md:flex-row gap-stack-lg items-center">
+                    <div class="md:w-5/12 text-center md:text-left">
+                        <h2 class="font-headline-lg text-headline-lg text-primary leading-tight uppercase tracking-wide">
+                            La excelencia <br><span class="text-secondary">como estándar.</span>
+                        </h2>
+                        <div class="w-12 h-1.5 bg-secondary mt-4 mx-auto md:mx-0 rounded-full"></div>
+                    </div>
+
+                    <div class="md:w-7/12 text-body-md text-on-surface-variant leading-relaxed space-y-4">
+                        <p>
+                            <strong class="text-primary border-b border-secondary/30 inline-block mb-1">Soy Dayan.</strong> 
+                            En Intercopias Cobán nuestra regla es simple: facilitarte la vida. Desde 2017, transformamos el concepto de "ciber" tradicional en un Centro de Servicios de alto valor para empastados, encuadernados y soluciones a medida.
+                        </p>
+                        <div class="bg-surface-container-low border-l-4 border-black p-4 rounded-r-lg shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4 group">
+                            <i class="fa-brands fa-tiktok text-3xl text-black self-start sm:self-auto group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <p class="italic text-on-surface-variant leading-snug mb-2 font-medium">"Compartimos nuestro conocimiento con miles de emprendedores; creemos en la capacitación constante".</p>
+                                <a href="https://www.tiktok.com/@DayanMelvin" target="_blank" class="inline-flex items-center text-primary font-label-md text-label-md hover:text-secondary transition-colors uppercase tracking-wider">
+                                    Sígueme en @DayanMelvin <span class="material-symbols-outlined ml-1 text-[18px]">arrow_right_alt</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contacto" class="py-16 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-2 uppercase">¿Dónde estamos?</h2>
-            <p class="text-gray-600 mb-8 font-medium">Te esperamos frente a Plaza Magdalena, Cobán.</p>
-            
-            <div class="flex justify-center mb-10 overflow-hidden rounded-xl shadow-lg border border-gray-100 max-w-[325px] sm:max-w-full mx-auto">
-                <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dayanmelvin/video/7595248061568322828" data-video-id="7595248061568322828" style="max-width: 605px;min-width: 325px; margin: 0 auto;" > 
-                    <section> 
-                        <a target="_blank" title="@dayanmelvin" href="https://www.tiktok.com/@dayanmelvin?refer=embed">@dayanmelvin</a> ¿Dónde está Intercopias Cobán? 
-                    </section> 
-                </blockquote>
-            </div>
-            <div class="mt-6 max-w-sm mx-auto bg-gray-50 border-2 border-[#25D366]/20 rounded-xl p-5 shadow-sm transform transition-transform hover:scale-105">
-                <p class="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2">Escríbenos a WhatsApp</p>
-                <div class="flex items-center justify-center gap-3">
-                    <div class="w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center shadow-md animate-bounce">
-                        <i class="fa-brands fa-whatsapp text-xl text-white"></i>
-                    </div>
-                    <span class="text-3xl font-black text-gray-900 tracking-tight select-all">3668 0414</span>
+        <!-- Contacto y Ubicación -->
+        <section id="contacto" class="py-section-gap-md bg-surface">
+            <div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-page text-center">
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-2 uppercase tracking-tight">¿Dónde estamos?</h2>
+                <p class="font-body-lg text-body-lg text-slate-gray mb-8">Te esperamos frente a Plaza Magdalena, Cobán.</p>
+                
+                <div class="flex justify-center mb-10 overflow-hidden rounded-xl shadow-lg border border-outline-variant/30 bg-surface-container-lowest max-w-[325px] sm:max-w-full mx-auto">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@dayanmelvin/video/7595248061568322828" data-video-id="7595248061568322828" style="max-width: 605px;min-width: 325px; margin: 0 auto;" > 
+                        <section> 
+                            <a target="_blank" title="@dayanmelvin" href="https://www.tiktok.com/@dayanmelvin?refer=embed">@dayanmelvin</a> ¿Dónde está Intercopias Cobán? 
+                        </section> 
+                    </blockquote>
                 </div>
-                <p class="text-[10px] text-gray-500 mt-3 font-medium">Guárdanos para cotizaciones y resolver tus dudas al instante.</p>
+                
+                <div class="mt-8 max-w-sm mx-auto bg-surface-container-lowest border-2 border-success-green/30 rounded-2xl p-6 shadow-md transform transition-transform hover:-translate-y-1">
+                    <p class="font-label-md text-label-md text-slate-gray uppercase tracking-widest mb-3">Escríbenos a WhatsApp</p>
+                    <div class="flex items-center justify-center gap-3">
+                        <div class="w-12 h-12 bg-success-green rounded-full flex items-center justify-center shadow-md animate-bounce">
+                            <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+                        </div>
+                        <a href="https://wa.me/50236680414" class="text-headline-lg font-headline-lg text-primary tracking-tight hover:text-success-green transition-colors">3668 0414</a>
+                    </div>
+                    <p class="font-label-sm text-label-sm text-slate-gray mt-4 font-medium">Guárdanos para cotizaciones y resolver tus dudas al instante.</p>
+                </div>
             </div>
-    </section>
+        </section>
 
-    <footer class="bg-[#003366] text-white pt-8 pb-4 border-t-4 border-[#6A7582]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-6">
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-tertiary dark:bg-surface-container-lowest text-on-tertiary w-full pt-12 pb-6 px-margin-mobile md:px-margin-page border-t-4 border-slate-gray">
+        <div class="max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div>
-                    <h4 class="font-bold text-sm mb-3 uppercase tracking-wider text-[#8E9EAB] border-b border-white/10 pb-2">Contacto</h4>
-                    <ul class="space-y-2 text-xs text-white/90">
-                        <li class="flex items-start gap-2">
-                            <i class="fa-solid fa-location-dot mt-0.5 w-3 text-center text-brand-gray"></i>
+                    <h4 class="font-label-md text-label-md mb-4 uppercase tracking-wider text-tertiary-fixed-dim border-b border-white/10 pb-2">Contacto</h4>
+                    <ul class="space-y-3 font-body-md text-sm text-white/90">
+                        <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-[20px] text-slate-gray">location_on</span>
                             <span>Frente a Plaza Magdalena, Cobán</span>
                         </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-phone w-3 text-center text-brand-gray"></i>
-                            <a href="tel:50236680414" class="hover:text-white transition-colors">(502) 36680414</a>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-[20px] text-slate-gray">phone</span>
+                            <a href="tel:50236680414" class="hover:text-white transition-colors">(502) 3668 0414</a>
                         </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fa-solid fa-envelope w-3 text-center text-brand-gray"></i>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-[20px] text-slate-gray">mail</span>
                             <a href="mailto:inco.coban@gmail.com" class="hover:text-white transition-colors">inco.coban@gmail.com</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="flex flex-col justify-start">
-                    <h4 class="font-bold text-sm mb-3 uppercase tracking-wider text-[#8E9EAB] border-b border-white/10 pb-2">Comunidad</h4>
-                    <a href="https://www.tiktok.com/@DayanMelvin" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 bg-white/5 hover:bg-[#ff0050] p-2.5 rounded-lg transition-colors border border-white/10 w-full max-w-sm">
-                        <div class="w-8 h-8 bg-white/10 group-hover:bg-white text-white group-hover:text-[#ff0050] rounded-md flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-tiktok text-lg"></i>
+                    <h4 class="font-label-md text-label-md mb-4 uppercase tracking-wider text-tertiary-fixed-dim border-b border-white/10 pb-2">Comunidad</h4>
+                    <a href="https://www.tiktok.com/@DayanMelvin" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 bg-white/5 hover:bg-black p-3 rounded-xl transition-colors border border-white/10 w-full max-w-sm">
+                        <div class="w-10 h-10 bg-white/10 group-hover:bg-white text-white group-hover:text-black rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fa-brands fa-tiktok text-xl"></i>
                         </div>
                         <div>
-                            <p class="font-bold text-white text-sm leading-none">@DayanMelvin</p>
-                            <p class="text-[10px] text-white/60 mt-0.5">TikTok - Emprendedores</p>
+                            <p class="font-label-md text-white text-base leading-none mb-1">@DayanMelvin</p>
+                            <p class="font-label-sm text-[11px] text-white/60">TikTok - Emprendedores</p>
                         </div>
                     </a>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-sm mb-3 uppercase tracking-wider text-[#8E9EAB] border-b border-white/10 pb-2">Horarios</h4>
-                    <ul class="space-y-1 text-xs">
-                        <li class="flex justify-between text-white/90 border-b border-white/5 pb-1">
-                            <span>Lun - Vie</span>
+                    <h4 class="font-label-md text-label-md mb-4 uppercase tracking-wider text-tertiary-fixed-dim border-b border-white/10 pb-2">Horarios</h4>
+                    <ul class="space-y-2 font-body-md text-sm text-white/90">
+                        <li class="flex justify-between border-b border-white/5 pb-2">
+                            <span>Lunes - Viernes</span>
                             <span class="font-bold">08:00 - 20:30</span>
                         </li>
-                        <li class="flex justify-between text-white/90 border-b border-white/5 py-1">
+                        <li class="flex justify-between border-b border-white/5 py-2">
                             <span>Sábado</span>
                             <span class="font-bold">08:00 - 18:00</span>
                         </li>
-                        <li class="flex justify-between text-white/90 pt-1">
+                        <li class="flex justify-between pt-2">
                             <span>Domingo</span>
                             <span class="font-bold">15:00 - 21:00</span>
                         </li>
@@ -519,26 +545,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </div>
 
-            <div class="border-t border-white/10 pt-3 text-center text-[10px] text-white/40">
-                <p>© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+            <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <span class="font-display-xl text-headline-sm text-on-tertiary">Intercopias Cobán</span>
+                <span class="text-on-tertiary-container text-center md:text-left text-xs font-label-md">© 2026 Intercopias Cobán. Diseñado para la excelencia.</span>
             </div>
         </div>
     </footer>
 
+    <!-- POP-UP LATERAL POS -->
+    <div id="pos-corner-popup" class="fixed bottom-6 right-6 z-[100] max-w-sm w-[90%] bg-surface-container-lowest rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-l-8 border-primary transform translate-y-[150%] transition-transform duration-700 ease-out flex flex-col hidden">
+        <button id="btn-close-popup" class="absolute top-3 right-3 text-slate-gray hover:text-error transition-colors">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+        <div class="p-6">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined text-2xl">point_of_sale</span>
+                </div>
+                <h4 class="font-headline-md text-on-surface uppercase tracking-tight text-lg leading-tight">¿Buscas el<br><span class="text-secondary">Sistema POS?</span></h4>
+            </div>
+            <p class="text-body-md text-on-surface-variant mb-6 leading-relaxed">Conoce el sistema diseñado para la velocidad del mostrador. Sin mensualidades.</p>
+            
+            <a href="pos_landing.html" class="inline-flex w-full bg-primary hover:bg-secondary-container hover:text-on-primary-fixed-variant text-on-primary text-center font-label-md uppercase tracking-widest py-3 rounded-lg shadow-md transition-colors items-center justify-center">
+                Ver detalles
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts Esenciales -->
     <script async src="https://www.tiktok.com/embed.js"></script>
-
     <script>
-        const navText = document.getElementById('nav-dynamic-text');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navText.classList.remove('opacity-0');
-                navText.classList.add('opacity-100');
-            } else {
-                navText.classList.add('opacity-0');
-                navText.classList.remove('opacity-100');
-            }
-        });
-
+        // Lógica de Rotación de Texto (Subtítulo Hero)
         const frases = [
             "Calcula tu presupuesto en segundos",
             "Aplicamos la normativa de tu universidad",
@@ -557,23 +594,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }, 3000);
         }
 
+        // Menú Móvil
         const btnMenu = document.getElementById('mobile-menu-button');
         const menu = document.getElementById('mobile-menu');
         btnMenu.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Navegación fluida de anclajes internos
+        document.querySelectorAll('a[href^="index.html#"], a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                menu.classList.add('hidden');
-
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
+                const targetId = this.getAttribute('href').split('#')[1];
+                if (!targetId) return;
+                
+                const targetElement = document.getElementById(targetId);
                 if (targetElement) {
-                    const headerOffset = 64;
+                    e.preventDefault();
+                    menu.classList.add('hidden');
+                    const headerOffset = 80; // Ajuste por el fixed navbar
                     const elementPosition = targetElement.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -585,11 +623,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         });
 
-        // Funciones para abrir y cerrar los Modals de Servicios Secundarios
+        // Lógica de los Modals
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('hidden');
-            // Pequeño timeout para que se active la transición de opacidad/escala
             setTimeout(() => {
                 modal.children[0].classList.remove('scale-95');
                 modal.children[0].classList.add('scale-100');
@@ -605,61 +642,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }, 200);
         }
 
-    </script>
-<!-- POP-UP LATERAL POS -->
-    <div id="pos-corner-popup" class="fixed bottom-6 right-6 z-[100] max-w-sm w-[90%] bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-l-8 border-[#003366] transform translate-y-[150%] transition-transform duration-700 ease-out flex flex-col hidden">
-        <button id="btn-close-popup" class="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition-colors">
-            <i class="fa-solid fa-times text-lg"></i>
-        </button>
-        <div class="p-6">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#003366]">
-                    <i class="fa-solid fa-cash-register text-lg"></i>
-                </div>
-                <h4 class="font-black text-gray-800 uppercase tracking-tight text-lg leading-tight">¿Buscas el<br><span class="text-[#003366]">Sistema POS?</span></h4>
-            </div>
-            <p class="text-sm text-gray-600 mb-5 font-medium leading-relaxed">Conoce el sistema diseñado para la velocidad del mostrador. Sin mensualidades.</p>
-            
-            <!-- Asegúrate de que el href apunte al nombre exacto de tu landing del POS -->
-            <a href="pos_landing.html" class="block w-full bg-[#003366] hover:bg-[#6A7582] text-white text-center font-black text-xs uppercase tracking-widest py-3 rounded-lg shadow-md transition-colors">
-                Clic aquí para ver detalles
-            </a>
-        </div>
-    </div>
-
-    <script>
+        // Pop-up POS Lateral
         document.addEventListener('DOMContentLoaded', () => {
             const popup = document.getElementById('pos-corner-popup');
             const btnClose = document.getElementById('btn-close-popup');
 
-            // Revisa en el navegador si el usuario ya cerró este pop-up antes
             if (!localStorage.getItem('inco_pos_popup_closed')) {
-                // Quitar el hidden para prepararlo
                 popup.classList.remove('hidden');
-                
-                // Retrasar la entrada 2.5 segundos para no asustar al visitante al cargar la página
                 setTimeout(() => {
                     popup.classList.remove('translate-y-[150%]');
                     popup.classList.add('translate-y-0');
                 }, 2500);
             }
 
-            // Lógica para cerrar y guardar la preferencia
             btnClose.addEventListener('click', () => {
                 popup.classList.remove('translate-y-0');
-                popup.classList.add('translate-y-[150%]'); // Animación de salida hacia abajo
-                
-                // Guardar en localStorage para que no vuelva a aparecer
+                popup.classList.add('translate-y-[150%]');
                 localStorage.setItem('inco_pos_popup_closed', 'true');
-                
-                // Ocultar completamente del DOM después de que termine la animación
                 setTimeout(() => popup.classList.add('hidden'), 700);
             });
         });
     </script>
-    
-    
 </body>
-
-
 </html>
