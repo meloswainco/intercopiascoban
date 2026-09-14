@@ -72,7 +72,7 @@ const mockData = {
     },
     obtenerTodoInventario: async () => mockData.inventario_sala,
     obtenerCategoriasUnicas: async () => ["Libreria", "Papeleria"],
-    obtenerTop20: async () => mockData.inventario_sala.slice(0, 20), // Top 20 simulado
+    obtenerTop20: async () => mockData.inventario_sala.slice(0, 8), // Top 8 simulado para demo
   
     // Botones Rápida Venta
     obtenerBotonesGrid: async (soloActivos = false) => mockData.grid_botones,

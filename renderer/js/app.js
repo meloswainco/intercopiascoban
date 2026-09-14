@@ -2067,20 +2067,20 @@ window.cargarTop20 = async function() {
 
         top20.forEach(prod => {
             const btn = document.createElement('button');
-            btn.className = "flex flex-col items-center justify-center p-3 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm shrink-0 snap-start active:scale-95";
-            btn.style.width = '100px';
-            btn.style.height = '100px';
+            btn.className = "flex flex-col items-center justify-center p-2 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm shrink-0 snap-start active:scale-95";
+            btn.style.width = '130px';
+            btn.style.height = '85px';
 
             const iconContainer = document.createElement('div');
-            iconContainer.className = "text-xl text-blue-500 mb-1 flex items-center justify-center bg-blue-50 w-10 h-10 rounded-full";
-            iconContainer.innerHTML = '<i class="fas fa-star text-sm"></i>';
+            iconContainer.className = "text-blue-500 flex items-center justify-center bg-blue-50 w-7 h-7 rounded-full shrink-0 mb-1";
+            iconContainer.innerHTML = '<i class="fas fa-star text-[10px]"></i>';
 
             const labelDesc = document.createElement('p');
-            labelDesc.className = "text-[10px] font-black text-slate-700 leading-tight truncate w-full uppercase text-center mt-1";
+            labelDesc.className = "text-[10px] font-black text-slate-700 leading-tight line-clamp-2 whitespace-normal w-full uppercase text-center flex-1 flex items-center justify-center";
             labelDesc.innerText = prod.Descripcion;
 
             const labelPrice = document.createElement('p');
-            labelPrice.className = "text-[9px] font-bold text-blue-600 mt-1 uppercase";
+            labelPrice.className = "text-[9px] font-bold text-blue-600 uppercase";
             labelPrice.innerText = `Q${parseFloat(prod.Precio_Venta).toFixed(2)}`;
 
             btn.appendChild(iconContainer);
