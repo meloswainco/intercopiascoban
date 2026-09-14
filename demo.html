@@ -1,505 +1,1884 @@
 <!DOCTYPE html>
+<html lang="es">
 
-<html lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>POS Sandbox - Simulador Interactivo Multiticket</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "inverse-surface": "#203243",
-                        "secondary-fixed-dim": "#c3c0ff",
-                        "on-primary-fixed": "#001c37",
-                        "secondary-fixed": "#e2dfff",
-                        "surface": "#f7f9ff",
-                        "surface-container-high": "#d8eaff",
-                        "inverse-on-surface": "#e8f2ff",
-                        "tertiary": "#1a0b00",
-                        "outline": "#74777e",
-                        "surface-container-low": "#edf4ff",
-                        "on-primary": "#ffffff",
-                        "on-error": "#ffffff",
-                        "on-surface-variant": "#43474d",
-                        "inverse-primary": "#b0c8eb",
-                        "error-container": "#ffdad6",
-                        "on-secondary-fixed-variant": "#321ed2",
-                        "on-secondary-container": "#fffbff",
-                        "primary-container": "#0a2540",
-                        "on-tertiary": "#ffffff",
-                        "on-secondary": "#ffffff",
-                        "tertiary-container": "#381d00",
-                        "surface-dim": "#c9dcf2",
-                        "on-primary-container": "#768dad",
-                        "surface-soft": "#F6F9FC",
-                        "background": "#f7f9ff",
-                        "outline-variant": "#c4c6ce",
-                        "tertiary-fixed": "#ffdcbe",
-                        "surface-tint": "#49607e",
-                        "secondary-container": "#645cff",
-                        "primary-fixed": "#d2e4ff",
-                        "on-error-container": "#93000a",
-                        "on-tertiary-container": "#ae835a",
-                        "on-surface": "#091d2d",
-                        "navy-action": "#006AFF",
-                        "primary": "#000f22",
-                        "on-tertiary-fixed": "#2d1600",
-                        "on-background": "#091d2d",
-                        "on-tertiary-fixed-variant": "#613f1c",
-                        "surface-container": "#e3efff",
-                        "surface-variant": "#d1e4fb",
-                        "on-secondary-fixed": "#0f0069",
-                        "secondary": "#4a3ee6",
-                        "tertiary-fixed-dim": "#eebd90",
-                        "slate-deep": "#0A2540",
-                        "on-primary-fixed-variant": "#314865",
-                        "error": "#ba1a1a",
-                        "primary-fixed-dim": "#b0c8eb",
-                        "border-muted": "#E6EBF1",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-bright": "#f7f9ff",
-                        "surface-container-highest": "#d1e4fb"
-                    },
-                    "fontFamily": {
-                        "sans": ["Inter", "sans-serif"],
-                        "mono": ["JetBrains Mono", "monospace"]
-                    }
-                },
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="iken.ico">
+    <title>Punto de Venta INCO Fundadores</title>
+    <script src="./renderer/js/mock_api.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="./node_modules/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        /* ESTILOS BASE TICKET Y CAPTURA */
+        .print-area {
+            width: 280px;
+            font-family: 'Courier New', monospace;
+            color: black;
+            background: white;
+            padding: 10px;
+            font-size: 11px;
+            box-sizing: border-box;
+        }
+
+        .print-logo {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .print-logo img {
+            max-width: 120px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .print-header {
+            text-align: center;
+            margin-bottom: 8px;
+            border-bottom: 1px dashed black;
+            padding-bottom: 5px;
+        }
+
+        .print-info {
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        .print-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        .item-name {
+            width: 70%;
+            word-break: break-word;
+        }
+
+        .item-price {
+            width: 30%;
+            text-align: right;
+        }
+
+        .print-total {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: right;
+            border-top: 1px dashed black;
+            margin-top: 8px;
+            padding-top: 5px;
+        }
+
+        .print-footer {
+            text-align: center;
+            font-size: 9px;
+            margin-top: 15px;
+        }
+
+        .legal-disclaimer {
+            font-size: 8px;
+            text-align: justify;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* ESTILOS PANTALLA */
+        #cart-items::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #cart-items::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+
+        #cart-items::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        #cart-items::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .tab-active {
+            border-bottom: 4px solid #1e40af;
+            color: #1e40af;
+            background: #eff6ff;
+        }
+
+        .btn-fast:active {
+            transform: scale(0.95);
+            transition: 0.1s;
+        }
+
+        .modal-overlay {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-blur: 5px;
+        }
+
+        .suggestion-item:hover {
+            background-color: #f3f4f6;
+            cursor: pointer;
+        }
+
+        .qty-editable:hover {
+            color: #2563eb;
+            text-decoration: underline;
+            cursor: pointer;
+            background: #eff6ff;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .suggestion-active {
+            background-color: #dbeafe !important;
+            border-left: 4px solid #2563eb;
+        }
+
+        /* ESTILOS IMPRESIÓN (70mm) */
+        @media print {
+            @page {
+                margin: 0;
+                size: 70mm auto;
+            }
+
+            html,
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: white;
+                display: block !important;
+            }
+
+            header,
+            nav,
+            section,
+            .modal-overlay,
+            .no-print,
+            .hidden-print {
+                display: none !important;
+            }
+
+            .print-area {
+                display: none;
+                width: 58mm;
+                max-width: 100%;
+                position: absolute;
+                top: 1;
+                left: 1;
+                font-family: 'Courier New', monospace;
+                color: black;
+                padding: 4mm;
+                font-size: 11px;
+            }
+
+            body.printing-sales #ticket-print-area {
+                display: block !important;
+            }
+
+            body.printing-quotation #quotation-print-area {
+                display: block !important;
+            }
+
+            body.printing-tech #tech-print-area {
+                display: block !important;
+            }
+
+            body.printing-report #report-print-area {
+                display: block !important;
+            }
+
+            .print-logo {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+
+            .print-header {
+                text-align: center;
+                margin-bottom: 8px;
+                border-bottom: 1px dashed black;
+                padding-bottom: 5px;
+            }
+
+            .print-info {
+                font-size: 10px;
+                margin-bottom: 5px;
+            }
+
+            .print-item {
+                display: flex;
+                justify-content: space-between;
+                font-size: 10px;
+                margin-bottom: 3px;
+            }
+
+            .item-name {
+                width: 70%;
+            }
+
+            .item-price {
+                width: 30%;
+                text-align: right;
+            }
+
+            .print-total {
+                font-size: 16px;
+                font-weight: bold;
+                text-align: right;
+                border-top: 1px dashed black;
+                margin-top: 8px;
+                padding-top: 5px;
+            }
+
+            .print-footer {
+                text-align: center;
+                font-size: 9px;
+                margin-top: 15px;
+            }
+
+            .legal-disclaimer {
+                font-size: 8px;
+                text-align: justify;
+                margin-top: 10px;
+                font-style: italic;
+            }
+
+            .tech-label {
+                font-size: 10px;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-top: 8px;
+                display: block;
+            }
+
+            .tech-val {
+                font-size: 11px;
+                margin-bottom: 2px;
+                display: block;
+                padding-left: 5px;
+            }
+
+            /* ESTILOS REPORTE Z */
+            .report-row {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px dotted #ccc;
+                padding: 2px 0;
+            }
+
+            .report-title {
+                font-weight: bold;
+                margin-top: 10px;
+                border-bottom: 1px solid black;
+            }
+
+            .print-area-letter {
+                display: none;
+                width: 100%;
+                max-width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-family: Arial, sans-serif;
+                color: black;
+                padding: 15mm;
+                font-size: 14px;
+            }
+
+            .quotation-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #333;
+                padding-bottom: 10px;
+            }
+
+            .quotation-info {
+                margin-bottom: 20px;
+                line-height: 1.6;
+            }
+
+            .quotation-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+
+            .quotation-table th,
+            .quotation-table td {
+                border: 1px solid #ccc;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .quotation-table th {
+                background-color: #f3f4f6;
+            }
+
+            .quotation-total {
+                text-align: right;
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 40px;
+            }
+
+            .quotation-footer {
+                margin-top: 50px;
+                font-size: 16px;
             }
         }
-    </script>
-<style>
-        body { font-family: 'Inter', sans-serif; }
-        .tab-active { border-bottom: 2px solid theme('colors.primary'); color: theme('colors.primary'); font-weight: 600; }
-        .btn-fast:active { transform: scale(0.98); transition: 0.1s; }
-        .suggestion-item:hover { background-color: theme('colors.surface-container'); cursor: pointer; }
-        
-        /* Estilos de impresión */
-        @media print {
-            @page { margin: 0; size: 70mm auto; } 
-            html, body { margin: 0 !important; padding: 0 !important; background: white; display: block !important; zoom: 1 !important; }
-            header, nav, section, .no-print, .hidden-print { display: none !important; }
-            .print-area { display: block !important; width: 68mm; position: absolute; top: 1px; left: 1px; font-family: 'JetBrains Mono', monospace; color: black; padding: 2mm; font-size: 11px; }
-            body.printing-sales #ticket-print-area { display: block !important; }
-            .print-logo { text-align: center; margin-bottom: 5px; }
-            .print-header { text-align: center; margin-bottom: 8px; border-bottom: 1px dashed black; padding-bottom: 5px; }
-            .print-info { font-size: 10px; margin-bottom: 5px; }
-            .print-item { display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 3px; }
-            .item-name { width: 70%; }
-            .print-total { font-size: 14px; font-weight: bold; text-align: right; border-top: 1px dashed black; margin-top: 8px; padding-top: 5px; }
+
+        #ticket-print-area,
+        #tech-print-area,
+        #report-print-area,
+        #quotation-print-area {
+            display: none;
         }
-        #ticket-print-area { display: none; }
-        
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-surface h-screen overflow-hidden text-on-surface" style="zoom: 0.9;">
-<header class="bg-surface-container-lowest border-b border-border-muted px-6 py-4 flex justify-between items-center z-10 sticky top-0">
-<div class="flex items-center gap-4">
-<div class="bg-primary-container text-on-primary rounded font-medium px-2.5 py-1 text-xs">V6</div>
-<div>
-<h1 class="text-lg font-semibold text-primary" id="pos-main-title">Mi Negocio POS</h1>
-<div class="text-xs text-on-surface-variant flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Modo Demo</div>
-</div>
-</div>
-<div class="flex-1 max-w-2xl mx-8 relative">
-<div class="relative">
-<i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-outline"></i>
-<input autocomplete="off" class="w-full pl-10 pr-4 py-2 border border-border-muted rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all text-sm" id="main-search" onkeyup="searchGlobal(event)" placeholder="Buscar productos (ESC para limpiar)" type="text"/>
-</div>
-<div class="absolute left-0 right-0 bg-surface-container-lowest shadow-lg rounded-b-lg border border-border-muted border-t-0 z-50 max-h-80 overflow-y-auto hidden mt-1" id="global-suggestions"></div>
-</div>
-<div class="flex items-center gap-4 text-sm text-on-surface-variant">
-<div class="font-mono text-sm" id="clock">12:00 PM</div>
-</div>
-</header>
-<nav class="bg-surface-container-lowest border-b border-border-muted px-6 flex items-center relative z-0">
-<div class="flex gap-6">
-<button class="py-3 px-1 text-sm tab-active transition-colors">Punto de Venta</button>
-<button class="py-3 px-1 text-sm text-on-surface-variant hover:text-on-surface transition-colors">Catálogo</button>
-<button class="py-3 px-1 text-sm text-on-surface-variant hover:text-on-surface transition-colors">Historial</button>
-</div>
-</nav>
-<main class="flex-1 flex overflow-hidden h-[calc(100vh-121px)]">
-<section class="flex-1 flex flex-col lg:flex-row" id="content-ventas">
-<div class="flex-1 p-8 overflow-y-auto flex flex-col">
-<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4">Acceso Rápido</h3>
-<div class="grid grid-cols-3 gap-4 mb-8">
-<!-- Impresiones -->
-<div class="bg-surface-container-lowest border border-border-muted rounded-xl p-4 flex flex-col gap-3 hover:shadow-sm transition-shadow">
-<div class="flex items-center gap-2 text-sm font-medium text-primary">
-<i class="fas fa-print"></i> Impresión
-                        </div>
-<div class="grid grid-cols-2 gap-2">
-<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Imp. B/N', 0.50, 1, 'IMPRESION')">
-<span class="text-sm font-medium text-on-surface">Blanco y Negro</span>
-<span class="text-xs font-mono text-on-surface-variant">Q0.50</span>
-</button>
-<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Imp. Color', 2.00, 1, 'IMPRESION')">
-<span class="text-sm font-medium text-on-surface">Color</span>
-<span class="text-xs font-mono text-on-surface-variant">Q2.00</span>
-</button>
-</div>
-</div>
-<!-- Copias -->
-<div class="bg-surface-container-lowest border border-border-muted rounded-xl p-4 flex flex-col gap-3 hover:shadow-sm transition-shadow">
-<div class="flex items-center gap-2 text-sm font-medium text-primary">
-<i class="fas fa-copy"></i> Copias
-                        </div>
-<div class="grid grid-cols-2 gap-2">
-<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Copia B/N', 0.25, 1, 'COPIA')">
-<span class="text-sm font-medium text-on-surface">Blanco y Negro</span>
-<span class="text-xs font-mono text-on-surface-variant">Q0.25</span>
-</button>
-<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Copia Color', 1.50, 1, 'COPIA')">
-<span class="text-sm font-medium text-on-surface">Color</span>
-<span class="text-xs font-mono text-on-surface-variant">Q1.50</span>
-</button>
-</div>
-</div>
-<!-- Encuadernación -->
-<div class="bg-surface-container-lowest border border-border-muted rounded-xl p-4 flex flex-col gap-3 hover:shadow-sm transition-shadow">
-<div class="flex items-center gap-2 text-sm font-medium text-primary">
-<i class="fas fa-book"></i> Encuadernación
-                        </div>
-<div class="grid grid-cols-2 gap-2">
-<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Empastado Pasta Blanda', 35.00, 1, 'EMPASTADO')">
-<span class="text-sm font-medium text-on-surface">Empastado</span>
-<span class="text-xs font-mono text-on-surface-variant">Q35.00</span>
-</button>
-<button class="btn-fast py-2 px-3 rounded-lg border border-border-muted hover:bg-surface-container transition-colors flex flex-col items-start gap-1" onclick="addCart('Encuadernado Espiral', 35.00, 1, 'ESPIRAL')">
-<span class="text-sm font-medium text-on-surface">Espiral</span>
-<span class="text-xs font-mono text-on-surface-variant">Q35.00</span>
-</button>
-</div>
-</div>
-</div>
-<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-4">Servicios Generales</h3>
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-8">
-<button class="btn-fast p-4 bg-surface-container-lowest border border-border-muted rounded-xl hover:shadow-sm hover:border-primary-fixed-dim transition-all flex flex-col items-start justify-center gap-2 text-left" onclick="addCart('Escaneo', 3.50, 1, 'ESCANEO')">
-<i class="fas fa-scanner text-on-surface-variant"></i>
-<div>
-<div class="text-sm font-medium text-on-surface">Escaneo</div>
-<div class="text-xs font-mono text-on-surface-variant">Q3.50</div>
-</div>
-</button>
-<button class="btn-fast p-4 bg-surface-container-lowest border border-border-muted rounded-xl hover:shadow-sm hover:border-primary-fixed-dim transition-all flex flex-col items-start justify-center gap-2 text-left" onclick="addCart('Tiempo Ciber', 5.00, 1, 'CIBER')">
-<i class="fas fa-desktop text-on-surface-variant"></i>
-<div>
-<div class="text-sm font-medium text-on-surface">Internet</div>
-<div class="text-xs font-mono text-on-surface-variant">Q5.00 / hr</div>
-</div>
-</button>
-</div>
-<!-- PANEL DE TICKETS APARCADOS -->
-<div class="mt-auto pt-8 border-t border-border-muted">
-<div class="flex items-center gap-2 mb-4">
-<i class="fas fa-pause-circle text-on-surface-variant"></i>
-<h3 class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Órdenes en Espera</h3>
-</div>
-<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide" id="parked-tickets-container">
-<!-- Generado por JS -->
-</div>
-</div>
-</div>
-<!-- SIDEBAR DE COBRO -->
-<aside class="w-96 bg-surface-container-lowest border-l border-border-muted flex flex-col z-20 shrink-0">
-<div class="p-6 border-b border-border-muted flex flex-col gap-4">
-<div class="flex justify-between items-center">
-<h2 class="text-lg font-semibold text-primary">Orden Actual</h2>
-<span class="text-xs font-medium bg-surface-container px-2.5 py-1 rounded-md text-on-surface" id="active-ticket-label">Ticket #1</span>
-</div>
-<div class="flex flex-col gap-3">
-<label class="text-xs font-medium text-on-surface-variant">Datos del Cliente</label>
-<div class="flex gap-2">
-<input class="w-2/3 px-3 py-2 text-sm border border-border-muted rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" id="bill-cliente" onblur="saveClientData()" placeholder="Nombre" type="text"/>
-<input class="w-1/3 px-3 py-2 text-sm border border-border-muted rounded-lg bg-surface focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" id="bill-nit" onblur="saveClientData()" placeholder="NIT" type="text"/>
-</div>
-</div>
-</div>
-<div class="px-6 py-3 border-b border-border-muted bg-surface flex justify-between items-center text-sm">
-<span class="font-medium text-on-surface-variant">Artículos</span>
-<div class="flex gap-3">
-<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" onclick="parkCurrentTicket()"><i class="fas fa-pause text-xs"></i> Suspender</button>
-<button class="text-on-surface-variant hover:text-error transition-colors" onclick="clearCart()">Vaciar</button>
-</div>
-</div>
-<div class="flex-1 overflow-y-auto p-6 space-y-3 bg-surface" id="cart-items"></div>
-<div class="p-6 border-t border-border-muted bg-surface-container-lowest flex flex-col gap-4">
-<div class="flex justify-between items-baseline">
-<span class="text-sm font-medium text-on-surface-variant">Total</span>
-<span class="text-3xl font-bold font-mono text-primary tracking-tight" id="total-price">Q0.00</span>
-</div>
-<button class="w-full bg-primary hover:bg-slate-deep text-on-primary py-3.5 rounded-lg text-base font-medium shadow-sm active:scale-95 transition-all flex justify-center items-center gap-2" onclick="processVenta()">
-                        Cobrar Orden
-                    </button>
-</div>
-</aside>
-</section>
-</main>
-<!-- ÁREA DE IMPRESIÓN -->
-<div class="print-area" id="ticket-print-area">
-<div class="print-logo"><h2 style="font-size:14px; margin:0; font-weight:bold;">TICKET DE VENTA</h2></div>
-<div class="print-header">
-<p id="print-date" style="font-size:10px; margin:4px 0;">--/--/--</p>
-<div class="print-info" style="text-align:left; margin-top:5px; border-top:1px dotted black; padding-top:2px;">
-<span id="print-client-name">CF</span><br/>
-<span id="print-client-nit">NIT: CF</span>
-</div>
-</div>
-<div id="print-items-container"></div>
-<div class="print-total" id="print-total-display">TOTAL: Q 0.00</div>
-</div>
-<script>
-        // SISTEMA DE TICKETS (1 Activo, Múltiples Aparcados)
-        let tickets = [{ id: 1, name: 'Ticket #1', items: [], status: 'active', client: '', nit: '' }];
-        let currentTicketId = 1;
-        let nextTicketId = 2;
 
-        let CATALOGO = [
-            { nombre: "Cuaderno Espiral", precio: 15.00 },
-            { nombre: "Lapicero BIC", precio: 2.00 },
-            { nombre: "Resma Papel", precio: 45.00 }
-        ];
 
-        window.addEventListener('load', () => {
-            updateTicketUI();
-            renderCart();
-            
-            // Reloj simple
-            setInterval(() => {
-                const now = new Date();
-                document.getElementById('clock').innerText = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            }, 1000);
-        });
+<body class="bg-slate-100 h-screen overflow-hidden selection:bg-blue-200 flex flex-col" style="zoom: 0.85;">
 
-        // ==========================================
-        // LÓGICA DE MULTITICKETS
-        // ==========================================
-        
-        function getCurrentTicket() {
-            return tickets.find(t => t.id === currentTicketId);
-        }
+    <header class="bg-white shadow-sm p-3 flex justify-between items-center z-10 border-b border-gray-100">
+        <div class="flex items-center gap-3">
+            <div
+                class="bg-gradient-to-r from-yellow-500 via-yellow-300 to-yellow-600 text-slate-900 p-2 rounded-lg font-black tracking-tighter italic shadow-lg text-sm border border-yellow-400">
+                FUNDADOR</div>
+            <div>
+                <h1 class="text-lg font-bold text-gray-800 tracking-tighter uppercase">Nombre de <span
+                        class="text-blue-600">Negocio</span></h1>
+                <div id="status-indicator" class="text-[10px] font-bold text-gray-400 flex items-center gap-1"><i
+                        class="fas fa-circle-notch fa-spin"></i> CARGANDO DB...</div>
+            </div>
+        </div>
 
-        function saveClientData() {
-            let t = getCurrentTicket();
-            if (t) {
-                t.client = document.getElementById('bill-cliente').value;
-                t.nit = document.getElementById('bill-nit').value;
-                updateTicketUI();
-            }
-        }
+        <div class="flex-1 mx-8 relative">
+            <input type="text" id="main-search" onkeydown="searchGlobal(event)" autocomplete="off"
+                placeholder="🔍 BUSCAR (ESC LIMPIAR)"
+                class="w-full p-2 border-2 rounded-xl bg-gray-50 focus:ring-4 focus:ring-blue-200 focus:border-blue-600 outline-none transition-all font-bold uppercase text-sm">
+            <div id="global-suggestions"
+                class="absolute left-0 right-0 bg-white shadow-2xl rounded-b-xl border border-t-0 z-50 max-h-96 overflow-y-auto hidden">
+            </div>
+        </div>
 
-        function createNewTicket() {
-            const newId = nextTicketId++;
-            tickets.push({ id: newId, name: `Ticket #${newId}`, items: [], status: 'active', client: '', nit: '' });
-            currentTicketId = newId;
-            
-            document.getElementById('bill-cliente').value = '';
-            document.getElementById('bill-nit').value = '';
-            document.getElementById('active-ticket-label').innerText = `Ticket #${newId}`;
-            
-            updateTicketUI();
-            renderCart();
-        }
+        <div class="text-right mr-2 hidden-print cursor-pointer hover:bg-slate-50 p-2 rounded-lg transition-all"
+            onclick="promptAdminAccess()">
+            <p id="ui-current-username" class="font-black text-blue-900 uppercase leading-none text-xs">Cargando...</p>
+            <p id="ui-current-role" class="text-[8px] font-black text-gray-400 uppercase tracking-widest">Cajero</p>
+        </div>
+    </header>
 
-        function parkCurrentTicket() {
-            let t = getCurrentTicket();
-            if (!t) return;
-            if (t.items.length === 0) {
-                alert("No hay artículos en la orden para suspender.");
-                return;
-            }
-            
-            saveClientData();
-            t.status = 'parked';
+    <nav class="bg-white border-b flex justify-between items-center shadow-md pr-4 relative z-0">
+        <div class="flex">
+            <button onclick="switchTab('ventas')" id="tab-ventas"
+                class="px-8 py-3 font-black text-xs tracking-widest tab-active uppercase transition-colors border-r">Ventas</button>
+            <button onclick="alert('Esta sección no está disponible en la versión demo.')" id="tab-tecnico"
+                class="px-8 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r cursor-not-allowed">Técnico</button>
+            <button onclick="alert('Esta sección no está disponible en la versión demo.')" id="btn-historial-tecnico"
+                class="px-6 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r cursor-not-allowed"><i
+                    class="fas fa-screwdriver-wrench mr-2"></i>Órdenes</button>
+            <button onclick="alert('Esta sección no está disponible en la versión demo.')" id="tab-inv-sala"
+                class="px-8 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r cursor-not-allowed">Inv.
+                Sala</button>
+            <button onclick="alert('Esta sección no está disponible en la versión demo.')" id="tab-inv-bodega"
+                class="px-8 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r cursor-not-allowed">Inv.
+                Bodega</button>
+            <button onclick="alert('Esta sección no está disponible en la versión demo.')" id="btn-historial-tickets"
+                class="px-6 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r cursor-not-allowed"><i
+                    class="fas fa-receipt mr-2"></i>Historial Tickets</button>
+            <button onclick="alert('Esta sección no está disponible en la versión demo.')" id="btn-historial-pedidos"
+                class="px-6 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r cursor-not-allowed"><i
+                    class="fas fa-boxes-packing mr-2"></i>Pedidos</button>
+            <button onclick="alert('Esta sección no está disponible en la versión demo.')" id="tab-etiquetas"
+                class="px-8 py-3 font-black text-xs tracking-widest text-gray-400 hover:bg-gray-50 uppercase transition-colors border-r cursor-not-allowed">Etiquetas</button>
+        </div>
 
-            createNewTicket(); 
-        }
+        <div class="flex gap-2 items-center">
+            <button onclick="alert('Esta sección no está disponible en la versión demo.')"
+                class="bg-slate-800 text-white px-3 py-1.5 rounded-md font-bold text-[10px] shadow-sm hover:bg-black transition-colors flex items-center gap-2 uppercase tracking-wider cursor-not-allowed">
+                <i class="fas fa-chart-line"></i> Corte Z
+            </button>
+        </div>
+    </nav>
 
-        function unparkTicket(id) {
-            let current = getCurrentTicket();
-            
-            if (current && current.items.length > 0) {
-                saveClientData();
-                current.status = 'parked';
-            } else if (current && current.items.length === 0) {
-                tickets = tickets.filter(tk => tk.id !== current.id);
-            }
+    <main class="flex-1 flex overflow-hidden">
 
-            let tToUnpark = tickets.find(tk => tk.id === id);
-            if (tToUnpark) {
-                tToUnpark.status = 'active';
-                currentTicketId = id;
-                
-                document.getElementById('bill-cliente').value = tToUnpark.client;
-                document.getElementById('bill-nit').value = tToUnpark.nit;
-                document.getElementById('active-ticket-label').innerText = tToUnpark.name;
-                
-                updateTicketUI();
-                renderCart();
-            }
-        }
+        <section id="content-ventas" class="flex-1 flex">
+            <div class="flex-1 p-6 overflow-y-auto">
 
-        // ==========================================
-        // RENDERIZADO DE INTERFAZ (UI)
-        // ==========================================
+                <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3 italic">Zona de Ráfaga
+                </h3>
+                <div id="grid-rafaga" class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+                </div>
 
-        function updateTicketUI() {
-            const parkedContainer = document.getElementById('parked-tickets-container');
-            const parkedTickets = tickets.filter(t => t.status === 'parked');
-            
-            if (parkedTickets.length === 0) {
-                parkedContainer.innerHTML = `<p class="text-sm text-on-surface-variant py-2">No hay órdenes en espera.</p>`;
-            } else {
-                parkedContainer.innerHTML = parkedTickets.map(t => {
-                    let total = t.items.reduce((sum, i) => sum + (i.precioUnit * i.cant), 0);
-                    return `
-                    <div class="min-w-[240px] bg-surface-container-lowest border border-border-muted rounded-xl p-4 flex flex-col gap-3 hover:border-primary-fixed-dim transition-colors">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="font-medium text-sm text-on-surface block">${t.name}</span>
-                                <span class="text-xs text-on-surface-variant truncate w-32 block">${t.client || 'Consumidor Final'}</span>
+                <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Servicios Frecuentes
+                </h3>
+                <div id="grid-servicios-frecuentes" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 mb-6">
+                </div>
+
+                <div id="libreria-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-6"></div>
+
+                <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3 mt-6">Top 20 Más Vendidos</h3>
+                <div id="top20-container" class="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto pb-4 mb-24 snap-x custom-scrollbar">
+                    <!-- Botones generados dinámicamente -->
+                </div>
+
+                <section id="beta-warning"
+                    class="mt-10 mb-8 min-h-56 flex flex-col items-center justify-center rounded-3xl border-4 border-amber-400 bg-amber-50 px-8 py-10 text-center shadow-inner">
+                    <div
+                        class="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-amber-400 text-amber-950 shadow-lg">
+                        <i class="fas fa-triangle-exclamation text-2xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-black uppercase tracking-tight text-amber-950">Beta Cerrada</h2>
+                    <p class="mt-2 text-lg font-black uppercase tracking-widest text-amber-800">10 septiembre 2026</p>
+                    <p class="mt-4 text-sm font-black uppercase tracking-widest text-slate-700">PDV INCO Fundadores</p>
+                    <p class="mt-1 text-xs font-bold uppercase tracking-widest text-slate-500">Powered by Dayan Melvin
+                    </p>
+                </section>
+            </div>
+
+            <aside class="w-96 bg-white border-l flex flex-col shadow-2xl z-20">
+                <div class="p-4 bg-slate-100 border-b space-y-2">
+                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Datos Facturación</p>
+                    <div class="flex gap-2">
+                        <input type="text" id="bill-cliente" placeholder="NOMBRE (CF)"
+                            class="w-2/3 p-2 text-xs border rounded-lg uppercase font-bold outline-none focus:border-blue-500">
+                        <input type="text" id="bill-nit" placeholder="NIT (CF)"
+                            class="w-1/3 p-2 text-xs border rounded-lg uppercase font-bold outline-none focus:border-blue-500">
+                    </div>
+                </div>
+                <div class="px-6 py-2 border-b bg-white flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <h2 class="font-black text-sm text-slate-800 uppercase">Orden</h2>
+                        <span id="active-ticket-label"
+                            class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded"></span>
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="parkCurrentTicket()"
+                            class="text-amber-600 text-[10px] font-black uppercase hover:underline flex items-center gap-1"><i
+                                class="fas fa-pause"></i> Aparcar</button>
+                        <button onclick="clearCart()"
+                            class="text-red-500 text-[10px] font-black uppercase hover:underline">Vaciar</button>
+                    </div>
+                </div>
+                <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-2 bg-slate-50/30"></div>
+                <div class="p-6 border-t bg-white space-y-3 shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+                    <button onclick="applyDiscount()"
+                        class="w-full py-2 bg-red-100 text-red-600 rounded-lg text-xs font-black uppercase hover:bg-red-200 italic transition-all"><i
+                            class="fas fa-tag mr-2"></i> Descuento</button>
+                    <div class="flex justify-between items-end"><span
+                            class="text-slate-400 font-black text-[10px] uppercase tracking-widest leading-none">Total</span><span
+                            id="total-price"
+                            class="text-5xl font-black text-blue-900 tracking-tighter uppercase leading-none">Q
+                            0.00</span></div>
+                    <div class="mb-2">
+                        <div class="grid grid-cols-2 gap-2 mb-2">
+                            <div class="flex items-center gap-2 bg-slate-50 p-2 rounded-lg border border-slate-200">
+                                <input type="checkbox" id="toggle-cotizacion" class="w-4 h-4 cursor-pointer accent-orange-500"
+                                    onchange="toggleModosVenta('cotizacion')">
+                                <label for="toggle-cotizacion" class="font-bold text-[10px] uppercase text-slate-700 cursor-pointer flex-1">Cotizar</label>
                             </div>
-                            <span class="text-xs text-on-surface-variant bg-surface px-2 py-0.5 rounded border border-border-muted">${t.items.length} items</span>
+                            <div class="flex items-center gap-2 bg-slate-50 p-2 rounded-lg border border-slate-200">
+                                <input type="checkbox" id="toggle-pedido" class="w-4 h-4 cursor-pointer accent-purple-600"
+                                    onchange="toggleModosVenta('pedido')">
+                                <label for="toggle-pedido" class="font-bold text-[10px] uppercase text-slate-700 cursor-pointer flex-1">Pedido</label>
+                            </div>
                         </div>
-                        <div class="flex justify-between items-center mt-1">
-                            <span class="font-mono font-medium text-base text-primary">Q${total.toFixed(2)}</span>
-                            <button onclick="unparkTicket(${t.id})" class="text-sm font-medium text-primary hover:text-slate-deep transition-colors">Retomar</button>
+                        <div id="banner-modo-pedido" class="hidden w-full bg-purple-600 text-white font-black text-center py-1.5 mb-2 uppercase tracking-widest text-[10px] rounded animate-pulse shadow-inner">⚡ MODO PEDIDO ACTIVO ⚡</div>
+                        <select id="payment-method"
+                            class="w-full p-2 bg-slate-100 border border-slate-300 rounded-lg text-xs font-bold uppercase text-slate-700 outline-none mb-3">
+                            <option value="EFECTIVO" selected>💵 Efectivo</option>
+                            <option value="TRANSFERENCIA">📱 Transferencia / QR</option>
+                            <option value="TARJETA">💳 Tarjeta</option>
+                            <option value="CREDITO">🤝 Crédito / Pendiente</option>
+                        </select>
+                        <button id="btn-cobrar-principal" onclick="abrirModalCobro()"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-5 rounded-3xl text-xl font-black shadow-xl active:scale-95 transition-all">COBRAR
+                            (F12)</button>
+                    </div>
+                    <div class="mt-2 flex justify-center items-center h-20 w-full p-2">
+                        <img id="ui-sidebar-logo" src="" alt="Logo"
+                            class="max-h-full max-w-full object-contain hidden drop-shadow-md">
+                    </div>
+
+                    <script>
+                        function toggleModosVenta(modo) {
+                            const chkCot = document.getElementById('toggle-cotizacion');
+                            const chkPed = document.getElementById('toggle-pedido');
+                            const btn = document.getElementById('btn-cobrar-principal');
+                            const bannerPed = document.getElementById('banner-modo-pedido');
+
+                            if (modo === 'cotizacion' && chkCot.checked) chkPed.checked = false;
+                            if (modo === 'pedido' && chkPed.checked) chkCot.checked = false;
+
+                            const isCotizacion = chkCot.checked;
+                            const isPedido = chkPed.checked;
+
+                            // Limpiar clases
+                            btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'bg-orange-500', 'hover:bg-orange-600', 'bg-purple-600', 'hover:bg-purple-700');
+
+                            if (isCotizacion) {
+                                btn.innerText = 'COTIZAR (F12)';
+                                btn.classList.add('bg-orange-500', 'hover:bg-orange-600');
+                                bannerPed.classList.add('hidden');
+                            } else if (isPedido) {
+                                btn.innerText = 'GENERAR PEDIDO (F12)';
+                                btn.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                                bannerPed.classList.remove('hidden');
+                            } else {
+                                btn.innerText = 'COBRAR (F12)';
+                                btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                                bannerPed.classList.add('hidden');
+                            }
+                        }
+                    </script>
+            </aside>
+        </section>
+
+        <section id="content-tecnico" class="hidden flex-1 p-6 overflow-y-auto bg-slate-200 flex justify-center">
+            <div
+                class="bg-white w-[900px] shadow-2xl p-8 relative border-t-[12px] border-blue-900 h-fit flex flex-col gap-6 rounded-b-xl">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <h2 class="text-3xl font-black text-slate-800 uppercase tracking-tighter">Ingreso Equipo</h2>
+                    <div class="bg-slate-100 px-4 py-2 rounded-lg text-xs font-bold text-slate-500 uppercase">Garantía
+                        30 Días</div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="space-y-3"><label
+                            class="block text-[10px] font-black text-blue-900 uppercase tracking-widest">Cliente</label><input
+                            type="text" id="st-cliente" placeholder="NOMBRE"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold uppercase outline-none focus:border-blue-500"><input
+                            type="text" id="st-telefono" placeholder="TELÉFONO"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-blue-700 outline-none focus:border-blue-500">
+                    </div>
+                    <div class="space-y-3"><label
+                            class="block text-[10px] font-black text-blue-900 uppercase tracking-widest">Equipo</label><select
+                            id="st-tipo" onchange="updateTechReco()"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold text-slate-700 outline-none uppercase">
+                            <option value="IMPRESORA">Impresora</option>
+                            <option value="COMPUTADORA">PC / Laptop</option>
+                            <option value="OTRO">Otro</option>
+                        </select><input type="text" id="st-modelo" placeholder="MODELO"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold uppercase outline-none focus:border-blue-500">
+                    </div>
+                </div>
+                <div class="space-y-2"><label
+                        class="block text-[10px] font-black text-blue-900 uppercase tracking-widest">Falla</label><textarea
+                        id="st-falla" placeholder="DESCRIPCIÓN"
+                        class="w-full p-3 border-2 rounded-xl h-20 bg-slate-50 outline-none text-sm font-medium resize-none uppercase focus:border-blue-500"></textarea>
+                </div>
+                <div id="st-reco-box" class="bg-blue-50 p-3 rounded-xl border-l-4 border-blue-500">
+                    <p class="text-[9px] font-black text-blue-400 uppercase mb-1">Nota:</p>
+                    <p id="st-reco-text" class="text-xs text-blue-900 font-medium italic">Recomendación...</p>
+                </div>
+                <div class="flex justify-between items-center pt-4 border-t">
+                    <div class="flex gap-4 w-2/3">
+                        <div class="w-1/2">
+                            <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Costo Estimado / Total</label>
+                            <div class="flex items-center">
+                                <span class="text-xl font-black text-slate-400 mr-2">Q</span>
+                                <input type="number" id="st-total" value="0" class="w-full bg-transparent text-3xl font-black text-slate-700 outline-none">
+                            </div>
                         </div>
-                    </div>`;
-                }).join('');
-            }
-        }
+                        <div class="w-1/2">
+                            <label class="block text-[10px] font-black text-emerald-600 uppercase tracking-widest">Anticipo</label>
+                            <div class="flex items-center">
+                                <span class="text-xl font-black text-emerald-600 mr-2">Q</span>
+                                <input type="number" id="st-anticipo" value="0" class="w-full bg-transparent text-3xl font-black text-emerald-700 outline-none">
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="processTechOrder()"
+                        class="bg-slate-900 hover:bg-black text-white px-8 py-4 rounded-2xl font-black uppercase shadow-xl tracking-widest transition-all active:scale-95 w-1/3 ml-4">
+                        <i class="fas fa-print mr-2"></i> INGRESAR
+                    </button>
+                </div>
+            </div>
+        </section>
+        </section>
 
-        // ==========================================
-        // LÓGICA DE CARRITO (Adaptada al ticket actual)
-        // ==========================================
+        <section id="content-inv-sala" class="hidden flex-1 p-6 overflow-y-auto bg-slate-200 flex flex-col gap-6">
+            <div
+                class="flex justify-between items-center bg-white p-6 rounded-2xl shadow-sm border-t-8 border-blue-900">
+                <div>
+                    <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tighter">Inventario Sala de Ventas
+                    </h2>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Base de Datos Local</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="exportarExcelUI('SALA')"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 flex items-center gap-2">
+                        <i class="fas fa-file-excel"></i> Exportar Excel
+                    </button>
+                    <button onclick="importarExcelUI('SALA')"
+                        class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 flex items-center gap-2">
+                        <i class="fas fa-upload"></i> Importar Excel
+                    </button>
+                </div>
+            </div>
 
-        function addCart(n, p, c = 1, cat, forceNew = false) {
-            let t = getCurrentTicket();
-            if(!t) return;
-            
-            let i = forceNew ? null : t.items.find(x => x.nombre === n);
-            if (i) { 
-                i.cant += c; 
-            } else { 
-                t.items.push({ nombre: n, precioUnit: p, cant: c }); 
-            }
-            renderCart();
-            updateTicketUI();
-        }
+            <div class="bg-white p-6 rounded-2xl shadow-sm relative transition-all" id="form-container-sala">
+                <div id="edit-indicator-sala"
+                    class="absolute top-0 right-0 bg-blue-500 text-white px-4 py-1 rounded-bl-xl rounded-tr-xl text-[10px] font-bold uppercase hidden">
+                    Editando Producto <span id="edit-indicator-sala-code"></span>
+                    <button onclick="cancelEditSala()" class="ml-2 hover:text-red-300"><i
+                            class="fas fa-times"></i></button>
+                </div>
+                <h3 id="form-title-sala" class="text-[10px] font-black text-blue-900 uppercase tracking-widest mb-4">
+                    Agregar / Editar Producto en Sala</h3>
+                <div class="grid grid-cols-1 md:grid-cols-8 gap-4 items-end">
+                    <div class="space-y-2 col-span-2">
+                        <label
+                            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Código</label>
+                        <div class="flex">
+                            <input type="text" id="inv-sala-codigo" onchange="verificarCodigoGlobal('SALA')"
+                                placeholder="Ej. S65E9D6"
+                                class="w-full p-3 bg-slate-50 border-2 rounded-l-xl font-bold uppercase outline-none focus:border-blue-500">
+                            <button
+                                onclick="document.getElementById('inv-sala-codigo').value = 'PROD-' + Date.now().toString().slice(-6);"
+                                class="bg-slate-800 text-white px-3 rounded-r-xl hover:bg-slate-700"
+                                title="Generar Código Auto"><i class="fas fa-barcode"></i></button>
+                        </div>
+                    </div>
+                    <div class="space-y-2 col-span-2">
+                        <label
+                            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Descripción</label>
+                        <input type="text" id="inv-sala-desc" placeholder="Ej. Lapicero Bic rojo"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold outline-none focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2 col-span-1">
+                        <label
+                            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Categoría</label>
+                        <input type="text" id="inv-sala-cat" list="category-list" placeholder="LIBRERIA"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold text-slate-700 outline-none focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2 col-span-1">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Costo
+                            Adq.</label>
+                        <input type="number" step="0.01" id="inv-sala-costo" placeholder="0.00"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-orange-700 outline-none text-center focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2 col-span-1">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Precio
+                            Venta</label>
+                        <input type="number" step="0.01" id="inv-sala-precio" placeholder="0.00"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-green-700 outline-none text-center focus:border-blue-500">
+                    </div>
+                    <div class="space-y-2 col-span-1" id="inv-sala-stock-container">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Stock
+                            Ini.</label>
+                        <input type="number" id="inv-sala-stock" placeholder="0"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-slate-700 outline-none text-center focus:border-blue-500">
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <p class="text-[10px] font-black text-slate-400 uppercase italic">* El Stock se gestiona a través de
+                        los botones de Entrada/Salida en la tabla.</p>
+                    <div class="flex gap-2">
+                        <button id="btn-delete-sala" onclick="deleteProducto('SALA')"
+                            class="hidden bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 items-center gap-2">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>
+                        <button id="btn-save-sala" onclick="saveInventarioSala()"
+                            class="bg-slate-900 hover:bg-black text-white px-8 py-3 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 flex items-center gap-2">
+                            <i class="fas fa-save"></i> Guardar Producto
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-        function renderCart() {
-            let t = getCurrentTicket();
-            const c = document.getElementById('cart-items'); 
-            c.innerHTML = ''; 
-            let total = 0;
-            
-            if(!t || t.items.length === 0) {
-                c.innerHTML = `<div class="h-full flex flex-col items-center justify-center text-on-surface-variant space-y-3"><i class="fas fa-shopping-basket text-2xl text-border-muted"></i><p class="text-sm">Orden vacía</p></div>`;
-                document.getElementById('total-price').innerText = `Q0.00`;
-                return;
-            }
+            <div class="bg-white rounded-2xl shadow-sm flex-1 flex flex-col overflow-hidden min-h-[400px]">
+                <div class="p-4 border-b flex justify-between items-center bg-slate-50">
+                    <h3 class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Productos en Sala <span
+                            id="inv-sala-count" class="text-blue-600"></span></h3>
+                    <div class="relative w-64">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-slate-400"></i>
+                        <input type="text" id="inv-sala-search" placeholder="Filtrar tabla..."
+                            class="w-full pl-9 pr-3 py-2 text-xs border-2 rounded-lg bg-white outline-none focus:border-blue-500 font-bold uppercase">
+                    </div>
+                </div>
+                <div id="inventario-table-sala" class="flex-1 w-full text-xs font-bold"></div>
+            </div>
+        </section>
 
-            t.items.forEach((i, x) => {
-                let subtotal = i.precioUnit * i.cant; 
-                total += subtotal;
-                c.innerHTML += `
-                <div class="flex justify-between items-center py-2 border-b border-border-muted last:border-0">
+        <section id="content-inv-bodega" class="hidden flex-1 p-6 overflow-y-auto bg-slate-200 flex flex-col gap-6">
+            <div
+                class="flex justify-between items-center bg-white p-6 rounded-2xl shadow-sm border-t-8 border-orange-600">
+                <div>
+                    <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tighter">Inventario Bodega</h2>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Base de Datos Local</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="exportarExcelUI('BODEGA')"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 flex items-center gap-2">
+                        <i class="fas fa-file-excel"></i> Exportar Excel
+                    </button>
+                    <button onclick="importarExcelUI('BODEGA')"
+                        class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 flex items-center gap-2">
+                        <i class="fas fa-upload"></i> Importar Excel
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm relative transition-all" id="form-container-bodega">
+                <div id="edit-indicator-bodega"
+                    class="absolute top-0 right-0 bg-orange-500 text-white px-4 py-1 rounded-bl-xl rounded-tr-xl text-[10px] font-bold uppercase hidden">
+                    Editando Producto <span id="edit-indicator-bodega-code"></span>
+                    <button onclick="cancelEditBodega()" class="ml-2 hover:text-red-300"><i
+                            class="fas fa-times"></i></button>
+                </div>
+                <h3 id="form-title-bodega"
+                    class="text-[10px] font-black text-orange-700 uppercase tracking-widest mb-4">Agregar / Editar
+                    Producto en Bodega</h3>
+                <div class="grid grid-cols-1 md:grid-cols-9 gap-4 items-end">
+                    <div class="space-y-2 col-span-2">
+                        <label
+                            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Código</label>
+                        <div class="flex">
+                            <input type="text" id="inv-bodega-codigo" onchange="verificarCodigoGlobal('BODEGA')"
+                                placeholder="Ej. S65E9D6"
+                                class="w-full p-3 bg-slate-50 border-2 rounded-l-xl font-bold uppercase outline-none focus:border-orange-500">
+                            <button
+                                onclick="document.getElementById('inv-bodega-codigo').value = 'PROD-' + Date.now().toString().slice(-6);"
+                                class="bg-slate-800 text-white px-3 rounded-r-xl hover:bg-slate-700"
+                                title="Generar Código Auto"><i class="fas fa-barcode"></i></button>
+                        </div>
+                    </div>
+                    <div class="space-y-2 col-span-2">
+                        <label
+                            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Descripción</label>
+                        <input type="text" id="inv-bodega-desc" placeholder="Ej. Lapicero Bic rojo"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold outline-none focus:border-orange-500">
+                    </div>
+                    <div class="space-y-2 col-span-1">
+                        <label
+                            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Presentación</label>
+                        <select id="inv-bodega-pres"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold text-slate-700 outline-none focus:border-orange-500 uppercase">
+                            <option value="UNIDAD">Unidad</option>
+                            <option value="CAJA">Caja</option>
+                            <option value="FARDO">Fardo</option>
+                            <option value="BOLSA">Bolsa</option>
+                            <option value="OTRO">Otro</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2 col-span-1">
+                        <label
+                            class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Categoría</label>
+                        <input type="text" id="inv-bodega-cat" list="category-list" placeholder="LIBRERIA"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold text-slate-700 outline-none focus:border-orange-500">
+                    </div>
+                    <div class="space-y-2 col-span-1">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Costo
+                            Adq.</label>
+                        <input type="number" step="0.01" id="inv-bodega-costo" placeholder="0.00"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-orange-700 outline-none text-center focus:border-orange-500">
+                    </div>
+                    <div class="space-y-2 col-span-1">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Precio
+                            Venta</label>
+                        <input type="number" step="0.01" id="inv-bodega-precio" placeholder="0.00"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-green-700 outline-none text-center focus:border-orange-500">
+                    </div>
+                    <div class="space-y-2 col-span-1" id="inv-bodega-stock-container">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest">Stock
+                            Ini.</label>
+                        <input type="number" id="inv-bodega-stock" placeholder="0"
+                            class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-slate-700 outline-none text-center focus:border-orange-500">
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-between items-center">
+                    <p class="text-[10px] font-black text-slate-400 uppercase italic">* El Stock se gestiona a través de
+                        los botones de Entrada/Salida en la tabla.</p>
+                    <div class="flex gap-2">
+                        <button id="btn-delete-bodega" onclick="deleteProducto('BODEGA')"
+                            class="hidden bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 items-center gap-2">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>
+                        <button id="btn-save-bodega" onclick="saveInventarioBodega()"
+                            class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-xl font-black uppercase shadow-lg transition-all active:scale-95 flex items-center gap-2">
+                            <i class="fas fa-save"></i> Guardar Producto
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm flex-1 flex flex-col overflow-hidden min-h-[400px]">
+                <div class="p-4 border-b flex justify-between items-center bg-slate-50">
+                    <h3 class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Productos en Bodega
+                        <span id="inv-bodega-count" class="text-orange-600"></span>
+                    </h3>
+                    <div class="relative w-64">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-slate-400"></i>
+                        <input type="text" id="inv-bodega-search" placeholder="Filtrar tabla..."
+                            class="w-full pl-9 pr-3 py-2 text-xs border-2 rounded-lg bg-white outline-none focus:border-orange-500 font-bold uppercase">
+                    </div>
+                </div>
+                <div id="inventario-table-bodega" class="flex-1 w-full text-xs font-bold"></div>
+            </div>
+        </section>
+
+        <section id="content-etiquetas" class="hidden flex-1 p-6 overflow-y-auto bg-slate-50 flex flex-col relative h-full">
+            <div class="flex flex-col h-full bg-white rounded-3xl shadow-xl overflow-hidden border-t-8 border-indigo-600">
+                <div class="p-6 bg-slate-100 border-b flex justify-between items-center shrink-0">
+                    <div>
+                        <h2 class="text-xl font-black text-slate-800 uppercase flex items-center gap-2">
+                            <i class="fas fa-barcode text-indigo-600"></i> Generador de Etiquetas
+                        </h2>
+                        <p class="text-xs font-bold text-slate-500 uppercase">Crea códigos de barras para tus productos</p>
+                    </div>
+                </div>
+                
+                <div class="p-6 flex gap-4 shrink-0 border-b bg-white">
                     <div class="flex-1">
-                        <p class="font-medium text-sm text-on-surface">${i.nombre}</p>
-                        <p class="text-xs text-on-surface-variant font-mono">${i.cant} x Q${i.precioUnit.toFixed(2)}</p>
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Buscar Producto</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="etiquetas-search" placeholder="Código o nombre..."
+                                class="flex-1 p-3 text-sm border-2 rounded-xl bg-slate-50 outline-none focus:border-indigo-500 font-bold uppercase">
+                            <button onclick="buscarProductoEtiquetas()" class="bg-indigo-600 text-white px-4 rounded-xl font-bold hover:bg-indigo-700 transition"><i class="fas fa-search"></i> Buscar</button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <span class="text-sm font-medium font-mono text-on-surface">Q${subtotal.toFixed(2)}</span>
-                        <button onclick="removeItem(${x})" class="text-outline hover:text-error transition-colors"><i class="fas fa-trash-alt text-xs"></i></button>
+                    <div class="w-24">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Cantidad</label>
+                        <input type="number" id="etiquetas-qty" value="1" min="1"
+                            class="w-full p-3 text-sm border-2 rounded-xl bg-slate-50 outline-none focus:border-indigo-500 font-bold text-center">
                     </div>
-                </div>`;
-            });
-            document.getElementById('total-price').innerText = `Q${total.toFixed(2)}`;
-        }
+                    <div class="w-48">
+                        <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Formato</label>
+                        <select id="etiquetas-format" class="w-full p-3 text-sm border-2 rounded-xl bg-slate-50 outline-none focus:border-indigo-500 font-bold uppercase">
+                            <option value="rollo">Rollo (58mm)</option>
+                            <option value="carta">Hoja Carta</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button onclick="agregarEtiqueta()" class="bg-slate-800 text-white px-6 py-3 rounded-xl font-black uppercase text-xs hover:bg-black transition-all shadow-md">
+                            Agregar a Lista
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex-1 p-6 overflow-y-auto bg-slate-50" id="etiquetas-preview-container">
+                    <div id="etiquetas-grid" class="flex flex-wrap gap-4 justify-center items-start">
+                        <!-- Etiquetas renderizadas -->
+                    </div>
+                </div>
+                
+                <div class="p-4 bg-white border-t shrink-0 flex justify-end gap-3">
+                    <button onclick="limpiarEtiquetas()" class="px-6 py-3 bg-red-100 hover:bg-red-200 text-red-700 rounded-xl font-black uppercase text-xs transition-colors">Limpiar</button>
+                    <button onclick="exportarEtiquetasPDF()" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-black uppercase text-xs shadow-lg transition-transform hover:scale-105 flex items-center gap-2">
+                        <i class="fas fa-file-pdf"></i> Exportar a PDF
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        function removeItem(index) { 
-            let t = getCurrentTicket();
-            if(t) { t.items.splice(index, 1); renderCart(); }
-        }
-        
-        function clearCart() { 
-            let t = getCurrentTicket();
-            if(t) { t.items = []; renderCart(); }
-        }
+    <!-- Contenedor de Tickets Aparcados (Minimizados) -->
+    <div id="tickets-aparcados-bar" class="fixed bottom-6 right-6 flex flex-col-reverse gap-2 items-end z-50"></div>
 
-        function processVenta() {
-            let t = getCurrentTicket();
-            if (!t || t.items.length === 0) return;
-            
-            saveClientData();
-            
-            // Simular Impresión
-            document.body.classList.add('printing-sales');
-            const d = new Date();
-            document.getElementById('print-date').innerText = d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
-            document.getElementById('print-client-name').innerText = t.client || "CONSUMIDOR FINAL";
-            document.getElementById('print-client-nit').innerText = "NIT: " + (t.nit || "CF");
-            
-            let totalCobrado = 0;
-            const container = document.getElementById('print-items-container');
-            container.innerHTML = '';
-            t.items.forEach(item => {
-                totalCobrado += item.precioUnit * item.cant;
-                container.innerHTML += `<div class="print-item"><span class="item-name">${item.cant} ${item.nombre}</span><span class="text-right">Q${(item.precioUnit * item.cant).toFixed(2)}</span></div>`;
-            });
-            document.getElementById('print-total-display').innerText = `TOTAL: Q ${totalCobrado.toFixed(2)}`;
-            
-            window.print();
-            document.body.classList.remove('printing-sales');
+    <div id="quotation-print-area" class="print-area-letter">
+        <div class="quotation-header">
+            <div style="display:flex; align-items:center; gap:15px;">
+                <img id="q-print-logo-img" src="" alt="Logo" style="display:none; max-width: 100px; max-height: 100px;">
+                <div>
+                    <h2 style="font-size:24px; margin:0;" id="q-print-business-name">Nombre de Negocio</h2>
+                    <p style="margin:4px 0;" id="q-print-slogan">Slogan del Negocio</p>
+                    <p style="margin:4px 0;"><i class="fab fa-whatsapp"></i> <span
+                            id="q-print-whatsapp">0000-0000</span></p>
+                </div>
+            </div>
+            <div style="text-align:right;">
+                <h1 style="font-size:28px; margin:0; color:#333;">COTIZACIÓN</h1>
+                <p style="margin:4px 0;"><strong>No:</strong> #<span id="q-print-id"></span></p>
+            </div>
+        </div>
 
-            // Eliminar ticket completado
-            tickets = tickets.filter(tk => tk.id !== currentTicketId);
-            
-            // Siempre creamos uno nuevo tras cobrar
-            createNewTicket();
-        }
-        
-        // Buscador Global Básico
-        function searchGlobal(e) {
-            const list = document.getElementById('global-suggestions');
-            const q = e.target.value.toLowerCase();
-            
-            if (e.key === 'Escape') {
-                e.target.value = '';
-                list.classList.add('hidden');
-                return;
-            }
-            
-            if (q.length < 2) { list.classList.add('hidden'); return; }
-            const res = CATALOGO.filter(i => i.nombre.toLowerCase().includes(q));
-            
-            if (res.length > 0) {
-                list.innerHTML = res.map(i => `
-                    <div onclick="addCart('${i.nombre}', ${i.precio}); document.getElementById('main-search').value=''; document.getElementById('global-suggestions').classList.add('hidden');" class="suggestion-item p-3 border-b border-border-muted last:border-0 flex justify-between items-center transition-colors">
-                        <span class="text-sm font-medium text-on-surface">${i.nombre}</span>
-                        <span class="text-sm font-mono text-primary">Q${i.precio.toFixed(2)}</span>
-                    </div>`).join('');
-                list.classList.remove('hidden');
-            } else { 
-                list.innerHTML = `<div class="p-4 text-sm text-on-surface-variant text-center">No se encontraron productos</div>`;
-                list.classList.remove('hidden'); 
-            }
-        }
-        
-        // Cerrar sugerencias al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('#main-search') && !e.target.closest('#global-suggestions')) {
-                document.getElementById('global-suggestions').classList.add('hidden');
-            }
-        });
-    </script>
-</body></html>
+        <div class="quotation-info">
+            <div style="display:flex; justify-content:space-between;">
+                <div>
+                    <p style="margin:2px 0;"><strong>Cliente:</strong> <span id="q-print-client">CF</span></p>
+                    <p style="margin:2px 0;"><strong>NIT:</strong> <span id="q-print-nit">CF</span></p>
+                </div>
+                <div style="text-align:right;">
+                    <p style="margin:2px 0;"><strong>Fecha:</strong> <span id="q-print-date">--/--/--</span></p>
+                    <p style="margin:2px 0;"><strong>Cotizado por:</strong> <span id="q-print-user">Administrador</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <table class="quotation-table">
+            <thead>
+                <tr>
+                    <th style="width:10%;">Cant</th>
+                    <th style="width:60%;">Descripción</th>
+                    <th style="width:15%;">P. Unitario</th>
+                    <th style="width:15%;">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="q-print-items-container">
+            </tbody>
+        </table>
+
+        <div class="quotation-total">
+            <p style="margin:0;">TOTAL: Q <span id="q-print-total">0.00</span></p>
+        </div>
+
+        <div class="quotation-footer">
+            <p><strong>Cotización con vigencia de:</strong> _________________________________________</p>
+        </div>
+    </div>
+
+    <div id="ticket-print-area" class="print-area">
+        <div class="print-logo">
+            <img id="print-logo-img" src="" alt="Logo"
+                style="display:none; max-width: 120px; filter: grayscale(100%) contrast(200%);">
+        </div>
+        <div class="print-header">
+            <h2 style="font-size:14px; margin:0;" id="print-business-name">Nombre de Negocio</h2>
+            <p style="font-size:10px; margin:4px 0;" id="print-slogan">Slogan del Negocio</p>
+            <p style="font-size:10px; margin:4px 0;"><i class="fab fa-whatsapp"></i> <span
+                    id="print-whatsapp">0000-0000</span></p>
+            <p style="font-size:10px; margin:4px 0;" id="print-date">--/--/--</p>
+            <div class="print-info"
+                style="text-align:left; margin-top:5px; border-top:1px dotted black; padding-top:2px;">
+                <span id="print-client-name">CF</span><br>
+                <span id="print-client-nit">NIT: CF</span>
+            </div>
+        </div>
+        <div id="print-items-container"></div>
+        <div class="print-total" id="print-total-display">TOTAL: Q 0.00</div>
+        <div id="print-discount-line" style="text-align:right; font-size:10px; display:none;">(Desc. Incluido: Q <span
+                id="print-discount-val">0.00</span>)</div>
+        <div class="print-footer">
+            <p id="print-footer-msg">¡Gracias por su compra!</p>
+            <div class="legal-disclaimer">Comprobante de control interno.<br>Exija su Factura Electrónica (FEL).</div>
+        </div>
+    </div>
+
+    <div id="tech-print-area" class="print-area">
+        <div class="print-header">
+            <h2 style="font-size:14px; margin:0; font-weight:bold;">ORDEN SERVICIO</h2>
+            <p style="font-size:10px;" id="tech-print-business">Nombre de Negocio</p>
+            <p style="font-size:9px;">ID: <span id="tech-print-id"></span></p>
+            <p style="font-size:9px;">Fecha: <span id="tech-print-date"></span></p>
+        </div>
+        <div style="margin-top:5px; border-bottom:1px solid black; padding-bottom:5px;"><span
+                class="tech-label">CLIENTE:</span><span class="tech-val" id="tech-print-cliente"></span><span
+                class="tech-label">CONTACTO:</span><span class="tech-val" id="tech-print-tel"></span></div>
+        <div style="margin-top:5px; border-bottom:1px solid black; padding-bottom:5px;"><span
+                class="tech-label">EQUIPO:</span><span class="tech-val" id="tech-print-modelo"></span><span
+                class="tech-label">FALLA:</span><span class="tech-val" id="tech-print-falla"></span></div>
+        <div style="margin-top:5px;"><span class="tech-label">NOTA TÉCNICA:</span><span class="tech-val"
+                id="tech-print-reco" style="font-style:italic;"></span></div>
+        <div class="print-total" style="font-size:14px;">ANTICIPO: Q <span id="tech-print-anticipo">0.00</span></div>
+        <div class="legal-disclaimer" style="margin-top:10px;">Diagnóstico 24-48hrs. 30 días garantía mano de obra.
+            Equipos abandonados >90 días serán desechados.</div>
+        <br><br>
+        <div style="text-align:center; font-size:9px;">_______________________<br>Firma Cliente</div>
+    </div>
+
+    <div id="modal-historial-tecnico"
+        class="modal-overlay fixed inset-0 z-[155] hidden flex items-center justify-center bg-slate-900/80 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl p-6 w-full max-w-5xl h-[82vh] shadow-2xl flex flex-col">
+            <div class="flex justify-between items-center border-b pb-4 mb-4">
+                <div>
+                    <h3 class="font-black text-slate-800 text-lg uppercase"><i
+                            class="fas fa-screwdriver-wrench text-blue-600 mr-2"></i>Órdenes de servicio técnico</h3>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase">Historial almacenado en SQLite</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="cargarHistorialTecnico()"
+                        class="text-blue-600 hover:text-blue-800 text-xs font-black uppercase"><i
+                            class="fas fa-sync mr-1"></i>Actualizar</button>
+                    <button onclick="cerrarTodosModales()" class="text-slate-400 hover:text-red-500 text-xl"><i
+                            class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div id="historial-tecnico-list" class="flex-1 overflow-y-auto space-y-2"></div>
+        </div>
+    </div>
+
+    <div id="report-print-area" class="print-area">
+        <div class="print-header">
+            <h2 style="font-size:16px; margin:0; font-weight:bold;">CORTE DE CAJA (Z)</h2>
+            <p style="font-size:10px;" id="z-print-business">Nombre de Negocio</p>
+            <p style="font-size:10px;" id="z-print-date">--/--/--</p>
+            <p style="font-size:9px;" id="z-print-range">Turno: -- a --</p>
+        </div>
+        <div style="margin-top:10px;">
+            <div class="report-row"><span style="font-weight:bold;">VENTAS REALIZADAS:</span><span id="z-count">0</span>
+            </div>
+            <div class="report-row"><span style="font-weight:bold; font-size:14px;">TOTAL VENTAS:</span><span
+                    style="font-weight:bold; font-size:14px;">Q <span id="z-total">0.00</span></span></div>
+            <div class="report-row"><span style="font-weight:bold;">EFECTIVO ESPERADO:</span><span>Q <span
+                        id="z-cash-total">0.00</span></span></div>
+            <div class="report-row"><span style="font-weight:bold;">NO EFECTIVO:</span><span>Q <span
+                        id="z-noncash-total">0.00</span></span></div>
+            <div class="report-row"><span style="font-weight:bold;">PAGOS DE TERCEROS:</span><span>Q <span
+                        id="z-third-party-total">0.00</span></span></div>
+        </div>
+
+        <div class="report-title">DESGLOSE POR ÁREA</div>
+        <div id="z-details-container"></div>
+
+        <div class="report-title">CONTROL INTERNO</div>
+        <div style="font-size:9px; margin-top:5px;">
+            <p id="z-print-user">Usuario: ---</p>
+            <p>Cierre desde SQLite</p>
+        </div>
+        <br><br>
+        <div style="text-align:center; font-size:9px;">_______________________<br>Firma Responsable</div>
+    </div>
+
+    <div id="modal-cantidad" class="modal-overlay fixed inset-0 z-[110] hidden flex items-center justify-center">
+        <div class="bg-white rounded-[3rem] p-10 w-80 shadow-3xl text-center">
+            <h3 class="font-black text-slate-400 text-[10px] mb-6 tracking-widest">CANTIDAD</h3><input type="number"
+                id="input-qty" onkeyup="checkEnter(event, 'qty')"
+                class="w-full text-center text-6xl font-black text-blue-900 mb-8 outline-none bg-slate-50 rounded-2xl p-4"
+                value="1"><button onclick="confirmQty()"
+                class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl shadow-lg hover:bg-blue-700">CARGAR
+                (ENTER)</button>
+            <div class="mt-4 text-[9px] text-slate-400 uppercase font-bold tracking-widest">(ESC para cancelar)</div>
+        </div>
+    </div>
+
+    <div id="modal-precio" class="modal-overlay fixed inset-0 z-[110] hidden flex items-center justify-center">
+        <div class="bg-white rounded-[3rem] p-10 w-80 shadow-3xl text-center">
+            <h3 class="font-black text-slate-400 text-[10px] mb-6 tracking-widest">PRECIO UNITARIO</h3><input
+                type="number" id="input-price" onkeyup="checkEnter(event, 'price')"
+                class="w-full text-center text-6xl font-black text-green-600 mb-8 outline-none bg-slate-50 rounded-2xl p-4"
+                value="0.00" step="0.01"><button onclick="confirmPrice()"
+                class="w-full bg-green-600 text-white font-black py-5 rounded-2xl shadow-lg hover:bg-green-700">ACTUALIZAR
+                (ENTER)</button>
+            <div class="mt-4 text-[9px] text-slate-400 uppercase font-bold tracking-widest">(ESC para cancelar)</div>
+        </div>
+    </div>
+
+    <!-- MODAL USUARIOS -->
+    <div id="modal-historial-tickets"
+        class="modal-overlay fixed inset-0 z-[155] hidden flex items-center justify-center backdrop-blur-sm bg-slate-900/80 p-4">
+        <div class="bg-white rounded-3xl p-6 w-full max-w-5xl h-[85vh] shadow-2xl flex flex-col">
+            <div class="flex justify-between items-center border-b pb-4 mb-4">
+                <div>
+                    <h3 class="font-black text-slate-800 text-lg uppercase tracking-tight"><i
+                            class="fas fa-receipt text-blue-600 mr-2"></i>Historial de Tickets</h3>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase">Fuente: tickets_maestro SQLite</p>
+                </div>
+                <button onclick="cerrarTodosModales()" class="text-slate-400 hover:text-red-500 text-xl"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div id="historial-tickets-list" class="flex-1 overflow-y-auto space-y-2"></div>
+        </div>
+    </div>
+
+    <!-- MODAL HISTORIAL DE PEDIDOS -->
+    <div id="modal-historial-pedidos"
+        class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-4xl w-full shadow-2xl flex flex-col max-h-[90vh]">
+            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                <div>
+                    <h3 class="text-2xl font-black text-purple-900 uppercase tracking-tighter"><i
+                            class="fas fa-boxes-packing text-purple-600 mr-2"></i>Historial de Pedidos Pendientes</h3>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase">Solo se muestran los pedidos pendientes de entrega.</p>
+                </div>
+                <button onclick="cerrarHistorialPedidos()"
+                    class="text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="historial-pedidos-list" class="flex-1 overflow-y-auto space-y-2"></div>
+        </div>
+    </div>
+
+    <!-- MODAL USUARIOS -->
+    <div id="modal-usuarios"
+        class="modal-overlay no-close-outside fixed inset-0 z-[150] hidden flex items-center justify-center backdrop-blur-md bg-slate-900/90">
+        <div class="bg-white rounded-[2rem] p-8 w-96 shadow-2xl">
+            <h3 class="font-black text-slate-800 text-sm mb-6 tracking-widest uppercase text-center border-b pb-4">
+                ENCARGADO DE CAJA</h3>
+            <div id="users-list-container" class="space-y-3 mb-6 max-h-60 overflow-y-auto pr-2"></div>
+            <button id="btn-login-add-user" onclick="addNewUser()"
+                class="w-full bg-slate-100 text-slate-600 font-black py-4 rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center gap-2 text-xs uppercase"><i
+                    class="fas fa-info-circle"></i> Usuarios gestionados por Administración</button>
+        </div>
+    </div>
+
+    <!-- MODAL ADMIN -->
+    <div id="modal-admin"
+        class="modal-overlay fixed inset-0 z-[160] hidden flex items-center justify-center backdrop-blur-md bg-blue-900/95">
+        <div class="bg-white rounded-[2rem] p-8 w-[1000px] h-[85vh] shadow-2xl flex flex-col">
+            <div class="flex justify-between items-center mb-4 border-b pb-4 shrink-0">
+                <h3 class="font-black text-blue-900 text-xl tracking-tighter uppercase"><i
+                        class="fas fa-user-shield mr-2"></i> Panel de Administración</h3>
+                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-red-500 transition-colors"><i
+                        class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="flex gap-6 flex-1 overflow-hidden">
+                <div class="w-1/4 border-r pr-4 flex flex-col gap-2 shrink-0">
+                    <button onclick="switchAdminTab('reportes')" id="admin-tab-reportes"
+                        class="admin-tab w-full text-left bg-blue-50 text-blue-900 font-bold p-3 rounded-lg text-xs uppercase tracking-widest transition-colors"><i
+                            class="fas fa-chart-bar mr-2"></i> Reportes Z</button>
+                    <button onclick="switchAdminTab('kardex')" id="admin-tab-kardex"
+                        class="admin-tab w-full text-left text-slate-500 hover:bg-slate-50 font-bold p-3 rounded-lg text-xs uppercase tracking-widest transition-colors"><i
+                            class="fas fa-clipboard-list mr-2"></i> Kardex</button>
+                    <button onclick="switchAdminTab('frecuentes')" id="admin-tab-frecuentes"
+                        class="admin-tab w-full text-left text-slate-500 hover:bg-slate-50 font-bold p-3 rounded-lg text-xs uppercase tracking-widest transition-colors"><i
+                            class="fas fa-th mr-2"></i> Configurar Botones</button>
+                    <button onclick="switchAdminTab('escalas')" id="admin-tab-escalas"
+                        class="admin-tab w-full text-left text-slate-500 hover:bg-slate-50 font-bold p-3 rounded-lg text-xs uppercase tracking-widest transition-colors"><i
+                            class="fas fa-tags mr-2"></i> Escalas de Precio</button>
+                    <button onclick="switchAdminTab('personalizados')" id="admin-tab-personalizados"
+                        class="admin-tab w-full text-left text-slate-500 hover:bg-slate-50 font-bold p-3 rounded-lg text-xs uppercase tracking-widest transition-colors"><i
+                            class="fas fa-star mr-2"></i> Personalizados</button>
+                    <button onclick="switchAdminTab('gestiones')" id="admin-tab-gestiones"
+                        class="admin-tab w-full text-left text-slate-500 hover:bg-slate-50 font-bold p-3 rounded-lg text-xs uppercase tracking-widest transition-colors"><i
+                            class="fas fa-file-invoice-dollar mr-2"></i> Gestiones y Pagos</button>
+                    <button onclick="switchAdminTab('usuarios')" id="admin-tab-usuarios"
+                        class="admin-tab admin-users-only hidden w-full text-left text-slate-500 hover:bg-slate-50 font-bold p-3 rounded-lg text-xs uppercase tracking-widest transition-colors"><i
+                            class="fas fa-users mr-2"></i> Colaboradores</button>
+                    <button onclick="switchAdminTab('config')" id="admin-tab-config"
+                        class="admin-tab w-full text-left text-slate-500 hover:bg-slate-50 font-bold p-3 rounded-lg text-xs uppercase tracking-widest transition-colors mt-auto"><i
+                            class="fas fa-cog mr-2"></i> Configuración</button>
+                </div>
+                <div class="w-3/4 flex flex-col flex-1 overflow-hidden relative">
+                    <!-- CONTENIDO REPORTES -->
+                    <div id="admin-content-reportes" class="admin-content flex gap-4 h-full w-full">
+                        <div class="w-1/3 border-r pr-4 flex flex-col h-full">
+                            <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 shrink-0">
+                                Historial (30 Días)</h4>
+                            <div id="admin-history-list" class="space-y-2 overflow-y-auto flex-1"></div>
+                        </div>
+                        <div class="w-2/3 flex flex-col h-full">
+                            <h4 id="admin-detail-title"
+                                class="text-sm font-black text-slate-800 uppercase tracking-widest mb-4 shrink-0">
+                                Seleccione un reporte</h4>
+                            <div id="admin-detail-content" class="bg-slate-50 rounded-xl p-6 flex-1 overflow-y-auto">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONTENIDO FRECUENTES -->
+                    <div id="admin-content-frecuentes" class="admin-content hidden flex-col h-full w-full">
+                        <h4 class="text-sm font-black text-slate-800 uppercase tracking-widest mb-4 shrink-0">Configurar
+                            Botones (Ráfaga y Frecuentes)</h4>
+                        <div id="admin-frecuentes-list" class="space-y-3 overflow-y-auto flex-1 pr-2 pb-4"></div>
+                        <button onclick="guardarAdminFrecuentes()"
+                            class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-3 rounded-xl uppercase text-xs shadow-lg shrink-0"><i
+                                class="fas fa-save mr-2"></i> Guardar Cambios</button>
+                    </div>
+
+                    <!-- CONTENIDO ESCALAS -->
+                    <div id="admin-content-escalas" class="admin-content hidden flex-col h-full w-full">
+                        <h4 class="text-sm font-black text-slate-800 uppercase tracking-widest mb-4 shrink-0">Escalas de
+                            Precio (Impresiones/Copias)</h4>
+                        <div id="admin-escalas-list" class="space-y-6 overflow-y-auto flex-1 pr-2 pb-4"></div>
+                        <button onclick="guardarAdminEscalas()"
+                            class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-3 rounded-xl uppercase text-xs shadow-lg shrink-0"><i
+                                class="fas fa-save mr-2"></i> Guardar Escalas</button>
+                    </div>
+
+                    <!-- CONTENIDO PERSONALIZADOS -->
+                    <div id="admin-content-personalizados" class="admin-content hidden flex-col h-full w-full">
+                        <h4 class="text-sm font-black text-slate-800 uppercase tracking-widest mb-4 shrink-0">Botones
+                            Personalizables</h4>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 shrink-0">Estos botones aparecerán
+                            en la pestaña de Servicios Frecuentes. Permiten edición de submenús.</p>
+                        <div id="admin-personalizados-list" class="space-y-4 overflow-y-auto flex-1 pr-2 pb-4"></div>
+                        <button onclick="guardarAdminPersonalizados()"
+                            class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-3 rounded-xl uppercase text-xs shadow-lg shrink-0"><i
+                                class="fas fa-save mr-2"></i> Guardar Configuración</button>
+                    </div>
+                    <!-- CONTENIDO GESTIONES Y PAGOS -->
+                    <div id="admin-content-gestiones" class="admin-content hidden flex-col h-full w-full">
+                        <div class="flex justify-between items-center mb-3 shrink-0">
+                            <h4 class="text-sm font-black text-slate-800 uppercase tracking-widest">Catálogo de
+                                Gestiones y Pagos</h4>
+                            <button onclick="agregarServicioGestion()"
+                                class="bg-emerald-600 hover:bg-emerald-700 text-white font-black px-3 py-2 rounded-lg text-[10px] uppercase"><i
+                                    class="fas fa-plus mr-1"></i> Nuevo</button>
+                        </div>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-3 shrink-0">El valor de boleta puede
+                            quedar vacío cuando el cliente la pagará directamente en la institución.</p>
+                        <div id="admin-gestiones-list" class="space-y-3 overflow-y-auto flex-1 pr-2 pb-4"></div>
+                        <button onclick="guardarAdminGestiones()"
+                            class="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-3 rounded-xl uppercase text-xs shadow-lg shrink-0"><i
+                                class="fas fa-save mr-2"></i> Guardar Catálogo</button>
+                    </div>
+                    <!-- CONTENIDO COLABORADORES -->
+                    <div id="admin-content-usuarios" class="admin-content hidden flex-col h-full w-full">
+                        <div class="flex justify-between items-center mb-3 shrink-0">
+                            <h4 class="text-sm font-black text-slate-800 uppercase tracking-widest">Usuarios
+                                colaboradores</h4>
+                            <button onclick="agregarColaborador()"
+                                class="bg-emerald-600 hover:bg-emerald-700 text-white font-black px-3 py-2 rounded-lg text-[10px] uppercase"><i
+                                    class="fas fa-plus mr-1"></i> Nuevo</button>
+                        </div>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-3 shrink-0">Estos usuarios pueden
+                            vender y consultar el corte a ciegas. Para administración se solicita la clave del
+                            administrador.</p>
+                        <div id="admin-usuarios-list" class="space-y-3 overflow-y-auto flex-1 pr-2 pb-4"></div>
+                        <button onclick="guardarAdminColaboradores()"
+                            class="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-3 rounded-xl uppercase text-xs shadow-lg shrink-0"><i
+                                class="fas fa-save mr-2"></i> Guardar Colaboradores</button>
+                    </div>
+                    <!-- CONTENIDO KARDEX -->
+                    <div id="admin-content-kardex" class="admin-content hidden flex-col h-full w-full">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest shrink-0">Registro de
+                                Kardex (Movimientos Manuales)</h4>
+                            <button onclick="loadAdminKardex()"
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-bold text-xs"><i
+                                    class="fas fa-sync mr-2"></i>Actualizar</button>
+                        </div>
+                        <div class="flex-1 overflow-auto bg-white border rounded-lg">
+                            <table class="w-full text-left text-sm">
+                                <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold sticky top-0">
+                                    <tr>
+                                        <th class="p-3">ID</th>
+                                        <th class="p-3">Fecha</th>
+                                        <th class="p-3">Código</th>
+                                        <th class="p-3">Tipo</th>
+                                        <th class="p-3">Cant</th>
+                                        <th class="p-3">Contexto</th>
+                                        <th class="p-3">Encargado</th>
+                                        <th class="p-3">Obs</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-kardex-tbody" class="text-xs">
+                                    <!-- Rows go here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- CONTENIDO CONFIGURACIÓN -->
+                    <div id="admin-content-config" class="admin-content hidden flex-col h-full w-full">
+                        <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 shrink-0">
+                            Configuración General</h4>
+                        <div class="bg-white border rounded-lg p-6 space-y-6">
+                            <div class="flex items-center justify-between border-b pb-6">
+                                <div>
+                                    <h5 class="font-bold text-slate-700">Permitir Stock Negativo</h5>
+                                    <p class="text-xs text-slate-500 mt-1">Si está inactivo, el sistema bloqueará las
+                                        ventas cuando el stock llegue a 0.</p>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="config-stock-negativo" class="sr-only peer"
+                                        onchange="toggleConfigStockNegativo()">
+                                    <div
+                                        class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="flex items-center justify-between border-b pb-6">
+                                <div class="w-1/3 pr-4">
+                                    <h5 class="font-bold text-slate-700">Atajos de Teclado</h5>
+                                    <p class="text-xs text-slate-500 mt-1">Configura las teclas de acceso rápido (F1-F12) para acciones comunes.</p>
+                                </div>
+                                <div class="w-2/3 grid grid-cols-3 gap-3">
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Cobrar</label>
+                                        <select id="config-shortcut-cobrar" onchange="guardarAtajos()" class="w-full bg-slate-50 border-2 rounded-lg p-2 font-bold text-blue-900 outline-none focus:border-blue-500">
+                                            <option value="F12">F12</option>
+                                            <option value="F1">F1</option>
+                                            <option value="F2">F2</option>
+                                            <option value="F4">F4</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Corte Z</label>
+                                        <select id="config-shortcut-cortez" onchange="guardarAtajos()" class="w-full bg-slate-50 border-2 rounded-lg p-2 font-bold text-blue-900 outline-none focus:border-blue-500">
+                                            <option value="F10">F10</option>
+                                            <option value="F5">F5</option>
+                                            <option value="F6">F6</option>
+                                            <option value="F7">F7</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1">Buscar</label>
+                                        <select id="config-shortcut-buscar" onchange="guardarAtajos()" class="w-full bg-slate-50 border-2 rounded-lg p-2 font-bold text-blue-900 outline-none focus:border-blue-500">
+                                            <option value="F3">F3</option>
+                                            <option value="F8">F8</option>
+                                            <option value="F9">F9</option>
+                                            <option value="F11">F11</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between border-b pb-6">
+                                <div class="w-full">
+                                    <h5 class="font-bold text-slate-700">Atajos Dinámicos (F1 - F12)</h5>
+                                    <p class="text-xs text-slate-500 mt-1 mb-4">Asigna las teclas F restantes a cualquier botón de tus Servicios Frecuentes. No repitas teclas ni uses las seleccionadas arriba.</p>
+                                    <div id="dynamic-shortcuts-container" class="grid grid-cols-4 gap-4">
+                                        <!-- Rendered via JS -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between border-b pb-6">
+                                <div>
+                                    <h5 class="font-bold text-slate-700">Movimientos de Inventario (Kardex)</h5>
+                                    <p class="text-xs text-slate-500 mt-1">Visualiza el registro detallado de entradas,
+                                        salidas y ajustes de inventario.</p>
+                                </div>
+                                <button onclick="abrirModalKardex()"
+                                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg text-xs uppercase tracking-widest transition-colors shadow-sm">
+                                    <i class="fas fa-list-alt mr-2"></i> Ver Kardex
+                                </button>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h5 class="font-bold text-slate-700">Información del Negocio</h5>
+                                    <p class="text-xs text-slate-500 mt-1">Modifica el nombre de tu empresa, logotipo,
+                                        eslogan y contacto de WhatsApp.</p>
+                                </div>
+                                <button onclick="abrirModalOnboarding()"
+                                    class="bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 px-6 rounded-lg text-xs uppercase tracking-widest transition-colors shadow-sm">
+                                    <i class="fas fa-store mr-2"></i> Configurar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="modal-dynamic-submenu" class="modal-overlay fixed inset-0 z-[115] hidden flex items-center justify-center">
+        <div
+            class="bg-white rounded-[3rem] p-8 w-96 shadow-3xl border-t-8 border-blue-500 max-h-[90vh] overflow-y-auto">
+            <h3 id="dynamic-submenu-title"
+                class="font-black text-center text-slate-400 text-[10px] mb-4 tracking-widest uppercase">SUBMENÚ</h3>
+            <label
+                class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 text-center">Cantidad</label>
+            <input type="number" id="dynamic-submenu-qty"
+                class="w-full text-center text-5xl font-black text-blue-900 mb-6 outline-none bg-slate-50 rounded-2xl p-4 border-2 border-slate-100 focus:border-blue-500"
+                value="1" min="1">
+            <div id="dynamic-submenu-options" class="space-y-3">
+                <!-- Opciones dinámicas -->
+            </div>
+            <button onclick="closeAllModals()"
+                class="w-full mt-6 text-[10px] text-slate-400 uppercase font-bold hover:text-red-500 text-center">Cancelar</button>
+        </div>
+    </div>
+    <div id="modal-manual" class="modal-overlay fixed inset-0 z-[120] hidden flex items-center justify-center">
+        <div class="bg-white rounded-[2.5rem] p-8 w-96 shadow-3xl">
+            <h3 id="manual-title" class="font-black text-center mb-6 uppercase text-slate-800">Manual</h3>
+            <div id="manual-name-container" class="mb-4">
+                <input type="text" id="manual-desc-input" onkeyup="checkEnter(event, 'manual')"
+                    class="w-full p-3 bg-slate-50 border-2 rounded-xl font-bold uppercase outline-none focus:border-blue-500"
+                    placeholder="DESCRIPCIÓN">
+            </div>
+            <div class="mb-6 flex flex-col gap-4">
+                <div class="w-full">
+                    <label
+                        class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 text-center">Cantidad</label>
+                    <input type="number" id="manual-qty-input" value="1" min="1" onkeyup="checkEnter(event, 'manual')"
+                        class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-2xl text-blue-900 outline-none focus:border-blue-500 text-center"
+                        placeholder="1" title="Cantidad">
+                </div>
+                <div class="w-full">
+                    <label
+                        class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 text-center">Precio
+                        Unitario (Q)</label>
+                    <input type="number" id="manual-price-input" onkeyup="checkEnter(event, 'manual')"
+                        class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-2xl text-blue-900 outline-none focus:border-blue-500 text-center"
+                        placeholder="0.00" title="Precio Unitario">
+                </div>
+            </div>
+            <button onclick="confirmManualInput()"
+                class="w-full bg-blue-900 text-white font-black py-4 rounded-2xl shadow-lg uppercase tracking-widest hover:bg-blue-800">AGREGAR
+                (ENTER)</button>
+        </div>
+    </div>
+
+
+
+
+    <!-- MODAL INTELIGENTE DE GESTIONES Y PAGOS (AUTORRELLENABLE) -->
+    <div id="modal-gestiones" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-7 mx-4 border-t-8 border-amber-400">
+            <!-- Encabezado -->
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 class="text-xl font-black text-slate-800 uppercase tracking-tight flex items-center gap-2">
+                    <i class="fas fa-bolt text-amber-500"></i> Trámite Rápido
+                </h3>
+                <button onclick="closeGestionModal()"
+                    class="text-slate-400 hover:text-red-500 text-3xl leading-none">&times;</button>
+            </div>
+
+            <!-- Formulario -->
+            <div class="space-y-4">
+
+                <!-- Buscador Inteligente -->
+                <div class="relative">
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Buscar
+                        Trámite (Ej. Renap, Penales...)</label>
+                    <input type="text" id="gestion-desc" onkeyup="buscarPresetGestion(event)" autocomplete="off"
+                        placeholder="Escribe para buscar..."
+                        class="w-full p-3 border-2 border-slate-200 rounded-xl focus:border-amber-400 focus:outline-none uppercase font-black text-blue-900 bg-slate-50 transition-colors">
+
+                    <!-- Caja de Sugerencias -->
+                    <div id="gestion-suggestions"
+                        class="absolute left-0 right-0 top-full mt-1 bg-white shadow-2xl rounded-xl border border-slate-200 z-50 max-h-48 overflow-y-auto hidden">
+                    </div>
+                </div>
+
+                <!-- Selector de Cobro -->
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">¿Recibir
+                        el pago de la boleta aquí?</label>
+                    <select id="gestion-tipo-cobro" onchange="toggleMontoBoleta()"
+                        class="w-full p-3 border-2 border-slate-200 rounded-xl focus:border-amber-400 focus:outline-none bg-white font-bold text-sm uppercase text-slate-700">
+                        <option value="solo_gestion">NO, IRÁ AL BANCO (SOLO COBRAR GESTIÓN)</option>
+                        <option value="gestion_y_pago">SÍ, RECIBIR TODO EL DINERO EN CAJA</option>
+                    </select>
+                </div>
+
+                <!-- Panel de Desglose Automático -->
+                <div id="div-monto-boleta"
+                    class="hidden bg-amber-50 p-4 rounded-xl border-2 border-amber-100 space-y-3">
+                    <div>
+                        <label class="block text-[10px] font-black text-amber-800 uppercase tracking-widest">1. Valor de
+                            la Boleta de Pago</label>
+                        <div class="flex items-center mt-1">
+                            <span class="text-2xl font-black text-amber-400 mr-2">Q</span>
+                            <input type="number" id="gestion-monto-boleta" placeholder="0.00" step="0.01"
+                                class="w-full bg-white border-2 border-amber-200 p-2 rounded-xl font-black text-2xl text-blue-900 focus:outline-none focus:border-amber-400">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 pt-2 border-t border-amber-200/50">
+                        <div>
+                            <label class="block text-[9px] font-bold text-slate-500 uppercase">2. Tu Gestión</label>
+                            <div class="flex items-center mt-1">
+                                <span class="text-xs font-bold text-slate-400 mr-1">Q</span>
+                                <input type="number" id="gestion-monto-gestion" value="10.00" step="0.01"
+                                    class="w-full bg-white border border-slate-200 p-2 rounded-lg font-bold text-slate-700 focus:outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[9px] font-bold text-slate-500 uppercase">3. Comisión Pago</label>
+                            <div class="flex items-center mt-1">
+                                <span class="text-xs font-bold text-slate-400 mr-1">Q</span>
+                                <input type="number" id="gestion-monto-comision" value="5.00" step="0.01"
+                                    class="w-full bg-white border border-slate-200 p-2 rounded-lg font-bold text-slate-700 focus:outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="flex justify-end gap-2 mt-6">
+                <button onclick="closeGestionModal()"
+                    class="w-1/3 py-3 bg-slate-100 text-slate-500 hover:bg-slate-200 font-black rounded-xl text-xs uppercase tracking-widest transition-colors">Cancelar</button>
+                <button onclick="confirmGestionInput()"
+                    class="w-2/3 bg-slate-900 text-white rounded-xl hover:bg-black font-black shadow-lg uppercase text-sm tracking-widest active:scale-95 transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-check-circle"></i> Al Carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CANTIDAD RÁPIDA (RÁFAGA) -->
+    <div id="modal-cantidad-rapida" class="modal-overlay fixed inset-0 z-[115] hidden flex items-center justify-center">
+        <div class="bg-white rounded-[2.5rem] p-8 w-80 shadow-3xl text-center border-t-8 border-blue-600">
+            <h3 class="font-black text-slate-400 text-[10px] mb-4 tracking-widest uppercase">CANTIDAD RÁPIDA</h3>
+            <input type="number" id="input-qty-rapida" onkeyup="if(event.key==='Enter') confirmarCantidadRapida()"
+                class="w-full text-center text-5xl font-black text-blue-900 mb-6 outline-none bg-slate-50 rounded-2xl p-4 border-2 border-slate-100 focus:border-blue-500 transition-all"
+                value="1">
+            <div class="flex gap-2">
+                <button onclick="cerrarTodosModales()"
+                    class="w-1/3 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl uppercase text-xs">Cancelar</button>
+                <button onclick="confirmarCantidadRapida()"
+                    class="w-2/3 bg-blue-600 text-white font-black py-3 rounded-xl shadow-lg uppercase text-xs hover:bg-blue-700">Cargar
+                    (Enter)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SUBMENÚ DE GRID DINÁMICO -->
+    <div id="modal-submenu-grid" class="modal-overlay fixed inset-0 z-[120] hidden flex items-center justify-center">
+        <div class="bg-white rounded-3xl p-6 w-96 shadow-2xl border-t-8 border-indigo-600">
+            <div class="flex justify-between items-center pb-3 border-b mb-4">
+                <h3 id="modal-submenu-title" class="font-black text-slate-800 text-sm uppercase">Opciones</h3>
+                <button onclick="cerrarTodosModales()" class="text-slate-400 hover:text-red-500"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div class="mb-4">
+                <label
+                    class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 text-center">Cantidad</label>
+                <input type="number" id="submenu-qty-input" value="1" min="1"
+                    class="w-full p-3 bg-slate-50 border-2 rounded-xl font-black text-2xl text-indigo-900 outline-none focus:border-indigo-500 text-center"
+                    placeholder="1">
+            </div>
+            <div id="modal-submenu-container" class="space-y-2 max-h-60 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <!-- MODAL DESCARGAS DIGITALES -->
+    <div id="modal-descargas" class="modal-overlay fixed inset-0 z-[120] hidden flex items-center justify-center">
+        <div class="bg-white rounded-3xl p-5 w-[350px] shadow-2xl border-t-8 border-purple-600">
+            <div class="flex justify-between items-center pb-2 border-b mb-3">
+                <h3 class="font-black text-slate-800 text-sm uppercase"><i
+                        class="fas fa-download text-purple-600 mr-2"></i>Descargas Digitales</h3>
+                <button onclick="cerrarTodosModales()" class="text-slate-400 hover:text-red-500"><i
+                        class="fas fa-times"></i></button>
+            </div>
+
+            <div class="mb-3 flex justify-center">
+                <div class="flex flex-col items-center">
+                    <label class="text-[9px] font-bold text-slate-400 mb-1">CANTIDAD GLOBAL</label>
+                    <input type="number" id="descargas-qty-global" value="1" min="1"
+                        class="w-20 h-10 text-center text-xl font-black text-purple-900 bg-purple-50 border-2 border-purple-200 rounded-xl focus:outline-none focus:border-purple-500 transition-all">
+                </div>
+            </div>
+
+            <div class="space-y-2 max-h-60 overflow-y-auto pr-1" id="descargas-container">
+                <!-- Se inyecta por JS -->
+            </div>
+
+            <hr class="border-slate-100 my-3">
+
+            <button onclick="cerrarTodosModales(); openManualInput('full', 'DESCARGAS DIGITALES');"
+                class="w-full bg-slate-800 text-white font-black py-2 rounded-xl shadow-lg uppercase text-xs hover:bg-black transition-all flex justify-center gap-2 items-center">
+                <i class="fas fa-keyboard"></i>
+                <span>Otro (Manual)</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL PAPELES ESPECIALES -->
+    <div id="modal-papeles"
+        class="modal-overlay hidden fixed inset-0 bg-black/50 z-[120] flex items-center justify-center backdrop-blur-sm">
+        <div
+            class="bg-white rounded-[2rem] p-8 w-80 shadow-2xl border-t-8 border-purple-500 animate-bounce-in relative">
+
+            <h3 class="font-black text-slate-400 text-[10px] mb-4 tracking-widest uppercase text-center">SELECCIONAR
+                PAPEL</h3>
+
+            <div class="mb-6 flex justify-center">
+                <input type="number" id="papeles-qty-global" value="1" min="1"
+                    class="w-24 h-16 text-center text-3xl font-black text-purple-900 bg-purple-50 border-2 border-purple-200 rounded-2xl focus:outline-none focus:border-purple-500 transition-all">
+            </div>
+
+            <div class="space-y-2 max-h-60 overflow-y-auto pr-1" id="papeles-container">
+                <!-- Se inyecta por JS -->
+            </div>
+
+            <hr class="border-slate-100 my-4">
+
+            <button onclick="cerrarTodosModales(); openManualInput('full', 'PAPEL ESPECIAL');"
+                class="w-full bg-slate-800 text-white font-black py-3 rounded-xl shadow-lg uppercase text-xs hover:bg-black transition-all flex justify-center gap-2 items-center">
+                <i class="fas fa-keyboard"></i>
+                <span>Otro (Manual)</span>
+            </button>
+
+            <button onclick="cerrarTodosModales()"
+                class="mt-4 w-full text-[10px] text-slate-400 uppercase font-bold hover:text-red-500 text-center">
+                Cancelar
+            </button>
+        </div>
+    </div>
+
+
+    <!-- MODAL DE ONBOARDING / MARCA BLANCA -->
+    <div id="modal-onboarding" class="modal-overlay no-close-outside fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border-t-8 border-blue-900">
+            <div class="text-center mb-6">
+                <div
+                    class="bg-blue-900 text-white w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                    <i class="fas fa-store text-2xl"></i>
+                </div>
+                <h3 class="font-black text-slate-800 text-lg uppercase">Configuración de Negocio</h3>
+                <p class="text-xs text-slate-400 font-bold mt-1">Personaliza el sistema para tu punto de venta</p>
+            </div>
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">Nombre del Negocio</label>
+                    <input type="text" id="onboard-nombre" placeholder="EJ. MI NEGOCIO"
+                        class="w-full p-3 border-2 rounded-xl font-bold outline-none focus:border-blue-500 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">Tipo de Comercio</label>
+                    <input type="text" id="onboard-tipo" placeholder="EJ. IMPRENTA Y LIBRERÍA"
+                        class="w-full p-3 border-2 rounded-xl font-bold outline-none focus:border-blue-500 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">URL / Ruta Logotipo (Opcional)</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="onboard-logo" placeholder="Ruta de imagen..."
+                            class="flex-1 p-3 border-2 rounded-xl font-bold outline-none focus:border-blue-500 bg-slate-50">
+                        <button onclick="seleccionarLogoOnboarding()"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl shadow transition-colors flex items-center gap-2 text-xs uppercase"><i
+                                class="fas fa-folder-open"></i> Explorar</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">Eslogan (Ej. Frente a Plaza)</label>
+                    <input type="text" id="onboard-slogan" placeholder="Slogan del negocio..."
+                        class="w-full p-3 border-2 rounded-xl font-bold outline-none focus:border-blue-500 bg-slate-50">
+                </div>
+                <div class="flex gap-2">
+                    <div class="w-1/2">
+                        <label class="block font-black text-slate-700 uppercase mb-1">WhatsApp</label>
+                        <input type="text" id="onboard-whatsapp" placeholder="Teléfono..."
+                            class="w-full p-3 border-2 rounded-xl font-bold outline-none focus:border-blue-500 bg-slate-50">
+                    </div>
+                    <div class="w-1/2">
+                        <label class="block font-black text-slate-700 uppercase mb-1">Mensaje Final (Ticket)</label>
+                        <input type="text" id="onboard-footer" placeholder="¡Gracias por su compra!"
+                            class="w-full p-3 border-2 rounded-xl font-bold outline-none focus:border-blue-500 bg-slate-50">
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">Tamaño de Ticket / Impresión</label>
+                    <select id="onboard-ticket-size" class="w-full p-3 border-2 rounded-xl font-bold outline-none focus:border-blue-500 bg-slate-50">
+                        <option value="80mm">80mm (Estándar Punto de Venta)</option>
+                        <option value="58mm">58mm (Ticket Pequeño)</option>
+                        <option value="carta">Carta (8.5 x 11 pulgadas)</option>
+                        <option value="a4">A4 (Estándar Internacional)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">Impresora por Defecto</label>
+                    <div class="flex gap-2">
+                        <select id="onboard-printer" class="flex-1 p-3 border-2 rounded-xl font-bold outline-none focus:border-blue-500 bg-slate-50">
+                            <option value="">Seleccionar Impresora (Predeterminada del Sistema / Con Dialogo)</option>
+                        </select>
+                        <button onclick="window.cargarImpresoras()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 rounded-xl font-bold transition-colors" title="Actualizar lista de impresoras"><i class="fas fa-sync-alt"></i></button>
+                    </div>
+                </div>
+                <button onclick="guardarOnboarding()"
+                    class="w-full bg-blue-900 hover:bg-black text-white font-black py-4 rounded-xl shadow-lg uppercase text-sm tracking-wider transition-all mt-4">
+                    Guardar y Comenzar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CORTE Z NATIVO SQLITE -->
+    <div id="modal-corte-z" class="modal-overlay fixed inset-0 z-[140] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border-t-8 border-slate-900">
+            <div class="flex justify-between items-center pb-3 border-b mb-4">
+                <h3 class="font-black text-slate-800 text-sm uppercase flex items-center gap-2">
+                    <i class="fas fa-chart-pie text-blue-600"></i> Reporte Corte Z (SQLite)
+                </h3>
+                <button onclick="cerrarTodosModales()" class="text-slate-400 hover:text-red-500"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div id="corte-z-content" class="mb-6"></div>
+            <div class="flex flex-col gap-2">
+                <div class="flex gap-2">
+                    <button onclick="closeAllModals()"
+                        class="flex-1 bg-white border-2 border-slate-200 text-slate-600 hover:bg-slate-50 py-3 rounded-xl font-bold text-[11px] uppercase transition-colors">Cerrar
+                        Preview</button>
+                    <button onclick="imprimirZ()"
+                        class="flex-1 bg-slate-800 hover:bg-black text-white py-3 rounded-xl font-bold text-[11px] uppercase shadow-md transition-all">🖨️
+                        Imprimir</button>
+                </div>
+                <button onclick="cerrarTurnoZ()"
+                    class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-black text-xs uppercase shadow-lg shadow-red-500/30 transition-all">🛑
+                    Cerrar Turno</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SETUP INICIAL USUARIOS -->
+    <div id="modal-setup-inicial"
+        class="modal-overlay no-close-outside fixed inset-0 z-[250] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border-t-8 border-emerald-600">
+            <div class="text-center mb-6">
+                <h3 class="font-black text-slate-800 text-lg uppercase">Configuración de Seguridad</h3>
+                <p class="text-xs text-slate-400 font-bold mt-1">Crea tu administrador y modo de uso</p>
+            </div>
+            <div class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">Nombre Administrador</label>
+                    <input type="text" id="setup-admin-name" placeholder="EJ. CARLOS"
+                        class="w-full p-3 border-2 rounded-xl font-bold outline-none focus:border-emerald-500 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">Contraseña Maestra</label>
+                    <input type="password" id="setup-admin-pwd" placeholder="Ingresa una clave segura"
+                        class="w-full p-3 border-2 rounded-xl font-bold outline-none focus:border-emerald-500 bg-slate-50">
+                </div>
+                <div>
+                    <label class="block font-black text-slate-700 uppercase mb-1">Modo de Uso</label>
+                    <select id="setup-pos-mode"
+                        class="w-full p-3 border-2 rounded-xl font-bold uppercase outline-none focus:border-emerald-500 bg-slate-50">
+                        <option value="autogestion">Autogestión (Solo un usuario, sin preguntar al abrir)</option>
+                        <option value="colaboradores">+ Colaboradores (Múltiples cajeros)</option>
+                    </select>
+                </div>
+                <button onclick="guardarSetupInicial()"
+                    class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 rounded-xl shadow-lg uppercase text-sm tracking-wider transition-all mt-4">
+                    Guardar y Finalizar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL AUTENTICACION ADMIN -->
+    <div id="modal-admin-auth" class="modal-overlay no-close-outside fixed inset-0 z-[300] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 w-80 shadow-2xl border-t-8 border-red-600 text-center">
+            <div class="mb-4">
+                <div
+                    class="bg-red-100 text-red-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <i class="fas fa-lock text-xl"></i>
+                </div>
+                <h3 class="font-black text-slate-800 text-sm uppercase">Acceso Restringido</h3>
+                <p class="text-[10px] text-slate-400 font-bold uppercase">Ingresa contraseña de administrador</p>
+            </div>
+            <input type="password" id="auth-admin-pwd" onkeyup="if(event.key==='Enter') confirmarAuthAdmin()"
+                class="w-full text-center text-xl font-black text-slate-800 mb-4 outline-none bg-slate-50 rounded-xl p-3 border-2 focus:border-red-500 transition-all">
+            <div class="flex gap-2">
+                <button onclick="cancelarAuthAdmin()"
+                    class="w-1/3 bg-slate-100 text-slate-600 font-bold py-3 rounded-xl uppercase text-xs">Cancelar</button>
+                <button onclick="confirmarAuthAdmin()"
+                    class="w-2/3 bg-red-600 text-white font-black py-3 rounded-xl shadow-lg uppercase text-xs hover:bg-red-700">Validar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./node_modules/tabulator-tables/dist/js/tabulator.min.js"></script>
+    <script src="./node_modules/jsbarcode/dist/JsBarcode.all.min.js"></script>
+    <script src="renderer/js/admin_auth.js"></script>
+    <script src="renderer/js/proceso_venta.js"></script>
+    <script src="renderer/js/cobro_caja.js"></script>
+    <script src="renderer/js/modales_input.js"></script>
+    <script src="renderer/js/servicio_tecnico.js"></script>
+    <script src="renderer/js/tramites_gestiones.js"></script>
+    <script src="renderer/js/buscador_global.js"></script>
+    <script src="renderer/js/admin_reportes.js"></script>
+    <script src="renderer/js/admin_etiquetas.js"></script>
+    <script src="renderer/js/admin_panel.js"></script>
+    <script src="renderer/js/app.js"></script>
+    <script src="renderer/js/admin_tickets_aparcados.js"></script>
+    <script src="renderer/js/admin_pedidos.js"></script>
+    <!-- Modal Cobro (Módulo de Cálculo de Vuelto) -->
+    <div id="modal-cobro" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform scale-100 transition-transform">
+            <h2 class="text-2xl font-black text-blue-900 uppercase tracking-tighter mb-4 text-center">Confirmar Cobro
+            </h2>
+
+            <div class="bg-slate-100 p-4 rounded-xl mb-4 text-center">
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total a Pagar</p>
+                <p id="cobro-total-display"
+                    class="text-4xl font-black text-blue-900 tracking-tighter uppercase leading-none">Q0.00</p>
+            </div>
+
+            <!-- Campos para MODO PEDIDO -->
+            <div id="cobro-campos-pedido" class="hidden mb-4 bg-purple-50 p-4 rounded-xl border-2 border-purple-200">
+                <p class="text-[10px] font-black text-purple-700 uppercase tracking-widest mb-2 text-center">Datos del Pedido</p>
+                <input type="text" id="pedido-cliente-nombre" placeholder="Nombre del Cliente *" class="w-full text-sm font-bold text-slate-800 bg-white border-2 border-purple-200 rounded-lg py-2 px-3 mb-2 outline-none focus:border-purple-500 uppercase">
+                <input type="tel" id="pedido-cliente-telefono" placeholder="Teléfono *" class="w-full text-sm font-bold text-slate-800 bg-white border-2 border-purple-200 rounded-lg py-2 px-3 outline-none focus:border-purple-500 uppercase">
+            </div>
+
+            <div class="mb-4">
+                <label
+                    class="block text-xs font-black text-slate-500 uppercase tracking-widest mb-2 text-center">Efectivo
+                    Recibido</label>
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-black text-slate-400">Q</span>
+                    <input type="number" step="0.01" id="input-efectivo-recibido" placeholder="0.00"
+                        class="w-full text-center text-4xl font-black text-slate-800 bg-slate-50 border-4 border-slate-200 rounded-2xl py-4 pl-12 pr-4 outline-none focus:border-blue-500 transition-colors"
+                        onkeyup="calcularVuelto(event)">
+                </div>
+                <p class="text-[10px] text-center text-slate-400 mt-2 italic font-bold">Si dejas en 0 o vacío, se asume
+                    pago exacto.</p>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-xl mb-4 text-center border-2 border-blue-100">
+                <p class="text-xs font-bold text-blue-500 uppercase tracking-widest mb-1">Vuelto a Entregar</p>
+                <p id="cobro-vuelto-display"
+                    class="text-4xl font-black text-blue-600 tracking-tighter uppercase leading-none">Q0.00</p>
+            </div>
+
+            <div class="mb-4 flex items-center justify-center gap-3 p-3 bg-slate-50 rounded-xl border-2 border-slate-200">
+                <input type="checkbox" id="cobro-imprimir-ticket" class="w-5 h-5 accent-blue-600 cursor-pointer" checked onchange="localStorage.setItem('imprimir_ticket', this.checked)">
+                <label for="cobro-imprimir-ticket" class="font-black text-slate-700 cursor-pointer uppercase text-xs tracking-widest">Imprimir Ticket al Confirmar</label>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="cerrarModalCobro()"
+                    class="flex-1 py-4 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-2xl text-sm font-black uppercase shadow-sm transition-all">Cancelar</button>
+                <button onclick="confirmarVentaFinal()"
+                    class="flex-1 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-sm font-black uppercase shadow-xl transition-all">Confirmar
+                    (Enter)</button>
+            </div>
+        </div>
+    </div>
+    <!-- Custom Prompt Modal -->
+    <div id="custom-prompt-modal"
+        class="modal-overlay fixed inset-0 z-[200] hidden flex items-center justify-center backdrop-blur-md bg-slate-900/80">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full transform scale-95 transition-all">
+            <h3 id="custom-prompt-title" class="text-lg font-black text-slate-800 mb-4">Título</h3>
+            <p id="custom-prompt-message" class="text-sm font-bold text-slate-600 mb-4">Mensaje</p>
+            <input type="text" id="custom-prompt-input"
+                class="w-full p-4 bg-slate-100 border-2 border-slate-200 rounded-xl font-bold focus:border-blue-500 outline-none mb-6">
+            <div class="flex justify-end gap-3">
+                <button id="custom-prompt-cancel"
+                    class="px-6 py-3 rounded-xl font-bold text-slate-500 hover:bg-slate-100 uppercase text-xs">Cancelar</button>
+                <button id="custom-prompt-ok"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-black uppercase text-xs shadow-lg">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE KARDEX -->
+    <div id="modal-kardex" class="modal-overlay fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
+        <div
+            class="bg-slate-50 w-full max-w-6xl h-[90vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden border-2 border-slate-200">
+            <!-- Header -->
+            <div
+                class="bg-white px-8 py-5 border-b border-slate-200 flex justify-between items-center shrink-0 shadow-sm">
+                <div class="flex items-center gap-4">
+                    <div
+                        class="bg-blue-100 text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center shadow-sm">
+                        <i class="fas fa-list-alt text-xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-black text-slate-800 uppercase tracking-tight">Kardex de Inventario</h2>
+                        <p class="text-xs text-slate-500 font-bold uppercase tracking-widest mt-1">Historial de Entradas
+                            y Salidas</p>
+                    </div>
+                </div>
+                <button onclick="cerrarModalKardex()"
+                    class="text-slate-400 hover:text-red-500 hover:bg-red-50 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="flex-1 p-6 overflow-hidden flex flex-col bg-slate-50">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 flex-1 flex flex-col overflow-hidden">
+                    <div id="kardex-table" class="flex-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Category Datalist -->
+    <datalist id="category-list"></datalist>
+
+    <script src="./renderer/js/admin_botones.js"></script>
+</body>
+
+</html>
