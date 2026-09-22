@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>POS Intercopias - Programa Fundadores | Edición Oficial 2026</title>
+    <title>POS Intercopias - Pre-Orden &amp; Lanzamiento Oficial 2026</title>
+    <meta name="description" content="Software Punto de Venta para papelerías, cibers y centros de trámites. Fase Fundadores concluida. Pre-orden disponible a Q.550 antes del lanzamiento general a Q.770 el 01 de Noviembre 2026.">
     <link rel="icon" type="image/x-icon" href="icoinco.ico">
 
     <!-- Google Tag Manager -->
@@ -22,26 +23,30 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Montserrat"', 'sans-serif'],
+                        sans: ['"Montserrat"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace']
                     },
                     colors: {
-                        brand: {
-                            navy: '#003366',
-                            navylight: '#0a427d',
-                            accent: '#2563EB',
-                            highlight: '#F59E0B',
-                            danger: '#EF4444',
-                            whatsapp: '#25D366',
-                            dark: '#030a14'
+                        surface: {
+                            950: '#070A0F',
+                            900: '#0B0F17',
+                            850: '#0E141F',
+                            800: '#141C2B',
+                            750: '#1A2438',
+                            700: '#26334B'
+                        },
+                        corporate: {
+                            DEFAULT: '#1D4ED8',
+                            hover: '#1E40AF',
+                            subtle: '#172554',
+                            badge: '#1E293B'
                         }
                     }
                 }
@@ -49,31 +54,53 @@
         }
     </script>
     <style>
-        .pulse-urgent {
-            animation: pulse-border 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        body {
+            background-color: #080C13;
+            color: #CBD5E1;
         }
-
-        @keyframes pulse-border {
-
-            0%,
-            100% {
-                border-color: rgba(239, 68, 68, 0.85);
-                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
-            }
-
-            50% {
-                border-color: rgba(239, 68, 68, 0.3);
-                box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
-            }
+        .subtle-card {
+            background-color: #0E141F;
+            border: 1px solid #1E293B;
         }
-
-        .hero-radial {
-            background: radial-gradient(circle at 50% 25%, rgba(0, 51, 102, 0.5) 0%, rgba(3, 10, 20, 0.98) 75%);
+        .subtle-card-hover {
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+        .subtle-card-hover:hover {
+            border-color: #334155;
+            background-color: #111927;
+        }
+        .divider-line {
+            border-color: #1A2436;
+        }
+        /* Countdown sutil */
+        .subtle-countdown {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .subtle-countdown-unit {
+            background: #0E141F;
+            border: 1px solid #1E293B;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #94A3B8;
+            line-height: 1.4;
+        }
+        .subtle-countdown-unit span {
+            display: block;
+            font-size: 9px;
+            color: #475569;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
 
-<body class="bg-[#040B16] text-slate-100 font-sans antialiased selection:bg-[#003366] selection:text-white pt-10">
+<body class="font-sans antialiased selection:bg-blue-700 selection:text-white pt-10">
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ" height="0" width="0"
@@ -81,946 +108,662 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- FLOATING WHATSAPP CTA -->
-    <a class="fixed bottom-6 right-6 z-[90] bg-[#25D366] text-white px-5 py-3.5 rounded-full flex items-center gap-3 shadow-[0_8px_30px_rgba(37,211,102,0.45)] hover:bg-[#1faa53] hover:scale-105 transition-all group font-bold tracking-wide"
-        href="https://wa.me/50236680414?text=Hola%20Dayan,%20quiero%20unirme%20al%20Programa%20Fundadores%20antes%20del%2021%20de%20Septiembre"
-        target="_blank" title="Programa Fundadores POS Intercopias">
-        <i class="fa-brands fa-whatsapp text-2xl animate-bounce"></i>
-        <div class="text-left hidden sm:block">
-            <span class="text-[10px] text-emerald-950 font-black block uppercase tracking-wider leading-none">¡HOY
-               ULTIMO DIA!</span>
-            <span class="text-xs sm:text-sm font-black uppercase tracking-wider leading-tight">Asegurar Cupo (Q.
-                375)</span>
+    <a class="fixed bottom-6 right-6 z-50 bg-[#15803D] hover:bg-[#166534] text-white px-4 py-3 rounded-lg flex items-center gap-3 shadow-xl border border-emerald-600/40 transition-all font-semibold tracking-wide text-xs"
+        href="https://wa.me/50236680414?text=Hola%20Dayan,%20quiero%20informaci%C3%B3n%20sobre%20la%20Pre-Orden%20del%20POS%20Intercopias%20(Q.%20550.00)"
+        target="_blank" title="Pre-Orden POS Intercopias">
+        <i class="fa-brands fa-whatsapp text-xl text-emerald-300"></i>
+        <div class="text-left leading-tight">
+            <span class="text-[9px] text-emerald-200 block uppercase font-mono tracking-wider">Pre-Orden • Q.550</span>
+            <span class="text-xs font-bold text-white tracking-normal">Consultar por WhatsApp</span>
         </div>
-        <span
-            class="absolute right-20 sm:hidden bg-white text-gray-800 text-xs font-black px-3 py-1.5 rounded-lg shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none uppercase border-r-4 border-[#25D366]">
-            ¡Sé un Fundador!
-        </span>
     </a>
 
-    <!-- TOP URGENCY BANNER -->
-    <div
-        class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-red-700 via-[#003366] to-red-700 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider py-2 px-4 text-center shadow-lg flex items-center justify-center gap-2 border-b border-white/10">
-        <span
-            class="inline-flex items-center gap-1.5 bg-red-600 px-2 py-0.5 rounded text-[10px] font-black animate-pulse border border-white/20">
-            <span class="w-2 h-2 rounded-full bg-white animate-ping"></span> ¡HOY ÚLTIMO DÍA!
-        </span>
-        <span class="font-extrabold tracking-wide">LA VENTANA DE FUNDADORES CIERRA DEFINITIVAMENTE HOY 21 DE SEPTIEMBRE
-            • ÚLTIMA OPORTUNIDAD PARA OBTENERLO PERMANENTE A PRECIO INCREÍBLE (Q. 375)</span>
-        <span
-            class="hidden lg:inline bg-amber-400 text-slate-900 px-2 py-0.5 rounded text-[10px] font-mono font-black ml-2">AHORRO
-            Q. 395.00</span>
-    </div>
+    <!-- TOP ANNOUNCEMENT BANNER -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#070A0F] text-slate-300 text-[11px] sm:text-xs font-medium py-2 px-4 text-center border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2.5 flex-wrap">
+            <span class="inline-flex items-center gap-1.5 bg-slate-800 text-slate-300 border border-slate-700 px-2 py-0.5 rounded text-[10px] font-mono font-semibold uppercase tracking-wider">
+                Fase Fundadores Concluida
+            </span>
+            <span class="text-slate-400 hidden sm:inline">•</span>
+            <span class="text-slate-300">
+                Próximo hito: Despliegue el <strong class="text-white font-semibold">01 de Octubre</strong> · Lanzamiento Oficial el <strong class="text-white font-semibold">01 de Noviembre</strong>
+            </span>
+            <!-- Countdown sutil en el banner -->
+            <span class="text-slate-500 hidden md:inline">—</span>
+            <span class="hidden md:inline-flex items-center gap-1.5 text-slate-400 text-[10px]">
+                <i class="fa-regular fa-clock text-slate-500"></i>
+                <span class="text-slate-500">Lanzamiento en:</span>
+                <span class="subtle-countdown" id="banner-countdown">
+                    <span class="subtle-countdown-unit" id="cd-days">--<span>días</span></span>
+                    <span class="subtle-countdown-unit" id="cd-hours">--<span>hrs</span></span>
+                    <span class="subtle-countdown-unit" id="cd-mins">--<span>min</span></span>
+                </span>
+            </span>
+        </div>
+    </header>
 
     <!-- NAVBAR -->
-    <nav class="bg-[#07152B]/95 border-b border-slate-800 backdrop-blur-md sticky top-9 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="bg-[#080C13]/95 border-b border-slate-800/80 backdrop-blur-md sticky top-8 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Brand Logo / Info -->
-                <a class="flex items-center gap-3 group text-left" href="index.html">
+                <a class="flex items-center gap-3 text-left" href="index.html">
                     <img src="logo.png" alt="Logo Intercopias"
-                        class="h-10 sm:h-12 w-auto object-contain bg-white/10 rounded-lg p-1 hidden"
+                        class="h-10 sm:h-11 w-auto object-contain hidden"
                         onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
                         onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
-
-                    <div
-                        class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#003366] to-blue-500 border border-blue-400/30 flex items-center justify-center text-white font-black shadow-md shadow-blue-900/40 group-hover:scale-105 transition-all">
-                        <i class="fa-solid fa-bolt-lightning text-lg text-amber-400"></i>
+                    <div class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-200">
+                        <i class="fa-solid fa-layer-group text-sm text-blue-400"></i>
                     </div>
                     <div>
-                        <div class="font-black text-lg tracking-tight text-white flex items-center gap-2">
+                        <div class="font-bold text-base tracking-tight text-white flex items-center gap-2">
                             POS INTERCOPIAS
-                            <span
-                                class="bg-blue-500/20 text-blue-300 text-[10px] font-black uppercase px-2 py-0.5 rounded-full border border-blue-400/30">Fundadores
-                                2026</span>
+                            <span class="bg-slate-800 text-slate-300 text-[10px] font-mono px-1.5 py-0.5 rounded border border-slate-700">2026</span>
                         </div>
-                        <span
-                            class="text-[11px] text-slate-400 block -mt-0.5 font-medium group-hover:text-slate-300 transition-colors">Frente
-                            a Plaza Magdalena, Cobán</span>
+                        <span class="text-[11px] text-slate-400 block -mt-0.5">Frente a Plaza Magdalena, Cobán</span>
                     </div>
                 </a>
 
                 <!-- Desktop Navigation Links -->
-                <div class="hidden md:flex items-center gap-6 font-semibold text-sm text-slate-300">
-                    <a class="hover:text-amber-400 transition-colors" href="index.html">Inicio</a>
-                    <a class="hover:text-amber-400 transition-colors" href="index.html#servicios">Servicios</a>
-                    <a class="hover:text-amber-400 transition-colors" href="cursos.html">Cursos</a>
-                    <a class="hover:text-amber-400 transition-colors" href="index.html#contacto">Contacto</a>
+                <div class="hidden md:flex items-center gap-7 text-xs uppercase tracking-wider font-semibold text-slate-300">
+                    <a class="hover:text-white transition-colors" href="index.html">Inicio</a>
+                    <a class="hover:text-white transition-colors" href="index.html#servicios">Servicios</a>
+                    <a class="hover:text-white transition-colors" href="cursos.html">Cursos</a>
+                    <a class="hover:text-white transition-colors" href="index.html#contacto">Contacto</a>
                 </div>
 
-                <!-- Desktop Action & Price Pill -->
-                <div class="hidden lg:flex items-center gap-3">
-                    <div
-                        class="flex items-center gap-2 font-mono text-xs text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1.5 rounded-lg">
-                        <i class="fa-solid fa-hourglass-half animate-pulse text-amber-400"></i>
-                        <span class="">Q. 375.00 <span class="text-slate-400 line-through text-[11px]">Q.
-                                770.00</span></span>
-                    </div>
-                    <a class="bg-red-600 hover:bg-red-700 text-white text-xs font-black uppercase tracking-wider px-4 py-2.5 rounded-lg transition-all flex items-center gap-1.5 shadow-md shadow-red-600/30 hover:shadow-red-600/50"
-                        href="#precio-fundadores">
-                        <span class="">Unirme Ahora</span>
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                <!-- Desktop Action -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a class="bg-blue-700 hover:bg-blue-600 text-white text-xs font-semibold uppercase tracking-wider px-4 py-2.5 rounded border border-blue-600 transition-colors"
+                        href="#pre-orden">
+                        Pre-Ordenar Licencia
                     </a>
                 </div>
 
-                <!-- Mobile Hamburger Button & Action -->
+                <!-- Mobile Hamburger Button -->
                 <div class="flex items-center gap-2 md:hidden">
-                    <a class="bg-red-600 hover:bg-red-700 text-white text-[11px] font-black uppercase tracking-wider px-3 py-1.5 rounded-lg transition-colors"
-                        href="#precio-fundadores">
-                        Unirme
+                    <a class="bg-blue-700 hover:bg-blue-600 text-white text-[11px] font-semibold uppercase px-2.5 py-1.5 rounded"
+                        href="#pre-orden">
+                        Pre-Orden
                     </a>
                     <button aria-label="Abrir menú"
-                        class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                        class="p-1.5 rounded text-slate-400 hover:text-white border border-slate-800 hover:border-slate-700"
                         onclick="const m=document.getElementById('mobile-nav-menu'); m.classList.toggle('hidden');"
                         type="button">
-                        <i class="fa-solid fa-bars text-xl"></i>
+                        <i class="fa-solid fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Dropdown Menu -->
-        <div class="hidden md:hidden border-t border-slate-800 bg-[#07152B] px-4 pt-3 pb-5 space-y-2 text-sm font-semibold backdrop-blur-md absolute w-full shadow-xl"
+        <div class="hidden md:hidden border-t border-slate-800 bg-[#0B0F17] px-4 pt-3 pb-4 space-y-2 text-xs font-semibold uppercase tracking-wider absolute w-full shadow-xl"
             id="mobile-nav-menu">
-            <a class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-white transition-colors"
-                href="index.html">Inicio</a>
-            <a class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-white transition-colors"
-                href="index.html#servicios">Servicios</a>
-            <a class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-white transition-colors"
-                href="cursos.html">Cursos</a>
-            <a class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 hover:text-white transition-colors"
-                href="index.html#contacto">Contacto</a>
-            <div
-                class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-amber-400 px-3">
-                <span class="">Precio Fundador: Q. 375.00</span>
-                <span class="text-red-400 line-through text-[11px]">Q. 770.00</span>
-            </div>
+            <a class="block px-3 py-2 rounded text-slate-300 hover:bg-slate-800 hover:text-white" href="index.html">Inicio</a>
+            <a class="block px-3 py-2 rounded text-slate-300 hover:bg-slate-800 hover:text-white" href="index.html#servicios">Servicios</a>
+            <a class="block px-3 py-2 rounded text-slate-300 hover:bg-slate-800 hover:text-white" href="cursos.html">Cursos</a>
+            <a class="block px-3 py-2 rounded text-slate-300 hover:bg-slate-800 hover:text-white" href="index.html#contacto">Contacto</a>
         </div>
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-12 pb-20 overflow-hidden hero-radial border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <!-- Badge Destacado -->
-            <div
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/15 border border-blue-400/40 text-blue-200 text-xs sm:text-sm font-bold uppercase tracking-wider mb-6 shadow-lg shadow-blue-900/30">
-                <span class="">🚀 La Nueva Era para tu Negocio: De la Co-Creación a la Eficiencia Probada</span>
+    <section class="py-16 md:py-20 border-b border-slate-800/80 bg-[#080C13]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Status Tag -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 text-xs font-mono font-medium tracking-wide mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span>Programa Fundadores • Concluido con Éxito</span>
             </div>
-            <div
-                class="max-w-md mx-auto my-6 bg-red-950/40 border-2 border-red-500/80 rounded-2xl p-4 shadow-xl pulse-urgent text-center">
-                <div
-                    class="flex items-center justify-center gap-2 text-red-400 text-xs sm:text-sm font-black uppercase tracking-widest mb-3">
-                    <i class="fa-solid fa-hourglass-half animate-spin text-amber-400"></i><span class="">⏰ HOY ES LA ÚLTIMA OPORTUNIDAD!</span>
-                </div>
-                <div class="flex items-center justify-center gap-3 font-mono">
-                    <div
-                        class="bg-slate-900/90 border border-red-500/40 px-3.5 py-2 rounded-xl text-center min-w-[70px]">
-                        <span id="countdown-days"
-                            class="block text-2xl sm:text-3xl font-black text-amber-400 leading-none">03</span><span
-                            class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Días</span>
-                    </div><span class="text-xl font-black text-red-500">:</span>
-                    <div
-                        class="bg-slate-900/90 border border-slate-700 px-3.5 py-2 rounded-xl text-center min-w-[70px]">
-                        <span id="countdown-hours"
-                            class="block text-2xl sm:text-3xl font-black text-white leading-none">00</span><span
-                            class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Horas</span>
-                    </div><span class="text-xl font-black text-red-500">:</span>
-                    <div
-                        class="bg-slate-900/90 border border-slate-700 px-3.5 py-2 rounded-xl text-center min-w-[70px]">
-                        <span id="countdown-minutes"
-                            class="block text-2xl sm:text-3xl font-black text-white leading-none">00</span><span
-                            class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Minutos</span>
-                    </div>
-                </div>
-                <div class="mt-3 text-[11px] font-bold text-amber-300 uppercase tracking-wide">🚨 Cierre inminente • HOY 21
-                    de Septiembre, 2026</div>
-            </div>
+
             <!-- Titular Principal -->
-            <h1
-                class="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-tight max-w-5xl mx-auto mb-6">
-                El Software Punto de Venta Diseñado para Potenciar tu <span
-                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-amber-300 to-amber-400">Librería,
-                    Ciber y Centro de Servicios</span>
+            <h1 class="text-2xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white leading-tight uppercase mb-6">
+                El Software Punto de Venta Diseñado para Papelerías, Cibers y Trámites
             </h1>
-            <!-- Subtítulo Potente -->
-            <p class="text-base sm:text-xl text-slate-300 max-w-4xl mx-auto font-medium leading-relaxed mb-6">
-                La etapa de co-creación ha concluido con éxito. Gracias a las pruebas, retroalimentación y validación
-                directa de nuestra comunidad de Fundadores, transformamos una herramienta interna en la <strong
-                    class="text-white">solución administrativa y de cobro definitiva</strong> para negocios
-                multiservicio.
+
+            <!-- Subtítulo -->
+            <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8 font-normal">
+                Agradecemos a los negocios que aseguraron su lugar en el Programa Fundadores. El <strong class="text-white font-semibold">01 de Octubre</strong> recibirán el software listo para producción, con soporte y puesta en marcha exclusiva durante todo el mes.
             </p>
-            <!-- Párrafo de Transición -->
-            <p
-                class="text-xs sm:text-sm text-slate-400 max-w-3xl mx-auto font-normal leading-relaxed mb-8 bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
-                <i class="fa-solid fa-bolt-lightning text-amber-400 mr-1.5"></i> <strong
-                    class="text-white uppercase">ÚLTIMA OPORTUNIDAD:</strong> Llévate el software completo, probado y
-                100% testeado en combate por la comunidad antes de que suba a precio regular de <strong
-                    class="text-amber-400">Q. 770.00</strong> HOY 21 de septiembre.
-            </p>
-            <!-- Price Comparison Box In Hero -->
-            <div
-                class="max-w-xl mx-auto bg-[#07152B]/90 border-2 border-amber-500/40 rounded-2xl p-6 mb-10 shadow-2xl backdrop-blur-md">
-                <div class="grid grid-cols-2 divide-x divide-slate-800 text-left">
-                    <div class="pr-4">
-                        <span
-                            class="text-[11px] font-extrabold uppercase tracking-widest text-slate-400 block mb-1">Precio
-                            de Fundadores</span>
-                        <div class="text-3xl sm:text-4xl font-black text-amber-400 font-mono">Q. 375<span
-                                class="text-sm font-bold text-slate-300">.00</span></div>
-                        <span
-                            class="inline-block mt-1 text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Ahorro
-                            real de Q. 395.00</span>
-                    </div>
-                    <div class="pl-4">
-                        <span
-                            class="text-[11px] font-extrabold uppercase tracking-widest text-slate-400 block mb-1">Precio
-                            Regular Oficial</span>
-                        <div class="text-3xl sm:text-4xl font-black text-slate-400 line-through font-mono">Q. 770<span
-                                class="text-sm font-bold text-slate-500">.00</span></div>
-                        <span
-                            class="inline-block mt-1 text-[11px] font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded border border-red-500/20">Apertura
-                            Comercial General</span>
-                    </div>
-                </div>
-                <div
-                    class="mt-5 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-300 gap-2">
-                    <span class="flex items-center gap-1.5 text-emerald-400 font-bold"><i
-                            class="fa-solid fa-certificate"></i> Licencia de Por Vida</span>
-                    <span class="flex items-center gap-1.5 text-slate-300"><i class="fa-solid fa-ban text-red-400"></i>
-                        Sin Mensualidades Ni Cobros Ocultos</span>
-                </div>
-            </div>
-            <!-- Primary CTA -->
-            <div class="max-w-xl mx-auto flex flex-col items-center justify-center">
-                <a class="w-full bg-[#25D366] hover:bg-[#1faa53] text-white font-black text-base sm:text-lg uppercase tracking-wider py-4 px-8 rounded-xl shadow-[0_10px_30px_rgba(37,211,102,0.4)] transform hover:scale-[1.02] transition-all flex items-center justify-center gap-3"
-                    href="https://wa.me/50236680414?text=Hola%20Dayan,%20quiero%20unirme%20al%20Programa%20Fundadores%20antes%20del%2021%20de%20Septiembre"
-                    target="_blank"><i class="fa-brands fa-whatsapp text-2xl"></i><span class="">¡ASEGURAR MI CUPO
-                        AHORA MISMO • Q. 375!</span></a>
-                <p class="mt-3 text-xs sm:text-sm font-semibold text-slate-400 tracking-wide">
-                    Asegura tu software completamente probado y validado por la comunidad antes del lanzamiento oficial
-                    del 01 de Oct, 2026.
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <!-- CRONOGRAMA OFICIAL DE LANZAMIENTO -->
-    <section class="py-16 bg-[#030914] border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span
-                    class="text-red-400 font-mono text-xs font-extrabold uppercase tracking-widest bg-red-500/10 px-3.5 py-1 rounded-full border border-red-500/30">
-                    <i class="fa-solid fa-calendar-check mr-1.5"></i> Cronograma Oficial de Lanzamiento
-                </span>
-                <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mt-4">Fechas Clave del
-                    Despliegue 2026</h2>
-                <p class="text-slate-400 mt-2 text-sm sm:text-base">
-                    Transparencia absoluta en cada etapa de entrega y evolución del sistema.
-                </p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6 relative">
-                <!-- Hito 1 -->
-                <div
-                    class="bg-gradient-to-b from-red-950/40 via-slate-900 to-[#07152B] border-2 border-red-500/70 rounded-2xl p-6 relative shadow-xl pulse-urgent">
-                    <div class="flex items-center justify-between gap-2 mb-3">
-                        <div
-                            class="inline-block bg-red-600 text-white text-[10px] font-black uppercase px-3 py-1 rounded-md tracking-widest animate-pulse">
-                            FASE 1 • ¡HOY TERMINA!</div><span
-                            class="bg-amber-400 text-slate-950 font-black text-[10px] uppercase px-2 py-0.5 rounded tracking-wider">Cierre
-                            Inminente</span>
+            <!-- Tarjeta Informativa de Oportunidad -->
+            <div class="subtle-card rounded-lg p-5 sm:p-6 mb-8 text-left border border-slate-800">
+                <div class="flex items-start gap-3.5">
+                    <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center shrink-0 mt-0.5">
+                        <i class="fa-solid fa-circle-info text-sm text-blue-400"></i>
                     </div>
-                    <div class="text-amber-400 font-mono text-base font-black mb-1 flex items-center gap-1.5"><i
-                            class="fa-solid fa-hourglass-half text-red-400"></i> Cierra HOY MISMO, 2026</div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-3">Cierre Definitivo de la
-                        Ventana de Fundadores</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed mb-4">Hoy es la última oportunidad para unirse al grupo de
-                        fundadores con acceso de por vida a beneficios especiales y el valor preferencial de <strong
-                            class="text-amber-400 font-bold">Q. 375.00</strong>.</p>
-                    <div
-                        class="bg-red-500/10 border border-red-500/30 rounded-lg p-2.5 text-center text-red-300 text-[11px] font-bold">
-                        <i class="fa-solid fa-lock text-red-400 mr-1"></i> Tarifa congelada de por vida • No se repetirá
-                    </div>
-                </div>
-                <!-- Hito 2 -->
-                <div class="bg-slate-900/90 border border-blue-500/40 rounded-2xl p-6 relative shadow-lg">
-                    <div
-                        class="inline-block bg-blue-600/30 text-blue-300 text-[10px] font-black uppercase px-3 py-1 rounded-md tracking-widest mb-3 border border-blue-400/30">
-                        FASE 2 • DESPLIEGUE
-                    </div>
-                    <div class="text-blue-400 font-mono text-sm font-black mb-1">01 de Oct, 2026</div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-3">Lanzamiento Oficial y
-                        Soporte General</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                        Entrega de la versión final lista para producción e inicio del servicio de soporte técnico
-                        integral para la puesta en marcha en tus mostradores.
-                    </p>
-                    <div
-                        class="bg-blue-500/10 border border-blue-500/20 rounded-lg p-2.5 text-center text-blue-300 text-[11px] font-bold">
-                        <i class="fa-solid fa-headset text-blue-400 mr-1"></i> Acompañamiento en instalación
-                    </div>
-                </div>
-                <!-- Hito 3 -->
-                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 relative opacity-95">
-                    <div
-                        class="inline-block bg-slate-800 text-slate-400 text-[10px] font-black uppercase px-3 py-1 rounded-md tracking-widest mb-3 border border-slate-700">
-                        FASE 3 • PÚBLICO GENERAL
-                    </div>
-                    <div class="text-slate-400 font-mono text-sm font-black mb-1">01 de Nov, 2026</div>
-                    <h3 class="text-lg font-black text-white uppercase tracking-tight mb-3">Venta General al Público
-                    </h3>
-                    <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                        Apertura comercial para el público general con un precio estándar de <strong
-                            class="text-slate-200">Q770.00</strong> (+Q395 respecto al precio de Fundador).
-                    </p>
-                    <div class="bg-slate-800/80 rounded-lg p-2.5 text-center text-slate-400 text-[11px] font-semibold">
-                        <i class="fa-solid fa-tag text-slate-400 mr-1"></i> Tarifa general de mercado
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN ARQUITECTURA: 3 NEGOCIOS EN 1 -->
-    <section class="py-20 bg-[#051122] border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span
-                    class="bg-[#003366] text-blue-300 text-xs font-mono font-bold px-3.5 py-1 rounded-full uppercase tracking-widest border border-blue-400/40">
-                    💡 Arquitectura Integral
-                </span>
-                <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mt-4">¿Por Qué Este
-                    Software es Diferente? 3 Negocios en 1</h2>
-                <p class="text-slate-300 mt-4 text-sm sm:text-base leading-relaxed">
-                    Administrar en un solo local la venta de papelería al detalle, los servicios de ciber e impresiones,
-                    y la realización de trámites digitales suele ser complejo. Este sistema fue estructurado
-                    específicamente para unificar estos tres modelos bajo una sola interfaz rápida e intuitiva:
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-
-                <!-- Pilar 1 -->
-                <div
-                    class="md:col-span-2 bg-[#071933] border border-blue-900/60 rounded-2xl p-7 hover:border-blue-500/50 transition-all shadow-xl">
-                    <div class="flex flex-col lg:flex-row items-center gap-10">
-                        <div class="lg:w-1/2">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div
-                                    class="w-12 h-12 min-w-[3rem] rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl font-black">
-                                    <i class="fa-solid fa-bolt"></i>
-                                </div>
-                                <div>
-                                    <span
-                                        class="text-[10px] font-mono uppercase tracking-widest text-amber-400 font-bold block">Pilar
-                                        1</span>
-                                    <h3 class="text-xl font-black text-white uppercase tracking-tight">Zona de Ráfaga:
-                                        Atención Ultra Rápida en Mostrador</h3>
-                                </div>
-                            </div>
-                            <ul class="space-y-3 text-xs sm:text-sm text-slate-300 pl-1">
-                                <li class="flex items-start gap-2.5">
-                                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                                    <span class=""><strong class="text-white">Cobros a un solo clic:</strong> Registra
-                                        impresiones (negro y color), fotocopias, empastados, espirales, enmicados y
-                                        papeles especiales al instante.</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                                    <span class=""><strong class="text-white">Atajos de teclado (F1 a F12):</strong>
-                                        Configura accesos directos para procesar los servicios más frecuentes sin tocar
-                                        el mouse.</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                                    <span class=""><strong class="text-white">Inteligencia en mostrador:</strong>
-                                        Identifica automáticamente los productos y servicios más vendidos y los
-                                        posiciona en un panel de acceso inmediato.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div
-                            class="lg:w-1/2 rounded-xl overflow-hidden shadow-2xl shadow-black/60 border border-slate-700 bg-slate-950 p-1 w-full">
-                            <img src="image_ed0d57.png" alt="Interfaz POS Intercopias"
-                                class="w-full h-auto object-cover rounded-lg border border-slate-800"
-                                onerror="this.src='https://via.placeholder.com/600x400?text=Mockup+POS+Principal'">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pilar 2 -->
-                <div
-                    class="bg-[#071933] border border-blue-900/60 rounded-2xl p-7 hover:border-blue-500/50 transition-all shadow-xl flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-12 h-12 min-w-[3rem] rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl font-black">
-                                <i class="fa-solid fa-receipt"></i>
-                            </div>
-                            <div>
-                                <span
-                                    class="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold block">Pilar
-                                    2</span>
-                                <h3 class="text-xl font-black text-white uppercase tracking-tight">Módulo de Gestiones y
-                                    Pagos</h3>
-                            </div>
-                        </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-slate-300 pl-1 mb-6">
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                                <span class=""><strong class="text-white">Desglose profesional en ticket:</strong>
-                                    Facilita trámites complejos (Declaraguate, antecedentes penales y policiales, RENAP,
-                                    Contraloría).</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                                <span class=""><strong class="text-white">Confianza total para el cliente:</strong>
-                                    Imprime un ticket detallado que separa con claridad el Valor de la Boleta, la
-                                    Gestión y la Comisión de Cobro, eliminando dudas al cobrar montos elevados.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div
-                        class="rounded-xl overflow-hidden shadow-2xl shadow-black/60 border border-blue-900/60 mt-auto bg-slate-950 p-4 flex justify-center items-center">
-                        <img src="image_ed09d2.png" alt="Ticket POS"
-                            class="w-full h-auto object-cover rounded-lg max-w-[200px]"
-                            onerror="this.src='https://via.placeholder.com/200x400?text=Ticket'">
+                        <h2 class="text-xs sm:text-sm font-bold text-white uppercase tracking-wide mb-1">¿No ingresaste en la fase de Fundadores? Aún puedes reservar tu licencia</h2>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            La tarifa inicial de fundadores (<strong class="text-slate-300 font-mono">Q. 375.00</strong>) cerró formalmente el 21 de septiembre. Sin embargo, antes del lanzamiento público oficial a <strong class="text-slate-200 font-mono font-bold">Q. 770.00</strong> el 01 de Noviembre, aún puedes reservar tu licencia por solo <strong class="text-white font-mono font-bold text-emerald-400">Q. 550.00</strong>. Adquieres una versión terminada, probada y lista para trabajar, sin pagos mensuales, con soporte directo de estabilidad operativa.
+                        </p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Pilar 3 -->
-                <div
-                    class="bg-[#071933] border border-blue-900/60 rounded-2xl p-7 hover:border-blue-500/50 transition-all shadow-xl">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl font-black">
-                            <i class="fa-solid fa-boxes-stacked"></i>
+            <!-- Call to Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a class="w-full sm:w-auto bg-blue-700 hover:bg-blue-600 text-white font-semibold text-xs uppercase tracking-wider py-3 px-6 rounded border border-blue-600 transition-colors flex items-center justify-center gap-2"
+                    href="#pre-orden">
+                    <i class="fa-solid fa-lock text-xs"></i>
+                    <span>Pre-Ordenar con Tarifa Preferencial</span>
+                </a>
+                <a class="w-full sm:w-auto bg-[#0E141F] hover:bg-slate-800 text-slate-300 border border-slate-700 font-semibold text-xs uppercase tracking-wider py-3 px-6 rounded transition-colors flex items-center justify-center gap-2"
+                    href="https://wa.me/50236680414?text=Hola%20Dayan,%20deseo%20unirme%20a%20la%20lista%20de%20notificaciones%20del%20Lanzamiento%20Oficial%20del%2001%20de%20Noviembre"
+                    target="_blank">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                    <span>Lista de Notificación (01 Nov)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: HISTORIA Y ORIGEN DEL PROYECTO -->
+    <section class="py-14 bg-[#080C13] border-b border-slate-800/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="subtle-card rounded-xl p-6 sm:p-8 border border-slate-800">
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <div class="lg:w-1/3 text-left">
+                        <span class="text-slate-400 font-mono text-[10px] font-bold uppercase tracking-widest bg-slate-900 px-2 py-0.5 rounded border border-slate-800 inline-block mb-2.5">
+                            Origen Real
+                        </span>
+                        <h2 class="text-lg sm:text-xl font-bold uppercase text-white tracking-tight leading-snug">
+                            Creado en la Trinchera: De un Video a una Solución Validada
+                        </h2>
+                        <div class="mt-4 flex flex-col gap-1 text-slate-400 text-xs">
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-slate-500"></i> Cobán, Alta Verapaz</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-store text-slate-500"></i> Intercopias (Frente a Plaza Magdalena)</span>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3 border-t lg:border-t-0 lg:border-l border-slate-800 pt-5 lg:pt-0 lg:pl-8 space-y-3.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        <p>
+                            <strong class="text-white">Todo comenzó en la práctica real del mostrador:</strong> Compartí en redes sociales cómo habíamos diseñado un software a la medida para resolver los dolores cotidianos de nuestro negocio físico. La respuesta de propietarios de papelerías, cibers y centros de copias fue inmediata: compartían la misma insatisfacción con herramientas genéricas, lentas e inflexibles.
+                        </p>
+                        <p class="text-slate-400">
+                            Así nació el <strong>Programa Fundadores</strong>. Lejos de ser una simple preventa, fue un proceso de validación operativa. Durante semanas se evaluaron atajos de teclado, agilidad de cobro en horas punta y desglose de trámites para asegurar que el sistema soporte el ritmo real del comercio guatemalteco.
+                        </p>
+                        <div class="text-xs text-slate-300 bg-slate-900/90 p-3 rounded border border-slate-800 flex items-start gap-2">
+                            <i class="fa-solid fa-check text-blue-400 mt-0.5 text-xs"></i>
+                            <span><strong class="text-white">Versión definitiva y probada en mostrador:</strong> Software cerrado y listo para producir 'tal como está', sin sorpresas ni suscripciones. Incluye asistencia técnica focalizada en correcciones operativas y estabilidad para tu punto de venta.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CRONOGRAMA OFICIAL DEL DESPLIEGUE -->
+    <section class="py-14 bg-[#0B0F17] border-b border-slate-800/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-10">
+                <span class="text-slate-400 font-mono text-[10px] font-bold uppercase tracking-widest bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                    Hoja de Ruta 2026
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white mt-2">
+                    Cronograma de Entrega y Despliegue
+                </h2>
+                <p class="text-slate-400 text-xs mt-1">Fechas oficiales de soporte a fundadores y lanzamiento al público general.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-4">
+                <!-- Hito 1: Concluido -->
+                <div class="subtle-card rounded-lg p-5 border border-slate-800 relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="bg-slate-900 text-slate-300 border border-slate-700 text-[10px] font-mono uppercase px-2 py-0.5 rounded font-semibold">
+                            Hito 1 • Concluido
+                        </span>
+                        <i class="fa-solid fa-circle-check text-slate-500 text-xs"></i>
+                    </div>
+                    <div class="text-slate-400 font-mono text-xs mb-1">21 de Septiembre, 2026</div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-tight mb-2">Cierre de Ventana Fundadores</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Conclusión definitiva de la tarifa inicial de preventa (Q. 375.00) con cupos completos.
+                    </p>
+                </div>
+                <!-- Hito 2: En curso -->
+                <div class="subtle-card rounded-lg p-5 border border-blue-700/60 bg-[#101726] relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="bg-blue-950 text-blue-300 border border-blue-800 text-[10px] font-mono uppercase px-2 py-0.5 rounded font-semibold">
+                            Hito 2 • En Proceso
+                        </span>
+                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                    </div>
+                    <div class="text-blue-400 font-mono text-xs font-semibold mb-1">Todo Octubre, 2026</div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-tight mb-2">Despliegue &amp; Soporte a Fundadores</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Entrega de licencias operativas (01 de Octubre) e inicio de asesoría técnica 1 a 1 para puesta en mostrador.
+                    </p>
+                </div>
+                <!-- Hito 3: Próximo -->
+                <div class="subtle-card rounded-lg p-5 border border-slate-800 relative">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="bg-slate-900 text-slate-400 border border-slate-800 text-[10px] font-mono uppercase px-2 py-0.5 rounded">
+                            Hito 3 • Próximo
+                        </span>
+                        <i class="fa-regular fa-calendar text-slate-600 text-xs"></i>
+                    </div>
+                    <div class="text-slate-400 font-mono text-xs mb-1">01 de Noviembre, 2026</div>
+                    <h3 class="text-sm font-bold text-white uppercase tracking-tight mb-2">Apertura Comercial Oficial</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Disponibilidad comercial abierta al público a precio estándar de <strong class="text-slate-200 font-mono">Q. 770.00</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Countdown sutil hacia el lanzamiento general -->
+            <div class="mt-8 flex justify-center">
+                <div class="inline-flex flex-col sm:flex-row items-center gap-3 bg-slate-900/60 border border-slate-800 rounded-lg px-5 py-3 text-center">
+                    <span class="text-[11px] text-slate-400 font-mono uppercase tracking-wider">Apertura general en</span>
+                    <div class="flex items-center gap-2 font-mono" id="section-countdown">
+                        <div class="flex flex-col items-center">
+                            <span class="text-xl font-bold text-slate-200" id="sc-days">--</span>
+                            <span class="text-[9px] text-slate-500 uppercase tracking-wider">días</span>
+                        </div>
+                        <span class="text-slate-700 font-bold">:</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-xl font-bold text-slate-200" id="sc-hours">--</span>
+                            <span class="text-[9px] text-slate-500 uppercase tracking-wider">horas</span>
+                        </div>
+                        <span class="text-slate-700 font-bold">:</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-xl font-bold text-slate-200" id="sc-mins">--</span>
+                            <span class="text-[9px] text-slate-500 uppercase tracking-wider">min</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] text-slate-500 font-mono">→ 01 Nov 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIMULADOR EN VIVO -->
+    <section class="py-14 bg-[#080C13] border-b border-slate-800/80" id="simulador">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6">
+                <span class="bg-slate-900 text-slate-300 text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded uppercase tracking-wider border border-slate-800">
+                    Demostración Interactiva
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white mt-2">
+                    Simulador Operativo en Vivo
+                </h2>
+                <p class="text-slate-400 max-w-xl mx-auto mt-1 text-xs">
+                    Explora el entorno de trabajo real probado por los fundadores. Puedes agregar renglones y registrar ventas de prueba directamente en el mostrador virtual.
+                </p>
+                <p class="text-slate-500 text-[11px] mt-1">
+                    <i class="fa-solid fa-desktop text-slate-600 mr-1"></i> Para mejor experiencia, accede desde una computadora.
+                </p>
+            </div>
+
+            <!-- Frame de Navegador Sobrio -->
+            <div class="rounded-lg overflow-hidden border border-slate-700/80 bg-[#0B0F17] shadow-xl"
+                style="height: 64vh; min-height: 560px;">
+                <div class="bg-[#0E141F] border-b border-slate-800 px-4 py-2.5 flex items-center justify-between">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700"></span>
+                    </div>
+                    <span class="text-[11px] font-mono text-slate-400 bg-slate-900 px-3 py-0.5 rounded border border-slate-800 flex items-center gap-1.5">
+                        <i class="fa-solid fa-shield-halved text-slate-400 text-[10px]"></i>
+                        pos.intercopias.com/simulador-demo
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono hidden sm:inline">
+                        <kbd class="bg-slate-800 px-1 py-0.5 rounded text-[10px] border border-slate-700 text-slate-300">F12</kbd> Cobro rápido
+                    </span>
+                </div>
+                <iframe class="w-full h-full border-0 bg-white" src="demo.html" title="Simulador POS Intercopias"></iframe>
+            </div>
+            <div class="mt-2 text-center text-[11px] text-slate-500">
+                Entorno de demostración interactiva. No se realizan cargos reales en este sandbox.
+            </div>
+        </div>
+    </section>
+
+    <!-- ARQUITECTURA: 3 NEGOCIOS EN 1 -->
+    <section class="py-14 bg-[#0B0F17] border-b border-slate-800/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="bg-slate-900 text-slate-300 text-[10px] font-mono font-semibold px-2.5 py-0.5 rounded uppercase tracking-wider border border-slate-800">
+                    Especialización Comercial
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white mt-2">
+                    Arquitectura: 3 Líneas de Negocio en un Solo Sistema
+                </h2>
+                <p class="text-slate-400 mt-1.5 text-xs leading-relaxed">
+                    Diseñado específicamente para negocios que combinan venta al por menor, servicios de copiado y gestión de trámites en un mismo mostrador.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+                <!-- Pilar 1 -->
+                <div class="subtle-card subtle-card-hover rounded-lg p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-bolt text-blue-400"></i>
                         </div>
                         <div>
-                            <span
-                                class="text-[10px] font-mono uppercase tracking-widest text-blue-400 font-bold block">Pilar
-                                3</span>
-                            <h3 class="text-xl font-black text-white uppercase tracking-tight">Control Dual de
-                                Inventario y Seguridad</h3>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block">Pilar 01</span>
+                            <h3 class="text-sm font-bold text-white uppercase tracking-tight">Zona de Ráfaga: Cobro en Segundos</h3>
                         </div>
                     </div>
-                    <ul class="space-y-3 text-xs sm:text-sm text-slate-300 pl-1">
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                            <span class=""><strong class="text-white">Sala de Ventas vs. Bodega:</strong> Separa
-                                productos listos para mostrador de los insumos y materiales de taller.</span>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Cobro a un clic:</strong> Registra fotocopias, impresiones B/N y color, plastificados y anillados sin rodeos.</span>
                         </li>
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                            <span class=""><strong class="text-white">Kardex de movimientos:</strong> Auditoría completa
-                                de entradas, salidas, mermas y traslados entre bodegas.</span>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Atajos de teclado (F1 a F12):</strong> Procesa clientes en fila continua sin tocar el ratón.</span>
                         </li>
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                            <span class=""><strong class="text-white">Corte Z a Ciegas para Colaboradores:</strong>
-                                Seguridad reforzada en caja, requiriendo reportar efectivo físico sin ver totales del
-                                sistema.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                            <span class=""><strong class="text-white">Generador de etiquetas:</strong> Crea e imprime
-                                códigos de barras para productos pequeños o papelería al detalle.</span>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Accesos frecuentes:</strong> Selección inmediata de consumos y servicios de alta rotación.</span>
                         </li>
                     </ul>
                 </div>
-
-                <!-- Pilar 4 -->
-                <div
-                    class="bg-[#071933] border border-blue-900/60 rounded-2xl p-7 hover:border-blue-500/50 transition-all shadow-xl flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-3 mb-4">
-                            <div
-                                class="w-12 h-12 min-w-[3rem] rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center text-xl font-black">
-                                <i class="fa-solid fa-hard-drive"></i>
-                            </div>
-                            <div>
-                                <span
-                                    class="text-[10px] font-mono uppercase tracking-widest text-purple-400 font-bold block">Pilar
-                                    4</span>
-                                <h3 class="text-xl font-black text-white uppercase tracking-tight">Rendimiento Local Sin
-                                    Internet</h3>
-                            </div>
+                <!-- Pilar 2 -->
+                <div class="subtle-card subtle-card-hover rounded-lg p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-receipt text-blue-400"></i>
                         </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-slate-300 pl-1 mb-6">
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                                <span class=""><strong class="text-white">Instalable en Windows (10 y 11):</strong>
-                                    Máxima compatibilidad para equipos estándar de mostrador.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                                <span class=""><strong class="text-white">Velocidad inmediata:</strong> Respuestas en
-                                    milisegundos incluso con catálogos de miles de artículos.</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
-                                <span class=""><strong class="text-white">Cero caídas de red:</strong> No dependes de
-                                    servidores lentos, saturaciones de internet ni caídas de señal.</span>
-                            </li>
-                        </ul>
+                        <div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block">Pilar 02</span>
+                            <h3 class="text-sm font-bold text-white uppercase tracking-tight">Módulo de Gestiones y Trámites</h3>
+                        </div>
                     </div>
-                    <div
-                        class="rounded-xl overflow-hidden shadow-2xl shadow-black/60 border border-blue-900/60 bg-slate-950 p-1">
-                        <img src="image_ed0a31.png" alt="Rendimiento POS"
-                            class="w-full h-auto object-cover rounded-lg border border-slate-800"
-                            onerror="this.src='https://via.placeholder.com/300x200?text=Panel+Lateral'">
-                    </div>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Desglose transparente:</strong> Trámites de SAT/Declaraguate, antecedentes, RENAP y boletas públicas.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Claridad para el cliente:</strong> Separa el importe oficial del valor de tus honorarios por gestión técnica.</span>
+                        </li>
+                    </ul>
                 </div>
-
+                <!-- Pilar 3 -->
+                <div class="subtle-card subtle-card-hover rounded-lg p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-boxes-stacked text-blue-400"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block">Pilar 03</span>
+                            <h3 class="text-sm font-bold text-white uppercase tracking-tight">Control Dual de Stock &amp; Seguridad de Caja</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Sala de Ventas vs. Bodega:</strong> Control independiente entre piso de mostrador y reserva de taller.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Arqueo Z a ciegas:</strong> El colaborador declara el efectivo físico sin conocer el total del sistema.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Generación de etiquetas:</strong> Códigos de barras para papelería suelta y consumibles pequeños.</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Pilar 4 -->
+                <div class="subtle-card subtle-card-hover rounded-lg p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-desktop text-blue-400"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 font-bold block">Pilar 04</span>
+                            <h3 class="text-sm font-bold text-white uppercase tracking-tight">Rendimiento Nativo en Windows</h3>
+                        </div>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Windows 10 y 11:</strong> Máxima fluidez sin requerir hardware de alto costo ni servidores externos.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-slate-500 mt-0.5"></i>
+                            <span><strong class="text-white">Operación offline:</strong> Si el proveedor de internet falla, la venta y el mostrador continúan operando sin interrupción.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN: MÓDULOS ADAPTABLES A TU OPERACIÓN DIARIA -->
-    <section class="py-16 bg-[#030A14] border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span
-                    class="text-xs font-mono font-bold text-amber-400 uppercase tracking-widest bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">
-                    📋 Operación Flexible
+    <!-- MÓDULOS OPERATIVOS -->
+    <section class="py-14 bg-[#080C13] border-b border-slate-800/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest bg-slate-900 px-2.5 py-0.5 rounded border border-slate-800">
+                    Herramientas Incluidas
                 </span>
-                <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-3">Módulos Adaptables
-                    a tu Operación Diaria</h2>
-                <p class="text-slate-400 text-xs sm:text-sm mt-2">
-                    Herramientas diseñadas para resolver situaciones cotidianas reales sin trabar el flujo de venta.
-                </p>
+                <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white mt-2">
+                    Módulos Operativos para el Día a Día
+                </h2>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <!-- Tarjeta 1 -->
-                <div
-                    class="bg-[#07152B] border border-slate-800 p-5 rounded-xl hover:border-slate-700 transition-colors">
-                    <div
-                        class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-lg mb-3">
-                        <i class="fa-solid fa-file-invoice"></i>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Módulo 1 -->
+                <div class="subtle-card rounded-lg p-4 border border-slate-800">
+                    <div class="w-7 h-7 rounded bg-slate-800 text-slate-300 flex items-center justify-center text-xs mb-2.5">
+                        <i class="fa-regular fa-file-lines text-blue-400"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mb-2">Modo Cotizaciones</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Emite cotizaciones formales en hoja tamaño carta sin descontar existencias ni alterar tu
-                        contabilidad, listas para imprimir o enviar.
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wide mb-1">Cotizaciones Formales</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Emisión en formato carta para colegios, empresas o entidades, sin descontar existencias físicas.
                     </p>
                 </div>
-                <!-- Tarjeta 2 -->
-                <div
-                    class="bg-[#07152B] border border-slate-800 p-5 rounded-xl hover:border-slate-700 transition-colors">
-                    <div
-                        class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg mb-3">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                <!-- Módulo 2 -->
+                <div class="subtle-card rounded-lg p-4 border border-slate-800">
+                    <div class="w-7 h-7 rounded bg-slate-800 text-slate-300 flex items-center justify-center text-xs mb-2.5">
+                        <i class="fa-solid fa-hand-holding-dollar text-blue-400"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mb-2">Modo Pedidos</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Gestiona trabajos con anticipo y saldo contra entrega (encuadernaciones, impresiones por
-                        volumen, empastes o servicio técnico).
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wide mb-1">Pedidos y Anticipos</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Registro de abonos iniciales y saldo pendiente contra entrega de empastes, sellos o trabajos de volumen.
                     </p>
                 </div>
-                <!-- Tarjeta 3 -->
-                <div
-                    class="bg-[#07152B] border border-slate-800 p-5 rounded-xl hover:border-slate-700 transition-colors">
-                    <div
-                        class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg mb-3">
-                        <i class="fa-solid fa-layer-group"></i>
+                <!-- Módulo 3 -->
+                <div class="subtle-card rounded-lg p-4 border border-slate-800">
+                    <div class="w-7 h-7 rounded bg-slate-800 text-slate-300 flex items-center justify-center text-xs mb-2.5">
+                        <i class="fa-solid fa-layer-group text-blue-400"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mb-2">Escalas y Stock Negativo</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Rangos automáticos de descuento por volumen y opción de venta con stock negativo para no detener
-                        la fila en horas pico de colegio u oficina.
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wide mb-1">Escalas y Venta Controlada</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Tarifas por volumen automáticas y venta controlada para no detener la cola mientras arriba mercadería.
                     </p>
                 </div>
-                <!-- Tarjeta 4 -->
-                <div
-                    class="bg-[#07152B] border border-slate-800 p-5 rounded-xl hover:border-slate-700 transition-colors">
-                    <div
-                        class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg mb-3">
-                        <i class="fa-solid fa-print"></i>
+                <!-- Módulo 4 -->
+                <div class="subtle-card rounded-lg p-4 border border-slate-800">
+                    <div class="w-7 h-7 rounded bg-slate-800 text-slate-300 flex items-center justify-center text-xs mb-2.5">
+                        <i class="fa-solid fa-print text-blue-400"></i>
                     </div>
-                    <h3 class="text-base font-bold text-white mb-2">Compatibilidad de Impresión</h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Soporte nativo para impresoras térmicas de 55 mm y 80 mm, o la opción de saltar impresión de
-                        ticket si el cliente no la requiere.
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wide mb-1">Impresión Térmica</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Compatibilidad con impresoras POS estándar de 58 y 80 mm o modo ecológico sin emisión física.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LIVE SANDBOX / SIMULATOR -->
-    <section class="py-16 bg-[#040C1A] border-b border-slate-800" id="simulador">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- FAQ -->
+    <section class="py-14 bg-[#0B0F17] border-b border-slate-800/80">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
-                <span
-                    class="bg-blue-500/10 text-blue-300 text-xs font-mono font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-blue-500/30">
-                    Simulador Interactivo (USO EN COMPUTADORA 🖥️)
+                <span class="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest bg-slate-900 px-2.5 py-0.5 rounded border border-slate-800">
+                    Cuentas Claras
                 </span>
-                <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mt-3">Toca, Vende y
-                    Siente la Velocidad</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto mt-2 text-sm sm:text-base">
-                    Pruébalo tú mismo. Agrega productos, prueba la "Zona de Ráfaga" y simula cobros rápidos en segundos
-                    antes de instalar.
-                </p>
+                <h2 class="text-xl sm:text-2xl font-bold uppercase tracking-tight text-white mt-2">Preguntas Frecuentes</h2>
             </div>
-            <!-- Browser Window Frame -->
-            <div class="rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-900"
-                style="height: 70vh; min-height: 600px;">
-                <div class="bg-slate-800/90 border-b border-slate-700 px-4 py-3 flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-                    </div>
-                    <span
-                        class="text-xs font-mono text-slate-400 bg-slate-950/80 px-4 py-1 rounded-md border border-slate-700/50">
-                        <i class="fa-solid fa-lock text-emerald-400 text-[10px] mr-1.5"></i>
-                        pos.intercopias.com/simulador-demo
-                    </span>
-                    <span class="text-[11px] text-amber-400 font-mono hidden sm:inline"><i
-                            class="fa-solid fa-keyboard mr-1"></i> F12 para cobrar</span>
-                </div>
-                <iframe class="w-full h-full border-0 bg-white" src="demo.html"
-                    title="Simulador POS Intercopias"></iframe>
-            </div>
-            <div class="mt-4 text-center">
-                <span class="text-xs text-slate-500 font-medium">Entorno de prueba seguro. Los datos simulados se
-                    reinician de manera automática, para mejor experiencia de simulacion accede desde una
-                    computadora.</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ & CLARITY -->
-    <section class="py-16 bg-[#030a14] border-b border-slate-800">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span
-                    class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest bg-slate-900 px-3 py-1 rounded-full border border-slate-800">Cuentas
-                    Claras</span>
-                <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-3">Preguntas
-                    Frecuentes</h2>
-            </div>
-
-            <div class="space-y-4">
-                <div
-                    class="bg-[#07152B] border border-blue-900/40 rounded-xl p-5 hover:border-blue-500/50 transition-colors">
-                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-question text-amber-400"></i>
-                        ¿Qué pasa exactamente después del 21 de Septiembre?
+            <div class="space-y-3">
+                <!-- FAQ 1 -->
+                <div class="subtle-card rounded-lg p-5 border border-slate-800">
+                    <h3 class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-question text-blue-400 text-xs"></i>
+                        ¿Qué pasó exactamente con el Programa Fundadores?
                     </h3>
-                    <p class="text-xs text-slate-300 leading-relaxed pl-6">
-                        Se cierra la admisión de Fundadores. La licencia pasará inmediatamente a su precio comercial de
-                        Q. 770.00. No se mantendrá el precio de Q. 375.00 bajo ninguna excepción una vez cerrada la
-                        ventana.
+                    <p class="text-xs text-slate-400 leading-relaxed pl-6">
+                        La fase de co-creación concluyó el 21 de Septiembre, 2026 con éxito. Los fundadores inscritos recibirán su licencia el 01 de Octubre. La tarifa de Q.375.00 ya no está disponible, pero existe una tarifa preferencial de pre-orden antes del lanzamiento público a Q.770.00 el 01 de Noviembre.
                     </p>
                 </div>
-
-                <div
-                    class="bg-[#07152B] border border-blue-900/40 rounded-xl p-5 hover:border-blue-500/50 transition-colors">
-                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-money-bill-wave text-emerald-400"></i>
+                <!-- FAQ 2 -->
+                <div class="subtle-card rounded-lg p-5 border border-slate-800">
+                    <h3 class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-money-bill-wave text-emerald-400 text-xs"></i>
                         ¿Hay cobros mensuales o de mantenimiento?
                     </h3>
-                    <p class="text-xs text-slate-300 leading-relaxed pl-6">
-                        No. Cero mensualidades. Pagas una sola vez y el instalador es tuyo de por vida. El sistema no
-                        depende de suscripciones a la nube para funcionar día a día. Es 100% libre de mensualidades.
+                    <p class="text-xs text-slate-400 leading-relaxed pl-6">
+                        No. Cero mensualidades. Pagas una sola vez y el instalador es tuyo de por vida. El sistema no depende de suscripciones a la nube para funcionar día a día. Es 100% libre de mensualidades.
                     </p>
                 </div>
-
-                <div
-                    class="bg-[#07152B] border border-blue-900/40 rounded-xl p-5 hover:border-blue-500/50 transition-colors">
-                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-network-wired text-blue-400"></i>
+                <!-- FAQ 3 -->
+                <div class="subtle-card rounded-lg p-5 border border-slate-800">
+                    <h3 class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-network-wired text-blue-400 text-xs"></i>
                         ¿Requiere Internet constante?
                     </h3>
-                    <p class="text-xs text-slate-300 leading-relaxed pl-6">
-                        El sistema se instala en tu computadora y guarda datos localmente. Es rapidísimo y no se cae si
-                        te quedas sin internet. Tienes control de tus datos en tu propia máquina.
+                    <p class="text-xs text-slate-400 leading-relaxed pl-6">
+                        El sistema se instala en tu computadora y guarda datos localmente. Es rapidísimo y no se cae si te quedas sin internet. Tienes control de tus datos en tu propia máquina.
                     </p>
                 </div>
-
-                <div
-                    class="bg-[#07152B] border border-blue-900/40 rounded-xl p-5 hover:border-blue-500/50 transition-colors">
-                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-gears text-amber-400"></i>
-                        ¿Cómo funciona la corrección de errores?
+                <!-- FAQ 4 -->
+                <div class="subtle-card rounded-lg p-5 border border-slate-800">
+                    <h3 class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-gears text-amber-400 text-xs"></i>
+                        ¿Cómo funciona la corrección de errores en ticket?
                     </h3>
-                    <p class="text-xs text-slate-300 leading-relaxed pl-6">
-                        Usamos "Anular y Clonar". Con un clic anulas el ticket (devolviendo el stock) y el sistema carga
-                        los productos para corregir y cobrar al instante. Diseñado para control interno, sin conectar a
-                        SAT.
+                    <p class="text-xs text-slate-400 leading-relaxed pl-6">
+                        Usamos "Anular y Clonar". Con un clic anulas el ticket (devolviendo el stock) y el sistema carga los productos para corregir y cobrar al instante. Diseñado para control interno, sin conectar a SAT.
                     </p>
                 </div>
-
-                <div
-                    class="bg-[#07152B] border border-blue-900/40 rounded-xl p-5 hover:border-blue-500/50 transition-colors">
-                    <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-computer text-purple-400"></i>
+                <!-- FAQ 5 -->
+                <div class="subtle-card rounded-lg p-5 border border-slate-800">
+                    <h3 class="text-xs sm:text-sm font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-computer text-purple-400 text-xs"></i>
                         ¿Cuáles son los requisitos de hardware?
                     </h3>
-                    <p class="text-xs text-slate-300 leading-relaxed pl-6">
-                        Exclusivo para Windows 10 u 11 y 4 GB de RAM. Soporta lector de barras USB, gaveta de dinero e
-                        impresoras térmicas de 58mm o 80mm.
+                    <p class="text-xs text-slate-400 leading-relaxed pl-6">
+                        Exclusivo para Windows 10 u 11 y 4 GB de RAM. Soporta lector de barras USB, gaveta de dinero e impresoras térmicas de 58mm o 80mm.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN: PAGO POR TRANSFERENCIA -->
-    <section class="py-16 bg-[#030914] border-b border-slate-800 relative" id="pago-transferencia">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <span
-                    class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest"><i
-                        class="fa-solid fa-bolt"></i> CIERRA TU LUGAR HOY MISMO • ACCESO DIRECTO</span>
-                <h2 class="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white mt-4">Si ya estás
-                    convencido, asegura tu cupo por transferencia o depósito</h2>
-                <p class="text-slate-300 mt-3 text-sm sm:text-base leading-relaxed">Realiza tu pago único a cualquiera
-                    de nuestras cuentas autorizadas, envía tu comprobante por WhatsApp y entra de inmediato al Grupo
-                    Oficial de Fundadores.</p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10">
-                <!-- BANRURAL -->
-                <div
-                    class="bg-gradient-to-b from-[#071933] to-[#040C1A] border-2 border-emerald-500/30 hover:border-emerald-500/60 rounded-2xl p-6 shadow-xl relative transition-all">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center font-black text-xl shadow-md">
-                                <i class="fa-solid fa-building-columns"></i>
-                            </div>
-                            <div>
-                                <span
-                                    class="text-[11px] font-mono uppercase tracking-widest text-emerald-400 font-bold block">Banco
-                                    Autorizado</span>
-                                <h3 class="text-lg font-black text-white uppercase">BANRURAL</h3>
-                            </div>
-                        </div>
-                        <span
-                            class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-[11px] font-bold px-2.5 py-1 rounded-full uppercase">Ahorro</span>
+    <!-- PRE-ORDEN CTA -->
+    <section class="py-16 bg-[#0B0F17] border-b border-slate-800/80" id="pre-orden">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px] font-semibold uppercase tracking-wider">
+                <i class="fa-solid fa-shield-check text-blue-400"></i> Pre-Orden Oficial
+            </span>
+            <h2 class="text-xl sm:text-3xl font-bold uppercase tracking-tight text-white mt-3 mb-4">
+                Asegura tu Licencia Antes del Lanzamiento General
+            </h2>
+
+            <!-- Comparativo de precios -->
+            <div class="subtle-card rounded-xl p-6 mb-6 border border-slate-800 text-left">
+                <div class="grid sm:grid-cols-3 gap-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-800">
+                    <!-- Q.375 -->
+                    <div class="py-3 sm:py-0 sm:pr-4 text-center">
+                        <span class="text-[10px] font-mono uppercase text-slate-500 tracking-wider block mb-1">Fase Fundadores</span>
+                        <div class="text-2xl font-black text-slate-500 font-mono line-through">Q. 375</div>
+                        <span class="inline-block mt-1 text-[10px] font-mono text-slate-600 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">Cerrado</span>
                     </div>
-                    <div class="bg-slate-900/90 border border-slate-700/80 rounded-xl p-4 mb-4">
-                        <div class="flex items-center justify-between text-xs text-slate-400 mb-1"><span
-                                class="font-mono uppercase">Número de Cuenta</span><span
-                                class="text-emerald-400 font-bold">Quetzales</span></div>
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="text-xl sm:text-2xl font-mono font-black text-white tracking-wider"
-                                id="cuenta-banrural">4536070133</span>
-                            <button
-                                class="bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/40 text-emerald-300 hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
-                                onclick="navigator.clipboard.writeText('4536070133'); const t=this.querySelector('.btn-copy-txt'); t.textContent='¡Copiado!'; setTimeout(()=>t.textContent='Copiar', 2000);"
-                                type="button"><i class="fa-solid fa-copy"></i><span
-                                    class="btn-copy-txt">Copiar</span></button>
-                        </div>
+                    <!-- Q.550 -->
+                    <div class="py-3 sm:py-0 sm:px-4 text-center relative">
+                        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-700 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Disponible ahora</span>
+                        <span class="text-[10px] font-mono uppercase text-emerald-400 tracking-wider block mb-1">Pre-Orden</span>
+                        <div class="text-3xl font-black text-emerald-400 font-mono">Q. 550</div>
+                        <span class="inline-block mt-1 text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Ahorro Q. 220</span>
                     </div>
-                    <div class="space-y-1.5 text-xs text-slate-300">
-                        <div class="flex justify-between py-1 border-b border-slate-800/80"><span
-                                class="text-slate-400">Titular de la cuenta:</span><span
-                                class="font-bold text-white uppercase">Dalia Reina</span></div>
-                        <div class="flex justify-between py-1"><span class="text-slate-400">Monto a
-                                transferir:</span><span class="font-mono font-black text-amber-400 text-sm">Q.
-                                375.00</span></div>
+                    <!-- Q.770 -->
+                    <div class="py-3 sm:py-0 sm:pl-4 text-center">
+                        <span class="text-[10px] font-mono uppercase text-slate-500 tracking-wider block mb-1">Precio General</span>
+                        <div class="text-2xl font-black text-slate-500 font-mono">Q. 770</div>
+                        <span class="inline-block mt-1 text-[10px] font-mono text-slate-600 bg-slate-800 px-2 py-0.5 rounded border border-slate-700">01 Nov 2026</span>
                     </div>
                 </div>
-                <!-- BANCO INDUSTRIAL -->
-                <div
-                    class="bg-gradient-to-b from-[#071933] to-[#040C1A] border-2 border-blue-500/30 hover:border-blue-500/60 rounded-2xl p-6 shadow-xl relative transition-all">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-400 flex items-center justify-center font-black text-xl shadow-md">
-                                <i class="fa-solid fa-building-columns"></i>
-                            </div>
-                            <div>
-                                <span
-                                    class="text-[11px] font-mono uppercase tracking-widest text-blue-400 font-bold block">Banco
-                                    Autorizado</span>
-                                <h3 class="text-lg font-black text-white uppercase">B. INDUSTRIAL</h3>
-                            </div>
-                        </div>
-                        <span
-                            class="bg-blue-500/10 text-blue-300 border border-blue-500/30 text-[11px] font-bold px-2.5 py-1 rounded-full uppercase">Monetaria</span>
-                    </div>
-                    <div class="bg-slate-900/90 border border-slate-700/80 rounded-xl p-4 mb-4">
-                        <div class="flex items-center justify-between text-xs text-slate-400 mb-1"><span
-                                class="font-mono uppercase">Número de Cuenta</span><span
-                                class="text-blue-300 font-bold">Quetzales</span></div>
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="text-xl sm:text-2xl font-mono font-black text-white tracking-wider"
-                                id="cuenta-bi">7171607406</span>
-                            <button
-                                class="bg-blue-500/20 hover:bg-blue-500/30 border border-blue-500/40 text-blue-300 hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
-                                onclick="navigator.clipboard.writeText('7171607406'); const t=this.querySelector('.btn-copy-txt'); t.textContent='¡Copiado!'; setTimeout(()=>t.textContent='Copiar', 2000);"
-                                type="button"><i class="fa-solid fa-copy"></i><span
-                                    class="btn-copy-txt">Copiar</span></button>
-                        </div>
-                    </div>
-                    <div class="space-y-1.5 text-xs text-slate-300">
-                        <div class="flex justify-between py-1 border-b border-slate-800/80"><span
-                                class="text-slate-400">Titular de la cuenta:</span><span
-                                class="font-bold text-white uppercase">Dayan Macz</span></div>
-                        <div class="flex justify-between py-1"><span class="text-slate-400">Monto a
-                                transferir:</span><span class="font-mono font-black text-amber-400 text-sm">Q.
-                                375.00</span></div>
-                    </div>
-                </div>
-                <!-- PAYPAL -->
-                <div
-                    class="bg-gradient-to-b from-[#071933] to-[#040C1A] border-2 border-[#0079C1]/30 hover:border-[#0079C1]/60 rounded-2xl p-6 shadow-xl relative transition-all">
-                    <div class="flex items-center justify-between mb-5">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-[#0079C1]/20 border border-[#0079C1]/40 text-[#0079C1] flex items-center justify-center font-black text-xl shadow-md">
-                                <i class="fa-brands fa-paypal"></i>
-                            </div>
-                            <div>
-                                <span
-                                    class="text-[11px] font-mono uppercase tracking-widest text-[#0079C1] font-bold block">Internacional</span>
-                                <h3 class="text-lg font-black text-white uppercase">PAYPAL</h3>
-                            </div>
-                        </div>
-                        <span
-                            class="bg-[#0079C1]/10 text-[#0079C1] border border-[#0079C1]/30 text-[11px] font-bold px-2.5 py-1 rounded-full uppercase">Global</span>
-                    </div>
-                    <div class="bg-slate-900/90 border border-slate-700/80 rounded-xl p-4 mb-4">
-                        <div class="flex items-center justify-between text-xs text-slate-400 mb-1"><span
-                                class="font-mono uppercase">Correo de PayPal</span><span
-                                class="text-[#0079C1] font-bold">USD</span></div>
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="text-sm font-mono font-black text-white tracking-wider"
-                                id="cuenta-paypal">dayanmelvin93@gmail.com</span>
-                            <button
-                                class="bg-[#0079C1]/20 hover:bg-[#0079C1]/30 border border-[#0079C1]/40 text-[#38bdf8] hover:text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5"
-                                onclick="navigator.clipboard.writeText('dayanmelvin93@gmail.com'); const t=this.querySelector('.btn-copy-txt'); t.textContent='¡Copiado!'; setTimeout(()=>t.textContent='Copiar', 2000);"
-                                type="button"><i class="fa-solid fa-copy"></i><span
-                                    class="btn-copy-txt">Copiar</span></button>
-                        </div>
-                    </div>
-                    <div class="space-y-1.5 text-xs text-slate-300">
-                        <div class="flex justify-between py-1 border-b border-slate-800/80"><span
-                                class="text-slate-400">Titular de la cuenta:</span><span
-                                class="font-bold text-white uppercase">Dayan Macz</span></div>
-                        <div class="flex justify-between py-1"><span class="text-slate-400">Monto a
-                                transferir:</span><span class="font-mono font-black text-amber-400 text-sm">$50.00
-                                USD</span></div>
-                    </div>
+                <div class="mt-5 pt-4 border-t border-slate-800 text-xs text-slate-400 text-center leading-relaxed">
+                    Licencia perpetua · Sin mensualidades · Soporte directo de estabilidad operativa · Puesta en marcha asistida
                 </div>
             </div>
-            <div
-                class="max-w-3xl mx-auto bg-gradient-to-r from-[#071933] via-slate-900 to-[#071933] border-2 border-emerald-500/40 rounded-2xl p-6 sm:p-8 text-center shadow-2xl">
-                <span
-                    class="inline-block bg-amber-400 text-slate-950 text-[11px] font-black uppercase px-3 py-1 rounded-full mb-3 tracking-wider">Paso
-                    2: Confirmación Inmediata</span>
-                <h3 class="text-lg sm:text-xl font-black text-white uppercase mb-2">Envía tu boleta o comprobante a
-                    nuestro WhatsApp con tu nombre completo</h3>
-                <p class="text-xs sm:text-sm text-slate-300 mb-6 max-w-xl mx-auto">¡Listo! Ingresas de inmediato al
-                    Grupo Privado de Fundadores donde tendrás comunicación directa y recibirás el instalador antes del
-                    lanzamiento oficial.</p>
-                <div class="flex justify-center mb-6">
-                    <a class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1faa53] text-white font-black text-sm sm:text-base uppercase tracking-wider py-4 px-8 rounded-xl shadow-[0_10px_30px_rgba(37,211,102,0.35)] hover:scale-105 transition-all"
-                        href="https://wa.me/50236680414?text=Hola%20Dayan,%20ya%20realic%C3%A9%20mi%20dep%C3%B3sito/transferencia%20de%20Q.375%20para%20el%20POS%20Fundadores.%20Adjunto%20mi%20boleta%20y%20nombre:"
-                        target="_blank"><i class="fa-brands fa-whatsapp text-2xl"></i><span>Enviar Comprobante por
-                            WhatsApp</span></a>
-                </div>
-                <div class="grid sm:grid-cols-3 gap-3 pt-6 border-t border-slate-800 text-[11px] text-slate-300">
-                    <div class="flex items-center justify-center gap-1.5"><i
-                            class="fa-solid fa-circle-check text-emerald-400"></i><span>Comprobante 100% verificado por
-                            Dayan Macz</span></div>
-                    <div class="flex items-center justify-center gap-1.5"><i
-                            class="fa-solid fa-shield-halved text-blue-400"></i><span>Respaldo Intercopias Cobán (Plaza
-                            Magdalena)</span></div>
-                    <div class="flex items-center justify-center gap-1.5"><i
-                            class="fa-solid fa-bolt text-amber-400"></i><span>Activación y confirmación en &lt; 15
-                            min</span></div>
-                </div>
+
+            <p class="text-slate-400 mb-6 text-xs sm:text-sm leading-relaxed">
+                Reserva tu lugar contactándonos directamente por WhatsApp. Te confirmamos disponibilidad y te guiamos en el proceso de pago de forma personalizada.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#15803D] hover:bg-[#166534] text-white font-semibold text-xs uppercase tracking-wider py-3.5 px-8 rounded transition-colors border border-emerald-700"
+                    href="https://wa.me/50236680414?text=Hola%20Dayan,%20quiero%20reservar%20mi%20Pre-Orden%20del%20POS%20Intercopias%20(Q.%20550.00%20antes%20del%20lanzamiento%20a%20Q.%20770)"
+                    target="_blank">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>Reservar por WhatsApp · +502 3668 0414</span>
+                </a>
             </div>
+            <p class="mt-3 text-[11px] text-slate-500 font-mono">
+                Te respondemos en menos de 15 min en horario comercial.
+            </p>
         </div>
     </section>
 
-    <!-- SECCIÓN DE PRECIOS Y LANZAMIENTO (CTA Secundario) -->
-    <section
-        class="py-20 bg-gradient-to-b from-[#040C1A] via-[#071933] to-[#02060D] text-center relative overflow-hidden"
-        id="precio-fundadores">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div
-                class="border-2 border-red-500/80 bg-[#07152B]/95 rounded-3xl p-8 sm:p-12 shadow-[0_0_50px_rgba(239,68,68,0.2)] pulse-urgent">
-                <span
-                    class="inline-block bg-red-600 text-white text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">🚨
-                    ¡HOY ÚLTIMO DIA PARA SER FUNDADOR!</span>
-                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white mb-4">
-                    Reserva tu Licencia Vitalicia por <span class="text-amber-400">Q. 375.00</span>
-                </h2>
-                <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-6 font-medium leading-relaxed">Ya solo
-                    hoy puedes asegurar tu licencia vitalicia a Q. 375.00. Evita pagar los Q. 770.00 de la venta
-                    comercial del 01 de Noviembre. ¡Haz clic aquí y asegura tu cupo ahora mismo!</p>
-                <!-- Tarjeta Comparativa -->
-                <div
-                    class="inline-flex items-center justify-center gap-6 bg-slate-900/90 border border-slate-700 px-6 py-3.5 rounded-2xl mb-8 font-mono">
-                    <div class="text-left">
-                        <span class="text-[10px] text-emerald-400 font-bold block uppercase tracking-wider">Hoy como
-                            Fundador</span>
-                        <span class="text-2xl font-black text-amber-400">Q. 375.00</span>
-                    </div>
-                    <div class="w-px h-10 bg-slate-700"></div>
-                    <div class="text-left">
-                        <span class="text-[10px] text-red-400 font-bold block uppercase tracking-wider">01 de
-                            Noviembre</span>
-                        <span class="text-2xl font-black text-slate-400 line-through">Q. 770.00</span>
-                    </div>
-                </div>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-6">
-                    <a class="w-full bg-[#25D366] hover:bg-[#1faa53] text-white font-black text-base uppercase tracking-wider py-4 px-8 rounded-xl shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3"
-                        href="https://wa.me/50236680414?text=Hola%20Dayan,%20quiero%20unirme%20al%20Programa%20Fundadores%20hoy%20mismo"
-                        target="_blank"><i class="fa-brands fa-whatsapp text-2xl"></i><span class="">¡RESERVAR MI
-                            LICENCIA AHORA!</span></a>
-                </div>
-                <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-slate-400">
-                    <span class=""><i class="fa-solid fa-lock text-emerald-400 mr-1"></i> Licencia Permanente</span>
-                    <span class=""><i class="fa-solid fa-ban text-amber-400 mr-1"></i> Cero Mensualidades</span>
-                    <span class=""><i class="fa-solid fa-award text-blue-400 mr-1"></i> Soporte Directo
-                        Intercopias</span>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- FOOTER -->
-    <footer class="bg-[#02060D] py-8 border-t border-slate-800 text-center text-xs text-slate-400">
-        <div class="max-w-7xl mx-auto px-4">
+    <footer class="bg-[#05080E] py-8 border-t border-slate-800/80 text-center text-xs text-slate-400">
+        <div class="max-w-5xl mx-auto px-4">
             <div class="flex items-center justify-center gap-2 mb-2">
-                <div
-                    class="w-6 h-6 rounded bg-[#003366] flex items-center justify-center text-white font-black text-xs">
-                    <i class="fa-solid fa-bolt-lightning text-amber-400 text-[11px]"></i>
+                <div class="w-5 h-5 rounded bg-slate-800 border border-slate-700 flex items-center justify-center text-blue-400 text-[10px]">
+                    <i class="fa-solid fa-layer-group"></i>
                 </div>
-                <span class="font-black text-white text-sm">INTERCOPIAS COBÁN</span>
+                <span class="font-bold text-white text-xs tracking-wider uppercase">INTERCOPIAS COBÁN</span>
             </div>
-            <p class="font-semibold text-slate-400 mb-1">Frente a Plaza Magdalena, Cobán, Alta Verapaz</p>
-            <p class="text-slate-500">© 2026 Intercopias. Programa Fundadores válido hasta el 21 de Septiembre, 2026.
-                Lanzamiento oficial: 01 de Octubre, 2026.</p>
+            <p class="text-slate-400 mb-1">Frente a Plaza Magdalena, Cobán, Alta Verapaz</p>
+            <p class="text-slate-500 text-[11px]">
+                © 2026 Intercopias. Programa Fundadores concluido el 21 de Septiembre, 2026. Apertura comercial general: 01 de Noviembre, 2026.
+            </p>
         </div>
     </footer>
 
     <script>
+        // Countdown sutil hacia el 01 de Noviembre 2026 (lanzamiento general)
         function updateCountdown() {
-            const targetDate = new Date("2026-09-21T23:59:59").getTime();
+            const target = new Date("2026-11-01T00:00:00").getTime();
             const now = new Date().getTime();
-            const difference = targetDate - now;
+            const diff = target - now;
 
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-
-                const daysEl = document.getElementById('countdown-days');
-                const hoursEl = document.getElementById('countdown-hours');
-                const minutesEl = document.getElementById('countdown-minutes');
-                const daysTextEl = document.getElementById('countdown-days-text');
-
-                if (daysEl) daysEl.innerText = days.toString().padStart(2, '0');
-                if (hoursEl) hoursEl.innerText = hours.toString().padStart(2, '0');
-                if (minutesEl) minutesEl.innerText = minutes.toString().padStart(2, '0');
-                if (daysTextEl) daysTextEl.innerText = days;
+            if (diff <= 0) {
+                // Lanzamiento ya ocurrió
+                ['cd-days','cd-hours','cd-mins','sc-days','sc-hours','sc-mins'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = '00';
+                });
+                return;
             }
+
+            const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            const pad = (n) => n.toString().padStart(2, '0');
+
+            // Banner (top)
+            const cdDays = document.getElementById('cd-days');
+            const cdHours = document.getElementById('cd-hours');
+            const cdMins = document.getElementById('cd-mins');
+            if (cdDays) cdDays.firstChild.textContent = pad(days);
+            if (cdHours) cdHours.firstChild.textContent = pad(hours);
+            if (cdMins) cdMins.firstChild.textContent = pad(mins);
+
+            // Section countdown
+            const scDays = document.getElementById('sc-days');
+            const scHours = document.getElementById('sc-hours');
+            const scMins = document.getElementById('sc-mins');
+            if (scDays) scDays.textContent = pad(days);
+            if (scHours) scHours.textContent = pad(hours);
+            if (scMins) scMins.textContent = pad(mins);
         }
 
         updateCountdown();
-        setInterval(updateCountdown, 60000);
+        setInterval(updateCountdown, 30000);
     </script>
 </body>
 
