@@ -108,37 +108,47 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- FLOATING WHATSAPP CTA -->
-    <a class="fixed bottom-6 right-6 z-50 bg-[#15803D] hover:bg-[#166534] text-white px-4 py-3 rounded-lg flex items-center gap-3 shadow-xl border border-emerald-600/40 transition-all font-semibold tracking-wide text-xs"
+    <a class="fixed bottom-6 right-4 sm:right-6 z-50 bg-[#15803D] hover:bg-[#166534] text-white rounded-xl flex items-center shadow-xl border border-emerald-600/40 transition-all font-semibold tracking-wide
+        px-3 py-3 sm:px-4 sm:py-3 gap-0 sm:gap-3"
         href="https://wa.me/50236680414?text=Hola%20Dayan,%20quiero%20informaci%C3%B3n%20sobre%20la%20Pre-Orden%20del%20POS%20Intercopias%20(Q.%20550.00)"
         target="_blank" title="Pre-Orden POS Intercopias">
-        <i class="fa-brands fa-whatsapp text-xl text-emerald-300"></i>
-        <div class="text-left leading-tight">
+        <i class="fa-brands fa-whatsapp text-2xl text-emerald-200"></i>
+        <div class="text-left leading-tight hidden sm:block">
             <span class="text-[9px] text-emerald-200 block uppercase font-mono tracking-wider">Pre-Orden • Q.550</span>
             <span class="text-xs font-bold text-white tracking-normal">Consultar por WhatsApp</span>
         </div>
     </a>
 
     <!-- TOP ANNOUNCEMENT BANNER -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#070A0F] text-slate-300 text-[11px] sm:text-xs font-medium py-2 px-4 text-center border-b border-slate-800">
-        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2.5 flex-wrap">
-            <span class="inline-flex items-center gap-1.5 bg-slate-800 text-slate-300 border border-slate-700 px-2 py-0.5 rounded text-[10px] font-mono font-semibold uppercase tracking-wider">
-                Fase Fundadores Concluida
-            </span>
-            <span class="text-slate-400 hidden sm:inline">•</span>
-            <span class="text-slate-300">
-                Próximo hito: Despliegue el <strong class="text-white font-semibold">01 de Octubre</strong> · Lanzamiento Oficial el <strong class="text-white font-semibold">01 de Noviembre</strong>
-            </span>
-            <!-- Countdown sutil en el banner -->
-            <span class="text-slate-500 hidden md:inline">—</span>
-            <span class="hidden md:inline-flex items-center gap-1.5 text-slate-400 text-[10px]">
-                <i class="fa-regular fa-clock text-slate-500"></i>
-                <span class="text-slate-500">Lanzamiento en:</span>
-                <span class="subtle-countdown" id="banner-countdown">
-                    <span class="subtle-countdown-unit" id="cd-days">--<span>días</span></span>
-                    <span class="subtle-countdown-unit" id="cd-hours">--<span>hrs</span></span>
-                    <span class="subtle-countdown-unit" id="cd-mins">--<span>min</span></span>
+    <!-- Altura fija: ~32px en móvil, no se rompe en 2 líneas -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#070A0F] text-slate-300 border-b border-slate-800" style="height:32px;">
+        <div class="h-full max-w-7xl mx-auto px-3 flex items-center justify-center overflow-hidden">
+            <!-- Móvil: solo badge -->
+            <div class="flex sm:hidden items-center gap-2 text-[10px] font-mono whitespace-nowrap">
+                <span class="inline-flex items-center gap-1 bg-slate-800 text-slate-300 border border-slate-700 px-2 py-0.5 rounded font-semibold uppercase tracking-wider">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                    Fase Fundadores Concluida
                 </span>
-            </span>
+                <span class="text-slate-400">·</span>
+                <span class="text-slate-300">Lanzamiento <strong class="text-white">01 Nov</strong></span>
+            </div>
+            <!-- Desktop: completo con countdown -->
+            <div class="hidden sm:flex items-center gap-2.5 text-[11px] font-medium whitespace-nowrap">
+                <span class="inline-flex items-center gap-1.5 bg-slate-800 text-slate-300 border border-slate-700 px-2 py-0.5 rounded text-[10px] font-mono font-semibold uppercase tracking-wider">
+                    Fase Fundadores Concluida
+                </span>
+                <span class="text-slate-500">•</span>
+                <span class="text-slate-300">Próximo hito: Despliegue <strong class="text-white">01 Oct</strong> · Lanzamiento <strong class="text-white">01 Nov</strong></span>
+                <span class="hidden md:inline text-slate-600">—</span>
+                <span class="hidden md:inline-flex items-center gap-1.5 text-slate-400 text-[10px]">
+                    <i class="fa-regular fa-clock text-slate-600"></i>
+                    <span class="subtle-countdown" id="banner-countdown">
+                        <span class="subtle-countdown-unit" id="cd-days">--<span>días</span></span>
+                        <span class="subtle-countdown-unit" id="cd-hours">--<span>hrs</span></span>
+                        <span class="subtle-countdown-unit" id="cd-mins">--<span>min</span></span>
+                    </span>
+                </span>
+            </div>
         </div>
     </header>
 
@@ -149,10 +159,9 @@
                 <!-- Brand Logo / Info -->
                 <a class="flex items-center gap-3 text-left" href="index.html">
                     <img src="logo_inco_white.png" alt="Logo Intercopias"
-                        class="h-10 sm:h-11 w-auto object-contain hidden"
-                        onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
-                        onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
-                    <div class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-700 flex items-center justify-center text-slate-200">
+                        class="h-10 sm:h-11 w-auto object-contain"
+                        onerror="this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-700 items-center justify-center text-slate-200" style="display:none">
                         <i class="fa-solid fa-layer-group text-sm text-blue-400"></i>
                     </div>
                     <div>
@@ -707,14 +716,91 @@
         </div>
     </section>
 
+    <!-- NAVEGACIÓN ORGÁNICA -->
+    <section class="py-12 bg-[#080C13] border-b border-slate-800/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <p class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Seguir explorando</p>
+                <h2 class="text-lg font-bold text-white mt-1">¿Qué más puedes hacer?</h2>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <!-- Inicio -->
+                <a href="index.html"
+                    class="subtle-card subtle-card-hover rounded-lg p-4 text-center border border-slate-800 flex flex-col items-center gap-2 group">
+                    <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700 flex items-center justify-center group-hover:border-slate-600 transition-colors">
+                        <i class="fa-solid fa-house text-xs text-blue-400"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors uppercase tracking-wide">Inicio</span>
+                    <span class="text-[10px] text-slate-500">Página principal de Intercopias</span>
+                </a>
+                <!-- Simulador -->
+                <a href="#simulador"
+                    class="subtle-card subtle-card-hover rounded-lg p-4 text-center border border-slate-800 flex flex-col items-center gap-2 group">
+                    <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700 flex items-center justify-center group-hover:border-slate-600 transition-colors">
+                        <i class="fa-solid fa-display text-xs text-emerald-400"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors uppercase tracking-wide">Simulador</span>
+                    <span class="text-[10px] text-slate-500">Prueba el POS en vivo</span>
+                </a>
+                <!-- Servicios -->
+                <a href="index.html#servicios"
+                    class="subtle-card subtle-card-hover rounded-lg p-4 text-center border border-slate-800 flex flex-col items-center gap-2 group">
+                    <div class="w-8 h-8 rounded bg-slate-800 border border-slate-700 flex items-center justify-center group-hover:border-slate-600 transition-colors">
+                        <i class="fa-solid fa-grid-2 text-xs text-amber-400"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-300 group-hover:text-white transition-colors uppercase tracking-wide">Servicios</span>
+                    <span class="text-[10px] text-slate-500">Otros servicios de Intercopias</span>
+                </a>
+                <!-- Pre-Orden -->
+                <a href="#pre-orden"
+                    class="subtle-card subtle-card-hover rounded-lg p-4 text-center border border-blue-900/50 flex flex-col items-center gap-2 group hover:border-blue-700/60">
+                    <div class="w-8 h-8 rounded bg-blue-950 border border-blue-800 flex items-center justify-center group-hover:border-blue-600 transition-colors">
+                        <i class="fa-solid fa-lock text-xs text-blue-400"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-blue-300 group-hover:text-white transition-colors uppercase tracking-wide">Pre-Orden</span>
+                    <span class="text-[10px] text-slate-500">Asegurar licencia Q.550</span>
+                </a>
+            </div>
+            <!-- Contacto adicional -->
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 pt-6 border-t border-slate-800">
+                <a href="index.html#contacto"
+                    class="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-envelope text-slate-500"></i>
+                    Contacto General
+                </a>
+                <span class="hidden sm:inline text-slate-700">|</span>
+                <a href="cursos.html"
+                    class="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-graduation-cap text-slate-500"></i>
+                    Cursos Disponibles
+                </a>
+                <span class="hidden sm:inline text-slate-700">|</span>
+                <a href="https://wa.me/50236680414" target="_blank"
+                    class="inline-flex items-center gap-2 text-xs text-emerald-500 hover:text-emerald-300 transition-colors font-semibold uppercase tracking-wider">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    WhatsApp Directo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scroll-top-btn"
+        onclick="window.scrollTo({top:0, behavior:'smooth'})"
+        class="fixed bottom-24 right-4 sm:right-6 z-40 w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 text-slate-400 hover:text-white hover:bg-slate-700 hover:border-slate-600 transition-all shadow-lg opacity-0 translate-y-2 pointer-events-none"
+        style="transition: opacity 0.25s, transform 0.25s;"
+        aria-label="Volver arriba">
+        <i class="fa-solid fa-chevron-up text-sm"></i>
+    </button>
+
     <!-- FOOTER -->
     <footer class="bg-[#05080E] py-8 border-t border-slate-800/80 text-center text-xs text-slate-400">
         <div class="max-w-5xl mx-auto px-4">
-            <div class="flex items-center justify-center gap-2 mb-2">
-                <div class="w-5 h-5 rounded bg-slate-800 border border-slate-700 flex items-center justify-center text-blue-400 text-[10px]">
-                    <i class="fa-solid fa-layer-group"></i>
-                </div>
-                <span class="font-bold text-white text-xs tracking-wider uppercase">INTERCOPIAS COBÁN</span>
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <img src="logo_inco_white.png" alt="Intercopias Cobán"
+                    class="h-8 w-auto object-contain"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <span class="font-bold text-white text-xs tracking-wider uppercase" style="display:none">INTERCOPIAS COBÁN</span>
             </div>
             <p class="text-slate-400 mb-1">Frente a Plaza Magdalena, Cobán, Alta Verapaz</p>
             <p class="text-slate-500 text-[11px]">
@@ -764,6 +850,23 @@
 
         updateCountdown();
         setInterval(updateCountdown, 30000);
+
+        // Scroll-to-top button
+        (function() {
+            const btn = document.getElementById('scroll-top-btn');
+            if (!btn) return;
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    btn.style.opacity = '1';
+                    btn.style.transform = 'translateY(0)';
+                    btn.classList.remove('pointer-events-none');
+                } else {
+                    btn.style.opacity = '0';
+                    btn.style.transform = 'translateY(8px)';
+                    btn.classList.add('pointer-events-none');
+                }
+            }, { passive: true });
+        })();
     </script>
 </body>
 
