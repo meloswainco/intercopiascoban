@@ -5,8 +5,8 @@
     // Estado en memoria
     const state = {
         config: {
-            nombre_negocio: "Punto de Venta Web",
-            tipo_negocio: "Librería y Copias",
+            nombre_negocio: "Taller Jacinto",
+            tipo_negocio: "",
             simbolo_moneda: "Q",
             onboarding_completado: "1",
             auth_setup_completado: "1",
@@ -29,13 +29,17 @@
                 { label: 'Levantado de texto', precio: 15.00, codigo_prod: 'LEV-SIMP' }
             ]), orden: 3, activo: 1, comportamiento: 'HYBRID_LONG_PRESS' },
             { id: 'frec-ciber', label: 'Ciber', precio_base: 5.00, codigo_prod: 'SER-CIB', categoria: 'TIEMPO CIBER', bloque: 'FRECUENTES', color: '#ffffff', icono: 'fas fa-desktop', tiene_submenu: 0, submenus_json: '[]', orden: 6, activo: 1, comportamiento: 'MANUAL_PRICE' },
-            { id: 'frec-gestiones', label: 'Gestiones y Pagos', precio_base: 0.00, codigo_prod: 'SER-GES', categoria: 'GESTIONES', bloque: 'FRECUENTES', color: '#2563eb', icono: 'fas fa-file-invoice-dollar', tiene_submenu: 0, submenus_json: '[]', orden: 14, activo: 1, comportamiento: 'MODAL_GESTION' }
+            { id: 'frec-gestiones', label: 'Gestiones y Pagos', precio_base: 0.00, codigo_prod: 'SER-GES', categoria: 'GESTIONES', bloque: 'FRECUENTES', color: '#2563eb', icono: 'fas fa-file-invoice-dollar', tiene_submenu: 0, submenus_json: '[]', orden: 14, activo: 1, comportamiento: 'MODAL_GESTION' },
+            { id: 'frec-aceite', label: 'Cambio de Aceite', precio_base: 0.00, codigo_prod: 'SER-ACEITE', categoria: 'TALLER', bloque: 'FRECUENTES', color: '#f59e0b', icono: 'fas fa-oil-can', tiene_submenu: 1, submenus_json: JSON.stringify([
+                { label: 'Moto', precio: 75.00, codigo_prod: 'ACE-MOTO' },
+                { label: 'Carro', precio: 150.00, codigo_prod: 'ACE-CARRO' }
+            ]), orden: 15, activo: 1, comportamiento: 'NORMAL' }
         ],
         productos: [
             { Codigo: 'IMP-BN', Descripcion: 'Impresión Blanco y Negro', Categoria: 'IMPRESION B/N', Costo_Adquisicion: 0.10, Precio_Venta: 1.00, Stock: 1000, Vendidos: 500 },
             { Codigo: 'IMP-COL', Descripcion: 'Impresión a Color', Categoria: 'IMPRESION COLOR', Costo_Adquisicion: 0.50, Precio_Venta: 2.00, Stock: 500, Vendidos: 200 },
             { Codigo: 'COP-BN', Descripcion: 'Copia Blanco y Negro', Categoria: 'COPIA B/N', Costo_Adquisicion: 0.10, Precio_Venta: 0.50, Stock: 2000, Vendidos: 800 },
-            { Codigo: 'SER-ESC', Descripcion: 'Escaneo de Documento', Categoria: 'ESCANEO', Costo_Adquisicion: 0, Precio_Venta: 2.00, Stock: 0, Vendidos: 100 },
+            { Codigo: 'SER-ESC', Descripcion: 'Escaneo de Documento', Categoria: 'ESCANEO', Costo_Adquisicion: 0, Precio_Venta: 2.00, Stock: 1, Vendidos: 100 },
             { Codigo: 'LAPIZ-01', Descripcion: 'Lápiz Mongol No. 2', Categoria: 'LIBRERIA', Costo_Adquisicion: 1.00, Precio_Venta: 2.50, Stock: 50, Vendidos: 20 },
             { Codigo: 'CUAD-01', Descripcion: 'Cuaderno 100 hojas', Categoria: 'LIBRERIA', Costo_Adquisicion: 5.00, Precio_Venta: 12.00, Stock: 30, Vendidos: 15 }
         ],
@@ -77,7 +81,14 @@
         
         // Inventario y Botones
         obtenerBotonesGrid: async (soloActivos) => {
-            return soloActivos ? state.botones.filter(b => b.activo === 1) : state.botones;
+            const botones = soloActivos ? state.botones.filter(b => b.activo === 1) : state.botones;
+            return botones.map(b => {
+                let submenusParsed = [];
+                if (b.submenus_json) {
+                    try { submenusParsed = JSON.parse(b.submenus_json); } catch(e){}
+                }
+                return { ...b, submenus: submenusParsed };
+            });
         },
         guardarBotonGrid: async (btn) => {
             const index = state.botones.findIndex(b => b.id === btn.id);
@@ -97,8 +108,7 @@
             return state.productos
                 .filter(p => !cat || p.Categoria === cat)
                 .sort((a, b) => b.Vendidos - a.Vendidos)
-                .slice(0, 20)
-                .map(p => ({ codigo: p.Codigo, descripcion: p.Descripcion, categoria: p.Categoria, precio_venta: p.Precio_Venta, stock: p.Stock }));
+                .slice(0, 20);
         },
         obtenerCategoriasUnicas: async () => ["IMPRESION B/N", "IMPRESION COLOR", "COPIA B/N", "ESCANEO", "LIBRERIA"],
         obtenerTodoInventario: async () => state.productos,
