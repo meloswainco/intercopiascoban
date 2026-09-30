@@ -8,7 +8,9 @@
             nombre_negocio: "Punto de Venta Web",
             tipo_negocio: "Librería y Copias",
             simbolo_moneda: "Q",
-            onboarding_completado: "1"
+            onboarding_completado: "1",
+            auth_setup_completado: "1",
+            tipo_impresora: "TERMICA"
         },
         botones: [
             // Ráfaga (Mitad)
@@ -126,17 +128,17 @@
         obtenerPedidosPendientes: async () => state.pedidos.filter(p => p.Estado === 'PENDIENTE'),
         obtenerCotizaciones: async () => state.cotizaciones,
         
-        // Escalas
-        calcularPrecioEscala: async ({ codigo_producto, cantidad, precio_base_fallback }) => {
-            const escalas = state.escalas_precio.filter(e => e.codigo_producto === codigo_producto && e.activo === 1);
+        calcularPrecioEscala: async (codigo_producto, cantidad, precio_base_fallback) => {
+            const escalas_arr = state.escalas_precio || [];
+            const escalas = escalas_arr.filter(e => e.codigo_producto === codigo_producto && e.activo === 1);
             if (escalas.length > 0) {
                 const escala = escalas.find(e => cantidad >= e.cantidad_minima && cantidad <= e.cantidad_maxima);
-                if (escala) return escala.precio_unitario;
+                if (escala) return { escala_aplicada: true, precio_unitario: escala.precio_unitario };
                 
                 const maxEscala = escalas.reduce((prev, current) => (prev.cantidad_maxima > current.cantidad_maxima) ? prev : current);
-                if (cantidad > maxEscala.cantidad_maxima) return maxEscala.precio_unitario;
+                if (cantidad > maxEscala.cantidad_maxima) return { escala_aplicada: true, precio_unitario: maxEscala.precio_unitario };
             }
-            return precio_base_fallback;
+            return { escala_aplicada: false, precio_unitario: precio_base_fallback };
         },
         
         // Ventas e Historial
@@ -159,8 +161,8 @@
         obtenerKardex: async () => [],
         buscarProductoGlobal: async (q) => window.posAPI.buscarProductos(q),
         actualizarPedido: async () => ({ success: true }),
-        checkTurnoAbierto: async () => ({ success: true, abierto: true, cajero: 'Administrador' }),
-        obtenerTurnoActual: async () => ({ ID_Sesion: 1, Nombre_Cajero: 'Admin', Estado_Turno: 'ABIERTO' }),
+        checkTurnoAbierto: async () => ({ success: true, abierto: true, cajero: 'ADMIN', turno: { Nombre_Cajero: 'ADMIN' } }),
+        obtenerTurnoActual: async () => ({ ID_Sesion: 1, Nombre_Cajero: 'ADMIN', Estado_Turno: 'ABIERTO' }),
         
         // Otros mocks vitales
         obtenerServiciosGestion: async () => [

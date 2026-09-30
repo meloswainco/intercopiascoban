@@ -60,13 +60,19 @@ async function seleccionarPresetGestion(idServicio) {
 }
 
 async function openGestionModal(presetName = '') {
-    if (typeof window.closeAllModals === 'function') window.closeAllModals();
-    
-    if (presetName && presetName.toUpperCase() === 'GESTIONES Y PAGOS') {
-        presetName = '';
-    }
-    
-    document.getElementById('modal-gestiones').classList.remove('hidden');
+    try {
+        if (typeof window.closeAllModals === 'function') window.closeAllModals();
+        
+        if (presetName && presetName.toUpperCase() === 'GESTIONES Y PAGOS') {
+            presetName = '';
+        }
+        
+        const modal = document.getElementById('modal-gestiones');
+        if (!modal) {
+            alert("Error: No se encontró el modal-gestiones en el DOM.");
+            return;
+        }
+        modal.classList.remove('hidden');
     document.getElementById('gestion-desc').value = presetName;
     document.getElementById('gestion-suggestions').classList.add('hidden');
     document.getElementById('gestion-tipo-cobro').value = 'solo_gestion';
@@ -87,6 +93,10 @@ async function openGestionModal(presetName = '') {
     }
 
     setTimeout(() => document.getElementById('gestion-desc').focus(), 100);
+    } catch (err) {
+        alert("Error al abrir Gestiones: " + err.message);
+        console.error(err);
+    }
 }
 
 function closeGestionModal() {

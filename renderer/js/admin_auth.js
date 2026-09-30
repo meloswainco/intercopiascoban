@@ -32,8 +32,8 @@ async function initUsers() {
         window.currentUserIsAdmin = isAdmin;
         updateUserUI(cajeroActivo, isAdmin);
         
-        // Bloquear pantalla inmediatamente (pausa)
-        pausarSesion();
+        // Bloquear pantalla inmediatamente (pausa) - COMENTADO PARA DEMO
+        // pausarSesion();
         return;
     }
 
