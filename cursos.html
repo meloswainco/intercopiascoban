@@ -19,11 +19,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="intercopias.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
-        body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; }
-        .glass-nav { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .courses-page .inco-btn-whatsapp {
+            background-color: #15803d;
+        }
+
+        .courses-page .inco-btn-whatsapp:hover {
+            background-color: #166534;
+        }
     </style>
     
     <script>
@@ -31,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             theme: {
                 extend: {
                     colors: {
-                        brand: { blue: '#003366', gray: '#8E9EAB', darkGray: '#6A7582' }
+                        brand: { blue: '#0058bc', gray: '#cbd5e1', darkGray: '#002347' }
                     }
                 }
             }
@@ -39,69 +43,67 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 </head>
 
-<body class="text-gray-800 antialiased selection:bg-brand-blue selection:text-white pt-16">
+<body class="courses-page text-gray-800 antialiased selection:bg-[#0058bc] selection:text-white pt-[68px]">
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     
-    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div class="flex justify-between items-center h-16">
-            
-            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
-                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
-                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
-                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
+    <header class="inco-navbar">
+        <div class="inco-nav-container">
+            <a href="index.html" class="flex items-center gap-2 group z-20 text-decoration-none">
+                <img src="logo.png" alt="Logo Intercopias Cobán" class="h-9 sm:h-11 w-auto object-contain"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-9 h-9 bg-[#002347] rounded-lg items-center justify-center text-white shrink-0 hidden">
                     <i class="fa-solid fa-layer-group text-sm"></i>
                 </div>
                 <div class="flex flex-col justify-center">
-                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
-                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
-                        Frente a Plaza Magdalena
-                    </span>
+                    <span class="font-heading font-black text-lg sm:text-xl text-[#002347] leading-none uppercase">INTERCOPIAS</span>
+                    <span class="text-[9px] text-[#64748b] font-bold uppercase tracking-wider mt-0.5 block">Frente a Plaza Magdalena</span>
                 </div>
             </a>
-
-            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
-                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
-                    <span class="text-brand-blue font-bold">Impresiones</span> | 
-                    <span class="text-brand-blue font-bold">Empastados</span> | 
-                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
-                </span>
-            </div>
-
-            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
-                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
-                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
-                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
-                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
-            </div>
-
-            <div class="md:hidden flex items-center z-20">
-                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
+            <nav class="hidden lg:flex items-center gap-1 xl:gap-2 z-20">
+                <a href="index.html" class="inco-nav-link">Inicio</a>
+                <a href="index.html#servicios" class="inco-nav-link">Servicios</a>
+                <a href="cotizador.html" class="inco-nav-link">Cotizador</a>
+                <a href="cursos.html" class="inco-nav-link">Cursos</a>
+                <a href="normas.html" class="inco-nav-link">Normas</a>
+                <a href="tecnico.html" class="inco-nav-link">Técnico</a>
+                <a href="pos_landing.html" class="inco-nav-link"><i class="fa-solid fa-cash-register text-xs text-[#0058bc]"></i> POS</a>
+                <a href="index.html#contacto" class="inco-nav-link">Contacto</a>
+            </nav>
+            <div class="flex items-center gap-2 sm:gap-3 z-20">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="inco-btn-whatsapp hidden sm:inline-flex">
+                    <i class="fa-brands fa-whatsapp text-lg"></i><span>Escríbenos</span>
+                </a>
+                <button id="inco-mobile-toggle" aria-label="Abrir menú" aria-expanded="false"
+                    class="lg:hidden p-2 rounded-lg text-[#002347] hover:bg-slate-100 transition-colors focus:outline-none">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-    </div>
-    
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
-        <div class="px-4 py-3 space-y-1">
-            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
-            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
-            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
-            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
+        <div id="inco-mobile-menu" class="hidden lg:hidden bg-white/98 border-t border-slate-200 shadow-xl px-4 py-4 space-y-1.5 backdrop-blur-md">
+            <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicios</a>
+            <a href="cotizador.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cotizador</a>
+            <a href="cursos.html" class="block px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-[#0058bc] hover:bg-blue-100 uppercase">Cursos de Empastado</a>
+            <a href="normas.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Normas</a>
+            <a href="tecnico.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicio Técnico</a>
+            <a href="pos_landing.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Sistema POS</a>
+            <a href="index.html#contacto" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Contacto</a>
+            <div class="pt-2 border-t border-slate-100">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="w-full inco-btn-whatsapp justify-center py-3">
+                    <i class="fa-brands fa-whatsapp text-lg"></i><span>Contactar por WhatsApp</span>
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
+    </header>
 
 <section class="py-10 bg-gray-50 border-b border-gray-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="bg-[#1a1a1a] border-4 border-gray-400 p-6 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden group">
+            <div class="bg-[#002347] border border-white/10 p-6 md:p-10 rounded-xl shadow-xl relative overflow-hidden group">
                 <div class="relative z-10 text-center">
                     
                     <div class="flex items-center justify-center gap-2.5 mb-4">
@@ -128,14 +130,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-    <header class="bg-[#0a111a] py-14 border-b-4 border-brand-blue relative overflow-hidden">
-        <div class="absolute inset-0 bg-brand-blue/20"></div>
+    <header class="bg-[#002347] py-14 border-b-4 border-brand-blue relative overflow-hidden">
+        <div class="absolute inset-0 bg-white/5"></div>
         <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
-            <span class="bg-gray-600 text-white px-4 py-1.5 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase mb-4 inline-block shadow-lg border border-white/20">
-                ⏳ LISTA DE ESPERA ABIERTA ⏳
+            <span class="bg-white/10 text-white px-4 py-1.5 rounded-full text-[10px] md:text-xs font-black tracking-widest uppercase mb-4 inline-flex items-center gap-2 shadow-lg border border-white/20">
+                <i class="fa-regular fa-clock" aria-hidden="true"></i> LISTA DE ESPERA ABIERTA
             </span>
             <h1 class="text-3xl md:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-                No te quedes fuera de la <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-200">4ta Edición</span>
+                No te quedes fuera de la <span class="text-[#adc8f5]">4ta Edición</span>
             </h1>
             <p class="text-brand-gray font-bold text-xs md:text-sm tracking-widest uppercase mt-4">Sé el primero en recibir las nuevas fechas y beneficios exclusivos.</p>
         </div>
@@ -152,7 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="lg:w-1/3 w-full">
                 <div class="bg-gray-50 p-6 rounded-2xl border-2 border-dashed border-gray-300 text-center">
                     <i class="fa-solid fa-users text-4xl text-brand-blue mb-4"></i>
-                    <h4 class="font-black text-gray-900 uppercase text-lg leading-tight">+100 Emprendedores</h4>
+                    <h3 class="font-black text-gray-900 uppercase text-lg leading-tight">+100 Emprendedores</h3>
                     <p class="text-xs text-gray-500 mt-2">Capacitados en nuestras primeras ediciones con éxito total.</p>
                 </div>
             </div>
@@ -181,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                          width="539" height="734"
                          class="w-full h-auto rounded-xl shadow-inner">
                     
-                    <div class="absolute -bottom-4 -right-4 bg-[#25D366] text-white px-4 py-2 rounded-lg font-black text-xs shadow-lg flex items-center gap-2">
+                    <div class="absolute -bottom-4 -right-4 bg-[#15803d] text-white px-4 py-2 rounded-lg font-black text-xs shadow-lg flex items-center gap-2">
                         <i class="fa-solid fa-circle-check"></i> CASO REAL VERIFICADO
                     </div>
                 </div>
@@ -195,16 +197,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 
                 <div class="space-y-6">
                     <p class="text-lg text-gray-600 font-medium leading-relaxed">
-                        Este es el mensaje de **Armando**, alumno de nuestra 1ra Generación desde Ixcán, Quiché. Como él, decenas de emprendedores ya están recuperando su inversión.
+                        Este es el mensaje de <strong>Armando</strong>, alumno de nuestra 1ra Generación desde Ixcán, Quiché. Como él, decenas de emprendedores ya están recuperando su inversión.
                     </p>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="bg-gray-50 p-4 rounded-xl border-l-4 border-brand-blue">
-                            <h4 class="font-bold text-gray-900 text-sm uppercase">Cero Teoría Vacía</h4>
+                            <h3 class="font-bold text-gray-900 text-sm uppercase">Cero Teoría Vacía</h3>
                             <p class="text-xs text-gray-500 mt-1">Aprendes haciendo. Lo que ves hoy en clase, lo cobras mañana en tu local.</p>
                         </div>
                         <div class="bg-gray-50 p-4 rounded-xl border-l-4 border-brand-blue">
-                            <h4 class="font-bold text-gray-900 text-sm uppercase">Comunidad Activa</h4>
+                            <h3 class="font-bold text-gray-900 text-sm uppercase">Comunidad Activa</h3>
                             <p class="text-xs text-gray-500 mt-1">Acceso a nuestro grupo VIP donde compartimos éxitos y resolvemos dudas.</p>
                         </div>
                     </div>
@@ -219,7 +221,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </section>
     
-    <section id="inscripcion" class="py-16 bg-[#003366] relative overflow-hidden text-white">
+    <section id="inscripcion" class="py-16 bg-[#002347] relative overflow-hidden text-white">
         <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
             <h2 class="text-3xl font-black uppercase tracking-tight mb-4">¿Quieres ser parte de la próxima edición?</h2>
             <p class="text-blue-100 mb-10 font-medium">Únete a nuestra lista de espera en WhatsApp. Te avisaremos antes que a nadie cuando abramos los nuevos cupos para la 4ta Edición.</p>
@@ -229,7 +231,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="text-sm text-gray-600 mb-6">Haz clic abajo para enviarnos un mensaje y guardaremos tu contacto para la preventa.</p>
                 
                 <a href="https://wa.me/50280002944?text=Hola%20Dayan,%20quiero%20unirme%20a%20la%20lista%20de%20espera%20para%20la%204ta%20Edición%20del%20curso%20de%20empastados." 
-                   class="flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#1eb956] text-white py-4 px-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-lg group">
+                   class="flex items-center justify-center gap-3 bg-[#15803d] hover:bg-[#166534] text-white py-4 px-6 rounded-xl font-black uppercase tracking-widest transition-all shadow-lg group">
                     <i class="fa-brands fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i>
                     UNIRME AHORA
                 </a>
@@ -266,32 +268,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-    <footer class="bg-[#003366] text-white py-6 border-t-4 border-[#6A7582] text-center">
-        <p class="text-[10px] text-white/60">© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+    <footer class="inco-footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <div>
+                    <span class="font-heading font-black text-xl text-white tracking-tight uppercase block mb-2">INTERCOPIAS</span>
+                    <p class="text-xs text-slate-300 mb-4 leading-relaxed">Capacitación práctica para emprendedores que quieren ampliar sus servicios y hacer crecer su negocio.</p>
+                    <span class="inline-flex items-center gap-2 text-xs bg-white/10 text-slate-200 px-3 py-1 rounded-full border border-white/10"><i class="fa-solid fa-location-dot text-red-400"></i> Frente a Plaza Magdalena</span>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Servicios</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="index.html#servicios" class="hover:text-white transition-colors">Impresión de Tesis</a></li>
+                        <li><a href="cursos.html" class="hover:text-white transition-colors">Cursos de Empastado</a></li>
+                        <li><a href="cotizador.html" class="hover:text-white transition-colors">Cotizador de Combos</a></li>
+                        <li><a href="pos_landing.html" class="hover:text-white transition-colors">Sistema POS</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Contacto</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400"><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>(502) 8000 2944</a></li>
+                        <li><a href="mailto:inco.coban@gmail.com" class="hover:text-white"><i class="fa-solid fa-envelope text-blue-400 mr-2"></i>inco.coban@gmail.com</a></li>
+                        <li><a href="https://www.tiktok.com/@DayanMelvin" target="_blank" rel="noopener noreferrer" class="hover:text-white"><i class="fa-brands fa-tiktok mr-2"></i>@DayanMelvin</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Próxima edición</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">La lista de espera recibe las fechas y novedades del curso antes de la apertura de nuevos cupos.</p>
+                    <a href="#inscripcion" class="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-blue-200 transition-colors"><i class="fa-solid fa-arrow-right text-blue-400"></i> Unirme a la lista</a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-300">
+                <p>© 2026 Intercopias Cobán. Todos los derechos reservados.</p>
+                <p class="text-[11px]">Frente a Plaza Magdalena • Cobán, Alta Verapaz</p>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        // Script del Menú Hamburguesa en Móvil
-        const btnMenu = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        if (btnMenu && menu) {
-            btnMenu.addEventListener('click', () => menu.classList.toggle('hidden'));
-        }
-
-        // Script para mostrar el texto dinámico al hacer scroll en PC
-        const dynamicText = document.getElementById('nav-dynamic-text');
-        if (dynamicText) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    dynamicText.classList.remove('opacity-0');
-                    dynamicText.classList.add('opacity-100');
-                } else {
-                    dynamicText.classList.remove('opacity-100');
-                    dynamicText.classList.add('opacity-0');
-                }
-            });
-        }
-    </script>
+    <script src="intercopias.js"></script>
 </body>
 
 </html>

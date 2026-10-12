@@ -18,11 +18,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="intercopias.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
-        body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; }
-        .glass-nav { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .normas-page .inco-btn-whatsapp {
+            background-color: #15803d;
+        }
+
+        .normas-page .inco-btn-whatsapp:hover {
+            background-color: #166534;
+        }
     </style>
     
     <script>
@@ -30,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             theme: {
                 extend: {
                     colors: {
-                        brand: { blue: '#003366', gray: '#8E9EAB', darkGray: '#6A7582' }
+                        brand: { blue: '#0058bc', gray: '#cbd5e1', darkGray: '#002347' }
                     }
                 }
             }
@@ -38,67 +42,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </script>
 </head>
 
-<body class="text-gray-800 antialiased selection:bg-brand-blue selection:text-white pt-16">
+<body class="normas-page text-gray-800 antialiased selection:bg-[#0058bc] selection:text-white pt-[68px]">
 
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div class="flex justify-between items-center h-16">
-            
-            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
-                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
-                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
-                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
+    <header class="inco-navbar">
+        <div class="inco-nav-container">
+            <a href="index.html" class="flex items-center gap-2 group z-20 text-decoration-none">
+                <img src="logo.png" alt="Logo Intercopias Cobán" class="h-9 sm:h-11 w-auto object-contain"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-9 h-9 bg-[#002347] rounded-lg items-center justify-center text-white shrink-0 hidden">
                     <i class="fa-solid fa-layer-group text-sm"></i>
                 </div>
                 <div class="flex flex-col justify-center">
-                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
-                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
-                        Frente a Plaza Magdalena
-                    </span>
+                    <span class="font-heading font-black text-lg sm:text-xl text-[#002347] leading-none uppercase">INTERCOPIAS</span>
+                    <span class="text-[9px] text-[#64748b] font-bold uppercase tracking-wider mt-0.5 block">Frente a Plaza Magdalena</span>
                 </div>
             </a>
-
-            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
-                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
-                    <span class="text-brand-blue font-bold">Impresiones</span> | 
-                    <span class="text-brand-blue font-bold">Empastados</span> | 
-                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
-                </span>
-            </div>
-
-            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
-                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
-                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
-                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
-                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
-            </div>
-
-            <div class="md:hidden flex items-center z-20">
-                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
+            <nav class="hidden lg:flex items-center gap-1 xl:gap-2 z-20">
+                <a href="index.html" class="inco-nav-link">Inicio</a>
+                <a href="index.html#servicios" class="inco-nav-link">Servicios</a>
+                <a href="cotizador.html" class="inco-nav-link">Cotizador</a>
+                <a href="cursos.html" class="inco-nav-link">Cursos</a>
+                <a href="normas.html" class="inco-nav-link">Normas</a>
+                <a href="tecnico.html" class="inco-nav-link">Técnico</a>
+                <a href="pos_landing.html" class="inco-nav-link"><i class="fa-solid fa-cash-register text-xs text-[#0058bc]"></i> POS</a>
+                <a href="index.html#contacto" class="inco-nav-link">Contacto</a>
+            </nav>
+            <div class="flex items-center gap-2 sm:gap-3 z-20">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="inco-btn-whatsapp hidden sm:inline-flex">
+                    <i class="fa-brands fa-whatsapp text-lg"></i><span>Escríbenos</span>
+                </a>
+                <button id="inco-mobile-toggle" aria-label="Abrir menú" aria-expanded="false"
+                    class="lg:hidden p-2 rounded-lg text-[#002347] hover:bg-slate-100 transition-colors focus:outline-none">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-    </div>
-    
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
-        <div class="px-4 py-3 space-y-1">
-            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
-            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
-            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
-            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
+        <div id="inco-mobile-menu" class="hidden lg:hidden bg-white/98 border-t border-slate-200 shadow-xl px-4 py-4 space-y-1.5 backdrop-blur-md">
+            <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicios</a>
+            <a href="cotizador.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cotizador</a>
+            <a href="cursos.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cursos de Empastado</a>
+            <a href="normas.html" class="block px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-[#0058bc] hover:bg-blue-100 uppercase">Normas y Estilos</a>
+            <a href="tecnico.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicio Técnico</a>
+            <a href="pos_landing.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Sistema POS</a>
+            <a href="index.html#contacto" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Contacto</a>
+            <div class="pt-2 border-t border-slate-100">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="w-full inco-btn-whatsapp justify-center py-3">
+                    <i class="fa-brands fa-whatsapp text-lg"></i><span>Contactar por WhatsApp</span>
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
+    </header>
 
-    <header class="bg-[#0a111a] py-10 border-b-4 border-brand-blue relative overflow-hidden">
-        <div class="absolute inset-0 bg-brand-blue/20"></div>
+    <header class="bg-[#002347] py-10 border-b-4 border-brand-blue relative overflow-hidden">
+        <div class="absolute inset-0 bg-white/5"></div>
         <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
             <h1 class="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-2">Normas, Estilo y Forma</h1>
             <p class="text-brand-gray font-bold text-xs md:text-sm tracking-widest uppercase"><i class="fa-solid fa-graduation-cap mr-2 text-white"></i> Estándares Académicos en Cobán</p>
@@ -120,6 +122,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="w-16 h-1 bg-brand-blue mt-3 mx-auto rounded-full"></div>
                 <p class="text-sm text-gray-500 mt-4">Para garantizar la excelencia, clasificamos tu requerimiento en 3 niveles:</p>
             </div>
+
+            <figure class="mb-10 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md">
+                <img src="ilusnorma.jpg" alt="Vista comparativa de tres formatos académicos: Estilo APA, Estilo Gordillo y formato personalizado"
+                    width="1376" height="768" loading="lazy" decoding="async" class="block h-auto w-full">
+            </figure>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-brand-blue/30 transition-all group">
@@ -172,21 +179,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </ul>
 
                     <div class="mt-8 bg-brand-blue/5 border-l-4 border-brand-blue p-4 rounded-r-lg">
-                        <h4 class="font-bold text-brand-blue text-xs uppercase tracking-wider mb-1"><i class="fa-solid fa-file-pdf mr-1"></i> Integración de Documentos</h4>
+                        <h3 class="font-bold text-brand-blue text-xs uppercase tracking-wider mb-1"><i class="fa-solid fa-file-pdf mr-1"></i> Integración de Documentos</h3>
                         <p class="text-xs text-gray-600 leading-relaxed">Si tu documento necesita incluir dictámenes o cartas firmadas, podemos escanearlos e integrarlos en el orden correcto dentro de tu PDF final.</p>
                     </div>
                 </div>
 
                 <div class="lg:w-1/2">
-                    <div class="bg-[#f0fdf4] border-2 border-[#25D366] rounded-2xl p-6 sm:p-8 text-center shadow-sm h-full flex flex-col justify-center transform transition-transform hover:scale-[1.02]">
+                    <div class="bg-[#f0fdf4] border-2 border-[#15803d] rounded-xl p-6 sm:p-8 text-center shadow-sm h-full flex flex-col justify-center transform transition-transform hover:scale-[1.02]">
                         <h3 class="text-xl font-black text-[#166534] uppercase mb-3">¡Ordena tu revisión ahora!</h3>
                         <p class="text-sm text-[#166534]/80 font-medium mb-6">
                             No te arriesgues a que te rechacen el trabajo por un margen o una cita mal puesta. Envía tu documento Word para una evaluación técnica al WhatsApp:
                         </p>
                         
-                        <div class="bg-white py-3 px-6 rounded-xl border border-[#25D366]/30 inline-block w-full max-w-xs mx-auto mb-4 shadow-inner">
+                        <div class="bg-white py-3 px-6 rounded-xl border border-[#15803d]/30 inline-block w-full max-w-xs mx-auto mb-4 shadow-inner">
                             <div class="flex items-center justify-center gap-3">
-                                <i class="fa-brands fa-whatsapp text-3xl text-[#25D366]"></i>
+                                <i class="fa-brands fa-whatsapp text-3xl text-[#15803d]"></i>
                                 <span class="text-3xl font-black text-gray-900 select-all tracking-widest">3668 0414</span>
                             </div>
                         </div>
@@ -229,32 +236,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
-    <footer class="bg-[#003366] text-white py-6 border-t-4 border-[#6A7582] text-center">
-        <p class="text-[10px] text-white/60">© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+    <footer class="inco-footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <div>
+                    <span class="font-heading font-black text-xl text-white tracking-tight uppercase block mb-2">INTERCOPIAS</span>
+                    <p class="text-xs text-slate-300 mb-4 leading-relaxed">Impresión, empastado y asesoría de formato para estudiantes y profesionales de Cobán.</p>
+                    <span class="inline-flex items-center gap-2 text-xs bg-white/10 text-slate-200 px-3 py-1 rounded-full border border-white/10"><i class="fa-solid fa-location-dot text-red-400"></i> Frente a Plaza Magdalena</span>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Servicios</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="index.html#servicios" class="hover:text-white transition-colors">Impresión de Tesis</a></li>
+                        <li><a href="normas.html" class="hover:text-white transition-colors">Normas y Estilos</a></li>
+                        <li><a href="cursos.html" class="hover:text-white transition-colors">Cursos de Empastado</a></li>
+                        <li><a href="cotizador.html" class="hover:text-white transition-colors">Cotizador de Combos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Atención académica</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-4">Comparte los requisitos de tu universidad, carrera y docente para orientar la revisión de formato.</p>
+                    <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold text-white hover:text-blue-200 transition-colors"><i class="fa-brands fa-whatsapp text-emerald-400"></i> Consultar por WhatsApp</a>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Contacto</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400"><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>(502) 8000 2944</a></li>
+                        <li><a href="mailto:inco.coban@gmail.com" class="hover:text-white"><i class="fa-solid fa-envelope text-blue-400 mr-2"></i>inco.coban@gmail.com</a></li>
+                        <li><a href="index.html#contacto" class="hover:text-white"><i class="fa-solid fa-location-dot text-red-400 mr-2"></i>Ubicación y horarios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-300">
+                <p>© 2026 Intercopias Cobán. Todos los derechos reservados.</p>
+                <p class="text-[11px]">Frente a Plaza Magdalena • Cobán, Alta Verapaz</p>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        // Script del Menú Hamburguesa
-        const btnMenu = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        if (btnMenu && menu) {
-            btnMenu.addEventListener('click', () => menu.classList.toggle('hidden'));
-        }
-
-        // Script para mostrar el texto dinámico al hacer scroll
-        const dynamicText = document.getElementById('nav-dynamic-text');
-        if (dynamicText) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    dynamicText.classList.remove('opacity-0');
-                    dynamicText.classList.add('opacity-100');
-                } else {
-                    dynamicText.classList.remove('opacity-100');
-                    dynamicText.classList.add('opacity-0');
-                }
-            });
-        }
-    </script>
+    <script src="intercopias.js"></script>
 </body>
 
 

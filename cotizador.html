@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="icon" type="image/x-icon" href="cotizadorico.ico">
+    <link rel="icon" type="image/x-icon" href="icoinco.ico">
     
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -19,28 +19,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="intercopias.css">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
-        body { font-family: 'Montserrat', sans-serif; background-color: #f8fafc; }
-        .glass-nav { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
         
         /* Estilos Nativos del Cotizador */
         .radio-group { display: flex; gap: 8px; margin-bottom: 12px; }
-        .radio-option { flex: 1; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 0.85rem; transition: 0.3s; background: #fff; color: #64748b; font-weight: 500;}
-        .radio-option.selected { border-color: #003366; background-color: #f0f4f8; color: #003366; font-weight: bold; box-shadow: 0 0 0 1px #003366; }
+        .radio-option { flex: 1; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; background: #fff; color: #64748b; font-weight: 500;}
+        .radio-option:hover { border-color: #0058bc; background-color: #f8fafc; }
+        .radio-option.selected { border-color: #002347; background-color: #e0edff; color: #002347; font-weight: 700; box-shadow: 0 0 0 2px #002347; }
         
         .summary-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
         .summary-table td { padding: 10px 4px; border-bottom: 1px solid #f1f5f9; color: #475569;}
-        .summary-table .val { text-align: right; font-weight: 800; color: #003366; white-space: nowrap; }
+        .summary-table .val { text-align: right; font-weight: 800; color: #002347; white-space: nowrap; }
         .summary-table .old-price { text-decoration: line-through; color: #94a3b8; font-weight: 500; margin-right: 8px; font-size: 0.75rem; }
         
         .discount-row { color: #166534; background-color: #f0fdf4; font-weight: bold; }
         .discount-row .val { color: #166534; }
         
-        .subtotal-header { background-color: #f8fafc; border-top: 2px solid #003366; border-bottom: 2px solid #003366; }
-        .subtotal-header td { padding: 12px 4px !important; color: #003366; font-weight: 900; text-align: center; font-size: 0.9rem;}
-        
+        .subtotal-header { background-color: #f8fafc; border-top: 2px solid #002347; border-bottom: 2px solid #002347; }
+        .subtotal-header td { padding: 12px 4px !important; color: #002347; font-weight: 900; text-align: center; font-size: 0.9rem;}
     </style>
     
     <script>
@@ -48,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             theme: {
                 extend: {
                     colors: {
-                        brand: { blue: '#003366', gray: '#8E9EAB', darkGray: '#6A7582' }
+                        brand: { blue: '#002347', lightBlue: '#0058bc', gray: '#8E9EAB', darkGray: '#001226' }
                     }
                 }
             }
@@ -63,72 +63,92 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     
-    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50 shadow-sm transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div class="flex justify-between items-center h-16">
-            
-            <a href="index.html" class="flex-shrink-0 flex items-center gap-2 group z-20">
-                <img src="logo.png" alt="Logo Intercopias" class="h-10 sm:h-12 w-auto object-contain hidden"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
-                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
-                <div class="w-8 h-8 bg-brand-blue rounded flex items-center justify-center text-white shrink-0 group-hover:bg-brand-darkGray transition-colors">
+    <!-- TopNavBar Unificada Intercopias -->
+    <header class="inco-navbar">
+        <div class="inco-nav-container">
+            <!-- Logo y Marca -->
+            <a href="index.html" class="flex items-center gap-2 group z-20 text-decoration-none">
+                <img src="logo.png" alt="Logo Intercopias Cobán" class="h-9 sm:h-11 w-auto object-contain"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-9 h-9 bg-[#002347] rounded-lg items-center justify-center text-white shrink-0 hidden">
                     <i class="fa-solid fa-layer-group text-sm"></i>
                 </div>
                 <div class="flex flex-col justify-center">
-                    <span class="font-black text-lg sm:text-xl text-brand-blue tracking-tight uppercase leading-none">INTERCOPIAS</span>
-                    <span class="text-[9px] text-gray-500 font-bold uppercase tracking-wider mt-0.5 block">
-                        Frente a Plaza Magdalena
-                    </span>
+                    <span class="font-heading font-black text-lg sm:text-xl text-[#002347] tracking-tight leading-none uppercase">INTERCOPIAS</span>
+                    <span class="text-[9px] text-[#64748b] font-bold uppercase tracking-wider mt-0.5 block">Frente a Plaza Magdalena</span>
                 </div>
             </a>
 
-            <div id="nav-dynamic-text" class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 hidden lg:flex items-center gap-2 opacity-0 transition-opacity duration-500 pointer-events-none">
-                <span class="text-[10px] whitespace-nowrap font-semibold text-gray-500 uppercase tracking-widest bg-gray-100/80 px-4 py-1.5 rounded-full text-center border border-gray-200/50 shadow-sm backdrop-blur-sm">
-                    <span class="text-brand-blue font-bold">Impresiones</span> | 
-                    <span class="text-brand-blue font-bold">Empastados</span> | 
-                    <i class="fa-solid fa-location-dot text-[#ff0050] mr-1"></i> Frente a Plaza Magdalena
-                </span>
-            </div>
+            <!-- Enlaces de Escritorio -->
+            <nav class="hidden lg:flex items-center gap-1 xl:gap-2 z-20">
+                <a href="index.html" class="inco-nav-link">Inicio</a>
+                <a href="index.html#servicios" class="inco-nav-link">Servicios</a>
+                <a href="cotizador.html" class="inco-nav-link inco-nav-badge active">
+                    <i class="fa-solid fa-calculator text-xs"></i> Cotizador
+                </a>
+                <a href="cursos.html" class="inco-nav-link">Cursos</a>
+                <a href="normas.html" class="inco-nav-link">Normas</a>
+                <a href="tecnico.html" class="inco-nav-link">Técnico</a>
+                <a href="pos_landing.html" class="inco-nav-link flex items-center gap-1">
+                    <i class="fa-solid fa-cash-register text-xs text-[#0058bc]"></i> POS
+                </a>
+                <a href="index.html#contacto" class="inco-nav-link">Contacto</a>
+            </nav>
 
-            <div class="hidden md:flex items-center space-x-6 z-20 bg-white/50 backdrop-blur-sm px-2 rounded-lg">
-                <a href="index.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Inicio</a>
-                <a href="index.html#servicios" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Servicios</a>
-                <a href="cursos.html" class="text-xs font-bold text-gray-700 hover:text-brand-blue transition-colors uppercase tracking-wide">Cursos</a>
-                <a href="index.html#contacto" class="text-xs font-bold bg-brand-blue text-white px-4 py-2 rounded hover:bg-brand-darkGray transition-colors uppercase tracking-wide">Contacto</a>
-            </div>
-
-            <div class="md:hidden flex items-center z-20">
-                <button id="mobile-menu-button" class="text-brand-blue p-2 focus:outline-none">
+            <!-- Acciones Derecha -->
+            <div class="flex items-center gap-2 sm:gap-3 z-20">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer"
+                    class="inco-btn-whatsapp hidden sm:inline-flex">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Escríbenos</span>
+                </a>
+                <button id="inco-mobile-toggle" aria-label="Abrir menú" aria-expanded="false"
+                    class="lg:hidden p-2 rounded-lg text-[#002347] hover:bg-slate-100 transition-colors focus:outline-none">
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-    </div>
-    
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-16 shadow-lg">
-        <div class="px-4 py-3 space-y-1">
-            <a href="index.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Inicio</a>
-            <a href="index.html#servicios" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Servicios</a>
-            <a href="cursos.html" class="block px-3 py-2 text-sm font-bold text-gray-700 rounded hover:bg-gray-50 hover:text-brand-blue transition-colors">Cursos</a>
-            <a href="index.html#contacto" class="block px-3 py-2 text-sm font-bold text-white bg-brand-blue rounded hover:bg-brand-darkGray text-center mt-2">Contacto</a>
-        </div>
-    </div>
-</nav>
 
-    <header class="bg-[#0a111a] py-8 border-b-4 border-brand-blue relative overflow-hidden">
-        <div class="absolute inset-0 bg-brand-blue/20"></div>
-        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
-            <h1 class="text-2xl md:text-3xl font-black text-white uppercase tracking-tight mb-2">Cotizador de Combos</h1>
-            <p class="text-brand-gray font-medium text-xs md:text-sm max-w-xl mx-auto">Calcula tu presupuesto al instante. Sin esperas, sin sorpresas.</p>
+        <!-- Menú Desplegable Móvil -->
+        <div id="inco-mobile-menu" class="hidden lg:hidden bg-white/98 border-t border-slate-200 shadow-xl px-4 py-4 space-y-1.5 backdrop-blur-md">
+            <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicios</a>
+            <a href="cotizador.html" class="block px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-[#0058bc] uppercase flex items-center justify-between">
+                <span>Cotizador de Combos</span>
+                <span class="text-xs bg-[#0058bc] text-white px-2 py-0.5 rounded-full">Calculadora</span>
+            </a>
+            <a href="cursos.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cursos de Empastado</a>
+            <a href="normas.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Normas de Tesis</a>
+            <a href="tecnico.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicio Técnico</a>
+            <a href="pos_landing.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase flex items-center gap-2">
+                <i class="fa-solid fa-cash-register text-xs text-[#0058bc]"></i> Sistema POS
+            </a>
+            <a href="index.html#contacto" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Contacto y Ubicación</a>
+            <div class="pt-2 border-t border-slate-100">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer"
+                    class="w-full inco-btn-whatsapp justify-center py-3">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Contactar por WhatsApp (8000 2944)</span>
+                </a>
+            </div>
         </div>
     </header>
 
-    <section class="py-10 bg-gray-100">
-        <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+    <header class="bg-[#001326] py-10 border-b-4 border-[#0058bc] relative overflow-hidden mt-1">
+        <div class="absolute inset-0 bg-blue-900/10"></div>
+        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+            <span class="inline-block px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-semibold uppercase tracking-wider mb-2 border border-white/10">Herramienta Oficial</span>
+            <h1 class="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-2">Cotizador de Combos y Tesis</h1>
+            <p class="text-slate-300 font-medium text-xs md:text-sm max-w-xl mx-auto">Calcula tu presupuesto al instante. Sin esperas, sin sorpresas y con descuentos por volumen.</p>
+        </div>
+    </header>
+
+    <section class="py-10 bg-slate-100">
+        <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
             
-            <div class="bg-brand-blue text-white p-4 text-center">
-                <h2 class="font-bold text-lg uppercase tracking-wider"><i class="fa-solid fa-calculator mr-2"></i> Cotizador Digital</h2>
-                <p class="text-[10px] text-white/80 mt-1">Presupuesto informativo sujeto a revisión de archivos</p>
+            <div class="bg-[#002347] text-white p-4 text-center">
+                <h2 class="font-bold text-lg uppercase tracking-wider"><i class="fa-solid fa-calculator mr-2 text-blue-300"></i> Cotizador Digital</h2>
+                <p class="text-[10px] text-slate-300 mt-1">Presupuesto informativo sujeto a revisión de archivos</p>
             </div>
 
             <div class="p-5 sm:p-6">
@@ -303,8 +323,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
     </section>
 
-    <footer class="bg-[#003366] text-white py-6 border-t-4 border-[#6A7582] text-center">
-        <p class="text-[10px] text-white/60">© 2026 Intercopias Cobán. Diseñado para la excelencia.</p>
+    <!-- Footer Unificado Intercopias -->
+    <footer class="inco-footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <!-- Col 1: Marca & Resumen -->
+                <div class="md:col-span-1">
+                    <span class="font-heading font-black text-xl text-white tracking-tight uppercase block mb-2">INTERCOPIAS</span>
+                    <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                        Centro de Servicios Integrales para estudiantes, profesionales y comerciantes en Cobán. Tu proyecto listo, impecable y a tiempo.
+                    </p>
+                    <span class="inline-flex items-center gap-2 text-xs bg-white/10 text-slate-300 px-3 py-1 rounded-full border border-white/10">
+                        <i class="fa-solid fa-location-dot text-red-400"></i> Frente a Plaza Magdalena
+                    </span>
+                </div>
+
+                <!-- Col 2: Enlaces Rápidos -->
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-300 border-b border-white/10 pb-2 mb-3">Servicios</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="cotizador.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Cotizador de Combos</a></li>
+                        <li><a href="index.html#servicios" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Impresión de Tesis</a></li>
+                        <li><a href="cursos.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Cursos de Empastado</a></li>
+                        <li><a href="normas.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Normas y Estilos</a></li>
+                        <li><a href="tecnico.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Servicio Técnico</a></li>
+                        <li><a href="pos_landing.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Sistema POS Comercial</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Horarios -->
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-300 border-b border-white/10 pb-2 mb-3">Horarios de Atención</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex justify-between border-b border-white/5 pb-1.5">
+                            <span>Lunes a Viernes</span>
+                            <span class="font-bold text-white">08:00 - 20:30</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/5 py-1.5">
+                            <span>Sábado</span>
+                            <span class="font-bold text-white">08:00 - 18:00</span>
+                        </li>
+                        <li class="flex justify-between pt-1.5">
+                            <span>Domingo</span>
+                            <span class="font-bold text-white">15:00 - 21:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contacto y Redes -->
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-300 border-b border-white/10 pb-2 mb-3">Contacto Directo</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300 mb-4">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                            <a href="https://wa.me/50280002944" target="_blank" class="hover:text-emerald-400 font-semibold">(502) 8000 2944</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-blue-400 text-sm"></i>
+                            <a href="mailto:inco.coban@gmail.com" class="hover:text-white">inco.coban@gmail.com</a>
+                        </li>
+                    </ul>
+                    <a href="https://www.tiktok.com/@DayanMelvin" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-3 bg-white/5 hover:bg-black p-2.5 rounded-lg border border-white/10 text-xs transition-colors w-full">
+                        <i class="fa-brands fa-tiktok text-base text-white"></i>
+                        <div>
+                            <span class="font-bold text-white block leading-none">@DayanMelvin</span>
+                            <span class="text-[10px] text-slate-400">TikTok Emprendedores</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Barra inferior Copyright -->
+            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400">
+                <p>© 2026 Intercopias Cobán. Todos los derechos reservados.</p>
+                <p class="text-[11px]">Cobán, Alta Verapaz, Guatemala • Diseñado para la excelencia</p>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -455,29 +550,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Script del Menú Hamburguesa
-        const btnMenu = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-        if (btnMenu && menu) {
-            btnMenu.addEventListener('click', () => menu.classList.toggle('hidden'));
-        }
-
-        // Script para mostrar el texto dinámico al hacer scroll
-        const dynamicText = document.getElementById('nav-dynamic-text');
-        if (dynamicText) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    dynamicText.classList.remove('opacity-0');
-                    dynamicText.classList.add('opacity-100');
-                } else {
-                    dynamicText.classList.remove('opacity-100');
-                    dynamicText.classList.add('opacity-0');
-                }
-            });
-        }
-
         calculate();
     </script>
+    <!-- Core Script Unificado Intercopias -->
+    <script src="intercopias.js"></script>
 </body>
 
 </html>

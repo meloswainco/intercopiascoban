@@ -25,6 +25,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="intercopias.css">
 
     <style>
         /* Transiciones para el rotador de texto */
@@ -143,68 +144,76 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
 
-    <!-- TopNavBar -->
-    <nav
-        class="bg-white/90 dark:bg-primary/90 backdrop-blur-md font-body-md text-body-md shadow-sm transition-all duration-300 ease-in-out fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-page py-4 border-b border-white/20">
-        <div class="max-w-container-max mx-auto flex justify-between items-center w-full">
-            <a class="flex items-center gap-2" href="index.html">
-                <img src="logo.png" alt="Logo Intercopias" class="h-10 w-auto object-contain hidden"
-                    onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');"
-                    onload="this.classList.remove('hidden'); this.nextElementSibling.classList.add('hidden');">
-                <div
-                    class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white shrink-0 hidden">
-                    <span class="material-symbols-outlined">layers</span>
+    <!-- TopNavBar Unificada Intercopias -->
+    <header class="inco-navbar">
+        <div class="inco-nav-container">
+            <!-- Logo y Marca -->
+            <a href="index.html" class="flex items-center gap-2 group z-20 text-decoration-none">
+                <img src="logo.png" alt="Logo Intercopias Cobán" class="h-9 sm:h-11 w-auto object-contain"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-9 h-9 bg-[#002347] rounded-lg items-center justify-center text-white shrink-0 hidden">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
                 </div>
                 <div class="flex flex-col justify-center">
-                    <span
-                        class="font-display-xl text-headline-md font-black text-primary dark:text-inverse-primary tracking-tight leading-none uppercase">Intercopias</span>
-                    <span class="text-[10px] text-slate-gray font-bold uppercase tracking-wider mt-0.5 block">Frente a
-                        Plaza Magdalena</span>
+                    <span class="font-heading font-black text-lg sm:text-xl text-[#002347] tracking-tight leading-none uppercase">INTERCOPIAS</span>
+                    <span class="text-[9px] text-[#64748b] font-bold uppercase tracking-wider mt-0.5 block">Frente a Plaza Magdalena</span>
                 </div>
             </a>
 
-            <div class="hidden lg:flex items-center gap-stack-lg">
-                <a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary-container transition-colors uppercase"
-                    href="index.html#servicios">Servicios</a>
-                <a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary-container transition-colors uppercase"
-                    href="cursos.html">Cursos</a>
-                <a class="text-secondary font-label-md text-label-md hover:text-secondary-container bg-secondary-fixed/50 px-3 py-1.5 rounded-lg border border-secondary-fixed transition-colors uppercase flex items-center gap-1"
-                    href="pos_landing.html"><span class="material-symbols-outlined text-[18px]">point_of_sale</span>
-                    POS</a>
-                <a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary-container transition-colors uppercase"
-                    href="index.html#contacto">Contacto</a>
-            </div>
-
-            <div class="flex items-center gap-stack-md">
-                <a class="hidden sm:inline-flex bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors items-center gap-2"
-                    href="https://wa.me/50280002944">
-                    <i class="fa-brands fa-whatsapp text-[18px]"></i> Escríbenos
+            <!-- Enlaces de Escritorio -->
+            <nav class="hidden lg:flex items-center gap-1 xl:gap-2 z-20">
+                <a href="index.html" class="inco-nav-link">Inicio</a>
+                <a href="index.html#servicios" class="inco-nav-link">Servicios</a>
+                <a href="cotizador.html" class="inco-nav-link inco-nav-badge">
+                    <i class="fa-solid fa-calculator text-xs"></i> Cotizador
                 </a>
-                <button id="mobile-menu-button" aria-label="Menu"
-                    class="lg:hidden text-on-surface p-2 focus:outline-none">
-                    <span class="material-symbols-outlined">menu</span>
+                <a href="cursos.html" class="inco-nav-link">Cursos</a>
+                <a href="normas.html" class="inco-nav-link">Normas</a>
+                <a href="tecnico.html" class="inco-nav-link">Técnico</a>
+                <a href="pos_landing.html" class="inco-nav-link flex items-center gap-1">
+                    <i class="fa-solid fa-cash-register text-xs text-[#0058bc]"></i> POS
+                </a>
+                <a href="index.html#contacto" class="inco-nav-link">Contacto</a>
+            </nav>
+
+            <!-- Acciones Derecha -->
+            <div class="flex items-center gap-2 sm:gap-3 z-20">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer"
+                    class="inco-btn-whatsapp hidden sm:inline-flex">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Escríbenos</span>
+                </a>
+                <button id="inco-mobile-toggle" aria-label="Abrir menú" aria-expanded="false"
+                    class="lg:hidden p-2 rounded-lg text-[#002347] hover:bg-slate-100 transition-colors focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-    </nav>
 
-    <!-- Menú Móvil -->
-    <div id="mobile-menu"
-        class="hidden lg:hidden bg-surface-container-lowest border-t border-outline-variant/30 fixed w-full left-0 top-[76px] shadow-lg z-40">
-        <div class="px-4 py-3 space-y-2">
-            <a href="index.html"
-                class="block px-3 py-2 text-sm font-label-md text-on-surface-variant rounded hover:bg-surface-container hover:text-secondary transition-colors uppercase">Inicio</a>
-            <a href="index.html#servicios"
-                class="block px-3 py-2 text-sm font-label-md text-on-surface-variant rounded hover:bg-surface-container hover:text-secondary transition-colors uppercase">Servicios</a>
-            <a href="cursos.html"
-                class="block px-3 py-2 text-sm font-label-md text-on-surface-variant rounded hover:bg-surface-container hover:text-secondary transition-colors uppercase">Cursos</a>
-            <a href="pos_landing.html"
-                class="block px-3 py-2 text-sm font-label-md text-secondary bg-secondary-fixed rounded hover:bg-secondary hover:text-on-secondary transition-colors uppercase flex items-center gap-2"><span
-                    class="material-symbols-outlined text-[18px]">point_of_sale</span> Nuevo Sistema POS</a>
-            <a href="index.html#contacto"
-                class="block px-3 py-2 text-sm font-label-md text-on-primary bg-primary rounded hover:bg-secondary-container text-center mt-2 uppercase transition-colors">Contacto</a>
+        <!-- Menú Desplegable Móvil -->
+        <div id="inco-mobile-menu" class="hidden lg:hidden bg-white/98 border-t border-slate-200 shadow-xl px-4 py-4 space-y-1.5 backdrop-blur-md">
+            <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicios</a>
+            <a href="cotizador.html" class="block px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-[#0058bc] hover:bg-blue-100 uppercase flex items-center justify-between">
+                <span>Cotizador de Combos</span>
+                <span class="text-xs bg-[#0058bc] text-white px-2 py-0.5 rounded-full">Calculadora</span>
+            </a>
+            <a href="cursos.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cursos de Empastado</a>
+            <a href="normas.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Normas de Tesis</a>
+            <a href="tecnico.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicio Técnico</a>
+            <a href="pos_landing.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase flex items-center gap-2">
+                <i class="fa-solid fa-cash-register text-xs text-[#0058bc]"></i> Sistema POS
+            </a>
+            <a href="index.html#contacto" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Contacto y Ubicación</a>
+            <div class="pt-2 border-t border-slate-100">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer"
+                    class="w-full inco-btn-whatsapp justify-center py-3">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Contactar por WhatsApp</span>
+                </a>
+            </div>
         </div>
-    </div>
+    </header>
 
     <main class="flex-grow pt-[76px]">
 
@@ -359,44 +368,51 @@
                     </div>
 
                     <!-- Pillar 3: Tech/PC -->
-                    <div
-                        class="md:col-span-6 bg-surface-container-low rounded-xl p-8 border border-outline-variant/30 flex flex-col items-start gap-stack-md hover:shadow-md transition-shadow">
-                        <div
-                            class="w-12 h-12 rounded-lg bg-white border border-outline-variant/50 flex items-center justify-center shadow-sm">
-                            <span class="material-symbols-outlined text-primary">build</span>
+                    <div class="md:col-span-6 group relative min-h-[300px] overflow-hidden rounded-xl shadow-sm transition-shadow hover:shadow-lg">
+                        <img src="Sopohome.jpg" alt="Mantenimiento de hardware con revisión de componentes internos de una computadora"
+                            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]">
+                        <div class="absolute inset-0 bg-gradient-to-r from-[#001226]/95 via-[#002347]/85 to-[#002347]/45"></div>
+                        <div class="relative z-10 flex h-full min-h-[300px] flex-col items-start justify-end gap-stack-md p-8">
+                            <div class="w-12 h-12 rounded-lg border border-white/20 bg-white/10 flex items-center justify-center text-white backdrop-blur-sm">
+                                <span class="material-symbols-outlined">build</span>
+                            </div>
+                            <div>
+                                <h3 class="font-headline-md text-headline-md text-white mb-stack-sm">Servicio Técnico</h3>
+                                <p class="font-body-md text-body-md text-white/85 max-w-lg">
+                                    Diagnóstico, reparación y mantenimiento preventivo para impresoras y computadoras. Tu
+                                    equipo en las mejores manos.
+                                </p>
+                            </div>
+                            <a class="inline-flex items-center rounded-lg bg-white px-5 py-2.5 font-label-md text-label-md font-semibold text-primary transition-colors hover:bg-slate-100"
+                                href="tecnico.html">
+                                Solicitar Revisión <span
+                                    class="material-symbols-outlined ml-1 text-[18px]">arrow_right_alt</span>
+                            </a>
                         </div>
-                        <div>
-                            <h3 class="font-headline-md text-headline-md text-primary mb-stack-sm">Servicio Técnico</h3>
-                            <p class="font-body-md text-body-md text-on-surface-variant">
-                                Diagnóstico, reparación y mantenimiento preventivo para impresoras y computadoras. Tu
-                                equipo en las mejores manos.
-                            </p>
-                        </div>
-                        <a class="inline-flex items-center text-secondary font-label-md text-label-md hover:text-primary transition-colors mt-auto"
-                            href="tecnico.html">
-                            Solicitar Revisión <span
-                                class="material-symbols-outlined ml-1 text-[18px]">arrow_right_alt</span>
-                        </a>
                     </div>
 
                     <!-- Pillar 4: POS Banner -->
-                    <div
-                        class="md:col-span-6 bg-surface-container-low rounded-xl p-8 border border-outline-variant/30 flex flex-col md:flex-row items-center gap-stack-lg hover:shadow-md transition-shadow">
-                        <div class="flex-1 text-center md:text-left">
-                            <span
-                                class="inline-block px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm uppercase tracking-wider mb-stack-sm">
+                    <div class="md:col-span-6 grid min-h-[300px] grid-cols-1 overflow-hidden rounded-xl border border-outline-variant/30 bg-primary shadow-sm transition-shadow hover:shadow-md lg:grid-cols-[minmax(0,1fr)_144px]">
+                        <div class="flex flex-col items-start justify-center gap-stack-md p-8">
+                            <span class="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 font-label-sm text-label-sm uppercase tracking-wider text-white">
                                 Para tu negocio
                             </span>
-                            <h3 class="font-headline-md text-headline-md text-primary mb-stack-sm">Sistema POS</h3>
-                            <p class="font-body-md text-body-md text-on-surface-variant">
-                                Software de facturación e inventario potente y sin mensualidades.
-                            </p>
-                        </div>
-                        <div class="flex-shrink-0 mt-4 md:mt-0">
-                            <a class="inline-flex bg-secondary text-on-secondary px-6 py-3 rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors items-center justify-center gap-2"
+                            <div>
+                                <h3 class="font-headline-md text-headline-md text-white mb-stack-sm">Sistema POS</h3>
+                                <p class="font-body-md text-body-md text-primary-fixed-dim">
+                                    Software de facturación e inventario potente y sin mensualidades.
+                                </p>
+                            </div>
+                            <a class="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-5 py-2.5 font-label-md text-label-md font-semibold text-on-secondary transition-colors hover:bg-secondary-container"
                                 href="pos_landing.html">
                                 <span class="material-symbols-outlined text-[18px]">rocket_launch</span> Descubrir POS
                             </a>
+                        </div>
+                        <div class="flex items-center justify-center border-t border-white/10 bg-white/5 p-8 lg:border-l lg:border-t-0 lg:p-4">
+                            <div class="flex h-28 w-28 items-center justify-center rounded-2xl bg-white p-3 shadow-lg">
+                                <img src="posincologo.ico" alt="Identidad visual del sistema POS Intercopias"
+                                    width="256" height="256" class="h-full w-full object-contain">
+                            </div>
                         </div>
                     </div>
 
@@ -690,74 +706,81 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer
-        class="bg-tertiary dark:bg-surface-container-lowest text-on-tertiary w-full pt-12 pb-6 px-margin-mobile md:px-margin-page border-t-4 border-slate-gray">
-        <div class="max-w-container-max mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <!-- Footer Unificado Intercopias -->
+    <footer class="inco-footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <!-- Col 1: Marca & Resumen -->
+                <div class="md:col-span-1">
+                    <span class="font-heading font-black text-xl text-white tracking-tight uppercase block mb-2">INTERCOPIAS</span>
+                    <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                        Centro de Servicios Integrales para estudiantes, profesionales y comerciantes en Cobán. Tu proyecto listo, impecable y a tiempo.
+                    </p>
+                    <span class="inline-flex items-center gap-2 text-xs bg-white/10 text-slate-300 px-3 py-1 rounded-full border border-white/10">
+                        <i class="fa-solid fa-location-dot text-red-400"></i> Frente a Plaza Magdalena
+                    </span>
+                </div>
+
+                <!-- Col 2: Enlaces Rápidos -->
                 <div>
-                    <h4
-                        class="font-label-md text-label-md mb-4 uppercase tracking-wider text-tertiary-fixed-dim border-b border-white/10 pb-2">
-                        Contacto</h4>
-                    <ul class="space-y-3 font-body-md text-sm text-white/90">
-                        <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[20px] text-slate-gray">location_on</span>
-                            <span>Frente a Plaza Magdalena, Cobán</span>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-300 border-b border-white/10 pb-2 mb-3">Servicios</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="cotizador.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Cotizador de Combos</a></li>
+                        <li><a href="index.html#servicios" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Impresión de Tesis</a></li>
+                        <li><a href="cursos.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Cursos de Empastado</a></li>
+                        <li><a href="normas.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Normas y Estilos</a></li>
+                        <li><a href="tecnico.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Servicio Técnico</a></li>
+                        <li><a href="pos_landing.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Sistema POS Comercial</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Horarios -->
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-300 border-b border-white/10 pb-2 mb-3">Horarios de Atención</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li class="flex justify-between border-b border-white/5 pb-1.5">
+                            <span>Lunes a Viernes</span>
+                            <span class="font-bold text-white">08:00 - 20:30</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[20px] text-slate-gray">phone</span>
-                            <a href="tel:50280002944" class="hover:text-white transition-colors">(502) 8000 2944</a>
+                        <li class="flex justify-between border-b border-white/5 py-1.5">
+                            <span>Sábado</span>
+                            <span class="font-bold text-white">08:00 - 18:00</span>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <span class="material-symbols-outlined text-[20px] text-slate-gray">mail</span>
-                            <a href="mailto:inco.coban@gmail.com"
-                                class="hover:text-white transition-colors">inco.coban@gmail.com</a>
+                        <li class="flex justify-between pt-1.5">
+                            <span>Domingo</span>
+                            <span class="font-bold text-white">15:00 - 21:00</span>
                         </li>
                     </ul>
                 </div>
 
-                <div class="flex flex-col justify-start">
-                    <h4
-                        class="font-label-md text-label-md mb-4 uppercase tracking-wider text-tertiary-fixed-dim border-b border-white/10 pb-2">
-                        Comunidad</h4>
+                <!-- Col 4: Contacto y Redes -->
+                <div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-300 border-b border-white/10 pb-2 mb-3">Contacto Directo</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300 mb-4">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+                            <a href="https://wa.me/50280002944" target="_blank" class="hover:text-emerald-400 font-semibold">(502) 8000 2944</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-blue-400 text-sm"></i>
+                            <a href="mailto:inco.coban@gmail.com" class="hover:text-white">inco.coban@gmail.com</a>
+                        </li>
+                    </ul>
                     <a href="https://www.tiktok.com/@DayanMelvin" target="_blank" rel="noopener noreferrer"
-                        class="group flex items-center gap-4 bg-white/5 hover:bg-black p-3 rounded-xl transition-colors border border-white/10 w-full max-w-sm">
-                        <div
-                            class="w-10 h-10 bg-white/10 group-hover:bg-white text-white group-hover:text-black rounded-lg flex items-center justify-center transition-colors">
-                            <i class="fa-brands fa-tiktok text-xl"></i>
-                        </div>
+                        class="inline-flex items-center gap-3 bg-white/5 hover:bg-black p-2.5 rounded-lg border border-white/10 text-xs transition-colors w-full">
+                        <i class="fa-brands fa-tiktok text-base text-white"></i>
                         <div>
-                            <p class="font-label-md text-white text-base leading-none mb-1">@DayanMelvin</p>
-                            <p class="font-label-sm text-[11px] text-white/60">TikTok - Emprendedores</p>
+                            <span class="font-bold text-white block leading-none">@DayanMelvin</span>
+                            <span class="text-[10px] text-slate-400">TikTok Emprendedores</span>
                         </div>
                     </a>
                 </div>
-
-                <div>
-                    <h4
-                        class="font-label-md text-label-md mb-4 uppercase tracking-wider text-tertiary-fixed-dim border-b border-white/10 pb-2">
-                        Horarios</h4>
-                    <ul class="space-y-2 font-body-md text-sm text-white/90">
-                        <li class="flex justify-between border-b border-white/5 pb-2">
-                            <span>Lunes - Viernes</span>
-                            <span class="font-bold">08:00 - 20:30</span>
-                        </li>
-                        <li class="flex justify-between border-b border-white/5 py-2">
-                            <span>Sábado</span>
-                            <span class="font-bold">08:00 - 18:00</span>
-                        </li>
-                        <li class="flex justify-between pt-2">
-                            <span>Domingo</span>
-                            <span class="font-bold">15:00 - 21:00</span>
-                        </li>
-                    </ul>
-                </div>
             </div>
 
-            <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
-                <span class="font-display-xl text-headline-sm text-on-tertiary">Intercopias Cobán</span>
-                <span class="text-on-tertiary-container text-center md:text-left text-xs font-label-md">© 2026
-                    Intercopias Cobán. Diseñado para la excelencia.</span>
+            <!-- Barra inferior Copyright -->
+            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400">
+                <p>© 2026 Intercopias Cobán. Todos los derechos reservados.</p>
+                <p class="text-[11px]">Cobán, Alta Verapaz, Guatemala • Diseñado para la excelencia</p>
             </div>
         </div>
     </footer>
@@ -877,6 +900,8 @@
             });
         });
     </script>
+    <!-- Core Script Unificado Intercopias -->
+    <script src="intercopias.js"></script>
 </body>
 
 </html>

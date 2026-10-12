@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="web_standard" name="shell-type">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@700;800;900&amp;display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         rel="stylesheet">
@@ -22,10 +22,6 @@
                 padding: 0;
             }
 
-            body {
-                overscroll-behavior: none;
-            }
-
             main>:first-child {
                 margin-top: 0 !important;
             }
@@ -35,16 +31,20 @@
             }
         }
 
-        ::-webkit-scrollbar {
-            display: none;
+        .pos-announcement {
+            min-height: 2.25rem;
+        }
+
+        .pos-main {
+            padding-top: 6.5rem;
         }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script
         id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-subtle": "#f9f9ff", "surface-variant": "#d5e3ff", "surface-bright": "#f9f9ff", "tertiary-container": "#825100", "surface": "#f9f9ff", "inverse-on-surface": "#ebf1ff", "on-secondary-fixed": "#001f26", "surface-container": "#e7eeff", "on-primary-container": "#c3d4ff", "on-primary-fixed": "#001a41", "on-background": "#0d1c30", "tertiary": "#623c00", "outline": "#727784", "on-tertiary-container": "#ffcb8f", "primary": "#00418f", "on-tertiary": "#ffffff", "secondary": "#00687a", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "on-error-container": "#93000a", "surface-container-high": "#dee9ff", "inverse-primary": "#adc6ff", "primary-bright": "#2563eb", "on-surface": "#0d1c30", "secondary-fixed-dim": "#4cd7f6", "inverse-surface": "#233146", "surface-tint": "#095bbf", "on-error": "#ffffff", "on-surface-variant": "#424753", "surface-container-low": "#f0f3ff", "accent-hover": "#d97706", "secondary-container": "#57dffe", "tertiary-fixed": "#ffddb8", "on-tertiary-fixed-variant": "#653e00", "tertiary-fixed-dim": "#ffb95f", "primary-container": "#0058bc", "on-tertiary-fixed": "#2a1700", "on-secondary-container": "#006172", "primary-fixed-dim": "#adc6ff", "surface-container-highest": "#d5e3ff", "surface-dim": "#ccdbf6", "surface-border": "#e2e8f0", "on-secondary-fixed-variant": "#004e5c", "on-primary": "#ffffff", "outline-variant": "#c2c6d5", "navy-dark": "#0f172a", "error-container": "#ffdad6", "on-primary-fixed-variant": "#004494", "primary-fixed": "#d8e2ff", "secondary-fixed": "#acedff", "background": "#f9f9ff", "on-secondary": "#ffffff" }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }, spacing: { "space-md": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter-sm": "1rem", "space-xl": "2.5rem", margin: "2rem", gutter: "1.5rem", "space-lg": "1.5rem", "margin-mobile": "1.25rem" }, fontFamily: { "headline-lg-mobile": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "display-hero-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "title-md": ["Inter"] }, fontSize: { "headline-lg-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }], "headline-md": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "display-hero-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "800" }], "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }], "display-hero": ["56px", { lineHeight: "64px", letterSpacing: "-0.03em", fontWeight: "800" }], "title-md": ["18px", { lineHeight: "26px", fontWeight: "600" }] } } } }</script>
-    <title>POS Intercopias - Pre-Orden &amp; Lanzamiento Oficial 2026</title>
+    <title>POS Intercopias para comercios | Preventa 2026</title>
     <meta name="description"
-        content="Software Punto de Venta para papelerías, cibers y centros de trámites. Fase Fundadores concluida. Pre-orden disponible a Q.550 antes del lanzamiento general a Q.770 el 01 de Noviembre 2026.">
+        content="POS para comercios: cobra, cotiza y controla inventario. Licencia de pago único para hasta 15 equipos. Preventa Q550 hasta el 31 de octubre de 2026.">
     <link href="icoinco.ico" rel="icon" type="image/x-icon" />
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -57,73 +57,139 @@
                                  })(window, document, 'script', 'dataLayer', 'GTM-MKTSQDQZ');</script>
     <!-- End Google Tag Manager -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="intercopias.css">
+    <style>
+        @media (max-width: 1023px) {
+            .inco-floating-wa {
+                display: none;
+            }
+        }
+
+        .pos-navbar .inco-btn-whatsapp {
+            background-color: #15803d;
+        }
+
+        .pos-navbar .inco-btn-whatsapp:hover {
+            background-color: #166534;
+        }
+    </style>
+    <script>
+        const posTheme = tailwind.config.theme;
+        const posFontFamilies = Object.fromEntries(
+            Object.keys(posTheme.extend.fontFamily).map((name) => [
+                name,
+                /headline|display|title/i.test(name) ? ["Montserrat"] : ["Inter"]
+            ])
+        );
+        tailwind.config = {
+            ...tailwind.config,
+            theme: {
+                ...posTheme,
+                extend: {
+                    ...posTheme.extend,
+                    colors: {
+                        ...posTheme.extend.colors,
+                        primary: "#002347",
+                        "primary-container": "#002347",
+                        "primary-bright": "#0058bc",
+                        secondary: "#0058bc",
+                        "secondary-container": "#0070eb",
+                        "secondary-fixed": "#d8e2ff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed": "#001a41",
+                        "on-secondary-fixed-variant": "#004493",
+                        tertiary: "#002347",
+                        "tertiary-container": "#002347",
+                        "tertiary-fixed": "#dfe3e7",
+                        "tertiary-fixed-dim": "#c3c7cb",
+                        "on-tertiary-fixed": "#171c1f",
+                        "on-tertiary-fixed-variant": "#43474b",
+                        "accent-hover": "#004494"
+                    },
+                    fontFamily: posFontFamilies
+                }
+            }
+        };
+    </script>
 </head>
 
-<body class="bg-surface font-body-md text-on-surface antialiased">
+<body class="bg-background font-body-md text-on-surface antialiased">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ"
             style="display:none;visibility:hidden" width="0"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- FLOATING WHATSAPP CTA -->
-    <a class="fixed bottom-6 right-4 sm:right-6 z-50 bg-[#15803D] hover:bg-[#166534] text-white rounded-xl flex items-center shadow-2xl border-2 border-emerald-400/40 transition-all font-semibold tracking-wide px-4 py-3 gap-0 sm:gap-3 hover:scale-105"
+    <a class="inco-floating-wa"
         href="https://wa.me/50280002944?text=Hola%20Dayan,%20quiero%20informaci%C3%B3n%20sobre%20la%20Pre-Orden%20del%20POS%20Intercopias%20(Q.%20550.00)"
-        target="_blank" title="Preventa POS Intercopias">
+        target="_blank" rel="noopener noreferrer" aria-label="Apartar el POS por WhatsApp" title="Preventa POS Intercopias">
         <i class="fa-brands fa-whatsapp text-2xl text-emerald-200"></i>
-        <div class="text-left leading-tight hidden sm:block">
-            <span class="text-[9px] text-emerald-200 block uppercase font-mono tracking-wider font-bold">Preventa • Solo
-                Q.550</span>
+        <div class="text-left leading-tight hidden lg:block">
+            <span class="text-[9px] text-emerald-200 block uppercase tracking-wider font-bold">Preventa • Solo Q.550</span>
             <span class="text-xs font-bold text-white tracking-normal">Apartar por WhatsApp</span>
         </div>
     </a>
-    <header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,13,33,0.06)]">
-        <div
-            class="w-full bg-primary text-on-primary py-2 px-margin-mobile md:px-margin text-center font-label-sm text-label-sm tracking-wide">
-            <div class="max-w-[1240px] mx-auto flex items-center justify-center gap-3 py-0.5"><span
-                    class="inline-flex items-center gap-1.5 font-medium text-surface-container-highest"><span
-                        class="material-symbols-outlined text-[16px] text-tertiary-fixed">bolt</span>Preventa especial
-                    activa hasta el 31 de octubre:</span><span class="text-tertiary-fixed font-bold">Q550.00</span><span
-                    class="hidden sm:inline text-surface-container-highest/80 text-label-sm">• Lanzamiento oficial: 01
-                    de noviembre (precio regular Q750.00)</span></div>
+    <header class="inco-navbar pos-navbar">
+        <div class="pos-announcement w-full bg-[#002347] text-white px-4 text-center font-label-sm text-label-sm">
+            <div class="max-w-[1280px] mx-auto flex items-center justify-center gap-2 py-2">
+                <span class="material-symbols-outlined text-[16px] text-[#dfe3e7]">bolt</span>
+                <span>Preventa hasta el 31 de octubre:</span>
+                <strong class="text-white">Q550.00</strong>
+                <span class="hidden md:inline text-white/75">• Lanzamiento oficial el 01 de noviembre</span>
+            </div>
         </div>
-        <div class="h-20 max-w-[1240px] mx-auto px-margin-mobile md:px-margin flex items-center justify-between gap-4">
-            <div class="flex items-center gap-3"><a class="flex items-center gap-3" href="index.html"><img
-                        alt="Inter Copias Logo" class="h-8 w-auto object-contain bg-[#0A1128] p-1 rounded-md"
-                        src="logo_inco_white.png">
-                    <div class="flex flex-col"><span
-                            class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">INTER
-                            COPIAS</span><span
-                            class="font-label-sm text-label-sm text-on-surface-variant leading-tight">POS
-                            Solutions</span></div>
-                </a></div>
-            <nav class="hidden xl:flex items-center gap-6" data-active-classes="text-primary font-bold"><a
-                    class="font-label-md text-label-md text-primary font-bold" href="index.html">Inicio</a>
-                <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
-                    data-path="preventa" href="#preventa">Preventa POS</a>
-                <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
-                    href="cursos.html">Cursos</a>
-                <a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors"
-                    href="cotizador.html">Cotizador</a>
+        <div class="inco-nav-container">
+            <a href="index.html" class="flex items-center gap-2 group z-20 text-decoration-none">
+                <img src="logo.png" alt="Logo Intercopias Cobán" class="h-9 sm:h-11 w-auto object-contain"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-9 h-9 bg-[#002347] rounded-lg items-center justify-center text-white shrink-0 hidden">
+                    <i class="fa-solid fa-layer-group text-sm"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="font-heading font-black text-lg sm:text-xl text-[#002347] leading-none uppercase">INTERCOPIAS</span>
+                    <span class="text-[9px] text-[#64748b] font-bold uppercase tracking-wider mt-0.5 block">Frente a Plaza Magdalena</span>
+                </div>
+            </a>
+            <nav class="hidden lg:flex items-center gap-1 xl:gap-2 z-20">
+                <a href="index.html" class="inco-nav-link">Inicio</a>
+                <a href="index.html#servicios" class="inco-nav-link">Servicios</a>
+                <a href="cotizador.html" class="inco-nav-link">Cotizador</a>
+                <a href="cursos.html" class="inco-nav-link">Cursos</a>
+                <a href="normas.html" class="inco-nav-link">Normas</a>
+                <a href="tecnico.html" class="inco-nav-link">Técnico</a>
+                <a href="#preventa" class="inco-nav-link inco-nav-badge"><i class="fa-solid fa-cash-register text-xs"></i> POS</a>
+                <a href="index.html#contacto" class="inco-nav-link">Contacto</a>
             </nav>
-            <div class="flex items-center gap-4"><a
-                    class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md font-semibold"
-                    href="https://wa.me/50280002944?text=Hola%20Dayan,%20necesito%20soporte" target="_blank"><span
-                        class="material-symbols-outlined text-secondary text-[18px]">chat</span>Soporte</a><a
-                    class="flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md font-bold shadow-sm hover:bg-tertiary-fixed-dim transition-all"
-                    href="#preventa"><span class="material-symbols-outlined text-[18px]">shopping_bag</span>Aprovechar
-                    Preventa</a></div>
+            <div class="flex items-center gap-2 sm:gap-3 z-20">
+                <a href="https://wa.me/50280002944?text=Hola%20Dayan,%20necesito%20soporte" target="_blank" rel="noopener noreferrer"
+                    class="inco-btn-whatsapp hidden sm:inline-flex">
+                    <i class="fa-brands fa-whatsapp text-lg"></i><span>Soporte</span>
+                </a>
+                <button id="inco-mobile-toggle" aria-label="Abrir menú" aria-expanded="false"
+                    class="lg:hidden p-2 rounded-lg text-[#002347] hover:bg-slate-100 transition-colors focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="inco-mobile-menu" class="hidden lg:hidden bg-white/98 border-t border-slate-200 shadow-xl px-4 py-4 space-y-1.5 backdrop-blur-md">
+            <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Inicio</a>
+            <a href="index.html#servicios" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicios</a>
+            <a href="#preventa" class="block px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-[#0058bc] hover:bg-blue-100 uppercase flex items-center justify-between"><span>Preventa POS</span><span class="text-xs bg-[#0058bc] text-white px-2 py-0.5 rounded-full">Q550</span></a>
+            <a href="cursos.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cursos de Empastado</a>
+            <a href="cotizador.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cotizador</a>
+            <a href="tecnico.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicio Técnico</a>
+            <a href="index.html#contacto" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Contacto</a>
+            <div class="pt-2 border-t border-slate-100">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="w-full inco-btn-whatsapp justify-center py-3">
+                    <i class="fa-brands fa-whatsapp text-lg"></i><span>Contactar por WhatsApp</span>
+                </a>
+            </div>
         </div>
     </header>
-    <main class="w-full pt-20 bg-surface">
+    <main class="pos-main w-full bg-surface">
         <div class="flex flex-col w-full">
             <!-- HERO SECTION -->
             <section
                 class="relative w-full overflow-hidden bg-gradient-to-b from-surface-container-low via-surface to-surface pb-16 md:pt-14 md:pb-24 pt-16">
-                <div
-                    class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-primary-bright/10 blur-3xl pointer-events-none">
-                </div>
-                <div
-                    class="absolute top-1/3 -right-20 w-80 h-80 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none">
-                </div>
                 <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin">
                     <!-- Urgency Banner Pill -->
 
@@ -132,17 +198,14 @@
                         <div class="lg:col-span-7 space-y-10">
                             <div class="space-y-3">
                                 <span
-                                    class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">Inter
-                                    Copias POS Solutions</span>
+                                    class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">POS para comercios</span>
                                 <h1
                                     class="font-display-hero text-headline-lg md:text-display-hero text-on-surface leading-tight tracking-tight">
-                                    Punto de Venta Inter Copias: <span class="text-primary-container">Agilidad y Control
-                                        Total</span> para tu Negocio
+                                    Cobra, cotiza y controla tu inventario desde el mostrador
                                 </h1>
                                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                                    Optimiza tus cobros y domina tu inventario sin pagar mensualidades. La solución
-                                    robusta que potencia tu mostrador, protege tu efectivo y acelera cada transacción
-                                    comercial.
+                                    Atiende ventas, pedidos y cotizaciones desde una sola pantalla. Revisa existencias
+                                    y entrega comprobantes con la marca de tu negocio.
                                 </p>
                             </div>
                             <!-- Highlight Presale Pricing Block -->
@@ -160,24 +223,17 @@
                                     </div>
                                     <div class="text-right"><span
                                             class="font-body-sm text-body-sm text-outline line-through block">Regular:
-                                            Q750.00</span><span
+                                            Q770.00</span><span
                                             class="inline-block px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold mt-1">Ahorras
-                                            Q200.00</span></div>
+                                            Q220.00</span></div>
                                 </div>
                                 <div class="flex flex-col sm:flex-row gap-4 pt-1"><a
                                         class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-primary text-on-primary font-title-md text-title-md font-bold shadow-md hover:shadow-xl transition-all text-center"
-                                        href="#preventa"><span class="">Adquirir Licencia en Preventa</span><span
+                                        href="#preventa"><span class="">Solicitar licencia por Q550</span><span
                                             class="material-symbols-outlined text-[20px]">arrow_forward</span></a><a
                                         class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md font-semibold text-center"
-                                        href="#caracteristicas"><span class="">Ver Detalles</span><span
+                                        href="#modos-operacion"><span class="">Ver los tres modos</span><span
                                             class="material-symbols-outlined text-[20px]">expand_more</span></a></div>
-                                <div
-                                    class="flex items-center justify-center sm:justify-start gap-2 pt-1 text-on-surface-variant font-label-sm text-label-sm">
-                                    <span
-                                        class="material-symbols-outlined text-secondary text-[18px]">verified</span><span
-                                        class="">Licencia perpetua de por vida • Sin mensualidades ni cobros
-                                        sorpresa</span>
-                                </div>
                                 <div
                                     class="flex items-center justify-center sm:justify-start gap-2 mt-2 pt-3 border-t border-surface-container text-on-surface-variant font-label-sm text-label-sm">
                                     <span class="material-symbols-outlined text-[16px] text-tertiary">timer</span><span
@@ -206,9 +262,7 @@
                                 <span
                                     class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">info</span>
                                 <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed"><strong
-                                        class="text-on-surface font-semibold">Interfaz limpia:</strong> todos tus
-                                    servicios y productos más vendidos a un clic de distancia. La zona de ticket siempre
-                                    visible para mayor control.</p>
+                                    class="text-on-surface font-semibold">Venta en una pantalla:</strong> busca productos y revisa el ticket mientras atiendes al cliente.</p>
                             </div>
                         </div>
                     </div>
@@ -223,7 +277,7 @@
                                 class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-2 shadow-sm text-primary">
                                 <span class="material-symbols-outlined text-[22px]">payments</span>
                             </div>
-                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold">1 Solo Pago</span>
+                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold">Pago único</span>
                             <span class="font-body-sm text-body-sm text-on-surface-variant">De por vida • Sin
                                 mensualidades</span>
                         </div>
@@ -232,8 +286,7 @@
                                 class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-2 shadow-sm text-primary">
                                 <span class="material-symbols-outlined text-[22px]">laptop_chromebook</span>
                             </div>
-                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold">Hasta 15
-                                PCs</span>
+                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold">Hasta 15 equipos</span>
                             <span class="font-body-sm text-body-sm text-on-surface-variant">Misma licencia
                                 comercial</span>
                         </div>
@@ -242,95 +295,34 @@
                                 class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-2 shadow-sm text-primary">
                                 <span class="material-symbols-outlined text-[22px]">warehouse</span>
                             </div>
-                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold">Sala &amp;
-                                Bodega</span>
-                            <span class="font-body-sm text-body-sm text-on-surface-variant">Cardex e inventario
-                                unificado</span>
+                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold">Sala y bodega</span>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">Control con Cardex</span>
                         </div>
                         <div class="flex flex-col items-center justify-center p-3">
                             <div
                                 class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-2 shadow-sm text-primary">
                                 <span class="material-symbols-outlined text-[22px]">shield_person</span>
                             </div>
-                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold">Auditorías
-                                Seguras</span>
-                            <span class="font-body-sm text-body-sm text-on-surface-variant">Corte Z y arqueo a
-                                ciegas</span>
+                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold">Cierre de caja</span>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">Corte Z y arqueo a ciegas</span>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- SECTION 3: FEATURES GRID -->
-            <section class="w-full py-20 bg-surface" id="caracteristicas">
-                <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin space-y-12">
-                    <div class="max-w-2xl mx-auto text-center space-y-3">
-                        <span
-                            class="font-label-md text-label-md text-primary font-bold tracking-wider uppercase">Rendimiento
-                            Operativo</span>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface">¿Por qué nuestro sistema es la
-                            herramienta que necesitas?</h2>
-                        <p class="font-body-md text-body-md text-on-surface-variant">
-                            Diseñado con arquitectura ligera para que tu mostrador jamás se congele ni dependa de
-                            conexiones lentas de internet.
-                        </p>
+            <!-- FIT BY BUSINESS TYPE -->
+            <section class="w-full py-12 bg-surface" id="caracteristicas">
+                <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin">
+                    <div class="max-w-3xl mx-auto text-center space-y-3">
+                        <span class="font-label-md text-label-md text-primary font-bold tracking-wider uppercase">Para negocios multirrubro</span>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Configura el POS para tu tipo de comercio</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Organiza categorías y productos según el giro de tu negocio.</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div
-                            class="p-6 rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/30 hover:shadow-md transition-shadow flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                                <span class="material-symbols-outlined text-[26px]">storefront</span>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Adaptabilidad
-                                    Multirrubro</h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Librerías,
-                                    multiservicios, ciber cafés, repuestos, talleres y comercio formal con subcategorías
-                                    a medida.</p>
-                            </div>
-                        </div>
-                        <div
-                            class="p-6 rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/30 hover:shadow-md transition-shadow flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
-                                <span class="material-symbols-outlined text-[26px]">flash_on</span>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Ventas a la Velocidad
-                                    de la Luz</h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Zona de
-                                    selección en ráfaga y atajos de teclado fluidos para cobrar en segundos y erradicar
-                                    las filas.</p>
-                            </div>
-                        </div>
-                        <div
-                            class="p-6 rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/30 hover:shadow-md transition-shadow flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0">
-                                <span class="material-symbols-outlined text-[26px]">inventory_2</span>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Inventario y Catálogo
-                                    Local</h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Base de
-                                    datos local ultra rápida, compatibilidad con lector de barras e importación y
-                                    exportación a Excel.</p>
-                            </div>
-                        </div>
-                        <div
-                            class="p-6 rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/30 hover:shadow-md transition-shadow flex items-start gap-4">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary shrink-0">
-                                <span class="material-symbols-outlined text-[26px]">shield_person</span>
-                            </div>
-                            <div class="space-y-1">
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Arqueos y Auditorías
-                                    Claras</h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Corte Z,
-                                    Corte a Ciegas para total transparencia de cajeros, registro de gastos menores y
-                                    control de turnos.</p>
-                            </div>
-                        </div>
+                    <div class="mt-6 flex flex-wrap justify-center gap-2">
+                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Librerías y papelerías</span>
+                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Cibercafés</span>
+                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Multiservicios</span>
+                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Repuestos y talleres</span>
+                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Comercio formal</span>
                     </div>
                 </div>
             </section>
@@ -343,35 +335,18 @@
                             <span class="material-symbols-outlined text-[18px]">tune</span>
                             Fluidez sin Complicaciones
                         </div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
-                            Versatilidad Total en Cada Operación: 3 Modos en la Misma Interfaz
-                        </h2>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Tres tareas del mostrador, una sola pantalla</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                            Cambia entre cobrar, cotizar o registrar un pedido al instante desde el mismo mostrador, con
-                            selección precisa del método de pago para que tu corte de caja cuadre hasta el último
-                            centavo.
+                            Cambia entre cobro, pedido y cotización con un clic para seguir atendiendo desde el mismo módulo.
                         </p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch">
                         <!-- Card 1: Modo Cobro Inmediato -->
                         <div
                             class="flex flex-col rounded-2xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all overflow-hidden border border-outline-variant/30 group">
                             <div class="p-6 pb-4 space-y-2 border-b border-surface-container">
-                                <div class="flex items-center justify-between">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-bold">
-                                        <span class="material-symbols-outlined text-[16px]">payments</span>
-                                        Operación Estándar
-                                    </span>
-                                    <span class="font-headline-sm text-headline-sm text-primary font-bold">Q
-                                        82.25</span>
-                                </div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Modo Cobro Inmediato
-                                </h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">
-                                    Selección de método de pago detallada para que tu arqueo y corte Z cuadren cada
-                                    centavo sin descuadres.
-                                </p>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Modo Cobro</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Registra cada cobro con el método elegido y revisa el resultado en el arqueo y el corte Z.</p>
                             </div>
                             <div
                                 class="p-4 bg-surface-container-low/60 flex items-center justify-center flex-1 overflow-hidden">
@@ -379,39 +354,22 @@
                                     alt="Interfaz del Modo Cobro Inmediato con selector de Efectivo, Transferencia, Tarjeta y Crédito"
                                     class="max-h-[380px] w-auto object-contain rounded-xl shadow-sm border border-outline-variant/30 group-hover:scale-[1.02] transition-transform duration-300">
                             </div>
-                            <div
-                                class="p-4 bg-surface-container-lowest border-t border-surface-container flex flex-wrap gap-1.5">
-                                <span
-                                    class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Efectivo</span>
-                                <span
-                                    class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Transferencia
-                                    / QR</span>
-                                <span
-                                    class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Tarjeta</span>
-                                <span
-                                    class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Crédito
-                                    / Pendiente</span>
+                            <div class="min-h-[112px] p-4 bg-surface-container-lowest border-t border-surface-container flex flex-col justify-center gap-2">
+                                <p class="font-label-sm text-label-sm font-semibold leading-relaxed text-on-surface-variant">Tú gestionas los métodos de pago:</p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Efectivo</span>
+                                    <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Transferencia / QR</span>
+                                    <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Tarjeta</span>
+                                    <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Crédito / Pendiente</span>
+                                </div>
                             </div>
                         </div>
                         <!-- Card 2: Modo Pedido Activo -->
                         <div
                             class="flex flex-col rounded-2xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all overflow-hidden border border-outline-variant/30 group">
                             <div class="p-6 pb-4 space-y-2 border-b border-surface-container">
-                                <div class="flex items-center justify-between">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
-                                        <span class="material-symbols-outlined text-[16px]">shopping_bag</span>
-                                        Acción Rápida F12
-                                    </span>
-                                    <span class="font-headline-sm text-headline-sm text-primary font-bold">Q
-                                        62.25</span>
-                                </div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Modo Pedido Activo
-                                </h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">
-                                    Genera comandas o apartados de mercancía al instante con la tecla F12 sin alterar el
-                                    inventario de caja inmediato.
-                                </p>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Modo Pedido</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Usa F12 para crear una comanda o apartar mercancía. El pedido queda pendiente para liquidarlo después.</p>
                             </div>
                             <div
                                 class="p-4 bg-surface-container-low/60 flex items-center justify-center flex-1 overflow-hidden">
@@ -419,53 +377,24 @@
                                     alt="Interfaz del Modo Pedido Activo con botón Generar Pedido F12"
                                     class="max-h-[380px] w-auto object-contain rounded-xl shadow-sm border border-outline-variant/30 group-hover:scale-[1.02] transition-transform duration-300">
                             </div>
-                            <div
-                                class="p-4 bg-surface-container-lowest border-t border-surface-container flex flex-wrap gap-1.5">
-                                <span
-                                    class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-[12px]">Atajo
-                                    F12</span>
-                                <span
-                                    class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Apartados</span>
-                                <span
-                                    class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Comandas
-                                    de taller</span>
+                            <div class="min-h-[112px] p-4 bg-surface-container-lowest border-t border-surface-container flex flex-col justify-center gap-2">
+                                <p class="font-label-sm text-label-sm font-semibold leading-relaxed text-on-surface-variant">Pedidos para seguimiento, liquidación posterior.</p>
                             </div>
                         </div>
                         <!-- Card 3: Modo Cotización Rápida -->
                         <div
                             class="flex flex-col rounded-2xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all overflow-hidden border border-outline-variant/30 group">
                             <div class="p-6 pb-4 space-y-2 border-b border-surface-container">
-                                <div class="flex items-center justify-between">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
-                                        <span class="material-symbols-outlined text-[16px]">request_quote</span>
-                                        Preventa Comercial
-                                    </span>
-                                    <span class="font-headline-sm text-headline-sm text-primary font-bold">Q
-                                        62.25</span>
-                                </div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Modo Cotización Rápida
-                                </h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">
-                                    Emite cotizaciones formales para clientes en segundos sin comprometer existencias ni
-                                    generar movimientos contables prematuros.
-                                </p>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Modo Cotización Rápida</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Prepara una cotización formal y recupérala cuando el cliente vuelva a comprar.</p>
                             </div>
                             <div
                                 class="p-4 bg-surface-container-low/60 flex items-center justify-center flex-1 overflow-hidden">
                                 <img src="cotizacionrapida.jpg" alt="Interfaz del Modo Cotizar con botón Cotizar F12"
                                     class="max-h-[380px] w-auto object-contain rounded-xl shadow-sm border border-outline-variant/30 group-hover:scale-[1.02] transition-transform duration-300">
                             </div>
-                            <div
-                                class="p-4 bg-surface-container-lowest border-t border-surface-container flex flex-wrap gap-1.5">
-                                <span
-                                    class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[12px]">Sin
-                                    afectar stock</span>
-                                <span
-                                    class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Impresión
-                                    térmica</span>
-                                <span
-                                    class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-[12px]">Presupuestos</span>
+                            <div class="min-h-[112px] p-4 bg-surface-container-lowest border-t border-surface-container flex flex-col justify-center gap-2">
+                                <p class="font-label-sm text-label-sm font-semibold leading-relaxed text-on-surface-variant">No afecta stock. Guárdala en el sistema hasta por 30 días.</p>
                             </div>
                         </div>
                     </div>
@@ -478,14 +407,11 @@
                         <div
                             class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm font-bold uppercase tracking-wider">
                             <span class="material-symbols-outlined text-[18px]">pending_actions</span>
-                            Control y Seguimiento Total
+                            Seguimiento diario
                         </div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
-                            Pestaña de Pendientes: Todo Bajo Control en un Solo Lugar
-                        </h2>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Retoma pedidos, cotizaciones y saldos pendientes</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                            Nunca más pierdas un pedido por entregar, una cotización por cerrar o un saldo por cobrar.
-                            Visualiza tus anticipos, saldos pendientes y recupera presupuestos con un solo clic.
+                            Consulta qué pedidos esperan entrega, qué cotizaciones siguen abiertas y qué saldos faltan por cobrar.
                         </p>
                     </div>
 
@@ -521,11 +447,7 @@
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Pedidos Pendientes
                                         &amp; Liquidación Rápida</h3>
                                 </div>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                                    Visualiza quién retirará, el desglose de productos, anticipo abonado y el saldo
-                                    exacto en rojo. Liquida y entrega seleccionando el método de pago (Efectivo,
-                                    Tarjeta, QR) al instante.
-                                </p>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Revisa quién retirará, los productos, el anticipo y el saldo. Al entregar, registra el pago recibido.</p>
                             </div>
 
                             <!-- Feature Card 2 -->
@@ -539,11 +461,7 @@
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Recuperación de
                                         Cotizaciones a Caja</h3>
                                 </div>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                                    ¿El cliente regresa a comprar el presupuesto que le hiciste hace días? Con un solo
-                                    botón 'Cargar' traes la cotización a la orden activa sin redigitar productos ni
-                                    precios.
-                                </p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Carga una cotización guardada en la orden activa sin volver a ingresar productos ni precios.</p>
                             </div>
 
                             <!-- Feature Card 3 -->
@@ -558,10 +476,7 @@
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Cuentas por Cobrar
                                         &amp; Conservación Automática</h3>
                                 </div>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                                    Registra abonos de clientes frecuentes a crédito y mantén tu historial seguro con
-                                    conservación configurable de cotizaciones (las ventas y abonos nunca se borran).
-                                </p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Registra abonos de clientes a crédito y consulta su historial de saldos.</p>
                             </div>
                         </div>
                     </div>
@@ -575,13 +490,9 @@
                             <span class="material-symbols-outlined text-[18px]">inventory_2</span>
                             Control de Stock Preciso
                         </div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
-                            Gestión Ágil de Inventario: Sala de Ventas y Base de Datos Local
-                        </h2>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Consulta existencias y actualiza tu catálogo</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                            Registra, busca y actualiza productos en segundos con lectura de código de barras,
-                            categorización directa, control de costo de adquisición, precio de venta y stock
-                            sincronizado.
+                            Busca productos por nombre o código de barras. Actualiza categorías, costos, precios y existencias desde el catálogo.
                         </p>
                     </div>
 
@@ -617,11 +528,7 @@
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Alta y Edición
                                         Rápida con Código de Barras</h3>
                                 </div>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                                    Entrada por código escaneado o manual, descripción del artículo, asignación de
-                                    categoría (Librería, Repuestos, Servicios), costo de adquisición y cálculo inmediato
-                                    del precio de venta.
-                                </p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Registra productos por código o manualmente, asígnales categoría y define costo, precio y existencia.</p>
                             </div>
 
                             <!-- Feature Card 2 -->
@@ -635,11 +542,7 @@
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Exportación e
                                         Importación a Excel</h3>
                                 </div>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                                    Botones directos para exportar e importar tu catálogo completo a hojas de cálculo
-                                    (.xlsx) en un solo clic, permitiendo migraciones ágiles y respaldos sin
-                                    complicaciones técnicas.
-                                </p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Importa y exporta el catálogo en formato .xlsx para actualizar productos o guardar una copia.</p>
                             </div>
 
                             <!-- Feature Card 3 -->
@@ -653,10 +556,7 @@
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Movimientos y
                                         Control en Mesa</h3>
                                 </div>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                                    Gestión transparente de entradas y salidas en sala, filtros instantáneos de tabla y
-                                    paginación optimizada para navegar miles de productos con total fluidez y rapidez.
-                                </p>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Filtra movimientos y recorre el catálogo por páginas para revisar entradas y salidas.</p>
                             </div>
                         </div>
                     </div>
@@ -672,12 +572,15 @@
                             Impresión y Formatos Flexibles
                         </div>
                         <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
-                            Personalización de Tickets y Comprobantes a Tu Medida
+                            Tickets y comprobantes con la marca de tu negocio
                         </h2>
-                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                            Adapta tus comprobantes a la identidad de tu negocio y a cualquier tipo de impresora. Emite
-                            comprobantes profesionales con tu logotipo, datos fiscales y mensajes personalizados sin
-                            gastar de más.
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Personaliza los datos y mensajes del comprobante. Imprime en térmica de 58 u 80 mm, o en carta y media carta.</p>
+                    </div>
+
+                    <div class="mx-auto max-w-3xl rounded-xl border border-secondary-fixed bg-secondary-fixed/50 px-5 py-4 text-center">
+                        <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                            <strong class="text-on-surface">Factura FEL:</strong> el POS no se conecta directamente a SAT.
+                            Cuando tu cliente necesite factura oficial, puedes emitirla sin costo desde la App FEL de SAT.
                         </p>
                     </div>
 
@@ -782,108 +685,17 @@
                     </div>
                 </div>
             </section>
-            <section class="w-full py-20 bg-surface-container-low">
-                <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin space-y-12">
-                    <div class="max-w-2xl mx-auto text-center space-y-3">
-                        <span
-                            class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Transparencia
-                            Total</span>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Condiciones Claras. Sin Letra
-                            Pequeña.</h2>
-                        <p class="font-body-md text-body-md text-on-surface-variant">
-                            Nuestra filosofía es brindarte autonomía y propiedad plena sobre la tecnología que mueve tu
-                            negocio.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Item 1 -->
-                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">
-                                    1</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Licencia Perpetua</h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                Realizas un solo pago de por vida, liberándote por completo de mensualidades y
-                                suscripciones recurrentes que merman tus utilidades cada mes.
-                            </p>
-                        </div>
-                        <!-- Item 2 -->
-                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">
-                                    2</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Instalación Masiva
-                                </h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                Tu licencia incluye la flexibilidad de instalar el sistema en hasta 15 computadoras,
-                                ideales para distribuir en varias sucursales o negocios bajo el mismo dueño.
-                            </p>
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">
-                                    3</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Cajas Independientes
-                                </h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                Para evitar cuellos de botella, los equipos funcionan como cajas de cobro independientes
-                                sin conectarse en tiempo real, permitiéndote usar una máquina central para tu inventario
-                                principal sin ralentizaciones.
-                            </p>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3 lg:col-span-2">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">
-                                    4</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Seguridad y Protección
-                                    de tu Marca</h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                La licencia queda registrada a nombre de tu "nombre paraguas" empresarial y aparecerá
-                                fija al pie de cada ticket. Esto asegura el uso exclusivo para tu grupo comercial
-                                (prohibida su reventa) y previene robos o copias no autorizadas.
-                            </p>
-                        </div>
-                        <!-- Item 5 -->
-                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">
-                                    5</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Estabilidad a Largo
-                                    Plazo</h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                Adquieres la versión definitiva del programa. Recibirás actualizaciones periódicas
-                                enfocadas exclusivamente en corregir bugs o pequeños errores, sin módulos invasivos a
-                                futuro.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
             <section class="w-full py-20 bg-surface-container-high" id="testimonios-reales">
                 <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin space-y-12">
                     <div class="max-w-2xl mx-auto text-center space-y-3">
                         <div
                             class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider">
                             <span class="material-symbols-outlined text-[18px]">verified</span>
-                            Casos de Éxito en Vivo
+                            POS en negocios en operación
                         </div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Negocios Reales Que Ya Confían en
-                            Nosotros</h2>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Así se ve en tres comercios</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                            Librerías, importadoras y servicios técnicos ya agilizan sus cobros diarios e imprimen
-                            tickets personalizados con su marca registrada protegida.
+                            Mira ejemplos de comprobantes personalizados y equipos térmicos en uso.
                         </p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -920,10 +732,7 @@
                                     </div>
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Librería Belén El
                                         Centro</h3>
-                                    <p class="font-body-sm text-body-sm text-on-surface-variant">
-                                        Comprobante impreso con logotipo a todo color, descripción precisa por ítems y
-                                        mensaje institucional personalizado.
-                                    </p>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">Comprobante con logotipo a color, detalle de productos y mensaje de la librería.</p>
                                 </div>
                                 <div
                                     class="pt-3 border-t border-surface-container flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
@@ -968,10 +777,7 @@
                                     </div>
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Multiservicios
                                         Tecnológicos Jutiapa</h3>
-                                    <p class="font-body-sm text-body-sm text-on-surface-variant">
-                                        Ticket con pie legal blindado: 'Licencia Fundador para MULTISERVICIOS
-                                        TECNOLOGICOS JUTIAPA - Desarrollado por Intercopias.com'.
-                                    </p>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">El ticket muestra el nombre comercial y el registro de licencia fundadora.</p>
                                 </div>
                                 <div
                                     class="pt-3 border-t border-surface-container flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
@@ -1015,10 +821,7 @@
                                     </div>
                                     <h3 class="font-title-md text-title-md text-on-surface font-bold">Importadora Konoha
                                     </h3>
-                                    <p class="font-body-sm text-body-sm text-on-surface-variant">
-                                        Operación en mostrador real con terminal térmica Sewoo emitiendo tickets en
-                                        ráfaga a máxima velocidad sin atascos.
-                                    </p>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant">Captura de la impresora térmica Sewoo de 80 mm en operación de mostrador.</p>
                                 </div>
                                 <div
                                     class="pt-3 border-t border-surface-container flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
@@ -1033,75 +836,48 @@
                     </div>
                 </div>
             </section>
-            <!-- SECTION 5: LA JUGADA INTELIGENTE CON LA FACTURACIÓN -->
-            <section class="w-full py-20 bg-surface">
-                <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin">
-                    <div
-                        class="rounded-2xl bg-surface-container-lowest shadow-xl overflow-hidden p-8 md:p-12 space-y-10">
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                            <div class="lg:col-span-8 space-y-4">
-                                <div
-                                    class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider">
-                                    <span class="material-symbols-outlined text-[18px]">lightbulb</span>
-                                    Estrategia Fiscal &amp; Operativa
-                                </div>
-                                <h2 class="font-headline-lg text-headline-lg text-on-surface">La Jugada Inteligente con
-                                    la Facturación</h2>
-                                <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-                                    El sistema está diseñado para lo que importa: cobrar rápido y organizar tu negocio.
-                                    Por ello, no se conecta directamente a la SAT.
-                                </p>
-                                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
-                                    Aunque tienes la libertad de contratar a un certificador externo, la solución más
-                                    práctica y 100% gratuita es utilizar la <strong>App FEL oficial de la SAT</strong>.
-                                    Nuestra recomendación estratégica: utiliza nuestro Punto de Venta para despachar a
-                                    tus clientes a máxima velocidad y cuadrar tu caja de manera impecable. Cuando un
-                                    cliente exija factura, simplemente genérala en cuestión de segundos desde la
-                                    aplicación en tu celular o navegador.
-                                </p>
+            <section class="w-full py-20 bg-surface-container-low">
+                <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin space-y-12">
+                    <div class="max-w-2xl mx-auto text-center space-y-3">
+                        <span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Antes de comprar</span>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Licencia y funcionamiento</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Esto incluye la licencia y así funciona en varios equipos.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">1</div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Pago único</h3>
                             </div>
-                            <div class="lg:col-span-4 flex justify-center">
-                                <div class="p-6 rounded-xl bg-surface-container text-center space-y-3 w-full max-w-sm">
-                                    <div
-                                        class="w-16 h-16 rounded-full bg-surface-container-lowest flex items-center justify-center mx-auto text-primary shadow-sm">
-                                        <span class="material-symbols-outlined text-[36px]">receipt_long</span>
-                                    </div>
-                                    <div class="font-headline-sm text-headline-sm font-bold text-on-surface">Cero Costos
-                                        FEL Forzosos</div>
-                                    <p class="font-body-sm text-body-sm text-on-surface-variant">Evita pagos recurrentes
-                                        por paquete de folios y demoras en el mostrador cuando el servidor fiscal falle.
-                                    </p>
-                                </div>
-                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">La licencia es perpetua y no requiere pagos mensuales.</p>
                         </div>
-                        <!-- Step Diagram -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-                            <div class="p-6 rounded-xl bg-surface-container-low space-y-2">
-                                <div class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wide">
-                                    Paso 1</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Vende y cobra al
-                                    instante</h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">Cobros en segundos desde tu
-                                    POS Inter Copias, 100% operativo sin depender de caídas de internet.</p>
+                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">2</div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Hasta 15 equipos</h3>
                             </div>
-                            <div class="p-6 rounded-xl bg-surface-container-low space-y-2">
-                                <div
-                                    class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wide">
-                                    Paso 2</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Emisión FEL Gratuita
-                                </h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">Si el cliente pide factura
-                                    SAT oficial, la emites gratis en segundos con la App SAT oficial de tu smartphone.
-                                </p>
+                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Puedes instalar la licencia en hasta 15 computadoras de negocios bajo el mismo propietario.</p>
+                        </div>
+                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">3</div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Cajas Independientes</h3>
                             </div>
-                            <div class="p-6 rounded-xl bg-surface-container-high space-y-2">
-                                <div
-                                    class="font-label-sm text-label-sm text-tertiary font-bold uppercase tracking-wide">
-                                    Beneficio Clave</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Velocidad Máxima</h3>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">Tu mostrador fluye a toda
-                                    marcha, sin clientes esperando ni costosos intermediarios obligatorios.</p>
+                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Las cajas trabajan de forma independiente y no se conectan entre sí en tiempo real. El inventario principal se administra desde un equipo central.</p>
+                        </div>
+                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3 lg:col-span-2">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">4</div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Registro de licencia y marca</h3>
                             </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">La licencia se registra a nombre de tu grupo comercial y ese nombre aparece al pie de los tickets. La licencia no puede revenderse.</p>
+                        </div>
+                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">5</div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Actualizaciones</h3>
+                            </div>
+                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Las actualizaciones periódicas se enfocan en corregir errores y mantener la estabilidad. No incluyen módulos nuevos.</p>
                         </div>
                     </div>
                 </div>
@@ -1117,23 +893,21 @@
                         <div class="text-center space-y-3">
                             <div
                                 class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider">
-                                ¡Preventa Exclusiva!
+                                Preventa hasta el 31 de octubre
                             </div>
-                            <h2 class="font-headline-lg text-headline-lg text-on-surface">¡Aprovecha la Preventa
-                                Exclusiva Hoy Mismo!</h2>
+                            <h2 class="font-headline-lg text-headline-lg text-on-surface">Solicita tu licencia POS</h2>
                             <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
-                                Asegura el precio preferencial de lanzamiento y moderniza tu mostrador con una
-                                herramienta definitiva.
+                                La licencia cuesta Q550 en preventa. Desde el 1 de noviembre, el precio será Q770.
                             </p>
                         </div>
                         <!-- Big Price Box -->
                         <div class="p-8 rounded-2xl bg-surface-container-low text-center space-y-3">
                             <div class="flex items-center justify-center gap-2">
                                 <span class="font-body-md text-body-md text-outline line-through">Precio Regular:
-                                    Q750.00</span>
+                                    Q770.00</span>
                                 <span
                                     class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">Ahorras
-                                    Q200.00</span>
+                                    Q220.00</span>
                             </div>
                             <div class="flex items-baseline justify-center gap-1.5">
                                 <span class="font-headline-md text-headline-md font-bold text-primary">Q</span>
@@ -1141,10 +915,6 @@
                                     class="font-display-hero text-display-hero font-extrabold text-on-surface tracking-tight">550.00</span>
                                 <span class="font-body-md text-body-md text-on-surface-variant">/ pago único</span>
                             </div>
-                            <p class="font-label-sm text-label-sm text-tertiary font-bold max-w-md mx-auto">
-                                (Oferta válida hasta el 31 de octubre. Precio regular a partir del 01 de noviembre:
-                                Q750.00)
-                            </p>
                             <div
                                 class="mt-4 flex items-center justify-center gap-2 font-label-md text-label-md text-on-surface-variant bg-surface-container px-4 py-2 rounded-lg w-fit mx-auto border border-outline-variant/30">
                                 <span
@@ -1160,7 +930,7 @@
                         <!-- Checklist of Included Features -->
                         <div class="space-y-4">
                             <h3 class="font-title-md text-title-md text-on-surface font-bold text-center sm:text-left">
-                                Todo lo que recibes con tu activación:</h3>
+                                La licencia incluye:</h3>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
                                 <div class="flex items-center gap-3">
                                     <span class="material-symbols-outlined text-secondary text-[22px] shrink-0"
@@ -1171,8 +941,7 @@
                                 <div class="flex items-center gap-3">
                                     <span class="material-symbols-outlined text-secondary text-[22px] shrink-0"
                                         style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                    <span class="font-body-md text-body-md text-on-surface">Control total de Sala y
-                                        Bodega con Cardex</span>
+                                    <span class="font-body-md text-body-md text-on-surface">Control de sala y bodega con Cardex</span>
                                 </div>
                                 <div class="flex items-center gap-3">
                                     <span class="material-symbols-outlined text-secondary text-[22px] shrink-0"
@@ -1183,8 +952,7 @@
                                 <div class="flex items-center gap-3">
                                     <span class="material-symbols-outlined text-secondary text-[22px] shrink-0"
                                         style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                    <span class="font-body-md text-body-md text-on-surface">Corte Z y Corte a Ciegas
-                                        para total transparencia</span>
+                                    <span class="font-body-md text-body-md text-on-surface">Corte Z y arqueo a ciegas para revisar la caja</span>
                                 </div>
                                 <div class="flex items-center gap-3">
                                     <span class="material-symbols-outlined text-secondary text-[22px] shrink-0"
@@ -1198,12 +966,6 @@
                                     <span class="font-body-md text-body-md text-on-surface">Soporte y correcciones de
                                         estabilidad</span>
                                 </div>
-                                <div class="flex items-center gap-3 sm:col-span-2">
-                                    <span class="material-symbols-outlined text-secondary text-[22px] shrink-0"
-                                        style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                    <span class="font-body-md text-body-md text-on-surface font-semibold">Cero
-                                        mensualidades de por vida • Activación 100% garantizada</span>
-                                </div>
                             </div>
                         </div>
                         <!-- High-Conversion Action Button -->
@@ -1212,28 +974,26 @@
                                 href="https://wa.me/50280002944?text=Hola%20Dayan,%20quiero%20adquirir%20la%20licencia%20en%20Preventa%20por%20Q550.00%20de%20Inter%20Copias%20POS"
                                 target="_blank">
                                 <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
-                                <span class="">Adquiere tu licencia en Preventa por Q550.00</span>
+                                <span class="">Solicitar licencia por WhatsApp</span>
                             </a>
                             <p
                                 class="font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center gap-1.5">
                                 <span class="material-symbols-outlined text-secondary text-[16px]">lock</span>
-                                Pago seguro y activación inmediata de tu licencia de preventa.
+                                Escríbenos para coordinar el pago y la activación.
                             </p>
                         </div>
                         <!-- WhatsApp Technical Consultation Prompt -->
                         <div
                             class="p-6 rounded-xl bg-surface-container flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
                             <div class="space-y-1">
-                                <h4 class="font-title-md text-title-md text-on-surface font-bold">¿Tienes dudas sobre la
-                                    instalación o requisitos?</h4>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">Habla directamente con un
-                                    asesor técnico de Inter Copias y recibe respuesta en minutos.</p>
+                                <h4 class="font-title-md text-title-md text-on-surface font-bold">¿Dudas sobre instalación o requisitos?</h4>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Escríbenos y revisamos contigo los requisitos de tu equipo.</p>
                             </div>
                             <a class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-sm hover:bg-surface-container-high transition-colors"
                                 href="https://wa.me/50280002944?text=Hola%20Dayan,%20necesito%20soporte"
                                 target="_blank">
                                 <span class="material-symbols-outlined text-secondary text-[20px]">chat</span>
-                                <span class="">Consultar por WhatsApp</span>
+                                <span class="">Consultar requisitos</span>
                             </a>
                         </div>
                     </div>
@@ -1241,63 +1001,43 @@
             </section>
         </div>
     </main>
-    <footer class="w-full bg-surface-container-low text-on-surface mt-20">
-        <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin pt-16 pb-12">
-            <div class="mb-12 flex justify-center">
-                <div
-                    class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-surface-container-highest text-primary font-label-md text-label-md">
-                    <span class="material-symbols-outlined text-secondary text-[20px]">verified</span><span
-                        class="">Licencia Perpetua de por vida • Sin mensualidades • Hasta 15 computadoras</span>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-12">
-                <div class="space-y-4">
-                    <div class="flex items-center gap-2"><img alt="Inter Copias Logo"
-                            class="h-8 w-auto object-contain bg-[#0A1128] p-1 rounded-md"
-                            src="logo_inco_white.png"><span class="font-headline-sm text-headline-sm text-primary">Inter
-                            Copias</span></div>
-                    <p class="font-body-sm text-body-sm text-on-surface-variant">Soluciones tecnológicas</p>
+    <footer class="inco-footer">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+                <div>
+                    <span class="font-heading font-black text-xl text-white tracking-tight uppercase block mb-2">INTERCOPIAS POS</span>
+                    <p class="text-xs text-slate-300 mb-4 leading-relaxed">Punto de venta, inventario y control para comercios de Cobán y Guatemala.</p>
+                    <span class="inline-flex items-center gap-2 text-xs bg-white/10 text-slate-200 px-3 py-1 rounded-full border border-white/10">
+                        <i class="fa-solid fa-location-dot text-red-400"></i> Frente a Plaza Magdalena
+                    </span>
                 </div>
                 <div>
-                    <h4 class="font-title-md text-title-md text-on-surface mb-4">Nuestros Servicios</h4>
-                    <ul class="space-y-2.5 font-body-sm text-body-sm text-on-surface-variant">
-                        <li class=""><a class="hover:text-primary transition-colors font-bold text-primary" href="index.html">Inicio</a></li>
-                        <li class=""><a class="hover:text-primary transition-colors" href="cursos.html">Cursos Especializados</a></li>
-                        <li class=""><a class="hover:text-primary transition-colors" href="cotizador.html">Cotizador en Línea</a></li>
-                        <li class="pt-2"><a class="hover:text-primary transition-colors" href="#preventa">Preventa POS</a></li>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Explora</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="cursos.html" class="hover:text-white transition-colors">Cursos de Empastado</a></li>
+                        <li><a href="cotizador.html" class="hover:text-white transition-colors">Cotizador</a></li>
+                        <li><a href="tecnico.html" class="hover:text-white transition-colors">Servicio Técnico</a></li>
+                        <li><a href="#preventa" class="hover:text-white transition-colors">Preventa POS</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-title-md text-title-md text-on-surface mb-4">Legal &amp; Soporte</h4>
-                    <ul class="space-y-2.5 font-body-sm text-body-sm text-on-surface-variant">
-                        <li class=""><a class="hover:text-primary transition-colors"
-                                href="https://drive.google.com/file/d/1iAC6L5jvoBBJ3wqOcCeLAtERUoNodTOQ/view?usp=drive_link"
-                                target="_blank">Términos y Condiciones de Licencia</a></li>
-                        <li class=""><a class="hover:text-primary transition-colors"
-                                href="https://wa.me/50280002944">Soporte Técnico Especializado</a></li>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Legal y soporte</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="https://drive.google.com/file/d/1iAC6L5jvoBBJ3wqOcCeLAtERUoNodTOQ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Términos y Condiciones de Licencia</a></li>
+                        <li><a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Soporte Técnico</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-title-md text-title-md text-on-surface mb-4">Canales de Atención</h4>
-                    <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Asesoría inmediata y
-                        demostraciones de sistema en vivo.</p>
-                    <div class="flex flex-col gap-3"><a
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors"
-                            href="https://wa.me/50280002944?text=Hola%20Dayan,%20necesito%20soporte"
-                            target="_blank"><span
-                                class="material-symbols-outlined text-secondary text-[20px]">chat</span>WhatsApp de
-                            Ventas</a><a
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors"
-                            href="mailto:info@intercopias.com"><span
-                                class="material-symbols-outlined text-primary text-[20px]">mail</span>inco.coban@gmail.com</a>
-                    </div>
+                    <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-200 border-b border-white/10 pb-2 mb-3">Contacto directo</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400"><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>(502) 8000 2944</a></li>
+                        <li><a href="mailto:inco.coban@gmail.com" class="hover:text-white"><i class="fa-solid fa-envelope text-blue-400 mr-2"></i>inco.coban@gmail.com</a></li>
+                    </ul>
                 </div>
             </div>
-            <div
-                class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-body-sm text-body-sm text-on-surface-variant">
-                <p class="">© 2024 Inter Copias POS Solutions (itecopias.com / intercopias.com). Todos los derechos
-                    reservados.</p>
-                <p class="font-label-sm text-label-sm">Diseñado para minoristas, imprentas y comercio formal.</p>
+            <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-300">
+                <p>© 2026 Intercopias Cobán. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1329,6 +1069,7 @@
         updateCountdown();
         setInterval(updateCountdown, 60000);
     </script>
+    <script src="intercopias.js"></script>
 </body>
 
 </html>

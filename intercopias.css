@@ -1,0 +1,340 @@
+/* ==========================================================================
+   INTERCOPIAS COBÁN - DESIGN SYSTEM & UNIFIED STYLES
+   Basado en Taste Skill & Impeccable Design Guidelines
+   ========================================================================== */
+
+/* 1. TIPOGRAFÍA Y FUENTES OFICIALES (swap para evitar bloqueo de renderizado) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap');
+
+:root {
+  /* Paleta Oficial Intercopias Cobán */
+  --inco-navy: #002347;
+  --inco-navy-dark: #001226;
+  --inco-navy-light: #003366;
+  --inco-blue: #0058bc;
+  --inco-blue-hover: #004494;
+  --inco-blue-light: #e0edff;
+  --inco-green: #25d366;
+  --inco-green-dark: #1da851;
+  --inco-red: #e63946;
+  
+  /* Superficies y Neutros */
+  --inco-bg: #f8fafc;
+  --inco-surface: #ffffff;
+  --inco-surface-subtle: #f1f5f9;
+  --inco-border: #e2e8f0;
+  --inco-border-subtle: rgba(226, 232, 240, 0.8);
+  
+  /* Textos */
+  --inco-text-main: #0f172a;
+  --inco-text-body: #334155;
+  --inco-text-muted: #64748b;
+  --inco-text-light: #94a3b8;
+  
+  /* Tipografías */
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* 2. REGLAS BASE */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--inco-bg);
+  color: var(--inco-text-body);
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* 3. TACTILE MICRO-INTERACTIONS (Emil Kowalski Guidelines) */
+button, a.btn, .btn, .radio-option, .interactive-card {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+button:active, a.btn:active, .btn:active, .interactive-card:active {
+  transform: scale(0.98);
+}
+
+/* Scrollbar Personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #002347;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0058bc;
+}
+
+/* 4. NAVBAR UNIFICADA (Glassmorphism de Alto Rendimiento) */
+.inco-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 1px 3px rgba(0, 35, 71, 0.05);
+  transition: all 0.3s ease;
+}
+
+.inco-nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  height: 4.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Enlaces de Navegación */
+.inco-nav-link {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--inco-text-muted);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: color 0.2s, background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  text-decoration: none;
+}
+
+.inco-nav-link:hover {
+  color: var(--inco-navy);
+  background-color: rgba(0, 35, 71, 0.04);
+}
+
+.inco-nav-link.active {
+  color: var(--inco-blue);
+  background-color: var(--inco-blue-light);
+  font-weight: 700;
+}
+
+/* Enlace Destacado (Cotizador / POS) */
+.inco-nav-badge {
+  background: linear-gradient(135deg, var(--inco-blue), var(--inco-navy));
+  color: #ffffff !important;
+  font-weight: 700;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0, 88, 188, 0.25);
+}
+
+.inco-nav-badge:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+/* Botón WhatsApp Oficial */
+.inco-btn-whatsapp {
+  background-color: var(--inco-green);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.15rem;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.inco-btn-whatsapp:hover {
+  background-color: var(--inco-green-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Floating WhatsApp Button */
+.inco-floating-wa {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.25rem;
+  z-index: 50;
+  background-color: #15803d;
+  color: #ffffff;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(74, 222, 128, 0.4);
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inco-floating-wa:hover {
+  background-color: #166534;
+  transform: scale(1.04);
+}
+
+/* 5. FOOTER UNIFICADO */
+.inco-footer {
+  background-color: var(--inco-navy-dark);
+  color: #f8fafc;
+  width: 100%;
+  padding-top: 3.5rem;
+  padding-bottom: 2rem;
+  border-top: 4px solid var(--inco-blue);
+}
+
+.inco-footer a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.inco-footer a:hover {
+  color: #ffffff;
+}
+
+/* Utilidades adicionales */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.text-shadow-xl {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.inco-whatsapp-contact {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  min-width: 0;
+  max-width: 100%;
+  vertical-align: top;
+}
+
+.inco-whatsapp-contact-full {
+  display: flex;
+  width: 100%;
+}
+
+.inco-whatsapp-contact-grow {
+  min-width: 0;
+}
+
+.inco-whatsapp-contact-link-full {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inco-whatsapp-phone-note {
+  display: block;
+  width: 100%;
+  color: var(--inco-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: center;
+  white-space: normal;
+}
+
+.inco-whatsapp-phone-note a {
+  color: var(--inco-blue-hover);
+  font-weight: 700;
+  text-underline-offset: 0.15em;
+}
+
+.inco-floating-wa {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.inco-floating-wa > .inco-whatsapp-phone-note {
+  flex: 0 0 100%;
+  color: #d1fae5;
+}
+
+.inco-floating-wa > .inco-whatsapp-phone-note a {
+  color: #ffffff;
+}
+
+.inco-tiktok-contact-cta,
+a.inco-tiktok-contact-cta {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  text-align: center;
+  white-space: normal;
+}
+
+.inco-tiktok-contact-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.inco-tiktok-contact-number {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+}
+
+.inco-tiktok-contact-cta.inco-tiktok-sm-only {
+  display: none !important;
+}
+
+@media (min-width: 640px) {
+  .inco-tiktok-contact-cta.inco-tiktok-sm-only {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .inco-floating-wa.inco-tiktok-contact-cta {
+    display: none !important;
+  }
+}
+
+.inco-footer .inco-whatsapp-phone-note {
+  color: #cbd5e1;
+}
+
+.inco-footer .inco-whatsapp-phone-note a {
+  color: #bfdbfe;
+}
+
+@media (max-width: 639px) {
+  .inco-whatsapp-contact-sm-only {
+    display: none;
+  }
+}
