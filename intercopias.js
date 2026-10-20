@@ -4,22 +4,168 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const consentStorageKey = 'inco_privacy_consent_v1';
+    const consentVersion = 1;
+    const readPrivacyConsent = () => {
+        try {
+            const consent = JSON.parse(localStorage.getItem(consentStorageKey) || 'null');
+            return consent?.version === consentVersion ? consent : null;
+        } catch {
+            return null;
+        }
+    };
+
+    let privacyConsent = readPrivacyConsent();
     const queryParams = new URLSearchParams(window.location.search);
     const querySource = (queryParams.get('utm_source') || '').trim().toLowerCase();
     let trafficSource = querySource || 'direct';
-    let trafficMedium = queryParams.get('utm_medium') || '';
-    let trafficCampaign = queryParams.get('utm_campaign') || '';
+    let trafficMedium = privacyConsent?.analytics ? queryParams.get('utm_medium') || '' : '';
+    let trafficCampaign = privacyConsent?.analytics ? queryParams.get('utm_campaign') || '' : '';
 
     try {
-        if (querySource) {
-            sessionStorage.setItem('inco_utm_source', querySource);
-            sessionStorage.setItem('inco_utm_medium', trafficMedium);
-            sessionStorage.setItem('inco_utm_campaign', trafficCampaign);
+        if (querySource === 'tiktok') sessionStorage.setItem('inco_tiktok_variant', '1');
+        trafficSource = querySource || (sessionStorage.getItem('inco_tiktok_variant') === '1' ? 'tiktok' : 'direct');
+
+        if (privacyConsent?.analytics) {
+            trafficSource = querySource || sessionStorage.getItem('inco_utm_source') || trafficSource;
+            trafficMedium = trafficMedium || sessionStorage.getItem('inco_utm_medium') || '';
+            trafficCampaign = trafficCampaign || sessionStorage.getItem('inco_utm_campaign') || '';
         }
-        trafficSource = sessionStorage.getItem('inco_utm_source') || trafficSource;
-        trafficMedium = sessionStorage.getItem('inco_utm_medium') || trafficMedium;
-        trafficCampaign = sessionStorage.getItem('inco_utm_campaign') || trafficCampaign;
     } catch {}
+
+    let analyticsLoaded = false;
+    let tiktokEmbedLoaded = false;
+
+    const loadAnalytics = () => {
+        if (analyticsLoaded || !privacyConsent?.analytics) return;
+        analyticsLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MKTSQDQZ';
+        document.head.append(script);
+    };
+
+    const loadTikTokEmbed = () => {
+        const embeds = [...document.querySelectorAll('[data-tiktok-embed]')];
+        if (!embeds.length) return;
+        embeds.forEach(embed => {
+            embed.hidden = false;
+            const placeholder = embed.parentElement.querySelector('[data-tiktok-placeholder]');
+            if (placeholder) placeholder.hidden = true;
+        });
+        if (tiktokEmbedLoaded) return;
+        tiktokEmbedLoaded = true;
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.tiktok.com/embed.js';
+        document.body.append(script);
+    };
+
+    const savePrivacyConsent = (analytics, externalMedia) => {
+        const previousConsent = privacyConsent;
+        privacyConsent = {
+            version: consentVersion,
+            necessary: true,
+            analytics: Boolean(analytics),
+            externalMedia: Boolean(externalMedia),
+            savedAt: new Date().toISOString()
+        };
+        try {
+            localStorage.setItem(consentStorageKey, JSON.stringify(privacyConsent));
+            if (privacyConsent.analytics) {
+                if (querySource) {
+                    sessionStorage.setItem('inco_utm_source', querySource);
+                    sessionStorage.setItem('inco_utm_medium', queryParams.get('utm_medium') || '');
+                    sessionStorage.setItem('inco_utm_campaign', queryParams.get('utm_campaign') || '');
+                }
+                trafficMedium = queryParams.get('utm_medium') || sessionStorage.getItem('inco_utm_medium') || '';
+                trafficCampaign = queryParams.get('utm_campaign') || sessionStorage.getItem('inco_utm_campaign') || '';
+            }
+        } catch {}
+
+        if (privacyConsent.analytics) loadAnalytics();
+        if (privacyConsent.externalMedia) loadTikTokEmbed();
+        document.getElementById('inco-consent-banner')?.remove();
+
+        if (previousConsent && ((previousConsent.analytics && !privacyConsent.analytics) || (previousConsent.externalMedia && !privacyConsent.externalMedia))) {
+            window.location.reload();
+        }
+    };
+
+    const addPrivacyLinks = () => {
+        document.querySelectorAll('.inco-footer').forEach(footer => {
+            if (footer.querySelector('.inco-privacy-links')) return;
+            const links = document.createElement('div');
+            links.className = 'inco-privacy-links';
+
+            const policyLink = document.createElement('a');
+            policyLink.href = 'privacidad.html';
+            policyLink.textContent = 'Privacidad y cookies';
+
+            const preferencesButton = document.createElement('button');
+            preferencesButton.type = 'button';
+            preferencesButton.textContent = 'Preferencias de privacidad';
+            preferencesButton.addEventListener('click', showPrivacyBanner);
+
+            links.append(policyLink, preferencesButton);
+            footer.querySelector(':scope > div')?.append(links);
+        });
+    };
+
+    function showPrivacyBanner() {
+        if (document.getElementById('inco-consent-banner')) return;
+        const banner = document.createElement('section');
+        banner.id = 'inco-consent-banner';
+        banner.className = 'inco-consent-banner';
+        banner.setAttribute('role', 'dialog');
+        banner.setAttribute('aria-labelledby', 'inco-consent-title');
+        banner.setAttribute('aria-describedby', 'inco-consent-description');
+        banner.innerHTML = `
+            <div class="inco-consent-copy">
+                <h2 id="inco-consent-title">Tu privacidad importa</h2>
+                <p id="inco-consent-description">Guardamos tu elección y, si llegas desde TikTok, la procedencia durante esta sesión para mostrar el teléfono como contacto. Con tu permiso cargamos medición y contenido externo. <a href="privacidad.html">Lee la política.</a></p>
+                <div class="inco-consent-options" data-consent-options hidden>
+                    <label><input type="checkbox" data-consent-analytics> Medición de visitas e interacciones</label>
+                    <label><input type="checkbox" data-consent-external> Videos y contenido externo de TikTok</label>
+                </div>
+            </div>
+            <div class="inco-consent-actions">
+                <button type="button" data-consent-accept>Aceptar opcionales</button>
+                <button type="button" data-consent-reject>Solo necesarias</button>
+                <button type="button" data-consent-configure>Configurar</button>
+                <button type="button" data-consent-save hidden>Guardar preferencias</button>
+            </div>`;
+        document.body.append(banner);
+
+        banner.querySelector('[data-consent-accept]').addEventListener('click', () => savePrivacyConsent(true, true));
+        banner.querySelector('[data-consent-reject]').addEventListener('click', () => savePrivacyConsent(false, false));
+        banner.querySelector('[data-consent-configure]').addEventListener('click', event => {
+            banner.querySelector('[data-consent-options]').hidden = false;
+            banner.querySelector('[data-consent-analytics]').checked = Boolean(privacyConsent?.analytics);
+            banner.querySelector('[data-consent-external]').checked = Boolean(privacyConsent?.externalMedia);
+            event.currentTarget.hidden = true;
+            banner.querySelector('[data-consent-save]').hidden = false;
+        });
+        banner.querySelector('[data-consent-save]').addEventListener('click', () => savePrivacyConsent(
+            banner.querySelector('[data-consent-analytics]').checked,
+            banner.querySelector('[data-consent-external]').checked
+        ));
+    }
+
+    if (privacyConsent?.analytics) loadAnalytics();
+    if (privacyConsent?.externalMedia) loadTikTokEmbed();
+    else {
+        document.querySelectorAll('[data-load-tiktok]').forEach(button => {
+            button.addEventListener('click', () => savePrivacyConsent(privacyConsent?.analytics, true));
+        });
+    }
+    addPrivacyLinks();
+    document.querySelectorAll('.inco-open-privacy-settings').forEach(button => {
+        button.addEventListener('click', showPrivacyBanner);
+    });
+    if (!privacyConsent) showPrivacyBanner();
 
     const isTikTokVisit = trafficSource === 'tiktok';
     const contactPhone = '(502) 8000 2944';
@@ -29,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link.dataset.incoContactTracked) return;
         link.dataset.incoContactTracked = 'true';
         link.addEventListener('click', () => {
+            if (!readPrivacyConsent()?.analytics) return;
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 event: 'contact_cta_click',

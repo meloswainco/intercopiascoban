@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" style="">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -46,16 +46,6 @@
     <meta name="description"
         content="POS para comercios: cobra, cotiza y controla inventario. Licencia de pago único para hasta 15 equipos. Preventa Q550 hasta el 31 de octubre de 2026.">
     <link href="icoinco.ico" rel="icon" type="image/x-icon" />
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-                                     w[l] = w[l] || []; w[l].push({
-                                         'gtm.start':
-                                             new Date().getTime(), event: 'gtm.js'
-                                     }); var f = d.getElementsByTagName(s)[0],
-                                         j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                                             'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-                                 })(window, document, 'script', 'dataLayer', 'GTM-MKTSQDQZ');</script>
-    <!-- End Google Tag Manager -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="intercopias.css">
     <style>
@@ -114,27 +104,23 @@
 </head>
 
 <body class="bg-background font-body-md text-on-surface antialiased">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ"
-            style="display:none;visibility:hidden" width="0"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <!-- FLOATING WHATSAPP CTA -->
-    <a class="inco-floating-wa"
+    <a id="floating-offer-link" class="inco-floating-wa"
         href="https://wa.me/50280002944?text=Hola%20Dayan,%20quiero%20informaci%C3%B3n%20sobre%20la%20Pre-Orden%20del%20POS%20Intercopias%20(Q.%20550.00)"
         target="_blank" rel="noopener noreferrer" aria-label="Apartar el POS por WhatsApp" title="Preventa POS Intercopias">
         <i class="fa-brands fa-whatsapp text-2xl text-emerald-200"></i>
         <div class="text-left leading-tight hidden lg:block">
-            <span class="text-[9px] text-emerald-200 block uppercase tracking-wider font-bold">Preventa • Solo Q.550</span>
-            <span class="text-xs font-bold text-white tracking-normal">Apartar por WhatsApp</span>
+            <span id="floating-offer-label" class="text-[9px] text-emerald-200 block uppercase tracking-wider font-bold">Preventa • Solo Q.550</span>
+            <span id="floating-offer-action" class="text-xs font-bold text-white tracking-normal">Apartar por WhatsApp</span>
         </div>
     </a>
     <header class="inco-navbar pos-navbar">
         <div class="pos-announcement w-full bg-[#002347] text-white px-4 text-center font-label-sm text-label-sm">
             <div class="max-w-[1280px] mx-auto flex items-center justify-center gap-2 py-2">
                 <span class="material-symbols-outlined text-[16px] text-[#dfe3e7]">bolt</span>
-                <span>Preventa hasta el 31 de octubre:</span>
-                <strong class="text-white">Q550.00</strong>
-                <span class="hidden md:inline text-white/75">• Lanzamiento oficial el 01 de noviembre</span>
+                <span id="offer-banner-label">Preventa hasta el 31 de octubre:</span>
+                <strong id="offer-banner-price" class="text-white">Q550.00</strong>
+                <span id="offer-banner-launch" class="hidden md:inline text-white/75">• Lanzamiento oficial el 01 de noviembre</span>
             </div>
         </div>
         <div class="inco-nav-container">
@@ -173,7 +159,7 @@
         <div id="inco-mobile-menu" class="hidden lg:hidden bg-white/98 border-t border-slate-200 shadow-xl px-4 py-4 space-y-1.5 backdrop-blur-md">
             <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Inicio</a>
             <a href="index.html#servicios" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicios</a>
-            <a href="#preventa" class="block px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-[#0058bc] hover:bg-blue-100 uppercase flex items-center justify-between"><span>Preventa POS</span><span class="text-xs bg-[#0058bc] text-white px-2 py-0.5 rounded-full">Q550</span></a>
+            <a id="mobile-offer-link" href="#preventa" class="block px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-[#0058bc] hover:bg-blue-100 uppercase flex items-center justify-between"><span id="mobile-offer-label">Preventa POS</span><span id="mobile-offer-price" class="text-xs bg-[#0058bc] text-white px-2 py-0.5 rounded-full">Q550</span></a>
             <a href="cursos.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cursos de Empastado</a>
             <a href="cotizador.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cotizador</a>
             <a href="tecnico.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicio Técnico</a>
@@ -212,39 +198,40 @@
                             <div class="p-6 md:p-8 rounded-xl bg-surface-container-lowest shadow-md space-y-5">
                                 <div
                                     class="flex flex-wrap items-baseline justify-between gap-4 pb-4 border-b border-surface-container">
-                                    <div><span
-                                            class="font-label-sm text-label-sm font-bold text-secondary uppercase tracking-wider block mb-1">Precio
-                                            Preventa</span>
+                                        <div><span id="hero-offer-label"
+                                            class="font-label-sm text-label-sm font-bold text-secondary uppercase tracking-wider block mb-1">Precio Preventa</span>
                                         <div class="flex items-baseline gap-2"><span
                                                 class="font-headline-sm text-headline-sm font-bold text-primary">Q</span><span
-                                                class="font-display-hero text-display-hero font-extrabold text-on-surface tracking-tight leading-none">550.00</span><span
+                                                id="hero-offer-price" class="font-display-hero text-display-hero font-extrabold text-on-surface tracking-tight leading-none">550.00</span><span
                                                 class="font-body-md text-body-md text-on-surface-variant font-medium">/
                                                 pago único</span></div>
                                     </div>
-                                    <div class="text-right"><span
+                                        <div id="hero-regular-price" class="text-right"><span
                                             class="font-body-sm text-body-sm text-outline line-through block">Regular:
                                             Q770.00</span><span
-                                            class="inline-block px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold mt-1">Ahorras
+                                            id="hero-savings" class="inline-block px-2.5 py-1 rounded-md bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold mt-1">Ahorras
                                             Q220.00</span></div>
                                 </div>
                                 <div class="flex items-center justify-between gap-2 border-y border-surface-container py-3">
                                     <div class="flex items-center gap-2 text-on-surface-variant">
                                         <span class="material-symbols-outlined text-secondary text-[20px]">timer</span>
-                                        <span class="font-label-md text-label-md font-bold">Cierra en</span>
+                                        <span id="hero-countdown-label" class="font-label-md text-label-md font-bold">Cierra en</span>
                                     </div>
-                                    <div class="flex items-baseline gap-1 text-primary tabular-nums" aria-label="Tiempo restante de la preventa">
-                                        <span class="font-display-hero text-3xl font-extrabold leading-none" id="cd-d2">--</span><span class="font-label-sm text-label-sm font-bold">d</span>
-                                        <span class="font-label-md text-label-md font-bold" id="cd-h2">--</span><span class="font-label-sm text-label-sm font-bold">h</span>
-                                        <span class="font-label-md text-label-md font-bold" id="cd-m2">--</span><span class="font-label-sm text-label-sm font-bold">m</span>
+                                    <div id="hero-countdown-values" class="flex items-baseline gap-2 text-primary tabular-nums" aria-label="Tiempo restante de la preventa">
+                                        <span class="font-display-hero text-3xl font-extrabold leading-none" id="cd-d2">--</span>
+                                        <span class="font-label-md text-label-md font-bold">días</span>
+                                        <span class="font-headline-sm text-headline-sm font-bold">y</span>
+                                        <span class="font-headline-sm text-headline-sm font-bold" id="cd-h2">--</span>
+                                        <span class="font-label-md text-label-md font-bold">horas</span>
                                     </div>
                                 </div>
-                                <div class="flex flex-col sm:flex-row gap-4 pt-1"><a
+                                <div class="flex flex-col sm:flex-row gap-4 pt-1"><a id="hero-preorder-cta"
                                         class="inco-btn-whatsapp flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-title-md text-title-md font-bold shadow-md hover:shadow-xl transition-all text-center"
                                         href="https://wa.me/50280002944?text=Hola%2C%20quiero%20solicitar%20la%20licencia%20POS%20en%20preventa%20por%20Q550."
-                                        target="_blank" rel="noopener noreferrer" aria-label="Solicitar licencia POS en preventa por WhatsApp"><span class="">Solicitar licencia por WhatsApp</span><span
+                                        target="_blank" rel="noopener noreferrer" aria-label="Solicitar licencia POS en preventa por WhatsApp"><span id="hero-preorder-cta-label">Solicitar licencia por WhatsApp</span><span
                                             class="material-symbols-outlined text-[20px]">arrow_forward</span></a><a
                                         class="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md font-semibold text-center"
-                                        href="#modos-operacion"><span class="">Ver los tres modos</span><span
+                                        href="#modos-operacion"><span class="">Ver cómo funciona el POS</span><span
                                             class="material-symbols-outlined text-[20px]">expand_more</span></a></div>
                             </div>
                         </div>
@@ -317,16 +304,29 @@
             <section class="w-full py-12 bg-surface" id="caracteristicas">
                 <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin">
                     <div class="max-w-3xl mx-auto text-center space-y-3">
-                        <span class="font-label-md text-label-md text-primary font-bold tracking-wider uppercase">Para negocios multirrubro</span>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Configura el POS para tu tipo de comercio</h2>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Organiza categorías y productos según el giro de tu negocio.</p>
+                        <span class="font-label-md text-label-md text-primary font-bold tracking-wider uppercase">Configurable para tu rubro</span>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Un inventario conocido. Un mostrador a tu medida.</h2>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Registra productos o servicios y controla existencias con la lógica de inventario que ya conoces. Después, adapta los accesos a las tareas de tu negocio.</p>
                     </div>
-                    <div class="mt-6 flex flex-wrap justify-center gap-2">
-                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Librerías y papelerías</span>
-                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Cibercafés</span>
-                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Multiservicios</span>
-                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Repuestos y talleres</span>
-                        <span class="rounded-full bg-surface-container-low px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Comercio formal</span>
+                    <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                        <div class="rounded-xl bg-surface-container-low p-5">
+                            <h3 class="font-title-md text-title-md font-bold text-on-surface">Oculta lo que no usas</h3>
+                            <p class="mt-1 font-body-sm text-body-sm text-on-surface-variant">Quita del mostrador accesos pensados para otros giros.</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="rounded-full bg-white px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Escaneo</span>
+                                <span class="rounded-full bg-white px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Grabación de CD</span>
+                            </div>
+                        </div>
+                        <div class="rounded-xl bg-surface-container-low p-5">
+                            <h3 class="font-title-md text-title-md font-bold text-on-surface">Crea botones para tus servicios</h3>
+                            <p class="mt-1 font-body-sm text-body-sm text-on-surface-variant">Configura accesos con el nombre de las tareas que cobras a diario.</p>
+                            <div class="mt-3 flex flex-wrap gap-2">
+                                <span class="rounded-full bg-white px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Cambio de aceite</span>
+                                <span class="rounded-full bg-white px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Carga de celular</span>
+                                <span class="rounded-full bg-white px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Cambio de pin de carga</span>
+                                <span class="rounded-full bg-white px-3 py-1.5 font-label-sm text-label-sm text-on-surface">Recarga de saldo</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -895,28 +895,28 @@
                             class="absolute top-0 right-0 w-32 h-32 bg-tertiary-fixed/40 rounded-bl-full pointer-events-none">
                         </div>
                         <div class="text-center space-y-3">
-                            <div
+                            <div id="final-offer-badge"
                                 class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider">
                                 Preventa hasta el 31 de octubre
                             </div>
-                            <h2 class="font-headline-lg text-headline-lg text-on-surface">Solicita tu licencia POS</h2>
-                            <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
+                            <h2 id="final-offer-heading" class="font-headline-lg text-headline-lg text-on-surface">Solicita tu licencia POS</h2>
+                            <p id="final-offer-description" class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
                                 La licencia cuesta Q550 en preventa. Desde el 1 de noviembre, el precio será Q770.
                             </p>
                         </div>
                         <!-- Big Price Box -->
                         <div class="p-8 rounded-2xl bg-surface-container-low text-center space-y-3">
                             <div class="flex items-center justify-center gap-2">
-                                <span class="font-body-md text-body-md text-outline line-through">Precio Regular:
+                                <span id="final-regular-price" class="font-body-md text-body-md text-outline line-through">Precio Regular:
                                     Q770.00</span>
                                 <span
-                                    class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">Ahorras
+                                    id="final-savings" class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">Ahorras
                                     Q220.00</span>
                             </div>
                             <div class="flex items-baseline justify-center gap-1.5">
                                 <span class="font-headline-md text-headline-md font-bold text-primary">Q</span>
                                 <span
-                                    class="font-display-hero text-display-hero font-extrabold text-on-surface tracking-tight">550.00</span>
+                                    id="final-offer-price" class="font-display-hero text-display-hero font-extrabold text-on-surface tracking-tight">550.00</span>
                                 <span class="font-body-md text-body-md text-on-surface-variant">/ pago único</span>
                             </div>
                         </div>
@@ -963,7 +963,7 @@
                         </div>
                         <!-- High-Conversion Action Button -->
                         <div class="space-y-4 pt-4 text-center">
-                            <a class="w-full inline-flex items-center justify-center gap-3 px-8 py-5 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed font-headline-sm text-headline-sm font-bold shadow-xl hover:bg-tertiary-fixed-dim transition-all"
+                            <a id="final-preorder-cta" class="w-full inline-flex items-center justify-center gap-3 px-8 py-5 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed font-headline-sm text-headline-sm font-bold shadow-xl hover:bg-tertiary-fixed-dim transition-all"
                                 href="https://wa.me/50280002944?text=Hola%20Dayan,%20quiero%20adquirir%20la%20licencia%20en%20Preventa%20por%20Q550.00%20de%20Inter%20Copias%20POS"
                                 target="_blank">
                                 <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
@@ -1011,7 +1011,7 @@
                         <li><a href="cursos.html" class="hover:text-white transition-colors">Cursos de Empastado</a></li>
                         <li><a href="cotizador.html" class="hover:text-white transition-colors">Cotizador</a></li>
                         <li><a href="tecnico.html" class="hover:text-white transition-colors">Servicio Técnico</a></li>
-                        <li><a href="#preventa" class="hover:text-white transition-colors">Preventa POS</a></li>
+                        <li><a id="footer-offer-link" href="#preventa" class="hover:text-white transition-colors">Preventa POS</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1036,28 +1036,87 @@
     </footer>
 
     <script>
+        function updateAfterPreorder() {
+            if (document.body.dataset.offerState === 'regular') return;
+            document.body.dataset.offerState = 'regular';
+
+            const setText = (id, value) => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = value;
+            };
+            const setHref = (id, value) => {
+                const element = document.getElementById(id);
+                if (element) element.href = value;
+            };
+
+            document.title = 'POS Intercopias para comercios | Licencia';
+            const description = document.querySelector('meta[name="description"]');
+            if (description) description.content = 'POS para comercios: cobra, cotiza y controla inventario. Licencia de pago único para hasta 15 equipos. Consulta disponibilidad por WhatsApp.';
+
+            setText('offer-banner-label', 'Precio de lanzamiento:');
+            setText('offer-banner-price', 'Q770.00');
+            document.getElementById('offer-banner-launch')?.setAttribute('hidden', '');
+            setText('floating-offer-label', 'Licencia POS • Q770');
+            setText('floating-offer-action', 'Consultar por WhatsApp');
+            setHref('floating-offer-link', 'https://wa.me/50280002944?text=Hola%2C%20quiero%20consultar%20la%20licencia%20POS%20por%20Q770.');
+            setHref('mobile-offer-link', '#preventa');
+            setText('mobile-offer-label', 'Sistema POS');
+            setText('mobile-offer-price', 'Q770');
+
+            setText('hero-offer-label', 'Precio actual');
+            setText('hero-offer-price', '770.00');
+            document.getElementById('hero-regular-price')?.setAttribute('hidden', '');
+            setText('hero-countdown-label', 'La preventa terminó el 31 de octubre');
+            document.getElementById('hero-countdown-values')?.setAttribute('hidden', '');
+            setText('hero-preorder-cta-label', 'Solicitar licencia por Q770');
+            setHref('hero-preorder-cta', 'https://wa.me/50280002944?text=Hola%2C%20quiero%20consultar%20la%20licencia%20POS%20por%20Q770.');
+            document.getElementById('hero-preorder-cta')?.setAttribute('aria-label', 'Solicitar licencia POS por Q770 por WhatsApp');
+
+            setText('final-offer-badge', 'Precio de lanzamiento');
+            setText('final-offer-heading', 'Solicita tu licencia POS');
+            setText('final-offer-description', 'La licencia está disponible por Q770, en un pago único.');
+            document.getElementById('final-regular-price')?.setAttribute('hidden', '');
+            document.getElementById('final-savings')?.setAttribute('hidden', '');
+            setText('final-offer-price', '770.00');
+            setHref('final-preorder-cta', 'https://wa.me/50280002944?text=Hola%2C%20quiero%20solicitar%20la%20licencia%20POS%20por%20Q770.');
+            document.getElementById('final-preorder-cta')?.classList.remove('bg-tertiary-fixed', 'text-on-tertiary-fixed', 'hover:bg-tertiary-fixed-dim');
+            document.getElementById('final-preorder-cta')?.classList.add('bg-primary', 'text-on-primary', 'hover:bg-secondary-container');
+            const finalCtaLabel = document.querySelector('#final-preorder-cta span:not(.material-symbols-outlined)');
+            if (finalCtaLabel) finalCtaLabel.textContent = 'Solicitar licencia por WhatsApp';
+            document.getElementById('final-preorder-cta')?.setAttribute('aria-label', 'Solicitar licencia POS por Q770 por WhatsApp');
+            setText('footer-offer-link', 'Licencia POS');
+        }
+
         function updateCountdown() {
-            const target = new Date("2026-11-01T00:00:00").getTime();
+            const target = new Date("2026-11-01T00:00:00-06:00").getTime();
             const now = new Date().getTime();
             const diff = target - now;
 
             if (diff <= 0) {
-                ['cd-d', 'cd-h', 'cd-m', 'cd-d2', 'cd-h2', 'cd-m2'].forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.textContent = '00';
-                });
+                updateAfterPreorder();
                 return;
             }
 
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
             const pad = (n) => n.toString().padStart(2, '0');
+            const setText = (id, value) => {
+                const element = document.getElementById(id);
+                if (element) element.textContent = value;
+            };
+            const finalPreorderWindow = days <= 5;
+
+            setText('offer-banner-label', finalPreorderWindow ? 'Últimos 5 días de preventa:' : 'Preventa hasta el 31 de octubre:');
+            setText('floating-offer-label', finalPreorderWindow ? 'Últimos 5 días • Q.550' : 'Preventa • Solo Q.550');
+            setText('mobile-offer-label', finalPreorderWindow ? 'Últimos días de preventa' : 'Preventa POS');
+            setText('hero-countdown-label', finalPreorderWindow ? 'Últimos 5 días • Cierra en' : 'Cierra en');
+            setText('final-offer-badge', finalPreorderWindow ? 'Últimos 5 días de preventa' : 'Preventa hasta el 31 de octubre');
+            setText('final-offer-description', finalPreorderWindow
+                ? 'Solicítala antes del 31 de octubre por Q550. Desde el 1 de noviembre, costará Q770.'
+                : 'La licencia cuesta Q550 en preventa. Desde el 1 de noviembre, el precio será Q770.');
 
             ['cd-d', 'cd-d2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = pad(days); });
             ['cd-h', 'cd-h2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = pad(hours); });
-            ['cd-m', 'cd-m2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = pad(mins); });
         }
         updateCountdown();
         setInterval(updateCountdown, 60000);

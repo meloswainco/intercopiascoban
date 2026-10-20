@@ -7,17 +7,6 @@
     <title>Intercopias Cobán - Tu proyecto listo, impecable y a tiempo</title>
     <link rel="icon" type="image/x-icon" href="icoinco.ico">
 
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MKTSQDQZ');</script>
-    <!-- End Google Tag Manager -->
-
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet">
@@ -139,10 +128,6 @@
 
 <body
     class="bg-background text-on-background font-body-md selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col pb-0">
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKTSQDQZ" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- TopNavBar Unificada Intercopias -->
     <header class="inco-navbar">
@@ -674,7 +659,15 @@
 
                 <div
                     class="flex justify-center mb-10 overflow-hidden rounded-xl shadow-lg border border-outline-variant/30 bg-surface-container-lowest max-w-[325px] sm:max-w-full mx-auto">
-                    <blockquote class="tiktok-embed"
+                    <div data-tiktok-placeholder class="w-full max-w-2xl px-6 py-10 text-center">
+                        <span class="material-symbols-outlined text-4xl text-primary" aria-hidden="true">play_circle</span>
+                        <h3 class="mt-3 font-headline-md text-headline-md text-primary">Video de Intercopias en TikTok</h3>
+                        <p class="mx-auto mt-2 max-w-lg font-body-sm text-body-sm text-on-surface-variant">TikTok recibirá una solicitud y datos técnicos del navegador si cargas este video.</p>
+                        <button type="button" data-load-tiktok class="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-label-md text-label-md font-bold text-white hover:bg-secondary transition-colors">
+                            Cargar video de TikTok
+                        </button>
+                    </div>
+                    <blockquote class="tiktok-embed" hidden data-tiktok-embed
                         cite="https://www.tiktok.com/@dayanmelvin/video/7595248061568322828"
                         data-video-id="7595248061568322828" style="max-width: 605px;min-width: 325px; margin: 0 auto;">
                         <section>
@@ -810,7 +803,6 @@
     </div>
 
     <!-- Scripts Esenciales -->
-    <script async src="https://www.tiktok.com/embed.js"></script>
     <script>
         // Lógica de Rotación de Texto (Subtítulo Hero)
         const frases = [
