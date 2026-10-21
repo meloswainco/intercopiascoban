@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         banner.innerHTML = `
             <div class="inco-consent-copy">
                 <h2 id="inco-consent-title">Tu privacidad importa</h2>
-                <p id="inco-consent-description">Guardamos tu elección y, si llegas desde TikTok, la procedencia durante esta sesión para mostrar el teléfono como contacto. Con tu permiso cargamos medición y contenido externo. <a href="privacidad.html">Lee la política.</a></p>
+                <p id="inco-consent-description">Usamos almacenamiento esencial para tus preferencias. Si aceptas, cargamos medición y videos de TikTok. <a href="privacidad.html">Lee la política.</a></p>
                 <div class="inco-consent-options" data-consent-options hidden>
                     <label><input type="checkbox" data-consent-analytics> Medición de visitas e interacciones</label>
                     <label><input type="checkbox" data-consent-external> Videos y contenido externo de TikTok</label>

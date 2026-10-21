@@ -204,7 +204,7 @@
 
         <!-- Hero Section -->
         <section
-            class="relative min-h-[80vh] flex items-center justify-center pt-section-gap-md pb-section-gap-md px-margin-mobile md:px-margin-page overflow-hidden">
+            class="relative min-h-[68svh] flex items-center justify-center py-8 px-margin-mobile md:min-h-[80vh] md:px-margin-page md:py-section-gap-md overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <div class="bg-cover bg-center w-full h-full"
                     style="background-image: url('hero.jpg'), url('https://lh3.googleusercontent.com/sitesv/APaQ0STXqv3KNu5_tO3Xl-m50LsfM41Ju8iRNEKVw9E1K2fxrRRMh05abPg9CJPWiQKZVEfSnX_uKnk2zGtC5-gZRAngzD3DGuh9FNQHiqmzH5vpVuj1GlzkFsZbGo_nUmQa77qncch_rmbVRbBCld_J_Ci2z9GD_6p2qm7MWyi1KH5GyH4NczVoMmhQJYdKvZTiU75jRzk-RAqv6EbK5QzMivsN2Oor3S8TSVqqiEE=w1280');">
@@ -229,40 +229,37 @@
                         <span id="animated-subtitle" class="text-fade opacity-100 block font-medium">Calcula tu
                             presupuesto en segundos</span>
                     </div>
-
-                    <div class="flex flex-col sm:flex-row gap-stack-md justify-center lg:justify-start w-full">
-                        <a class="inline-flex bg-white text-primary px-8 py-3 rounded-lg font-label-md text-label-md hover:bg-surface-container transition-colors items-center justify-center gap-2 shadow-lg"
-                            href="cotizador.html">
-                            <span class="material-symbols-outlined">calculate</span> Cotizar Combo Graduación
+                    <div class="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-2.5">
+                        <a href="cotizador.html" class="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-lg bg-white px-2.5 py-2 text-center text-[10px] font-bold text-primary shadow-sm transition-colors hover:bg-surface-container sm:min-h-12 sm:gap-2 sm:px-3 sm:py-2.5 sm:text-xs">
+                            <span class="material-symbols-outlined text-[17px]">calculate</span>
+                            <span>Cotizar combo de graduación</span>
                         </a>
-                        <a class="inline-flex bg-transparent border border-white/30 text-on-primary px-8 py-3 rounded-lg font-label-md text-label-md hover:bg-white/10 transition-colors backdrop-blur-sm items-center justify-center gap-2"
-                            href="index.html#servicios">
-                            Ver Servicios <span class="material-symbols-outlined">arrow_downward</span>
+                        <a href="#servicios" class="inline-flex min-h-10 items-center justify-center gap-1.5 rounded-lg border border-white/35 bg-white/10 px-2.5 py-2 text-center text-[10px] font-bold text-white transition-colors hover:bg-white/15 sm:min-h-12 sm:gap-2 sm:px-3 sm:py-2.5 sm:text-xs">
+                            <span class="material-symbols-outlined text-[17px]">arrow_downward</span>
+                            <span>Ver servicios</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Columna Derecha (POS Promo) -->
+                <!-- Accesos principales -->
                 <div class="lg:w-[40%] w-full max-w-md mx-auto lg:mx-0">
-                    <div
-                        class="bg-glass-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-2xl shadow-2xl text-center lg:text-left transform transition-transform hover:-translate-y-2 duration-300">
-                        <span
-                            class="inline-block bg-critical-red text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 shadow-sm flex items-center w-max mx-auto lg:mx-0">
-                            <span class="material-symbols-outlined text-[14px] mr-1">local_fire_department</span> Nuevo
-                            Lanzamiento
-                        </span>
-                        <h2
-                            class="text-on-primary text-headline-md font-headline-md uppercase tracking-tight mb-3 leading-tight">
-                            TOMA EL CONTROL TOTAL DE TUS VENTAS Y TU INVENTARIO.
-                        </h2>
-                        <p class="text-surface-variant font-body-md text-body-md mb-6 leading-relaxed">
-                            Asegura tu acceso al nuevo sistema POS con un pago único de preventa. Solo Q.550 (El precio
-                            sube este 01 de noviembre).
-                        </p>
-                        <a href="pos_landing.html"
-                            class="inline-flex w-full bg-secondary text-on-secondary hover:bg-secondary-container hover:text-on-secondary-fixed transition-colors font-label-md text-label-md py-3.5 px-6 rounded-lg shadow-lg items-center justify-center gap-2 uppercase tracking-wide">
-                            Aprovechar oferta y ver detalles<span class="material-symbols-outlined">arrow_forward</span>
-                        </a>
+                    <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+                        <article class="flex min-h-[164px] flex-col items-start gap-2 rounded-xl border border-white/20 bg-[#15263a]/85 p-3 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-[#1b3048]/90 sm:min-h-[176px] sm:p-4">
+                            <span class="inline-flex items-center rounded-full bg-critical-red px-2 py-1 text-[8px] font-bold uppercase tracking-wide text-white sm:text-[9px]">Preventa · Q550</span>
+                            <h2 class="font-heading text-xs font-extrabold leading-tight text-white sm:text-sm">Sistema POS para tu mostrador</h2>
+                            <p class="text-[9px] leading-snug text-white/80 sm:text-[10px]">Precio especial hasta el 31 de octubre.</p>
+                            <a href="pos_landing.html" class="mt-auto inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-secondary px-2 py-2 text-center text-[9px] font-bold uppercase leading-tight text-white transition-colors hover:bg-secondary-container sm:text-[10px]">
+                                Ver POS <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                            </a>
+                        </article>
+                        <article class="flex min-h-[164px] flex-col items-start gap-2 rounded-xl border border-white/20 bg-[#15263a]/85 p-3 text-white shadow-lg backdrop-blur-sm transition-colors hover:bg-[#1b3048]/90 sm:min-h-[176px] sm:p-4">
+                            <span class="inline-flex items-center rounded-full bg-white/15 px-2 py-1 text-[8px] font-bold uppercase tracking-wide text-blue-100 sm:text-[9px]">Preinscripción abierta</span>
+                            <h2 class="font-heading text-xs font-extrabold leading-tight text-white sm:text-sm">Curso práctico de empastado</h2>
+                            <p class="text-[9px] leading-snug text-white/80 sm:text-[10px]">Noviembre y diciembre · 15 lugares por grupo.</p>
+                            <a href="cursos.html#grupos" class="mt-auto inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-secondary px-2 py-2 text-center text-[9px] font-bold uppercase leading-tight text-white transition-colors hover:bg-secondary-container sm:text-[10px]">
+                                Elegir grupo <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                            </a>
+                        </article>
                     </div>
                 </div>
 
