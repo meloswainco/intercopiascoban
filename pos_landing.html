@@ -32,11 +32,46 @@
         }
 
         .pos-announcement {
-            min-height: 2.25rem;
+            min-height: 3.75rem;
+        }
+
+        .pos-announcement .inco-whatsapp-contact-full {
+            width: auto;
+        }
+
+        .pos-announcement .inco-whatsapp-phone-note {
+            color: #dfe3e7;
+        }
+
+        .pos-announcement .inco-whatsapp-phone-note a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .pos-announcement #offer-banner-cta {
+            background-color: #15803d;
+        }
+
+        .pos-announcement #offer-banner-cta:hover {
+            background-color: #166534;
         }
 
         .pos-main {
-            padding-top: 6.5rem;
+            padding-top: 10rem;
+        }
+
+        @media (max-width: 767px) {
+            .pos-announcement {
+                min-height: 5.75rem;
+            }
+
+            .pos-announcement .inco-whatsapp-contact-full {
+                width: 100%;
+            }
+
+            .pos-main {
+                padding-top: 14rem;
+            }
         }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -115,12 +150,24 @@
         </div>
     </a>
     <header class="inco-navbar pos-navbar">
-        <div class="pos-announcement w-full bg-[#002347] text-white px-4 text-center font-label-sm text-label-sm">
-            <div class="max-w-[1280px] mx-auto flex items-center justify-center gap-2 py-2">
-                <span class="material-symbols-outlined text-[16px] text-[#dfe3e7]">bolt</span>
-                <span id="offer-banner-label">Preventa hasta el 31 de octubre:</span>
-                <strong id="offer-banner-price" class="text-white">Q550.00</strong>
-                <span id="offer-banner-launch" class="hidden md:inline text-white/75">• Lanzamiento oficial el 01 de noviembre</span>
+        <div class="pos-announcement w-full bg-[#002347] px-4 text-white">
+            <div class="mx-auto flex min-h-[3.75rem] max-w-[1280px] flex-col items-stretch gap-2 py-2 md:flex-row md:items-center md:justify-between md:gap-6 md:py-2">
+                <div class="flex items-center justify-between gap-3 md:flex-1">
+                    <div class="flex min-w-0 items-center gap-2">
+                        <span class="material-symbols-outlined shrink-0 text-xl text-[#dfe3e7]" aria-hidden="true">bolt</span>
+                        <div class="min-w-0 text-left">
+                            <span id="offer-banner-label" class="block text-[11px] font-black uppercase leading-tight sm:text-xs">Ahorra Q220 hasta el 31 de octubre</span>
+                            <span id="offer-banner-launch" class="block text-[10px] leading-tight text-white/75 sm:text-xs">Hasta 31 oct. Luego Q770</span>
+                        </div>
+                    </div>
+                    <strong id="offer-banner-price" class="shrink-0 font-display-hero text-2xl font-black leading-none text-white sm:text-3xl">Q550.00</strong>
+                </div>
+                <a id="offer-banner-cta" class="inco-btn-whatsapp inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white transition-colors sm:text-sm md:w-auto md:px-5"
+                    href="https://wa.me/50280002944?text=Hola%20Dayan,%20quiero%20solicitar%20la%20licencia%20POS%20por%20Q550%20antes%20del%2031%20de%20octubre."
+                    target="_blank" rel="noopener noreferrer" aria-label="Solicitar licencia POS por Q550 durante la preventa">
+                    <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
+                    <span id="offer-banner-cta-label">Solicita tu licencia</span>
+                </a>
             </div>
         </div>
         <div class="inco-nav-container">
@@ -1056,6 +1103,9 @@
             setText('offer-banner-label', 'Precio de lanzamiento:');
             setText('offer-banner-price', 'Q770.00');
             document.getElementById('offer-banner-launch')?.setAttribute('hidden', '');
+            setText('offer-banner-cta-label', 'Consultar por WhatsApp');
+            setHref('offer-banner-cta', 'https://wa.me/50280002944?text=Hola%2C%20quiero%20consultar%20la%20licencia%20POS%20por%20Q770.');
+            document.getElementById('offer-banner-cta')?.setAttribute('aria-label', 'Consultar licencia POS por Q770 por WhatsApp');
             setText('floating-offer-label', 'Licencia POS • Q770');
             setText('floating-offer-action', 'Consultar por WhatsApp');
             setHref('floating-offer-link', 'https://wa.me/50280002944?text=Hola%2C%20quiero%20consultar%20la%20licencia%20POS%20por%20Q770.');
@@ -1105,8 +1155,13 @@
                 if (element) element.textContent = value;
             };
             const finalPreorderWindow = days <= 5;
+            const remainingTime = days > 0
+                ? (days === 1 ? 'Queda 1 día' : `Quedan ${days} días`)
+                : hours > 0
+                    ? (hours === 1 ? 'Queda 1 hora' : `Quedan ${hours} horas`)
+                    : 'Menos de 1 hora';
 
-            setText('offer-banner-label', finalPreorderWindow ? 'Últimos 5 días de preventa:' : 'Preventa hasta el 31 de octubre:');
+            setText('offer-banner-label', `${remainingTime} para ahorrar Q220`);
             setText('floating-offer-label', finalPreorderWindow ? 'Últimos 5 días • Q.550' : 'Preventa • Solo Q.550');
             setText('mobile-offer-label', finalPreorderWindow ? 'Últimos días de preventa' : 'Preventa POS');
             setText('hero-countdown-label', finalPreorderWindow ? 'Últimos 5 días • Cierra en' : 'Cierra en');
