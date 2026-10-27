@@ -1246,6 +1246,15 @@
                 if (element) element.textContent = value;
             };
             const finalPreorderWindow = days <= 5;
+            const urgencyLabel = days > 1
+                ? `Últimos ${days} días`
+                : days === 1
+                    ? 'Último día'
+                    : hours > 1
+                        ? `Últimas ${hours} horas`
+                        : hours === 1
+                            ? 'Última hora'
+                            : 'Menos de una hora';
             const remainingTime = days > 0
                 ? (days === 1 ? 'Queda 1 día' : `Quedan ${days} días`)
                 : hours > 0
@@ -1253,10 +1262,10 @@
                     : 'Menos de 1 hora';
 
             setText('offer-banner-label', `${remainingTime} para ahorrar Q220`);
-            setText('floating-offer-label', finalPreorderWindow ? 'Últimos 5 días • Q.550' : 'Preventa • Solo Q.550');
-            setText('mobile-offer-label', finalPreorderWindow ? 'Últimos días de preventa' : 'Preventa POS');
-            setText('hero-countdown-label', finalPreorderWindow ? 'Últimos 5 días • Cierra en' : 'Cierra en');
-            setText('final-offer-badge', finalPreorderWindow ? 'Últimos 5 días de preventa' : 'Preventa hasta el 31 de octubre');
+            setText('floating-offer-label', finalPreorderWindow ? `${urgencyLabel} • Q.550` : 'Preventa • Solo Q.550');
+            setText('mobile-offer-label', finalPreorderWindow ? `${urgencyLabel} de preventa` : 'Preventa POS');
+            setText('hero-countdown-label', finalPreorderWindow ? `${urgencyLabel} • Cierra en` : 'Cierra en');
+            setText('final-offer-badge', finalPreorderWindow ? `${urgencyLabel} de preventa` : 'Preventa hasta el 31 de octubre');
             setText('final-offer-description', finalPreorderWindow
                 ? 'Solicítala antes del 31 de octubre por Q550. Desde el 1 de noviembre, costará Q770.'
                 : 'La licencia cuesta Q550 en preventa. Desde el 1 de noviembre, el precio será Q770.');
