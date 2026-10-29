@@ -1245,6 +1245,10 @@
                 const element = document.getElementById(id);
                 if (element) element.textContent = value;
             };
+            const setHref = (id, value) => {
+                const element = document.getElementById(id);
+                if (element) element.href = value;
+            };
             const finalPreorderWindow = days <= 5;
             const urgencyLabel = days > 1
                 ? `Últimos ${days} días`
@@ -1262,12 +1266,26 @@
                     : 'Menos de 1 hora';
 
             setText('offer-banner-label', `${remainingTime} para ahorrar Q220`);
+            const preorderMessage = 'Hola, quiero aprovechar la preventa del POS por Q550 antes del 31 de octubre. ¿Me puedes compartir el manual y cómo coordino el pago y la activación?';
+            const preorderHref = `https://wa.me/50280002944?text=${encodeURIComponent(preorderMessage)}`;
+            if (finalPreorderWindow) {
+                ['offer-banner-cta', 'floating-offer-link', 'hero-preorder-cta', 'final-preorder-cta'].forEach(id => setHref(id, preorderHref));
+                setText('offer-banner-cta-label', 'Aprovechar preventa');
+                setText('floating-offer-action', 'Aprovechar por WhatsApp');
+                setText('hero-preorder-cta-label', 'Aprovechar Q550');
+                setText('final-offer-heading', 'Ahorra Q220 con la preventa');
+                const finalCtaLabel = document.querySelector('#final-preorder-cta span:not(.material-symbols-outlined)');
+                if (finalCtaLabel) finalCtaLabel.textContent = 'Aprovechar Q550';
+                document.getElementById('offer-banner-cta')?.setAttribute('aria-label', 'Aprovechar la preventa POS por Q550 por WhatsApp');
+                document.getElementById('hero-preorder-cta')?.setAttribute('aria-label', 'Aprovechar la preventa POS por Q550 por WhatsApp');
+                document.getElementById('final-preorder-cta')?.setAttribute('aria-label', 'Aprovechar la preventa POS por Q550 por WhatsApp');
+            }
             setText('floating-offer-label', finalPreorderWindow ? `${urgencyLabel} • Q.550` : 'Preventa • Solo Q.550');
             setText('mobile-offer-label', finalPreorderWindow ? `${urgencyLabel} de preventa` : 'Preventa POS');
             setText('hero-countdown-label', finalPreorderWindow ? `${urgencyLabel} • Cierra en` : 'Cierra en');
             setText('final-offer-badge', finalPreorderWindow ? `${urgencyLabel} de preventa` : 'Preventa hasta el 31 de octubre');
             setText('final-offer-description', finalPreorderWindow
-                ? 'Solicítala antes del 31 de octubre por Q550. Desde el 1 de noviembre, costará Q770.'
+                ? 'Compra por Q550 hasta el 31 de octubre. Desde el 1 de noviembre, la licencia costará Q770.'
                 : 'La licencia cuesta Q550 en preventa. Desde el 1 de noviembre, el precio será Q770.');
 
             ['cd-d', 'cd-d2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = pad(days); });
