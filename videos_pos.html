@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Videos de primeros pasos y ejemplos de uso de Intercopias POS.">
+    <title>Videos de funcionamiento del POS | Intercopias</title>
+    <link rel="icon" type="image/x-icon" href="icoinco.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="intercopias.css">
+</head>
+
+<body class="bg-white pt-[68px] text-gray-800 antialiased">
+    <header class="inco-navbar">
+        <div class="inco-nav-container">
+            <a href="index.html" class="z-20 flex items-center gap-2 text-decoration-none">
+                <img src="logo.png" alt="Logo Intercopias Cobán" class="h-9 w-auto object-contain sm:h-11"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="hidden h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#002347] text-white">
+                    <i class="fa-solid fa-layer-group text-sm" aria-hidden="true"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="font-heading text-lg font-black uppercase leading-none text-[#002347] sm:text-xl">INTERCOPIAS</span>
+                    <span class="mt-0.5 block text-[9px] font-bold uppercase tracking-wider text-[#64748b]">Frente a Plaza Magdalena</span>
+                </div>
+            </a>
+            <nav class="z-20 hidden items-center gap-1 lg:flex xl:gap-2" aria-label="Navegación principal">
+                <a href="index.html" class="inco-nav-link">Inicio</a>
+                <a href="index.html#servicios" class="inco-nav-link">Servicios</a>
+                <a href="cotizador.html" class="inco-nav-link">Cotizador</a>
+                <a href="cursos.html" class="inco-nav-link">Cursos</a>
+                <a href="normas.html" class="inco-nav-link">Normas</a>
+                <a href="tecnico.html" class="inco-nav-link">Técnico</a>
+                <a href="pos_landing.html#licencia" class="inco-nav-link inco-nav-badge"><i class="fa-solid fa-cash-register text-xs" aria-hidden="true"></i> POS</a>
+                <a href="index.html#contacto" class="inco-nav-link">Contacto</a>
+            </nav>
+            <div class="z-20 flex items-center gap-2 sm:gap-3">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="inco-btn-whatsapp hidden sm:inline-flex">
+                    <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span>Escríbenos</span>
+                </a>
+                <button id="inco-mobile-toggle" aria-label="Abrir menú" aria-expanded="false"
+                    class="rounded-lg p-2 text-[#002347] transition-colors hover:bg-slate-100 focus:outline-none lg:hidden">
+                    <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div id="inco-mobile-menu" class="hidden space-y-1.5 border-t border-slate-200 bg-white/98 px-4 py-4 shadow-xl backdrop-blur-md lg:hidden">
+            <a href="index.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-slate-700 hover:bg-slate-100 hover:text-[#002347]">Inicio</a>
+            <a href="index.html#servicios" class="block rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-slate-700 hover:bg-slate-100 hover:text-[#002347]">Servicios</a>
+            <a href="cotizador.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-slate-700 hover:bg-slate-100 hover:text-[#002347]">Cotizador</a>
+            <a href="cursos.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-slate-700 hover:bg-slate-100 hover:text-[#002347]">Cursos de Empastado</a>
+            <a href="normas.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-slate-700 hover:bg-slate-100 hover:text-[#002347]">Normas y Estilos</a>
+            <a href="tecnico.html" class="block rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-slate-700 hover:bg-slate-100 hover:text-[#002347]">Servicio Técnico</a>
+            <a href="pos_landing.html#licencia" class="block rounded-lg px-3 py-2.5 text-sm font-bold uppercase text-[#0058bc] hover:bg-slate-100">Sistema POS</a>
+            <a href="index.html#contacto" class="block rounded-lg px-3 py-2.5 text-sm font-semibold uppercase text-slate-700 hover:bg-slate-100 hover:text-[#002347]">Contacto</a>
+            <div class="border-t border-slate-100 pt-2">
+                <a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="inco-btn-whatsapp w-full justify-center py-3">
+                    <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i><span>Contactar por WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="bg-[#002347] py-12 text-white md:py-16">
+            <div class="mx-auto max-w-5xl px-5 text-center sm:px-6">
+                <p class="mb-3 text-xs font-bold uppercase tracking-widest text-[#dfe3e7] sm:text-sm">Intercopias POS</p>
+                <h1 class="font-heading text-3xl font-black uppercase leading-tight sm:text-4xl md:text-5xl">Videos de funcionamiento del POS</h1>
+                <p class="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-blue-100 sm:text-base">Revisa los primeros pasos y ejemplos de uso del sistema a tu ritmo.</p>
+                <p class="mt-3 text-xs text-blue-100">Los videos se cargan desde Google Drive cuando pulsas “Cargar video”.</p>
+            </div>
+        </section>
+
+        <nav class="border-b border-slate-200 bg-white" aria-label="Secciones de videos">
+            <div class="mx-auto flex max-w-7xl flex-wrap gap-2 px-5 py-3 sm:px-6">
+                <a href="#primeros-pasos" class="rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-[#002347] hover:bg-blue-100">Primeros pasos</a>
+                <a href="#ejemplos" class="rounded-full bg-blue-50 px-4 py-2 text-sm font-semibold text-[#002347] hover:bg-blue-100">Ejemplos</a>
+            </div>
+        </nav>
+
+        <section id="primeros-pasos" class="bg-white py-12 md:py-16">
+            <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+                <div class="mb-7 max-w-3xl">
+                    <h2 class="font-heading text-2xl font-black text-[#002347] sm:text-3xl">Primeros pasos</h2>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-600">Cinco videos para comenzar a recorrer el POS.</p>
+                </div>
+                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="17gMsnX_PE8bmSySx8vSDT-EeO09QNzb4" data-video-title="Primeros pasos"
+                                aria-label="Cargar video: Primeros pasos" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Primeros pasos</h3><a href="https://drive.google.com/file/d/17gMsnX_PE8bmSySx8vSDT-EeO09QNzb4/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1d8EYOmh9v05FMVKpUrg9WkndHan1K_6I" data-video-title="Primeros pasos 1"
+                                aria-label="Cargar video: Primeros pasos 1" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Primeros pasos 1</h3><a href="https://drive.google.com/file/d/1d8EYOmh9v05FMVKpUrg9WkndHan1K_6I/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1tDzaWMZPzQ6IfRkVA_itwK9B4kJiLdwr" data-video-title="Primeros pasos 2"
+                                aria-label="Cargar video: Primeros pasos 2" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Primeros pasos 2</h3><a href="https://drive.google.com/file/d/1tDzaWMZPzQ6IfRkVA_itwK9B4kJiLdwr/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1aUHLBwYUUpUuiVjN6aGGyU5pCV7lvzFu" data-video-title="Primeros pasos 3"
+                                aria-label="Cargar video: Primeros pasos 3" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Primeros pasos 3</h3><a href="https://drive.google.com/file/d/1aUHLBwYUUpUuiVjN6aGGyU5pCV7lvzFu/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1A4bLOfwpNHUF5QGjj62uXokZ_hr2ZMeu" data-video-title="Primeros pasos 4"
+                                aria-label="Cargar video: Primeros pasos 4" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Primeros pasos 4</h3><a href="https://drive.google.com/file/d/1A4bLOfwpNHUF5QGjj62uXokZ_hr2ZMeu/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="ejemplos" class="border-t border-slate-200 bg-slate-50 py-12 md:py-16">
+            <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+                <div class="mb-7 max-w-3xl">
+                    <h2 class="font-heading text-2xl font-black text-[#002347] sm:text-3xl">Ejemplos de uso</h2>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-600">Mira ejemplos adicionales del sistema en funcionamiento.</p>
+                </div>
+                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1izfXxu31baHtZFsJAVukB6XQrJluXW2M" data-video-title="Ejemplo 1"
+                                aria-label="Cargar video: Ejemplo 1" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Ejemplo 1</h3><a href="https://drive.google.com/file/d/1izfXxu31baHtZFsJAVukB6XQrJluXW2M/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1KSIiARSAOH_VxSBrCjCgdzVK1hbqU30f" data-video-title="Ejemplo 2"
+                                aria-label="Cargar video: Ejemplo 2" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Ejemplo 2</h3><a href="https://drive.google.com/file/d/1KSIiARSAOH_VxSBrCjCgdzVK1hbqU30f/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1c-hCE7LpxOMXyIRXdTuFxNTeA_UQFzjn" data-video-title="Ejemplo 3"
+                                aria-label="Cargar video: Ejemplo 3" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Ejemplo 3</h3><a href="https://drive.google.com/file/d/1c-hCE7LpxOMXyIRXdTuFxNTeA_UQFzjn/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1gK0bl2mXXbu6E10tY1tNlu7O67YhlkL-" data-video-title="Ejemplo 4"
+                                aria-label="Cargar video: Ejemplo 4" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Ejemplo 4</h3><a href="https://drive.google.com/file/d/1gK0bl2mXXbu6E10tY1tNlu7O67YhlkL-/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                    <article class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div data-drive-player class="relative aspect-video bg-[#002347]">
+                            <button type="button" data-drive-video="1YdUHWcjWsspTd8IraZ71Oq5hj70Z6zEh" data-video-title="Ejemplo 5"
+                                aria-label="Cargar video: Ejemplo 5" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-white transition-colors hover:bg-[#003366]">
+                                <i class="fa-solid fa-circle-play text-5xl" aria-hidden="true"></i><span class="text-sm font-bold">Cargar video</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 p-4"><h3 class="font-heading text-base font-bold text-slate-900">Ejemplo 5</h3><a href="https://drive.google.com/file/d/1YdUHWcjWsspTd8IraZ71Oq5hj70Z6zEh/view" target="_blank" rel="noopener noreferrer" class="shrink-0 text-xs font-semibold text-[#0058bc] underline underline-offset-4">Abrir en Drive</a></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white py-12 md:py-16">
+            <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 px-5 text-center sm:px-6">
+                <h2 class="font-heading text-2xl font-black text-[#002347] sm:text-3xl">¿Listo para usarlo en tu negocio?</h2>
+                <p class="max-w-2xl text-sm leading-relaxed text-slate-600">Licencia perpetua por Q770, en una sola inversión y sin mensualidades.</p>
+                <div class="flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
+                    <a href="pos_landing.html#licencia" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#002347] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#0058bc]">
+                        <i class="fa-solid fa-tag" aria-hidden="true"></i> Ver licencia y precio
+                    </a>
+                    <a href="https://wa.me/50280002944?text=Hola%2C%20vi%20los%20videos%20del%20POS%20y%20quiero%20comprar%20la%20licencia%20por%20Q770.%20%C2%BFMe%20comparten%20los%20pasos%20para%20el%20pago%20y%20la%20activaci%C3%B3n%3F" target="_blank" rel="noopener noreferrer" class="inco-btn-whatsapp inline-flex min-h-11 items-center justify-center gap-2 px-5 py-3 text-sm">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Solicitar licencia
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="inco-footer">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mb-10 grid grid-cols-1 gap-8 md:grid-cols-4">
+                <div>
+                    <span class="mb-2 block font-heading text-xl font-black uppercase tracking-tight text-white">INTERCOPIAS POS</span>
+                    <p class="mb-4 text-xs leading-relaxed text-slate-300">Videos de funcionamiento del sistema de punto de venta.</p>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-slate-200"><i class="fa-solid fa-location-dot text-red-400" aria-hidden="true"></i> Frente a Plaza Magdalena</span>
+                </div>
+                <div>
+                    <h2 class="mb-3 border-b border-white/10 pb-2 font-heading text-xs font-bold uppercase tracking-wider text-slate-200">Explora</h2>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="index.html" class="transition-colors hover:text-white">Inicio</a></li>
+                        <li><a href="cotizador.html" class="transition-colors hover:text-white">Cotizador</a></li>
+                        <li><a href="cursos.html" class="transition-colors hover:text-white">Cursos</a></li>
+                        <li><a href="pos_landing.html#licencia" class="transition-colors hover:text-white">Licencia POS</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-3 border-b border-white/10 pb-2 font-heading text-xs font-bold uppercase tracking-wider text-slate-200">Privacidad</h2>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="privacidad.html" class="transition-colors hover:text-white">Política de privacidad</a></li>
+                        <li><button type="button" class="inco-open-privacy-settings transition-colors hover:text-white">Preferencias de privacidad</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="mb-3 border-b border-white/10 pb-2 font-heading text-xs font-bold uppercase tracking-wider text-slate-200">Contacto</h2>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="https://wa.me/50280002944" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400"><i class="fa-brands fa-whatsapp mr-2 text-emerald-400" aria-hidden="true"></i>(502) 8000 2944</a></li>
+                        <li><a href="mailto:inco.coban@gmail.com" class="hover:text-white"><i class="fa-solid fa-envelope mr-2 text-blue-400" aria-hidden="true"></i>inco.coban@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-slate-300 sm:flex-row">
+                <p>© 2026 Intercopias Cobán. Todos los derechos reservados.</p>
+                <p>Frente a Plaza Magdalena · Cobán, Alta Verapaz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('[data-drive-video]').forEach(button => {
+            button.addEventListener('click', () => {
+                const player = button.closest('[data-drive-player]');
+                if (!player) return;
+
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://drive.google.com/file/d/${encodeURIComponent(button.dataset.driveVideo)}/preview`;
+                iframe.title = button.dataset.videoTitle;
+                iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+                iframe.loading = 'lazy';
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                iframe.className = 'absolute inset-0 h-full w-full border-0';
+                player.replaceChildren(iframe);
+            });
+        });
+    </script>
+    <script src="intercopias.js"></script>
+</body>
+
+</html>
