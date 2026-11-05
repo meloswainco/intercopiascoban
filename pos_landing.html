@@ -963,41 +963,76 @@
                 </div>
             </section>
             <section class="w-full py-20 bg-surface-container-low">
-                <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin space-y-12">
-                    <div class="max-w-2xl mx-auto text-center space-y-3">
-                        <span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Antes de comprar</span>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Licencia y funcionamiento</h2>
-                        <p class="font-body-md text-body-md text-on-surface-variant">Conoce qué incluye la licencia, cómo se actualiza el sistema y cómo funciona en varios equipos.</p>
+                <div class="mx-auto max-w-[920px] space-y-8 px-margin-mobile md:px-margin">
+                    <div class="mx-auto max-w-3xl space-y-3 text-center">
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Preguntas frecuentes sobre el POS</h2>
+                        <p class="font-body-md leading-relaxed text-on-surface-variant">Por Q770, una licencia perpetua para ventas, caja e inventario. Revisa cómo funciona y si se ajusta a tu operación.</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">1</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Pago único</h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">La licencia es perpetua: pagas una vez por las funciones actuales del sistema, sin mensualidades.</p>
-                        </div>
-                        <div class="p-6 rounded-xl border-2 border-primary/30 bg-secondary-fixed/30 shadow-sm space-y-3 lg:col-span-2">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">2</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Hasta 15 equipos, cada uno independiente</h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Una licencia comercial permite instalar el POS en hasta 15 computadoras del mismo propietario. Cada equipo funciona por separado: las cajas no se conectan entre sí ni sincronizan ventas o existencias en tiempo real. El inventario principal se administra desde un equipo central.</p>
-                        </div>
-                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3 lg:col-span-2">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">3</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Registro de licencia y marca</h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">La licencia se registra a nombre de tu grupo comercial y ese nombre aparece al pie de los tickets. La licencia no puede revenderse.</p>
-                        </div>
-                        <div class="p-6 rounded-xl bg-surface-container-lowest shadow-sm space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-headline-sm text-headline-sm font-bold">4</div>
-                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Actualizaciones</h3>
-                            </div>
-                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Las actualizaciones se limitan a corregir errores y mantener la estabilidad; no incluyen nuevas funciones ni módulos.</p>
-                        </div>
+
+                    <div class="divide-y divide-outline-variant/50 border-y border-outline-variant/50">
+                        <details class="group py-4" open>
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-title-md text-title-md font-bold text-on-surface">
+                                <span>¿Puedo usar una licencia en varias sucursales?</span>
+                                <span class="material-symbols-outlined shrink-0 text-primary transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                            </summary>
+                            <p class="mt-3 pr-6 font-body-md leading-relaxed text-on-surface-variant">Sí. Puedes instalarla en hasta 15 computadoras bajo el mismo propietario y nombre comercial principal. Si se trata de otro negocio con nombre o rubro distinto, necesitas una licencia adicional.</p>
+                        </details>
+
+                        <details class="group py-4">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-title-md text-title-md font-bold text-on-surface">
+                                <span>¿Las computadoras se conectan y comparten inventario?</span>
+                                <span class="material-symbols-outlined shrink-0 text-primary transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                            </summary>
+                            <p class="mt-3 pr-6 font-body-md leading-relaxed text-on-surface-variant">No. Cada instalación tiene su propia base de datos; las ventas y existencias no se sincronizan entre equipos. Algunos negocios mantienen el inventario real en una computadora y usan las demás solo para cobrar. Luego consolidan la información manualmente, a diario o cada semana.</p>
+                        </details>
+
+                        <details class="group py-4">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-title-md text-title-md font-bold text-on-surface">
+                                <span>¿Sirve para distintos tipos de negocio?</span>
+                                <span class="material-symbols-outlined shrink-0 text-primary transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                            </summary>
+                            <p class="mt-3 pr-6 font-body-md leading-relaxed text-on-surface-variant">Se usa en talleres de motos, venta de lápidas, abarroterías y farmacias, entre otros. Puedes adaptar botones y servicios a tu rubro. Un restaurante que necesita comandas de cocina y funciones especializadas de mesas probablemente requiere un sistema diseñado para esa operación.</p>
+                        </details>
+
+                        <details class="group py-4">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-title-md text-title-md font-bold text-on-surface">
+                                <span>¿Puedo manejar precios de mayoreo o varios precios por producto?</span>
+                                <span class="material-symbols-outlined shrink-0 text-primary transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                            </summary>
+                            <p class="mt-3 pr-6 font-body-md leading-relaxed text-on-surface-variant">El POS no aplica precios de mayoreo ni guarda varios precios en una sola ficha. Puedes crear productos separados, como “Alambre por metro” y “Alambre por rollo”. También puedes aplicar un descuento general e indicar si es por mayoreo o por cliente frecuente. La escala automática por cantidad es exclusiva para impresiones y copias.</p>
+                        </details>
+
+                        <details class="group py-4">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-title-md text-title-md font-bold text-on-surface">
+                                <span>¿Cuántos productos puedo registrar?</span>
+                                <span class="material-symbols-outlined shrink-0 text-primary transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                            </summary>
+                            <p class="mt-3 pr-6 font-body-md leading-relaxed text-on-surface-variant">Puedes manejar catálogos de miles de productos. Una ferretería en operación tiene más de 2,800 productos registrados.</p>
+                        </details>
+
+                        <details class="group py-4">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-title-md text-title-md font-bold text-on-surface">
+                                <span>¿El POS se conecta con SAT y emite factura FEL?</span>
+                                <span class="material-symbols-outlined shrink-0 text-primary transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                            </summary>
+                            <p class="mt-3 pr-6 font-body-md leading-relaxed text-on-surface-variant">No. El POS lleva el control interno de ventas e inventario, pero no se conecta directamente a SAT ni emite FEL. Cuando necesites factura, puedes generarla en unos minutos desde la App FEL de SAT, en el celular o la computadora. También puedes contratar un certificador externo; sus mensualidades o comisiones se pagan aparte y dependen del proveedor.</p>
+                        </details>
+
+                        <details class="group py-4">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-title-md text-title-md font-bold text-on-surface">
+                                <span>¿Puedo cobrar con tarjeta desde el POS?</span>
+                                <span class="material-symbols-outlined shrink-0 text-primary transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                            </summary>
+                            <p class="mt-3 pr-6 font-body-md leading-relaxed text-on-surface-variant">El POS no procesa el cobro. Si usas una terminal o servicio como VisaNet o BAC Credomatic, cobras desde ese servicio y registras la venta en el POS. Así el corte distingue efectivo, tarjetas y transferencias.</p>
+                        </details>
+
+                        <details class="group py-4">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-title-md text-title-md font-bold text-on-surface">
+                                <span>¿Q770 es un pago único? ¿Qué incluyen las actualizaciones?</span>
+                                <span class="material-symbols-outlined shrink-0 text-primary transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+                            </summary>
+                            <p class="mt-3 pr-6 font-body-md leading-relaxed text-on-surface-variant">Sí. Q770 compra una licencia vitalicia del sistema actual, sin mensualidades por la licencia. Las actualizaciones corrigen errores y mantienen la estabilidad; no añaden módulos ni nuevas funciones. El POS es una herramienta ligera para tareas habituales de gestión. Si necesitas procesos altamente especializados o desarrollos continuos, te conviene evaluar un sistema a medida o de suscripción.</p>
+                        </details>
                     </div>
                 </div>
             </section>
@@ -1082,18 +1117,18 @@
                                 Escríbenos para coordinar el pago y la activación.
                             </p>
                         </div>
-                        <!-- WhatsApp Technical Consultation Prompt -->
+                        <!-- Installer Demo Request -->
                         <div
                             class="p-6 rounded-xl bg-surface-container flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
                             <div class="space-y-1">
-                                <h4 class="font-title-md text-title-md text-on-surface font-bold">¿Dudas sobre instalación o requisitos?</h4>
-                                <p class="font-body-sm text-body-sm text-on-surface-variant">Escríbenos y revisamos contigo los requisitos de tu equipo.</p>
+                                <h4 class="font-title-md text-title-md text-on-surface font-bold">¿Quieres probarlo en tu equipo antes de decidir?</h4>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Pide por WhatsApp el instalador de la demo. Es el POS real, con algunas funciones limitadas para la prueba.</p>
                             </div>
                             <a class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-sm hover:bg-surface-container-high transition-colors"
-                                href="https://wa.me/50280002944?text=Hola%20Dayan,%20necesito%20soporte"
-                                target="_blank">
-                                <span class="material-symbols-outlined text-secondary text-[20px]">chat</span>
-                                <span class="">Consultar requisitos</span>
+                                href="https://wa.me/50280002944?text=Hola%2C%20quiero%20probar%20la%20demo%20instalable%20del%20POS.%20%C2%BFMe%20la%20pueden%20enviar%20y%20decirme%20qu%C3%A9%20funciones%20est%C3%A1n%20limitadas%3F"
+                                target="_blank" rel="noopener noreferrer" aria-label="Solicitar la demo instalable del POS por WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-[18px]" aria-hidden="true"></i>
+                                <span class="">Solicitar demo por WhatsApp</span>
                             </a>
                         </div>
                         <p class="text-center font-body-sm text-on-surface-variant">
