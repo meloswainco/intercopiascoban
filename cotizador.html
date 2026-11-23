@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="icoinco.ico">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cotizador de Combos - Intercopias Cobán</title>
+    <title>Cotizador de impresión - Intercopias Cobán</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,23 +16,364 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
-        
-        /* Estilos Nativos del Cotizador */
-        .radio-group { display: flex; gap: 8px; margin-bottom: 12px; }
-        .radio-option { flex: 1; border: 1px solid #e2e8f0; padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; background: #fff; color: #64748b; font-weight: 500;}
-        .radio-option:hover { border-color: #0058bc; background-color: #f8fafc; }
-        .radio-option.selected { border-color: #002347; background-color: #e0edff; color: #002347; font-weight: 700; box-shadow: 0 0 0 2px #002347; }
-        
-        .summary-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
-        .summary-table td { padding: 10px 4px; border-bottom: 1px solid #f1f5f9; color: #475569;}
-        .summary-table .val { text-align: right; font-weight: 800; color: #002347; white-space: nowrap; }
-        .summary-table .old-price { text-decoration: line-through; color: #94a3b8; font-weight: 500; margin-right: 8px; font-size: 0.75rem; }
-        
-        .discount-row { color: #166534; background-color: #f0fdf4; font-weight: bold; }
-        .discount-row .val { color: #166534; }
-        
-        .subtotal-header { background-color: #f8fafc; border-top: 2px solid #002347; border-bottom: 2px solid #002347; }
-        .subtotal-header td { padding: 12px 4px !important; color: #002347; font-weight: 900; text-align: center; font-size: 0.9rem;}
+
+        #quoteModule {
+            --navy: #002347;
+            --blue: #0058bc;
+            --ink: #172b42;
+            --muted: #526579;
+            --line: #d7e0e9;
+            --surface: #ffffff;
+            --soft-blue: #edf5ff;
+            --green: #17613a;
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            color-scheme: light;
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+        }
+
+        #quoteModule *,
+        #quoteModule *::before,
+        #quoteModule *::after { box-sizing: border-box; }
+        #quoteModule button,
+        #quoteModule input { font: inherit; }
+        #quoteModule input,
+        #quoteModule a { accent-color: var(--blue); }
+        #quoteModule :focus-visible { outline: 3px solid #347fc9; outline-offset: 3px; }
+        #quoteModule h1,
+        #quoteModule h2,
+        #quoteModule p { margin-top: 0; }
+        #quoteModule fieldset { min-width: 0; }
+
+        #quoteModule .page {
+            width: min(1080px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 30px;
+        }
+
+        #quoteModule .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            align-items: start;
+            gap: var(--space-4);
+        }
+
+        #quoteModule .calculator,
+        #quoteModule .summary {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+        }
+
+        #quoteModule .calculator { padding: 20px; }
+        #quoteModule .flow-section {
+            padding: 0 0 14px;
+            margin: 0 0 14px;
+            border: 0;
+            border-bottom: 1px solid var(--line);
+        }
+        #quoteModule .flow-section:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: 0;
+        }
+
+        #quoteModule legend {
+            width: 100%;
+            margin-bottom: var(--space-2);
+            color: var(--navy);
+            font-size: 0.98rem;
+            font-weight: 800;
+        }
+
+        #quoteModule .field-help,
+        #quoteModule .note {
+            color: var(--muted);
+            font-size: 0.76rem;
+        }
+
+        #quoteModule .service-options,
+        #quoteModule .origin-options,
+        #quoteModule .method-options {
+            display: grid;
+            gap: var(--space-2);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        #quoteModule .option {
+            position: relative;
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+            min-height: 48px;
+            padding: 10px 12px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            cursor: pointer;
+            transition: border-color 140ms ease, background-color 140ms ease;
+        }
+
+        #quoteModule .option:has(input:checked) {
+            border-color: var(--blue);
+            background: var(--soft-blue);
+            box-shadow: inset 0 0 0 1px var(--blue);
+        }
+
+        #quoteModule .option input {
+            flex: 0 0 auto;
+            width: 18px;
+            height: 18px;
+            margin: 2px 0 0;
+        }
+
+        #quoteModule .option strong {
+            display: block;
+            color: var(--navy);
+            font-size: 0.87rem;
+            line-height: 1.25;
+        }
+
+        #quoteModule .fields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--space-3);
+        }
+
+        #quoteModule .field label {
+            display: block;
+            margin-bottom: var(--space-1);
+            color: var(--ink);
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        #quoteModule .field input[type="number"] {
+            width: 100%;
+            min-height: 42px;
+            padding: 8px 10px;
+            border: 1px solid #aebdcb;
+            border-radius: 8px;
+            background: #fff;
+            color: var(--navy);
+            font-size: 1rem;
+        }
+
+        #quoteModule .field-help { margin: var(--space-1) 0 0; }
+        #quoteModule .checks {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: center;
+            gap: var(--space-2) var(--space-3);
+        }
+
+        #quoteModule .check-row {
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+            min-height: 44px;
+            padding: 4px 0;
+            color: var(--ink);
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        #quoteModule .check-row input {
+            flex: 0 0 auto;
+            width: 18px;
+            height: 18px;
+            margin: 2px 0 0;
+        }
+
+        #quoteModule .inline-quantity {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 84px;
+            align-items: center;
+            gap: var(--space-2);
+            width: auto;
+            margin: 0;
+        }
+
+        #quoteModule .inline-quantity label {
+            margin: 0;
+            font-size: 0.78rem;
+            line-height: 1.2;
+        }
+
+        #quoteModule .inline-quantity input[type="number"] {
+            min-height: 38px;
+            padding: 6px 8px;
+        }
+
+        #quoteModule [hidden] { display: none !important; }
+        #quoteModule .note { margin: var(--space-2) 0 0; }
+        #quoteModule .error {
+            min-height: 0;
+            margin: 4px 0 0;
+            color: #a12622;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        #quoteModule .summary { position: sticky; top: 12px; padding: 18px; }
+        #quoteModule .summary h2 {
+            margin-bottom: 4px;
+            color: var(--navy);
+            font-size: 1.05rem;
+        }
+
+        #quoteModule .summary-intro {
+            margin-bottom: 10px;
+            color: var(--muted);
+            font-size: 0.83rem;
+        }
+
+        #quoteModule .summary-list {
+            display: grid;
+            gap: 6px;
+            padding: 0 0 var(--space-2);
+            margin: 0;
+            border-bottom: 1px solid var(--line);
+            list-style: none;
+            font-size: 0.78rem;
+            line-height: 1.25;
+        }
+
+        #quoteModule .summary-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--space-2);
+        }
+
+        #quoteModule .summary-list li span:first-child { color: var(--muted); }
+        #quoteModule .summary-list li span:last-child {
+            color: var(--ink);
+            font-weight: 700;
+            text-align: right;
+        }
+
+        #quoteModule .delivery-summary {
+            padding-top: var(--space-2);
+            margin-top: var(--space-2);
+        }
+
+        #quoteModule .delivery-summary h3 {
+            margin: 0 0 var(--space-1);
+            color: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        #quoteModule .delivery-summary p {
+            margin: 0;
+            font-size: 0.82rem;
+            line-height: 1.35;
+        }
+
+        #quoteModule .summary-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-2);
+            margin-top: 10px;
+        }
+
+        #quoteModule .summary-total { min-width: 0; }
+        #quoteModule .total-label {
+            margin: 0 0 2px;
+            color: var(--muted);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        #quoteModule .total {
+            margin: 0;
+            color: var(--navy);
+            font-size: 1.8rem;
+            font-variant-numeric: tabular-nums;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        #quoteModule .total.is-empty { color: #6f8092; font-size: 1.15rem; }
+        #quoteModule .discount {
+            margin: 3px 0 0;
+            color: var(--green);
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        #quoteModule .estimate-note {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 0.74rem;
+        }
+
+        #quoteModule .whatsapp {
+            display: flex;
+            flex: 0 0 140px;
+            justify-content: center;
+            align-items: center;
+            min-height: 44px;
+            padding: 8px 10px;
+            border: 0;
+            border-radius: 8px;
+            background: #17613a;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        #quoteModule .whatsapp[aria-disabled="true"] { background: #84958b; cursor: not-allowed; }
+        #quoteModule .quote-reset {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            min-height: 42px;
+            padding: 8px 12px;
+            margin-top: var(--space-3);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+            color: var(--muted);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        #quoteModule .quote-reset:hover { background: #f8fafc; color: var(--navy); }
+
+        @media (max-width: 760px) {
+            #quoteModule .layout { grid-template-columns: 1fr; gap: var(--space-3); }
+            #quoteModule .summary { position: static; }
+        }
+
+        @media (max-width: 520px) {
+            #quoteModule .page { width: calc(100% - 24px); padding-bottom: 24px; }
+            #quoteModule .calculator { padding: 16px; }
+            #quoteModule .summary { padding: 14px; }
+            #quoteModule .flow-section { padding-bottom: 12px; margin-bottom: 12px; }
+            #quoteModule legend { font-size: 0.92rem; }
+            #quoteModule .option { min-height: 48px; padding: 9px 8px; }
+            #quoteModule .option strong { font-size: 0.79rem; }
+            #quoteModule .option input { width: 16px; height: 16px; }
+            #quoteModule .check-row { font-size: 0.78rem; }
+            #quoteModule .inline-quantity {
+                grid-template-columns: minmax(0, 1fr) 72px;
+                gap: 6px;
+            }
+            #quoteModule .inline-quantity label { font-size: 0.72rem; }
+            #quoteModule .inline-quantity input[type="number"] { min-height: 38px; padding: 5px 6px; }
+        }
     </style>
     
     <script>
@@ -101,7 +442,7 @@
             <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Inicio</a>
             <a href="index.html#servicios" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Servicios</a>
             <a href="cotizador.html" class="block px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-[#0058bc] uppercase flex items-center justify-between">
-                <span>Cotizador de Combos</span>
+                <span>Cotizador de impresión</span>
                 <span class="text-xs bg-[#0058bc] text-white px-2 py-0.5 rounded-full">Calculadora</span>
             </a>
             <a href="cursos.html" class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-100 hover:text-[#002347] uppercase">Cursos de Empastado</a>
@@ -125,95 +466,127 @@
         <div class="absolute inset-0 bg-blue-900/10"></div>
         <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
             <span class="inline-block px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-semibold uppercase tracking-wider mb-2 border border-white/10">Herramienta Oficial</span>
-            <h1 class="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-2">Cotizador de Combos y Tesis</h1>
-            <p class="text-slate-300 font-medium text-xs md:text-sm max-w-xl mx-auto">Calcula tu presupuesto al instante. Sin esperas, sin sorpresas y con descuentos por volumen.</p>
+            <h1 class="text-2xl md:text-4xl font-black text-white uppercase tracking-tight mb-2">Cotizador de impresión</h1>
+            <p class="text-slate-300 font-medium text-xs md:text-sm max-w-xl mx-auto">Cotiza trabajos universitarios, impresión por volumen o combos de graduación.</p>
         </div>
     </header>
 
-    <section class="py-10 bg-slate-100">
-        <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
-            
-            <div class="bg-[#002347] text-white p-4 text-center">
-                <h2 class="font-bold text-lg uppercase tracking-wider"><i class="fa-solid fa-calculator mr-2 text-blue-300"></i> Cotizador Digital</h2>
-                <p class="text-[10px] text-slate-300 mt-1">Presupuesto informativo sujeto a revisión de archivos</p>
-            </div>
+    <section id="quote-calculator" class="py-6 bg-slate-100">
+        <div id="quoteModule">
+            <div class="page">
+                <form id="quoteForm" novalidate>
+                    <div class="layout">
+                        <div class="calculator">
+                            <fieldset class="flow-section">
+                                <legend>¿Qué necesitas imprimir?</legend>
+                                <div class="service-options">
+                                    <label class="option">
+                                        <input type="radio" name="service" value="volume" checked>
+                                        <span><strong>Universidad, libros y volumen</strong></span>
+                                    </label>
+                                    <label class="option">
+                                        <input type="radio" name="service" value="combo">
+                                        <span><strong>Combo de graduación</strong></span>
+                                    </label>
+                                </div>
+                            </fieldset>
 
-            <div class="p-5 sm:p-6">
-                
-                <div class="mb-5">
-                    <label class="block mb-2 font-bold text-gray-700 text-sm">1. Servicio:</label>
-                    <div class="radio-group">
-                        <div class="radio-option selected" onclick="setMode('revision')" id="opt-revision">Para Revisión / Otros</div>
-                        <div class="radio-option" onclick="setMode('combo')" id="opt-combo">Combo Graduación</div>
-                    </div>
-                </div>
+                            <fieldset class="flow-section" id="originSection">
+                                <legend>¿Qué vas a entregar para imprimir?</legend>
+                                <div class="origin-options">
+                                    <label class="option">
+                                        <input type="radio" name="origin" value="digital" checked>
+                                        <span><strong>Archivo PDF</strong></span>
+                                    </label>
+                                    <label class="option">
+                                        <input type="radio" name="origin" value="physical">
+                                        <span><strong>Original físico</strong></span>
+                                    </label>
+                                </div>
+                            </fieldset>
 
-                <div class="mb-5">
-                    <label class="block mb-2 font-bold text-gray-700 text-sm">2. Origen del documento:</label>
-                    <div class="radio-group">
-                        <div class="radio-option selected" onclick="setOrigin('digital')" id="opt-digital">Archivo PDF</div>
-                        <div class="radio-option" onclick="setOrigin('impreso')" id="opt-impreso">Original Físico</div>
-                    </div>
-                </div>
+                            <fieldset class="flow-section">
+                                <legend>Documento y cantidad</legend>
+                                <div class="fields">
+                                    <div class="field">
+                                        <label for="pages">Páginas del documento</label>
+                                        <input type="number" id="pages" min="1" step="1" inputmode="numeric" placeholder="Ej. 120" required>
+                                        <p class="field-help" id="pageNote" hidden></p>
+                                    </div>
+                                    <div class="field">
+                                        <label for="copies" id="copiesLabel">Ejemplares</label>
+                                        <input type="number" id="copies" min="1" step="1" inputmode="numeric" value="1" required>
+                                    </div>
+                                </div>
+                            </fieldset>
 
-                <div id="quality-section" class="mb-5">
-                    <label class="block mb-2 font-bold text-gray-700 text-sm">3. Calidad de producción:</label>
-                    <div class="radio-group">
-                        <div class="radio-option selected" onclick="setQuality('economica')" id="opt-economica">Impresión + Copias</div>
-                        <div class="radio-option" onclick="setQuality('optima')" id="opt-optima">Todo Impreso (Óptima)</div>
-                    </div>
-                </div>
+                            <fieldset class="flow-section" id="methodSection">
+                                <legend>Método de producción</legend>
+                                <div class="method-options">
+                                    <label class="option">
+                                        <input type="radio" name="quality" value="economica" checked>
+                                        <span><strong>Impresión + copias</strong></span>
+                                    </label>
+                                    <label class="option">
+                                        <input type="radio" name="quality" value="optima">
+                                        <span><strong>Impresión digital por copia</strong></span>
+                                    </label>
+                                </div>
+                            </fieldset>
 
-                <div class="grid grid-cols-2 gap-4 mb-5">
-                    <div>
-                        <label class="block mb-2 font-bold text-gray-700 text-sm">Páginas totales:</label>
-                        <input type="number" id="pages" value="0" min="1" oninput="calculate()" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none text-center font-bold text-lg text-brand-blue">
-                        <label class="flex items-center justify-center mt-2 cursor-pointer text-xs font-medium text-gray-600 hover:text-brand-blue">
-                            <input type="checkbox" id="doubleSided" onchange="calculate()" class="mr-2 accent-brand-blue w-4 h-4"> Doble Cara
-                        </label>
-                    </div>
-                    <div>
-                        <label class="block mb-2 font-bold text-gray-700 text-sm">Cant. de Juegos:</label>
-                        <input type="number" id="copies" value="1" min="1" oninput="calculate()" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue outline-none text-center font-bold text-lg text-brand-blue">
-                    </div>
-                </div>
-
-                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
-                    <label class="flex items-center cursor-pointer text-sm font-bold text-gray-800">
-                        <input type="checkbox" id="addBinding" onchange="calculate()" class="mr-3 accent-[#ff0050] w-5 h-5"> 
-                        ¿Empastado Pasta Blanda?
-                    </label>
-                    <div id="disc-section" class="hidden mt-3 pt-3 border-t border-gray-200">
-                        <label class="block mb-1 font-bold text-gray-700 text-xs">Cantidad de Discos (CD/DVD):</label>
-                        <input type="number" id="discQty" value="0" min="0" oninput="calculate()" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm outline-none focus:border-brand-blue">
-                    </div>
-                </div>
-
-                <div class="bg-[#f0f4f8] p-5 rounded-xl border border-brand-blue/20 text-center">
-                    <table class="summary-table">
-                        <tbody id="summaryBody"></tbody>
-                    </table>
-                    
-                    <div class="mt-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Total Neto a Cancelar</div>
-                    <div class="text-4xl font-black text-brand-blue my-2" id="totalPrice">Q 0.00</div>
-                    
-                    <div class="mt-6 bg-[#f0fdf4] p-5 rounded-xl border-2 border-[#25D366] shadow-sm relative overflow-hidden transform transition-all hover:scale-105">
-                        <p class="text-[#166534] font-black text-lg mb-2 uppercase tracking-wide flex items-center justify-center">
-                            <i class="fa-solid fa-camera-retro text-2xl mr-2 animate-pulse"></i> ¡Toma una captura!
-                        </p>
-                        <p class="text-xs sm:text-sm text-[#166534] font-medium leading-snug mb-3 text-center">
-                            Guarda tu cotización. Toma captura de esta pantalla y envíala junto a tu PDF a nuestro WhatsApp:
-                        </p>
-                        <div class="bg-white py-2 px-4 rounded-lg border border-[#25D366]/30 inline-block w-full text-center">
-                            <span class="text-2xl font-black text-gray-900 select-all tracking-widest">80002944</span>
+                            <fieldset class="flow-section">
+                                <legend>Acabados y extras</legend>
+                                <div class="checks">
+                                    <label class="check-row">
+                                        <input type="checkbox" id="bindCopies">
+                                        <span>Empastar copias</span>
+                                    </label>
+                                    <div class="field inline-quantity" id="bindingQuantityWrap" hidden>
+                                        <label for="bindCopiesQty">Cantidad a empastar</label>
+                                        <input type="number" id="bindCopiesQty" min="1" step="1" inputmode="numeric" value="1">
+                                    </div>
+                                    <label class="check-row" id="originalBindingRow" hidden>
+                                        <input type="checkbox" id="bindOriginal">
+                                        <span>Empastar el original físico</span>
+                                    </label>
+                                    <label class="check-row">
+                                        <input type="checkbox" id="addDiscs">
+                                        <span>Discos con portada</span>
+                                    </label>
+                                    <div class="field inline-quantity" id="discQuantityWrap" hidden>
+                                        <label for="discQty">Cantidad de discos</label>
+                                        <input type="number" id="discQty" min="1" step="1" inputmode="numeric" value="1">
+                                    </div>
+                                </div>
+                                <p class="note">Color o B/N: mismo precio.</p>
+                            </fieldset>
                         </div>
+
+                        <aside class="summary" aria-labelledby="summaryTitle">
+                            <h2 id="summaryTitle">Resumen de tu cotización</h2>
+                            <p class="summary-intro" id="summaryIntro">Ingresa las páginas para ver el estimado.</p>
+                            <ul class="summary-list" id="summaryList" aria-live="polite" hidden></ul>
+                            <section class="delivery-summary" id="deliverySummarySection" aria-live="polite" hidden>
+                                <h3>Usted recibe</h3>
+                                <p id="deliverySummaryText"></p>
+                            </section>
+                            <div class="summary-footer">
+                                <div class="summary-total">
+                                    <p class="total-label">Total estimado</p>
+                                    <p class="total is-empty" id="totalPrice" aria-live="polite">Ingresa páginas</p>
+                                    <p class="discount" id="discountLine" hidden></p>
+                                </div>
+                                <a class="whatsapp" id="whatsappLink" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Enviar por WhatsApp</a>
+                            </div>
+                            <p class="estimate-note">Estimado sujeto a revisión del archivo y acabados.</p>
+                            <p class="error" id="formError" role="status" aria-live="polite"></p>
+                        </aside>
                     </div>
-                </div>
+                </form>
 
-                <button type="button" onclick="resetQuote()" class="w-full bg-white text-gray-500 border border-gray-200 hover:bg-gray-50 text-center py-3 rounded-xl font-bold text-sm mt-4 transition-colors">
-                    <i class="fa-solid fa-rotate-right mr-2"></i> Iniciar Nueva Cotización
+                <button type="button" id="resetQuote" class="quote-reset">
+                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Iniciar nueva cotización
                 </button>
-
             </div>
         </div>
     </section>
@@ -329,7 +702,7 @@
                 <div>
                     <h4 class="font-heading text-xs font-bold uppercase tracking-wider text-slate-300 border-b border-white/10 pb-2 mb-3">Servicios</h4>
                     <ul class="space-y-2 text-xs text-slate-300">
-                        <li><a href="cotizador.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Cotizador de Combos</a></li>
+                        <li><a href="cotizador.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Cotizador de impresión</a></li>
                         <li><a href="index.html#servicios" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Impresión de Tesis</a></li>
                         <li><a href="cursos.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Cursos de Empastado</a></li>
                         <li><a href="normas.html" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fa-solid fa-chevron-right text-[10px] text-blue-400"></i> Normas y Estilos</a></li>
@@ -390,154 +763,296 @@
     </footer>
 
     <script>
-        // Configuración de Precios
-        const CONFIG = {
-            MINIMO_IMPRESION: 32.50,
-            DIGITAL_REF_BAJA: 1.00,
-            DIGITAL_REF_ALTA: 1.00,
-            COPIA_REAL: 0.33,
-            COPIA_REF: 0.50,
-            ESC_1: 1.00, ESC_2: 0.85, ESC_3: 0.75, ESC_4: 0.65,
-            EMPASTADO_BASE: 25.00,
-            DESCUENTO_EMPASTADO: 2.50,
-            PRECIO_DISCO: 40.00
-        };
+        (() => {
+            const PRICES = {
+                minimumPrint: 32.50,
+                digitalRate: 1.00,
+                copyRate: 0.50,
+                copyReference: 0.60,
+                comboCopyRate: 0.50,
+                escalatedRates: [
+                    { limit: 44, rate: 1.00 },
+                    { limit: 99, rate: 0.85 },
+                    { limit: 201, rate: 0.75 },
+                    { limit: Infinity, rate: 0.65 }
+                ],
+                bindingBase: 27.00,
+                bindingDiscount: 3.50,
+                disc: 50.00
+            };
 
-        let mode = 'revision', origin = 'digital', quality = 'economica';
+            const form = document.getElementById("quoteForm");
+            const pagesInput = document.getElementById("pages");
+            const copiesInput = document.getElementById("copies");
+            const bindCopiesInput = document.getElementById("bindCopies");
+            const bindCopiesQtyInput = document.getElementById("bindCopiesQty");
+            const bindOriginalInput = document.getElementById("bindOriginal");
+            const addDiscsInput = document.getElementById("addDiscs");
+            const discQtyInput = document.getElementById("discQty");
 
-        function setMode(m) {
-            mode = m;
-            document.getElementById('opt-revision').className = m === 'revision' ? 'radio-option selected' : 'radio-option';
-            document.getElementById('opt-combo').className = m === 'combo' ? 'radio-option selected' : 'radio-option';
-            const b = document.getElementById('addBinding');
-            const d = document.getElementById('disc-section');
-            if (m === 'combo') { b.checked = true; d.classList.remove('hidden'); }
-            else { b.checked = false; d.classList.add('hidden'); }
-            calculate();
-        }
-
-        function setOrigin(o) {
-            origin = o;
-            document.getElementById('opt-digital').className = o === 'digital' ? 'radio-option selected' : 'radio-option';
-            document.getElementById('opt-impreso').className = o === 'impreso' ? 'radio-option selected' : 'radio-option';
-            document.getElementById('quality-section').style.display = o === 'digital' ? 'block' : 'none';
-            calculate();
-        }
-
-        function setQuality(q) {
-            quality = q;
-            document.getElementById('opt-economica').className = q === 'economica' ? 'radio-option selected' : 'radio-option';
-            document.getElementById('opt-optima').className = q === 'optima' ? 'radio-option selected' : 'radio-option';
-            calculate();
-        }
-
-        function calculate() {
-    const pages = parseInt(document.getElementById('pages').value) || 0;
-    const copies = parseInt(document.getElementById('copies').value) || 1;
-    const discQty = parseInt(document.getElementById('discQty').value) || 0;
-    const double = document.getElementById('doubleSided').checked;
-    const bind = document.getElementById('addBinding').checked;
-
-    let sh = double ? Math.ceil(pages / 2) : pages;
-
-    let pF = 0, cF = 0, bF = 0;
-    let dF = discQty * CONFIG.PRECIO_DISCO;
-    let pS = 0, cS = 0, bS = 0;
-    let rawT = 0;
-
-    if (origin === 'digital') {
-
-        if (quality === 'optima') {
-            let tI = pages * copies;
-            let u = tI < 45 ? CONFIG.ESC_1 : (tI <= 99 ? CONFIG.ESC_2 : (tI <= 249 ? CONFIG.ESC_3 : CONFIG.ESC_4));
-
-            pF = tI * u;
-
-            let rU = tI < 100 ? CONFIG.DIGITAL_REF_BAJA : CONFIG.DIGITAL_REF_ALTA;
-            rawT += tI * rU;
-            pS = (tI * rU) - pF;
-
-        } else {
-           let u = pages < 45 ? CONFIG.ESC_1 : (pages <= 99 ? CONFIG.ESC_2 : (pages <= 249 ? CONFIG.ESC_3 : CONFIG.ESC_4));
-
-            pF = pages < 45 ? CONFIG.MINIMO_IMPRESION : pages * u;
-
-            let rU = pages < 100 ? CONFIG.DIGITAL_REF_BAJA : CONFIG.DIGITAL_REF_ALTA;
-            rawT += pages < 45 ? CONFIG.MINIMO_IMPRESION : pages * rU;
-
-            if (pages >= 45) pS = (pages * rU) - pF;
-
-            if (copies > 1) {
-                let cT = pages * (copies - 1);
-                cF = cT * CONFIG.COPIA_REAL;
-
-                rawT += cT * CONFIG.COPIA_REF;
-                cS = (cT * CONFIG.COPIA_REF) - cF;
+            function selectedValue(name) {
+                return form.querySelector(`input[name="${name}"]:checked`).value;
             }
-        }
 
-    } else {
+            function selectedRate(quantity) {
+                return PRICES.escalatedRates.find((tier) => quantity <= tier.limit).rate;
+            }
 
-        // 🔥 SOLO SE COBRAN COPIAS ADICIONALES (el original no se cobra)
-        let copiasReales = copies > 1 ? (copies - 1) : 0;
-        let cT = pages * copiasReales;
+            function money(value) {
+                return `Q ${value.toFixed(2)}`;
+            }
 
-        if (mode === 'combo') {
-            const PRECIO_COMBO_REAL = 0.40;
-            const PRECIO_COMBO_REF = 0.50;
+            function formatQuantity(quantity, singular, plural) {
+                return `${quantity} ${quantity === 1 ? singular : plural}`;
+            }
 
-            cF = cT * PRECIO_COMBO_REAL;
-            rawT += cT * PRECIO_COMBO_REF;
-            cS = (cT * PRECIO_COMBO_REF) - cF;
+            function describeCopies(quantity, bound, combo) {
+                if (combo) {
+                    const singular = bound ? "copia empastada" : "copia sin empastar";
+                    const plural = bound ? "copias empastadas" : "copias sin empastar";
+                    return formatQuantity(quantity, singular, plural);
+                }
 
-        } else {
-            cF = cT * CONFIG.COPIA_REAL;
-            rawT += cT * CONFIG.COPIA_REF;
-            cS = (cT * CONFIG.COPIA_REF) - cF;
-        }
-    }
+                const noun = formatQuantity(quantity, "ejemplar impreso", "ejemplares impresos");
+                const finish = bound
+                    ? quantity === 1 ? "empastado" : "empastados"
+                    : "sin empastar";
+                return `${noun} ${finish}`;
+            }
 
-    // ✅ EMPASTADO SÍ USA TODOS LOS EJEMPLARES
-    if (bind) {
-        let sur = sh > 350 ? 20 : (sh > 275 ? 15 : (sh > 200 ? 10 : (sh > 125 ? 5 : 0)));
-        let rB = (CONFIG.EMPASTADO_BASE + sur) * copies;
+            function joinWithY(items) {
+                if (items.length < 2) {
+                    return items[0] || "";
+                }
+                return `${items.slice(0, -1).join(", ")} y ${items[items.length - 1]}`;
+            }
 
-        rawT += rB;
+            function syncBindingQuantity() {
+                const copies = Number.parseInt(copiesInput.value, 10);
+                if (!Number.isInteger(copies) || copies < 1) {
+                    return;
+                }
 
-        bS = CONFIG.DESCUENTO_EMPASTADO * copies;
-        bF = rB - bS;
-    }
+                bindCopiesQtyInput.max = String(copies);
+                const currentBindingQty = Number.parseInt(bindCopiesQtyInput.value, 10);
+                if (!bindCopiesQtyInput.dataset.touched || !Number.isInteger(currentBindingQty) || currentBindingQty > copies) {
+                    bindCopiesQtyInput.value = String(copies);
+                }
+            }
 
-    rawT += dF;
+            function updateFlow() {
+                const service = selectedValue("service");
+                const combo = service === "combo";
+                const origin = combo ? selectedValue("origin") : "digital";
+                const physical = combo && origin === "physical";
+                const addDiscs = addDiscsInput.checked;
 
-    let total = pF + cF + bF + dF;
+                document.getElementById("originSection").hidden = !combo;
+                document.getElementById("methodSection").hidden = !combo || physical;
+                document.getElementById("originalBindingRow").hidden = !physical;
+                if (!physical) {
+                    bindOriginalInput.checked = false;
+                }
+                document.getElementById("discQuantityWrap").hidden = !addDiscs;
+                document.getElementById("pageNote").textContent = "Incluye dictámenes.";
+                document.getElementById("pageNote").hidden = !physical;
+                document.getElementById("copiesLabel").textContent = combo
+                    ? "Copias a producir"
+                    : "Ejemplares";
 
-    let html = `<tr class="subtotal-header"><td colspan="2">TOTAL SIN DESCUENTOS: <span class="old-price" style="color:Black; opacity:1; margin-left:10px">Q ${rawT.toFixed(2)}</span></td></tr>`;
+                if (combo && !bindCopiesInput.dataset.touched) {
+                    bindCopiesInput.checked = true;
+                } else if (!combo && !bindCopiesInput.dataset.touched) {
+                    bindCopiesInput.checked = false;
+                }
 
-    if (pF > 0) html += `<tr><td>Impresión Digital</td><td class="val"><span class="old-price">Q ${(pF + pS).toFixed(2)}</span>Q ${pF.toFixed(2)}</td></tr>`;
-    if (cF > 0) html += `<tr><td>Servicio de Copiado</td><td class="val"><span class="old-price">Q ${(cF + cS).toFixed(2)}</span>Q ${cF.toFixed(2)}</td></tr>`;
-    if (bind) html += `<tr><td>Empastado (${sh} hojas)</td><td class="val"><span class="old-price">Q ${(bF + bS).toFixed(2)}</span>Q ${bF.toFixed(2)}</td></tr>`;
-    if (dF > 0) html += `<tr><td>Discos</td><td class="val">Q ${dF.toFixed(2)}</td></tr>`;
-    if (pS > 0.1) html += `<tr class="discount-row"><td>(-) Ahorro por Volumen</td><td class="val">- Q ${pS.toFixed(2)}</td></tr>`;
-    if (cS > 0.1) html += `<tr class="discount-row"><td>(-) Beneficio en Copias</td><td class="val">- Q ${cS.toFixed(2)}</td></tr>`;
-    if (bS > 0.1) html += `<tr class="discount-row"><td>(-) Premio Trabajo Completo</td><td class="val">- Q ${bS.toFixed(2)}</td></tr>`;
+                document.getElementById("bindingQuantityWrap").hidden = !bindCopiesInput.checked;
+                if (bindCopiesInput.checked) {
+                    syncBindingQuantity();
+                }
 
-    document.getElementById('summaryBody').innerHTML = html;
-    document.getElementById('totalPrice').innerText = "Q " + total.toFixed(2);
-        }
+                calculate();
+            }
 
-        function resetQuote() {
-            document.getElementById('pages').value = 0;
-            document.getElementById('copies').value = 1;
-            document.getElementById('discQty').value = 0;
-            document.getElementById('doubleSided').checked = false;
-            document.getElementById('addBinding').checked = false;
-            setMode('revision');
-            calculate();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+            function calculate() {
+                const service = selectedValue("service");
+                const combo = service === "combo";
+                const origin = combo ? selectedValue("origin") : "digital";
+                const quality = combo && origin === "digital" ? selectedValue("quality") : "economica";
+                const pages = Number.parseInt(pagesInput.value, 10);
+                const copies = Number.parseInt(copiesInput.value, 10);
+                const bindingCopies = bindCopiesInput.checked
+                    ? Number.parseInt(bindCopiesQtyInput.value, 10)
+                    : 0;
+                const discQty = addDiscsInput.checked ? Number.parseInt(discQtyInput.value, 10) : 0;
+                const physical = combo && origin === "physical";
+                const error = document.getElementById("formError");
+                const validPages = Number.isInteger(pages) && pages > 0;
+                const validCopies = Number.isInteger(copies) && copies > 0;
+                const validBinding = !bindCopiesInput.checked
+                    || (Number.isInteger(bindingCopies) && bindingCopies > 0 && bindingCopies <= copies);
+                const validDiscs = !addDiscsInput.checked || (Number.isInteger(discQty) && discQty > 0);
 
-        calculate();
+                if (!validPages || !validCopies || !validBinding || !validDiscs) {
+                    const initialEmptyPages = pagesInput.value === "";
+                    const message = initialEmptyPages
+                        ? ""
+                        : !validPages
+                            ? "Ingresa un número de páginas mayor que cero."
+                            : !validCopies
+                                ? "Ingresa al menos un ejemplar."
+                                : !validBinding
+                                    ? `La cantidad a empastar debe estar entre 1 y ${copies}.`
+                                    : "Ingresa una cantidad de discos mayor que cero.";
+                    error.textContent = message;
+                    const summaryIntro = document.getElementById("summaryIntro");
+                    summaryIntro.hidden = !initialEmptyPages;
+                    summaryIntro.textContent = initialEmptyPages
+                        ? "Completa las páginas para calcular el estimado."
+                        : "Corrige los datos para calcular el estimado.";
+                    document.getElementById("summaryList").innerHTML = "";
+                    document.getElementById("summaryList").hidden = true;
+                    document.getElementById("deliverySummarySection").hidden = true;
+                    document.getElementById("deliverySummaryText").textContent = "";
+                    document.getElementById("totalPrice").textContent = initialEmptyPages
+                        ? "Ingresa páginas"
+                        : "Completa los datos";
+                    document.getElementById("totalPrice").classList.add("is-empty");
+                    document.getElementById("discountLine").hidden = true;
+                    document.getElementById("whatsappLink").setAttribute("aria-disabled", "true");
+                    document.getElementById("whatsappLink").href = "#";
+                    return;
+                }
+
+                error.textContent = "";
+                document.getElementById("summaryIntro").hidden = true;
+                let printTotal = 0;
+                let printReference = 0;
+                let copyTotal = 0;
+                let copyReference = 0;
+
+                if (physical) {
+                    const rate = combo ? PRICES.comboCopyRate : PRICES.copyRate;
+                    const referenceRate = PRICES.copyReference;
+                    printTotal = pages * copies * rate;
+                    printReference = pages * copies * referenceRate;
+                } else if (quality === "optima") {
+                    const printedPages = pages * copies;
+                    printTotal = printedPages * selectedRate(printedPages);
+                    printReference = printedPages * PRICES.digitalRate;
+                } else {
+                    const firstCopyRate = selectedRate(pages);
+                    printTotal = pages < 45 ? PRICES.minimumPrint : pages * firstCopyRate;
+                    printReference = pages < 45 ? PRICES.minimumPrint : pages * PRICES.digitalRate;
+
+                    const additionalCopies = Math.max(0, copies - 1);
+                    copyTotal = pages * additionalCopies * PRICES.copyRate;
+                    copyReference = pages * additionalCopies * PRICES.copyReference;
+                }
+
+                const surcharge = pages > 350 ? 20
+                    : pages > 275 ? 15
+                        : pages > 200 ? 10
+                            : pages > 125 ? 5 : 0;
+                const bindingUnits = bindingCopies
+                    + (physical && bindOriginalInput.checked ? 1 : 0);
+                const bindingReference = (PRICES.bindingBase + surcharge) * bindingUnits;
+                const bindingUnitPrice = Math.max(0, PRICES.bindingBase + surcharge - PRICES.bindingDiscount);
+                const bindingCopiesTotal = bindingCopies * bindingUnitPrice;
+                const bindingOriginalTotal = physical && bindOriginalInput.checked ? bindingUnitPrice : 0;
+                const bindingTotal = bindingCopiesTotal + bindingOriginalTotal;
+                const discTotal = addDiscsInput.checked ? discQty * PRICES.disc : 0;
+                const total = printTotal + copyTotal + bindingTotal + discTotal;
+                const savings = printReference - printTotal + copyReference - copyTotal
+                    + bindingReference - bindingTotal;
+
+                const summaryList = document.getElementById("summaryList");
+                summaryList.innerHTML = `
+                    <li><span>Páginas finales</span><span>${pages}</span></li>
+                    ${printTotal > 0 ? `<li><span>${physical ? "Reproducciones" : "Impresión"}</span><span>${money(printTotal)}</span></li>` : ""}
+                    ${copyTotal > 0 ? `<li><span>Copias adicionales</span><span>${money(copyTotal)}</span></li>` : ""}
+                    ${bindingCopies > 0 ? `<li><span>Empastados de copias (${bindingCopies})</span><span>${money(bindingCopiesTotal)}</span></li>` : ""}
+                    ${physical && bindOriginalInput.checked ? `<li><span>Empastado del original (1)</span><span>${money(bindingOriginalTotal)}</span></li>` : ""}
+                    ${discTotal > 0 ? `<li><span>Discos (${discQty})</span><span>${money(discTotal)}</span></li>` : ""}
+                `;
+                summaryList.hidden = false;
+
+                const deliveryItems = [];
+                const looseCopies = copies - bindingCopies;
+                const originalBound = physical && bindOriginalInput.checked;
+                if (physical) {
+                    if (originalBound && bindingCopies > 0) {
+                        deliveryItems.push(
+                            `${formatQuantity(bindingCopies + 1, "ejemplar empastado", "ejemplares empastados")} en total: su original + ${formatQuantity(bindingCopies, "copia", "copias")}`
+                        );
+                    } else {
+                        deliveryItems.push(originalBound ? "su original empastado" : "su original sin empastar");
+                    }
+                }
+                if (bindingCopies > 0 && !originalBound) {
+                    deliveryItems.push(describeCopies(bindingCopies, true, combo));
+                }
+                if (looseCopies > 0) {
+                    deliveryItems.push(describeCopies(looseCopies, false, combo));
+                }
+                if (discQty > 0) {
+                    deliveryItems.push(formatQuantity(discQty, "disco con portada", "discos con portada"));
+                }
+                const deliverySummary = joinWithY(deliveryItems);
+                document.getElementById("deliverySummaryText").textContent = `${deliverySummary}.`;
+                document.getElementById("deliverySummarySection").hidden = false;
+
+                document.getElementById("totalPrice").textContent = money(total);
+                document.getElementById("totalPrice").classList.remove("is-empty");
+                const discountLine = document.getElementById("discountLine");
+                discountLine.hidden = savings <= 0.1;
+                discountLine.textContent = savings > 0.1 ? `Ahorro estimado: ${money(savings)}` : "";
+
+                const message = [
+                    "Hola, quiero confirmar esta cotización:",
+                    `Páginas del documento final: ${pages}`,
+                    `Usted recibe: ${deliverySummary}.`,
+                    `Total estimado: ${money(total)}`,
+                    "Adjunto mi archivo para revisión."
+                ].join("\n");
+                const link = document.getElementById("whatsappLink");
+                link.href = `https://wa.me/50280002944?text=${encodeURIComponent(message)}`;
+                link.setAttribute("aria-disabled", "false");
+            }
+
+            form.addEventListener("change", (event) => {
+                if (event.target === bindCopiesInput) {
+                    bindCopiesInput.dataset.touched = "true";
+                }
+                if (event.target === bindCopiesQtyInput) {
+                    bindCopiesQtyInput.dataset.touched = "true";
+                }
+                updateFlow();
+            });
+
+            form.addEventListener("input", (event) => {
+                if (event.target === copiesInput) {
+                    syncBindingQuantity();
+                }
+                calculate();
+            });
+
+            document.getElementById("whatsappLink").addEventListener("click", (event) => {
+                if (event.currentTarget.getAttribute("aria-disabled") === "true") {
+                    event.preventDefault();
+                }
+            });
+
+            document.getElementById("resetQuote").addEventListener("click", () => {
+                form.reset();
+                delete bindCopiesInput.dataset.touched;
+                delete bindCopiesQtyInput.dataset.touched;
+                updateFlow();
+                document.getElementById("quote-calculator").scrollIntoView({ behavior: "smooth" });
+            });
+
+            updateFlow();
+        })();
     </script>
     <!-- Core Script Unificado Intercopias -->
     <script src="intercopias.js"></script>
