@@ -529,7 +529,7 @@
                                     </label>
                                     <label class="option">
                                         <input type="radio" name="quality" value="optima">
-                                        <span><strong>Impresión digital por copia</strong></span>
+                                        <span><strong>Todos los ejemplares impresos</strong></span>
                                     </label>
                                 </div>
                             </fieldset>
@@ -539,7 +539,7 @@
                                 <div class="checks">
                                     <label class="check-row">
                                         <input type="checkbox" id="bindCopies">
-                                        <span>Empastar copias</span>
+                                        <span>¿Necesita empastado?</span>
                                     </label>
                                     <div class="field inline-quantity" id="bindingQuantityWrap" hidden>
                                         <label for="bindCopiesQty">Cantidad a empastar</label>
@@ -857,7 +857,7 @@
                 document.getElementById("pageNote").textContent = "Incluye dictámenes.";
                 document.getElementById("pageNote").hidden = !physical;
                 document.getElementById("copiesLabel").textContent = combo
-                    ? "Copias a producir"
+                    ? "cantidad de ejemplares"
                     : "Ejemplares";
 
                 if (combo && !bindCopiesInput.dataset.touched) {
