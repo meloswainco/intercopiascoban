@@ -102,6 +102,57 @@
             padding-top: 10rem;
         }
 
+        .offer-countdown {
+            padding: 1rem 0;
+            border-bottom: 1px solid #dfe3e7;
+        }
+
+        .offer-countdown-heading {
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            color: #002347;
+        }
+
+        .offer-countdown-units {
+            display: flex;
+            gap: 1.5rem;
+            color: #002347;
+        }
+
+        .offer-countdown-units strong {
+            display: block;
+            font-family: "Montserrat", sans-serif;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-variant-numeric: tabular-nums;
+            line-height: 1.1;
+        }
+
+        .offer-countdown-units span {
+            font-size: 0.75rem;
+        }
+
+        .offer-deadline {
+            margin-top: 0.75rem;
+            color: #424753;
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        #hero-heading {
+            text-wrap: balance;
+        }
+
+        body[data-offer-state="black-friday"] .offer-countdown-heading {
+            color: #785400;
+        }
+
+        #final-preorder-cta:focus-visible,
+        #hero-preorder-cta:focus-visible,
+        #offer-banner-cta:focus-visible {
+            outline: 3px solid #0058bc;
+            outline-offset: 4px;
+        }
+
         @media (max-width: 767px) {
             .pos-announcement {
                 min-height: 5.75rem;
@@ -125,9 +176,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script
         id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-subtle": "#f9f9ff", "surface-variant": "#d5e3ff", "surface-bright": "#f9f9ff", "tertiary-container": "#825100", "surface": "#f9f9ff", "inverse-on-surface": "#ebf1ff", "on-secondary-fixed": "#001f26", "surface-container": "#e7eeff", "on-primary-container": "#c3d4ff", "on-primary-fixed": "#001a41", "on-background": "#0d1c30", "tertiary": "#623c00", "outline": "#727784", "on-tertiary-container": "#ffcb8f", "primary": "#00418f", "on-tertiary": "#ffffff", "secondary": "#00687a", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "on-error-container": "#93000a", "surface-container-high": "#dee9ff", "inverse-primary": "#adc6ff", "primary-bright": "#2563eb", "on-surface": "#0d1c30", "secondary-fixed-dim": "#4cd7f6", "inverse-surface": "#233146", "surface-tint": "#095bbf", "on-error": "#ffffff", "on-surface-variant": "#424753", "surface-container-low": "#f0f3ff", "accent-hover": "#d97706", "secondary-container": "#57dffe", "tertiary-fixed": "#ffddb8", "on-tertiary-fixed-variant": "#653e00", "tertiary-fixed-dim": "#ffb95f", "primary-container": "#0058bc", "on-tertiary-fixed": "#2a1700", "on-secondary-container": "#006172", "primary-fixed-dim": "#adc6ff", "surface-container-highest": "#d5e3ff", "surface-dim": "#ccdbf6", "surface-border": "#e2e8f0", "on-secondary-fixed-variant": "#004e5c", "on-primary": "#ffffff", "outline-variant": "#c2c6d5", "navy-dark": "#0f172a", "error-container": "#ffdad6", "on-primary-fixed-variant": "#004494", "primary-fixed": "#d8e2ff", "secondary-fixed": "#acedff", "background": "#f9f9ff", "on-secondary": "#ffffff" }, borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" }, spacing: { "space-md": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter-sm": "1rem", "space-xl": "2.5rem", margin: "2rem", gutter: "1.5rem", "space-lg": "1.5rem", "margin-mobile": "1.25rem" }, fontFamily: { "headline-lg-mobile": ["Plus Jakarta Sans"], "label-sm": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "display-hero-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "title-md": ["Inter"] }, fontSize: { "headline-lg-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }], "headline-md": ["28px", { lineHeight: "36px", letterSpacing: "-0.01em", fontWeight: "700" }], "headline-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }], "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }], "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }], "display-hero-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "800" }], "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }], "display-hero": ["56px", { lineHeight: "64px", letterSpacing: "-0.03em", fontWeight: "800" }], "title-md": ["18px", { lineHeight: "26px", fontWeight: "600" }] } } } }</script>
-    <title>Black Friday POS Intercopias | Q650 hasta el 30 de noviembre</title>
+    <title>Últimos días Black Friday POS | Ahorra Q120 hasta el 30 de noviembre</title>
     <meta name="description"
-        content="Precio Black Friday: POS Intercopias por Q650 del 15 al 30 de noviembre. Software disponible inmediatamente. Licencia perpetua, sin mensualidades.">
+        content="Últimos días: lleva Intercopias POS por Q650 en lugar de Q770. Ahorra Q120 hasta el 30 de noviembre. Ventas, caja e inventario. Pago único, sin mensualidades.">
     <link href="icoinco.ico" rel="icon" type="image/x-icon" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="intercopias.css">
@@ -204,8 +255,8 @@
                     <div class="flex min-w-0 items-center gap-2">
                         <span class="material-symbols-outlined shrink-0 text-xl text-[#dfe3e7]" aria-hidden="true">bolt</span>
                         <div class="min-w-0 text-left">
-                            <span id="offer-banner-label" class="block text-[11px] font-black uppercase leading-tight sm:text-xs">Black Friday · 15–30 de noviembre</span>
-                            <span id="offer-banner-launch" class="block text-[10px] leading-tight text-white/75 sm:text-xs">Software disponible inmediatamente</span>
+                            <span id="offer-banner-label" class="block text-[11px] font-black uppercase leading-tight sm:text-xs">Black Friday · Recta final</span>
+                            <span id="offer-banner-launch" class="block text-[10px] leading-tight text-white/75 sm:text-xs">Ahorra Q120 · Cierra el 30 de noviembre</span>
                         </div>
                     </div>
                     <strong id="offer-banner-price" class="shrink-0 font-display-hero text-2xl font-black leading-none text-white sm:text-3xl">Q650.00</strong>
@@ -214,7 +265,7 @@
                     href="https://wa.me/50280002944?text=Hola%2C%20quiero%20comprar%20Intercopias%20POS%20por%20Q650%20con%20el%20precio%20Black%20Friday.%20%C2%BFMe%20comparten%20los%20pasos%20para%20el%20pago%20y%20la%20activaci%C3%B3n%3F"
                     target="_blank" rel="noopener noreferrer" aria-label="Comprar Intercopias POS por Q650 con el precio Black Friday por WhatsApp">
                     <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
-                    <span id="offer-banner-cta-label">Comprar por Q650</span>
+                    <span id="offer-banner-cta-label">Lo quiero por Q650</span>
                 </a>
             </div>
         </div>
@@ -278,14 +329,12 @@
                         <!-- Text Column -->
                         <div class="lg:col-span-7 space-y-5 lg:space-y-10">
                             <div class="space-y-3">
-                                <span
-                                    class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">POS para comercios</span>
-                                <h1
+                                <h1 id="hero-heading"
                                     class="font-display-hero text-3xl md:text-display-hero text-on-surface leading-tight tracking-tight">
-                                    Cobra, cotiza y controla tu negocio
+                                    Tu negocio necesita control. No otra mensualidad.
                                 </h1>
-                                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                                    Precio Black Friday: Q650 hasta el 30 de noviembre. El software está disponible inmediatamente; controla ventas, cotizaciones e inventario con una licencia perpetua, sin mensualidades.
+                                <p id="hero-offer-description" class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                                    Deja de llevar ventas, cobros e inventario por separado. Reúne el control de tu mostrador en Intercopias POS y paga una sola vez. Compra por Q650 antes del cierre de Black Friday; después, el precio vuelve a Q770.
                                 </p>
                             </div>
                             <!-- Highlight Presale Pricing Block -->
@@ -293,7 +342,7 @@
                                 <div
                                     class="flex flex-wrap items-baseline justify-between gap-4 pb-4 border-b border-surface-container">
                                         <div><span id="hero-offer-label"
-                                            class="font-label-sm text-label-sm font-bold text-secondary uppercase tracking-wider block mb-1">Precio especial Black Friday</span>
+                                            class="font-label-sm text-label-sm font-bold text-secondary uppercase tracking-wider block mb-1">Black Friday: ahorra Q120 hoy</span>
                                         <div class="flex items-baseline gap-2"><span
                                                 class="font-headline-sm text-headline-sm font-bold text-primary">Q</span><span
                                                 id="hero-offer-price" class="font-display-hero text-display-hero font-extrabold text-on-surface tracking-tight leading-none">650.00</span><span
@@ -305,10 +354,20 @@
                                         <span class="inline-block rounded-md bg-tertiary-fixed px-2 py-1 font-label-sm text-label-sm font-bold text-on-tertiary-fixed">Ahorras Q120</span>
                                     </div>
                                 </div>
+                                <div id="offer-countdown" class="offer-countdown" hidden>
+                                    <p id="offer-countdown-heading" class="offer-countdown-heading">El precio de Q650 termina en:</p>
+                                    <div class="offer-countdown-units" role="timer" aria-live="off" aria-labelledby="offer-countdown-heading">
+                                        <div><strong id="offer-days">00</strong><span>días</span></div>
+                                        <div><strong id="offer-hours">00</strong><span>horas</span></div>
+                                        <div><strong id="offer-minutes">00</strong><span>minutos</span></div>
+                                        <div><strong id="offer-seconds">00</strong><span>segundos</span></div>
+                                    </div>
+                                </div>
+                                <p id="hero-offer-deadline" class="offer-deadline">Cierra el 30 de noviembre de 2026 a las 11:59 p. m., hora de Guatemala. Licencia perpetua; software disponible inmediatamente.</p>
                                 <div class="hero-cta-group flex flex-col sm:flex-row gap-2 sm:gap-4 pt-1"><a id="hero-preorder-cta"
                                         class="inco-btn-whatsapp flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 sm:py-4 rounded-xl font-title-md text-title-md font-bold shadow-md hover:shadow-xl transition-all text-center"
                                         href="https://wa.me/50280002944?text=Hola%2C%20quiero%20comprar%20Intercopias%20POS%20por%20Q650%20con%20el%20precio%20Black%20Friday.%20%C2%BFMe%20comparten%20los%20pasos%20para%20el%20pago%20y%20la%20activaci%C3%B3n%3F"
-                                        target="_blank" rel="noopener noreferrer" aria-label="Comprar Intercopias POS por Q650 con el precio Black Friday por WhatsApp"><span id="hero-preorder-cta-label">Comprar por Q650</span><span
+                                        target="_blank" rel="noopener noreferrer" aria-label="Comprar Intercopias POS por Q650 con el precio Black Friday por WhatsApp"><span id="hero-preorder-cta-label">Quiero mi POS por Q650</span><span
                                             class="material-symbols-outlined text-[20px]">arrow_forward</span></a><a
                                         class="inline-flex items-center justify-center gap-1 px-2 py-1 text-primary underline underline-offset-4 hover:text-secondary transition-colors font-label-sm text-label-sm font-semibold text-center"
                                             href="videos_pos.html" aria-label="¿Quieres ver videos del funcionamiento?"><span class="">¿Quieres ver videos del funcionamiento?</span><i class="fa-solid fa-circle-play text-[18px]" aria-hidden="true"></i></a></div>
@@ -384,7 +443,7 @@
                 <div class="max-w-[1240px] mx-auto px-margin-mobile md:px-margin">
                     <div class="max-w-3xl mx-auto text-center space-y-3">
                         <span class="font-label-md text-label-md text-primary font-bold tracking-wider uppercase">Configurable para tu rubro</span>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Un inventario conocido. Un mostrador a tu medida.</h2>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Tu negocio no tiene que adaptarse al mostrador. Configúralo a tu medida.</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant">Adapta los accesos del mostrador a los productos y servicios que ofrece tu negocio.</p>
                     </div>
                     <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -533,7 +592,7 @@
                             <span class="material-symbols-outlined text-[18px]">pending_actions</span>
                             Seguimiento diario
                         </div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Retoma pedidos, cotizaciones y saldos pendientes</h2>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Que un saldo pendiente no se quede en el olvido</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                             Consulta qué pedidos esperan entrega, qué cotizaciones siguen abiertas y qué saldos faltan por cobrar.
                         </p>
@@ -614,7 +673,7 @@
                             <span class="material-symbols-outlined text-[18px]">inventory_2</span>
                             Control de Stock Preciso
                         </div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Consulta existencias y actualiza tu catálogo</h2>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">No adivines qué tienes. Revisa tu inventario.</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                             Busca productos por nombre o código de barras. Actualiza categorías, costos, precios y existencias desde el catálogo.
                         </p>
@@ -865,7 +924,7 @@
                             <span class="material-symbols-outlined text-[18px]">verified</span>
                             POS en negocios en operación
                         </div>
-                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Más de 50 comercios</h2>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface">Más de 50 comercios ya lo usan. Mira el POS en acción.</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                             Ya usan Intercopias POS en Guatemala. Estas imágenes muestran tres ejemplos de comprobantes personalizados y equipos térmicos en operación.
                         </p>
@@ -1093,10 +1152,10 @@
                         <div class="text-center space-y-3">
                             <div id="final-offer-badge"
                                 class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider">
-                                Black Friday · 15–30 de noviembre
+                                Black Friday · El precio de Q650 tiene fecha de cierre
                             </div>
-                            <h2 id="final-offer-heading" class="font-headline-lg text-headline-lg text-on-surface">Lleva Intercopias POS por Q650</h2>
-                            <p id="final-offer-description" class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Software disponible inmediatamente. Ahorras Q120 frente al precio regular de Q770.</p>
+                            <h2 id="final-offer-heading" class="font-headline-lg text-headline-lg text-on-surface">No pagues Q770 después. Llévalo hoy por Q650.</h2>
+                            <p id="final-offer-description" class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">Ahorra Q120 y controla ventas, caja e inventario sin mensualidades. El precio Black Friday cierra el 30 de noviembre a las 11:59 p. m., hora de Guatemala.</p>
                         </div>
                         <!-- Big Price Box -->
                         <div class="p-8 rounded-2xl bg-surface-container-low text-center space-y-3">
@@ -1155,9 +1214,9 @@
                         <div class="space-y-4 pt-4 text-center">
                             <a id="final-preorder-cta" class="w-full inline-flex items-center justify-center gap-3 px-8 py-5 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-bold shadow-xl hover:bg-secondary-container transition-all"
                                 href="https://wa.me/50280002944?text=Hola%2C%20quiero%20comprar%20Intercopias%20POS%20por%20Q650%20con%20el%20precio%20Black%20Friday.%20%C2%BFMe%20comparten%20los%20pasos%20para%20el%20pago%20y%20la%20activaci%C3%B3n%3F"
-                                target="_blank">
+                                target="_blank" rel="noopener noreferrer">
                                 <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
-                                <span class="">Comprar por Q650</span>
+                                <span class="">Comprar mi licencia por Q650</span>
                             </a>
                             <p
                                 class="font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center gap-1.5">
@@ -1235,15 +1294,17 @@
     </footer>
 
     <script>
+        (() => {
+        const campaignStart = new Date('2026-11-15T00:00:00-06:00').getTime();
+        const campaignEnd = new Date('2026-12-01T00:00:00-06:00').getTime();
+
         function applyOffer() {
-            const campaignStart = new Date('2026-11-15T00:00:00-06:00').getTime();
-            const campaignEnd = new Date('2026-12-01T00:00:00-06:00').getTime();
             const now = Date.now();
             const isBlackFriday = now >= campaignStart && now < campaignEnd;
             const price = isBlackFriday ? 650 : 770;
             const priceText = price.toFixed(2);
             const campaignMessage = isBlackFriday
-                ? 'Hola, quiero comprar Intercopias POS por Q650 con el precio Black Friday. ¿Me comparten el manual y los pasos para el pago y la activación?'
+                ? 'Hola, quiero comprar mi licencia Intercopias POS por Q650 antes del cierre de Black Friday el 30 de noviembre. ¿Me comparten el manual y los pasos para el pago y la activación?'
                 : 'Hola, quiero comprar la licencia POS Intercopias por Q770. ¿Me comparten el manual y los pasos para el pago y la activación?';
             const purchaseHref = `https://wa.me/50280002944?text=${encodeURIComponent(campaignMessage)}`;
 
@@ -1258,37 +1319,45 @@
 
             document.body.dataset.offerState = isBlackFriday ? 'black-friday' : 'regular';
             document.title = isBlackFriday
-                ? 'Black Friday POS Intercopias | Q650 hasta el 30 de noviembre'
+                ? 'Últimos días Black Friday POS | Ahorra Q120 hasta el 30 de noviembre'
                 : 'POS Intercopias para comercios | Pago único Q770';
             const description = document.querySelector('meta[name="description"]');
             if (description) description.content = isBlackFriday
-                ? 'Precio Black Friday: POS Intercopias por Q650 del 15 al 30 de noviembre. Software disponible inmediatamente. Licencia perpetua, sin mensualidades.'
+                ? 'Últimos días: lleva Intercopias POS por Q650 en lugar de Q770. Ahorra Q120 hasta el 30 de noviembre. Ventas, caja e inventario. Pago único, sin mensualidades.'
                 : 'POS para comercios por Q770 en un pago único. Cobra, cotiza y controla inventario desde el mostrador. Licencia perpetua, sin mensualidades.';
 
-            setText('offer-banner-label', isBlackFriday ? 'Black Friday · 15–30 de noviembre' : 'POS para tu negocio · Pago único');
+            setText('offer-banner-label', isBlackFriday ? 'Black Friday · Recta final' : 'POS para tu negocio · Pago único');
             setText('offer-banner-price', `Q${priceText}`);
-            setText('offer-banner-launch', isBlackFriday ? 'Software disponible inmediatamente' : 'Licencia perpetua · Sin mensualidades');
-            setText('offer-banner-cta-label', isBlackFriday ? 'Comprar por Q650' : 'Solicitar licencia');
+            setText('offer-banner-launch', isBlackFriday ? 'Ahorra Q120 · Cierra el 30 de noviembre' : 'Licencia perpetua · Sin mensualidades');
+            setText('offer-banner-cta-label', isBlackFriday ? 'Lo quiero por Q650' : 'Solicitar licencia');
             setHref('offer-banner-cta', purchaseHref);
             document.getElementById('offer-banner-cta')?.setAttribute('aria-label', `Comprar licencia POS por Q${price} por WhatsApp`);
             setText('floating-offer-label', isBlackFriday ? 'Black Friday • Q650' : 'Licencia POS • Q770');
-            setText('floating-offer-action', isBlackFriday ? 'Comprar por WhatsApp' : 'Solicitar por WhatsApp');
+            setText('floating-offer-action', isBlackFriday ? 'Comprar antes del cierre' : 'Solicitar por WhatsApp');
             setHref('floating-offer-link', purchaseHref);
+            document.getElementById('floating-offer-link').setAttribute('aria-label', `Comprar licencia POS por Q${price} por WhatsApp`);
+            document.getElementById('floating-offer-link').title = isBlackFriday ? 'Black Friday POS Intercopias' : 'Licencia POS Intercopias';
             setHref('mobile-offer-link', '#licencia');
             setText('mobile-offer-label', isBlackFriday ? 'Black Friday POS' : 'Licencia POS');
             setText('mobile-offer-price', `Q${price}`);
 
-            setText('hero-offer-label', isBlackFriday ? 'Precio especial Black Friday' : 'Una sola inversión');
+            setText('hero-offer-description', isBlackFriday
+                ? 'Deja de llevar ventas, cobros e inventario por separado. Reúne el control de tu mostrador en Intercopias POS y paga una sola vez. Compra por Q650 antes del cierre de Black Friday; después, el precio vuelve a Q770.'
+                : 'Deja de llevar ventas, cobros e inventario por separado. Reúne el control de tu mostrador en Intercopias POS con una licencia perpetua por Q770. Un solo pago, sin mensualidades.');
+            setText('hero-offer-deadline', isBlackFriday
+                ? 'Cierra el 30 de noviembre de 2026 a las 11:59 p. m., hora de Guatemala. Licencia perpetua; software disponible inmediatamente.'
+                : 'Licencia perpetua; software disponible inmediatamente. Escríbenos para coordinar el pago y la activación.');
+            setText('hero-offer-label', isBlackFriday ? 'Black Friday: ahorra Q120 hoy' : 'Una sola inversión');
             setText('hero-offer-price', priceText);
             document.getElementById('hero-offer-comparison')?.classList.toggle('hidden', !isBlackFriday);
-            setText('hero-preorder-cta-label', isBlackFriday ? 'Comprar por Q650' : 'Comprar por Q770');
+            setText('hero-preorder-cta-label', isBlackFriday ? 'Quiero mi POS por Q650' : 'Comprar por Q770');
             setHref('hero-preorder-cta', purchaseHref);
             document.getElementById('hero-preorder-cta')?.setAttribute('aria-label', `Comprar licencia POS por Q${price} por WhatsApp`);
 
-            setText('final-offer-badge', isBlackFriday ? 'Black Friday · 15–30 de noviembre' : 'Licencia perpetua · Sin mensualidades');
-            setText('final-offer-heading', isBlackFriday ? 'Lleva Intercopias POS por Q650' : 'Por Q770, una inversión para tu negocio');
+            setText('final-offer-badge', isBlackFriday ? 'Black Friday · El precio de Q650 tiene fecha de cierre' : 'Licencia perpetua · Sin mensualidades');
+            setText('final-offer-heading', isBlackFriday ? 'No pagues Q770 después. Llévalo hoy por Q650.' : 'Por Q770, una inversión para tu negocio');
             setText('final-offer-description', isBlackFriday
-                ? 'Software disponible inmediatamente. Ahorras Q120 frente al precio regular de Q770.'
+                ? 'Ahorra Q120 y controla ventas, caja e inventario sin mensualidades. El precio Black Friday cierra el 30 de noviembre a las 11:59 p. m., hora de Guatemala.'
                 : 'Cobra, cotiza y controla existencias desde el mostrador con una licencia perpetua, sin mensualidades.');
             setText('final-offer-price', priceText);
             document.getElementById('final-offer-comparison')?.classList.toggle('hidden', !isBlackFriday);
@@ -1296,12 +1365,38 @@
             document.getElementById('final-preorder-cta')?.classList.remove('bg-tertiary-fixed', 'text-on-tertiary-fixed', 'hover:bg-tertiary-fixed-dim');
             document.getElementById('final-preorder-cta')?.classList.add('bg-primary', 'text-on-primary', 'hover:bg-secondary-container');
             const finalCtaLabel = document.querySelector('#final-preorder-cta span:not(.material-symbols-outlined)');
-            if (finalCtaLabel) finalCtaLabel.textContent = isBlackFriday ? 'Comprar por Q650' : 'Solicitar licencia por WhatsApp';
+            if (finalCtaLabel) finalCtaLabel.textContent = isBlackFriday ? 'Comprar mi licencia por Q650' : 'Solicitar licencia por WhatsApp';
             document.getElementById('final-preorder-cta')?.setAttribute('aria-label', `Comprar licencia POS por Q${price} por WhatsApp`);
             setText('footer-offer-link', 'Licencia POS');
         }
 
-        applyOffer();
+        function updateCountdown() {
+            const now = Date.now();
+            const isBlackFriday = now >= campaignStart && now < campaignEnd;
+            const offerState = isBlackFriday ? 'black-friday' : 'regular';
+            if (document.body.dataset.offerState !== offerState) {
+                applyOffer();
+            }
+
+            document.getElementById('offer-countdown').hidden = !isBlackFriday;
+            const remainingSeconds = Math.max(0, Math.ceil((campaignEnd - now) / 1000));
+            const units = {
+                'offer-days': Math.floor(remainingSeconds / 86400),
+                'offer-hours': Math.floor(remainingSeconds / 3600) % 24,
+                'offer-minutes': Math.floor(remainingSeconds / 60) % 60,
+                'offer-seconds': remainingSeconds % 60
+            };
+            for (const [id, value] of Object.entries(units)) {
+                document.getElementById(id).textContent = String(value).padStart(2, '0');
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) updateCountdown();
+        });
+        })();
     </script>
     <script src="intercopias.js"></script>
 </body>
